@@ -74,12 +74,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Parallax Effect for Hero Section
-window.addEventListener('scroll', function() {
-    const scrollPosition = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    
-    if (hero) {
-        hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+// Video Background für Hero Section (falls Video nicht lädt, Fallback auf Bild)
+document.addEventListener('DOMContentLoaded', function() {
+    const heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+        heroVideo.addEventListener('error', function() {
+            const heroSection = document.querySelector('.hero');
+            heroSection.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("/api/placeholder/1920/1080")';
+            heroSection.style.backgroundSize = 'cover';
+            heroSection.style.backgroundPosition = 'center';
+        });
     }
 });
