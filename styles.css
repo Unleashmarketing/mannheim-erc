@@ -91,6 +91,36 @@ img {
     width: 100%;
 }
 
+/* Neuer Header-Button Style */
+.btn-header {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--text-light) !important;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 98, 255, 0.15);
+}
+
+.btn-header:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 98, 255, 0.2);
+    color: var(--text-light) !important;
+}
+
+.btn-header::after {
+    content: none;
+}
+
 .btn-outline {
     background-color: transparent;
     border: 2px solid var(--primary-color);
@@ -198,6 +228,7 @@ header.scrolled {
 
 .nav-desktop {
     display: flex;
+    align-items: center;
 }
 
 .nav-desktop li {
@@ -230,6 +261,11 @@ header.scrolled {
 
 .nav-desktop a:hover::after {
     width: 100%;
+}
+
+/* Der Kontakt-Button im Header soll keinen unterstrich haben */
+.nav-desktop a.btn-header::after {
+    display: none;
 }
 
 .mobile-toggle {
@@ -340,18 +376,49 @@ header.scrolled {
     visibility: visible;
 }
 
-/* Hero Section - Modern */
+/* Hero Section - Modern with Video Background */
 .hero {
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1920/1080');
-    background-size: cover;
-    background-position: center;
     color: var(--text-light);
     display: flex;
     align-items: center;
     text-align: left;
     position: relative;
     padding-top: 80px;
+    overflow: hidden;
+}
+
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.hero-video-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+    z-index: 1;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
 }
 
 .hero-content {
@@ -359,6 +426,7 @@ header.scrolled {
     margin: 0 auto;
     padding: 0 20px;
     position: relative;
+    z-index: 2;
 }
 
 .hero-title {
