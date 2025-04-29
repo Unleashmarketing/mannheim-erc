@@ -25,7 +25,7 @@
                     <li><a href="#sports">Sportarten</a></li>
                     <li><a href="#competitions">Wettbewerbe</a></li>
                     <li><a href="#trainers">Trainer</a></li>
-                    <li><a href="#contact" class="btn">Kontakt</a></li>
+                    <li><a href="#contact" class="btn-header">Kontakt</a></li>
                 </ul>
                 <button class="mobile-toggle" aria-label="Menu öffnen">
                     <span></span>
@@ -55,10 +55,17 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-video-container">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="videos/ice-skating.mp4" type="video/mp4">
+                <!-- Fallback Bild wenn das Video nicht lädt -->
+                <img src="/api/placeholder/1920/1080" alt="Eiskunstlauf Background">
+            </video>
+        </div>
         <div class="hero-content">
             <h1 class="hero-title">Eiskunstlauf auf höchstem Niveau</h1>
             <p class="hero-subtitle">Technik trifft Ästhetik - Entdecke die Eleganz des Eislaufs im Mannheimer ERC</p>
-            <a href="#contact" class="btn hero-btn">Jetzt Mitglied werden</a>
+            <a href="#about" class="btn hero-btn">Mehr über uns erfahren</a>
         </div>
     </section>
 
@@ -132,6 +139,7 @@
         </div>
     </section>
 
+    <!-- Rest of the code remains the same -->
     <!-- Competitions Section -->
     <section id="competitions" class="section competitions">
         <div class="container">
