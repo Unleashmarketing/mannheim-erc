@@ -324,7 +324,6 @@ img {
     transform: scale(1.05);
 }
 
-/* Sponsors Section - Neuer Abschnitt mit negativer Farbe */
 .sponsors {
     background-color: var(--negative-color);
     color: var(--text-light);
@@ -335,6 +334,10 @@ img {
 
 .sponsors .section-title {
     color: var(--text-light);
+}
+
+.sponsors .section-title::after {
+    background-color: var(--text-light);
 }
 
 .sponsors .section-subtitle {
@@ -368,12 +371,13 @@ img {
     border-radius: var(--border-radius);
     transition: var(--transition);
     margin-bottom: 15px;
+    padding: 15px;
 }
 
-.sponsor-name {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--text-light);
+.sponsor-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .sponsor-item:hover .sponsor-logo {
@@ -381,16 +385,20 @@ img {
     transform: translateY(-5px);
 }
 
+/* Blauer "Sponsor werden" Button */
 .sponsor-btn {
-    background-color: transparent;
-    border: 2px solid var(--text-light);
+    background-color: var(--primary-color);
     color: var(--text-light);
+    border: none;
     padding: 12px 25px;
+    margin-top: 20px;
 }
 
 .sponsor-btn:hover {
-    background-color: var(--text-light);
-    color: var(--negative-color);
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Sports Section - Modern */
