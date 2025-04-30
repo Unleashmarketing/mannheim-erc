@@ -337,10 +337,6 @@ img {
     color: var(--text-light);
 }
 
-.sponsors .section-title::after {
-    background-color: var(--text-light);
-}
-
 .sponsors .section-subtitle {
     color: rgba(255, 255, 255, 0.7);
 }
@@ -1127,7 +1123,7 @@ footer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 24px; /* Vergrößerung der Padding-Werte */
+    padding: 12px 24px !important; 
     background-color: var(--primary-color);
     color: var(--text-light) !important;
     border: none;
@@ -1277,7 +1273,7 @@ footer {
     font-size: 1.2rem;
     color: #666;
     max-width: 700px;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 /* Header Styles - Modern */
