@@ -91,36 +91,6 @@ img {
     width: 100%;
 }
 
-/* Neuer Header-Button Style */
-.btn-header {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: var(--text-light) !important;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: var(--transition);
-    font-weight: 600;
-    text-align: center;
-    letter-spacing: 0.5px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 98, 255, 0.15);
-}
-
-.btn-header:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 98, 255, 0.2);
-    color: var(--text-light) !important;
-}
-
-.btn-header::after {
-    content: none;
-}
-
 .btn-outline {
     background-color: transparent;
     border: 2px solid var(--primary-color);
@@ -130,24 +100,6 @@ img {
 .btn-outline:hover {
     background-color: var(--primary-color);
     color: var(--text-light);
-}
-
-.btn-arrow::before {
-    content: '→';
-    position: relative;
-    opacity: 0;
-    margin-left: 0;
-    transform: translateX(-10px);
-    transition: var(--transition);
-    display: inline-block;
-    width: 0;
-}
-
-.btn-arrow:hover::before {
-    opacity: 1;
-    margin-left: 8px;
-    transform: translateX(0);
-    width: auto;
 }
 
 .section {
@@ -1081,34 +1033,6 @@ footer {
     margin-bottom: 15px;
 }
 
-.footer-links a {
-    color: rgba(255, 255, 255, 0.7);
-    transition: var(--transition);
-    position: relative;
-    padding-left: 15px;
-    font-size: 1rem;
-}
-
-.footer-links a:before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    transition: var(--transition);
-    transform: translateX(-10px);
-}
-
-.footer-links a:hover {
-    color: #fff;
-    padding-left: 20px;
-}
-
-.footer-links a:hover:before {
-    opacity: 1;
-    transform: translateX(0);
-}
-
 .footer-contact li {
     margin-bottom: 20px;
     display: flex;
@@ -1255,4 +1179,87 @@ footer {
     .footer-container {
         grid-template-columns: 1fr;
     }
+}
+
+/* Vergrößerter Header-Button */
+.btn-header {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px; /* Vergrößerung der Padding-Werte */
+    background-color: var(--primary-color);
+    color: var(--text-light) !important;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 98, 255, 0.15);
+}
+
+.btn-header::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.btn-header:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 98, 255, 0.2);
+    color: var(--text-light) !important;
+}
+
+.btn-header:hover::after {
+    width: 100%;
+}
+
+/* Entfernung der Pfeil-Animation im Footer */
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--transition);
+    position: relative;
+    font-size: 1rem;
+    padding-left: 0; /* Padding entfernt */
+}
+
+.footer-links a:before {
+    content: none; /* Entfernung des Pfeil-Inhalts */
+}
+
+.footer-links a:hover {
+    color: #fff;
+    padding-left: 0; /* Kein Padding beim Hover */
+}
+
+/* Die gleiche Hover-Animation für alle Buttons statt Pfeil */
+.btn-arrow::before {
+    content: none; /* Pfeil entfernen */
+}
+
+.btn-arrow {
+    overflow: hidden; /* Überlauf verbergen für den Effekt */
+}
+
+.btn-arrow::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.btn-arrow:hover::after {
+    width: 100%;
 }
