@@ -1316,7 +1316,7 @@ header.scrolled {
 }
 
 .logo img {
-    width: 50px;
+    width: 75px;
     margin-right: 12px;
     transition: var(--transition);
 }
