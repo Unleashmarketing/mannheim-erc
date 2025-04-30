@@ -391,7 +391,7 @@ img {
     color: var(--text-light);
     border: none;
     padding: 12px 25px;
-    margin-top: 20px;
+    margin-bottom: 25px;
 }
 
 .sponsor-btn:hover {
