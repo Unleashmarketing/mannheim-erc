@@ -385,7 +385,6 @@ img {
     transform: translateY(-5px);
 }
 
-/* Blauer "Sponsor werden" Button */
 .sponsor-btn {
     background-color: var(--primary-color);
     color: var(--text-light);
