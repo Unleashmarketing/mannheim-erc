@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (heroVideo) {
         heroVideo.addEventListener('error', function() {
             const heroSection = document.querySelector('.hero');
-            heroSection.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("/api/placeholder/1920/1080")';
+            heroSection.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("images/Bild2.jpeg")';
             heroSection.style.backgroundSize = 'cover';
             heroSection.style.backgroundPosition = 'center';
         });
