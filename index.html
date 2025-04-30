@@ -9,6 +9,50 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const heroVideo = document.querySelector('.hero-video');
+    
+    // Verbesserte Error-Handling-Funktion für Video
+    if (heroVideo) {
+        // Prüfen, ob das Video geladen werden kann
+        heroVideo.addEventListener('error', function(e) {
+            console.error('Video konnte nicht geladen werden:', e);
+            
+            // Fallback auf Bild
+            const heroSection = document.querySelector('.hero');
+            heroSection.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("images/Bild2.jpeg")';
+            heroSection.style.backgroundSize = 'cover';
+            heroSection.style.backgroundPosition = 'center';
+            
+            // Video-Container ausblenden
+            const videoContainer = document.querySelector('.hero-video-container');
+            if (videoContainer) {
+                videoContainer.style.display = 'none';
+            }
+        });
+        
+        // Auch für Source-Elemente auf Fehler prüfen
+        const sources = heroVideo.querySelectorAll('source');
+        sources.forEach(source => {
+            source.addEventListener('error', function(e) {
+                console.error('Video-Source konnte nicht geladen werden:', e);
+            });
+        });
+    }
+    
+        // Manueller Test, ob das Video geladen werden kann
+        console.log("Versuche, das Video manuell zu laden...");
+        const testVideo = new Video();
+        testVideo.src = "videos/Gekürzt.mp4";
+        testVideo.onerror = function() {
+            console.error("Test-Video konnte nicht geladen werden");
+        };
+        testVideo.oncanplaythrough = function() {
+            console.log("Test-Video kann abgespielt werden");
+        };
+    });
+    </script>
 </head>
 <body>
     <!-- Header -->
