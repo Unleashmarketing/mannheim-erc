@@ -1205,7 +1205,7 @@ footer {
 
 .btn-arrow:hover::after {
     width: 100%;
-}: var(--transition);
+    transition: var(--transition);
     font-weight: 600;
     text-align: center;
     letter-spacing: 0.5px;
@@ -1332,6 +1332,19 @@ header.scrolled {
     align-items: center;
 }
 
+#pageElementsDesktop ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    gap: 40px;
+}
+
+#pageElementsDesktop ul li {
+    margin: 0;
+}
+
 .nav-desktop li {
     margin-left: 40px;
 }
@@ -1356,4 +1369,5 @@ header.scrolled {
     width: 0;
     height: 2px;
     background-color: var(--primary-color);
-    transition
+    transition: var(--transition);
+}

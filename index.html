@@ -1,5 +1,21 @@
 <!DOCTYPE html>
 <html lang="de">
+<template id='navigation-template1'>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#trainingsplan">Trainingspläne</a></li>
+        <li><a href="#about">Über Uns</a></li>
+        <li><a href="#sports">Sportarten</a></li>
+        <li><a href="#competitions">Wettbewerbe</a></li>
+        <li><a href="#trainers">Trainer</a></li>
+    </ul>
+</template>
+<template id='contactBtn'>
+    <li><a href="#contact" class="btn-header">Kontakt</a></li>
+</template>
+<template id='contactStandard'>
+    <li><a href="#contact">Kontakt</a></li>
+</template>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
-  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     const heroVideo = document.querySelector('.hero-video');
     
     // Verbesserte Error-Handling-Funktion für Video
@@ -57,20 +73,12 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="container header-container">
+        <div class="container header-container", id="mainHeader">
             <div class="logo">
                 <img src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs" alt="Mannheimer ERC Logo">
                 <span class="logo-text">Mannheimer ERC</span>
             </div>
-            <nav>
-                <ul class="nav-desktop">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">Aktuelles</a></li>
-                    <li><a href="#sports">Sportarten</a></li>
-                    <li><a href="#competitions">Über Uns</a></li>
-                    <li><a href="#trainers">EInblicke</a></li>
-                    <li><a href="#contact" class="btn-header">Kontakt</a></li>
-                </ul>
+            <nav id="pageElementsDesktop">
                 <button class="mobile-toggle" aria-label="Menu öffnen">
                     <span></span>
                     <span></span>
@@ -81,18 +89,19 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu">
+    <div class="mobile-menu", id="mobileMenu">
         <button class="mobile-menu-close" aria-label="Menu schließen">
             <i class="fas fa-times"></i>
         </button>
-        <ul>
+        <!-- <ul>
             <li><a href="#home">Home</a></li>
+            <li><a href="#trainingsplan">Trainingspläne</a></li>
             <li><a href="#about">Über Uns</a></li>
             <li><a href="#sports">Sportarten</a></li>
             <li><a href="#competitions">Wettbewerbe</a></li>
             <li><a href="#trainers">Trainer</a></li>
             <li><a href="#contact">Kontakt</a></li>
-        </ul>
+        </ul> -->
         <a href="#contact" class="btn">Jetzt Mitglied werden</a>
     </div>
     <div class="overlay"></div>
@@ -107,8 +116,8 @@
             </video>
         </div>
         <div class="hero-content">
-            <h1 class="hero-title">Eiskunstlauf auf höchstem Niveau</h1>
-            <p class="hero-subtitle">Technik trifft Ästhetik - Entdecke die Eleganz des Eislaufs im Mannheimer ERC</p>
+            <h1 class="hero-title">Eiskunst und Eisschnelllauf auf höchstem Niveau</h1>
+            <p class="hero-subtitle">Technik trifft Ästhetik - Entdecke die Eleganz und Schnelligkeit des Eislaufs im Mannheimer ERC</p>
             <a href="#about" class="btn hero-btn">Mehr über uns erfahren</a>
         </div>
     </section>
@@ -117,7 +126,21 @@
     <section id="about" class="section about">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Mehr als nur Eiskunstlauf!</h2>
+                <h2 class="section-title">Eiskunstlauf</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Eiskunstlauf in Mannheim</h3>
+                    <p>Seit Jahrzehnten ein Begriff - nicht nur in Baden-Württemberg. Davon zeugen die vielen Athletinnen und Athleten, die den Mannheimer ERC regelmäßig bei Europameisterschaften, Weltmeisterschaften und Olympischen Spielen erfolgreich vertreten haben und vertreten.</p>
+                    <p>Die Abteilung Eiskunstlauf bietet den Sportlerinnen und Sportlern jeden Alters und entsprechend dem persönlichen Können optimale Trainingsbedingungen. Wir wollen Kinder und Jugendliche gesamtheitlich in ihrer sportlichen und persönlichen Entwicklung begleiten und fördern.</p>
+                    <a href="#sports" class="btn btn-arrow">Unsere Sportarten</a>
+                </div>
+                <div class="about-image fade-in">
+                    <img src="images/Bild2.jpeg" alt="Eiskunstlauf in Mannheim">
+                </div>
+            </div>
+            <div class="section-header">
+                <h2 class="section-title">Eisschnelllauf</h2>
             </div>
             <div class="about-content">
                 <div class="about-text fade-in">
@@ -127,7 +150,7 @@
                     <a href="#sports" class="btn btn-arrow">Unsere Sportarten</a>
                 </div>
                 <div class="about-image fade-in">
-                    <img src="images/Bild2.jpeg" alt="Eiskunstlauf in Mannheim">
+                    <img src="images/sophieScholz.JPG" alt="Eiskunstlauf in Mannheim">
                 </div>
             </div>
         </div>
@@ -418,16 +441,16 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                <div class="footer-links">
+                <div class="footer-links", id="footerLinksWithMenuElements">
                     <h3 class="footer-title">Schnellzugriff</h3>
-                    <ul>
+                    <!-- <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">Über Uns</a></li>
                         <li><a href="#sports">Sportarten</a></li>
                         <li><a href="#competitions">Wettbewerbe</a></li>
                         <li><a href="#trainers">Trainer</a></li>
                         <li><a href="#contact">Kontakt</a></li>
-                    </ul>
+                    </ul> -->
                 </div>
                 <div class="footer-contact">
                     <h3 class="footer-title">Kontakt</h3>
