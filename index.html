@@ -1430,17 +1430,6 @@ header.scrolled {
             });
         });
     }
-    
-        // Manueller Test, ob das Video geladen werden kann
-        console.log("Versuche, das Video manuell zu laden...");
-        const testVideo = new Video();
-        testVideo.src = "videos/Gekürzt.mp4";
-        testVideo.onerror = function() {
-            console.error("Test-Video konnte nicht geladen werden");
-        };
-        testVideo.oncanplaythrough = function() {
-            console.log("Test-Video kann abgespielt werden");
-        };
     });
     </script>
 </head>
