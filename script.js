@@ -19,6 +19,30 @@ function closeMenu() {
     mobileToggle.classList.remove('active');
 }
 
+function insertNavigationElements() {
+    const template = document.getElementById('navigation-template1');
+    const contactBtn = document.getElementById('contactBtn');
+    const contactStandard = document.getElementById('contactStandard');
+    const targetElement1 = document.getElementById('pageElementsDesktop');
+    if (template && targetElement1) {
+        targetElement1.prepend(template.content.cloneNode(true));
+        const ul = targetElement1.getElementsByTagName('ul');
+        ul[0].append(contactBtn.content.cloneNode(true));
+    }
+    const targetElement2 = document.getElementById("mobileMenu");
+    if (template && targetElement2) {
+        targetElement2.append(template.content.cloneNode(true));
+        const ul = targetElement2.getElementsByTagName('ul');
+        ul[0].append(contactStandard.content.cloneNode(true));
+    }
+    const targetElement3 = document.getElementById("footerLinksWithMenuElements");
+    if (template && targetElement3) {
+        targetElement3.append(template.content.cloneNode(true));
+        const ul = targetElement3.getElementsByTagName('ul');
+        ul[0].append(contactStandard.content.cloneNode(true));
+    }
+}
+
 mobileClose.addEventListener('click', closeMenu);
 overlay.addEventListener('click', closeMenu);
 
@@ -65,3 +89,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', insertNavigationElements);
