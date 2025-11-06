@@ -1,1 +1,1727 @@
 
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Über Uns - Mannheimer ERC</title>
+    <style>
+      /* ========================================
+         CSS VARIABLES - Zentrale Steuerung
+         ======================================== */
+      :root {
+        /* Farben */
+        --primary-color: #0062ff;
+        --primary-hover: #0052d9;
+        --secondary-color: #e4e3d3;
+        --dark-bg: #111111;
+        --light-bg: #f7f7f2;
+        --accent-color: #ff3a29;
+        --text-dark: #222222;
+        --text-light: #f7f7f7;
+        --text-muted: #555555;
+        --gray-light: #e0e0e0;
+        --gray-medium: #999999;
+        --white: #ffffff;
+        
+        /* Spacing System */
+        --spacing-xs: 8px;
+        --spacing-sm: 16px;
+        --spacing-md: 24px;
+        --spacing-lg: 40px;
+        --spacing-xl: 60px;
+        --spacing-2xl: 80px;
+        --spacing-3xl: 120px;
+        
+        /* Typography */
+        --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --font-family-accent: "Space Grotesk", monospace;
+        --font-size-xs: 0.875rem;
+        --font-size-sm: 1rem;
+        --font-size-md: 1.125rem;
+        --font-size-lg: 1.5rem;
+        --font-size-xl: 2rem;
+        --font-size-2xl: 2.5rem;
+        --font-size-3xl: 3rem;
+        --font-size-4xl: 4rem;
+        
+        /* Layout */
+        --border-radius-sm: 4px;
+        --border-radius-md: 8px;
+        --border-radius-lg: 12px;
+        --max-width: 1300px;
+        --header-height: 80px;
+        
+        /* Transitions */
+        --transition-fast: 0.15s ease;
+        --transition-base: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        --transition-slow: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        
+        /* Shadows */
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+        --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+      }
+
+      /* ========================================
+         RESET & BASE STYLES
+         ======================================== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: var(--font-family);
+        background-color: var(--light-bg);
+        color: var(--text-dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Accent font for special elements */
+      .logo-text,
+      .section-title,
+      .hero-title,
+      .page-title,
+      .btn {
+        font-family: var(--font-family-accent);
+        letter-spacing: -0.02em;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition-base);
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+
+      /* ========================================
+         UTILITY CLASSES
+         ======================================== */
+      .container {
+        width: 90%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+      }
+
+      .section {
+        padding: var(--spacing-3xl) 0;
+        position: relative;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+      }
+
+      .section-title {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-md);
+        letter-spacing: -1px;
+        line-height: 1.2;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: var(--spacing-md) auto 0;
+        border-radius: var(--border-radius-sm);
+      }
+
+      .section-subtitle {
+        font-size: var(--font-size-md);
+        color: var(--text-muted);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* Fade In Animation */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity var(--transition-slow), transform var(--transition-slow);
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ========================================
+         BUTTON SYSTEM
+         ======================================== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-xs);
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: var(--font-size-sm);
+        font-weight: 600;
+        border-radius: var(--border-radius-md);
+        transition: var(--transition-base);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        transition: var(--transition-base);
+      }
+
+      .btn:hover::before {
+        left: 0;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: var(--white);
+        box-shadow: var(--shadow-md);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-hover);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--primary-color);
+        color: var(--white);
+      }
+
+      /* ========================================
+         HEADER
+         ======================================== */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-sm);
+        z-index: 1000;
+        transition: var(--transition-base);
+      }
+
+      header.scrolled {
+        box-shadow: var(--shadow-md);
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing-sm) 0;
+        min-height: var(--header-height);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+
+      .logo img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        transition: var(--transition-base);
+      }
+
+      .logo:hover img {
+        transform: scale(1.05);
+      }
+
+      .logo-text {
+        font-size: var(--font-size-lg);
+        font-weight: 800;
+        color: var(--text-dark);
+        letter-spacing: -0.5px;
+      }
+
+      .nav-desktop {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+      }
+
+      .nav-desktop ul {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+      }
+
+      .nav-desktop a {
+        font-weight: 500;
+        color: var(--text-dark);
+        padding: var(--spacing-xs) 0;
+        position: relative;
+      }
+
+      .nav-desktop a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: var(--transition-base);
+      }
+
+      .nav-desktop a:hover {
+        color: var(--primary-color);
+      }
+
+      .nav-desktop a:hover::after {
+        width: 100%;
+      }
+
+      /* Header Button - Original Style */
+      .btn-header {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px !important;
+        background-color: var(--primary-color);
+        color: var(--text-light) !important;
+        border: none;
+        border-radius: var(--border-radius-md);
+        cursor: pointer;
+        transition: var(--transition-base);
+        font-weight: 600;
+        text-align: center;
+        letter-spacing: 0.5px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 98, 255, 0.15);
+      }
+
+      .btn-header::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: var(--transition-base);
+        display: none;
+      }
+
+      .btn-header:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 98, 255, 0.2);
+        color: var(--text-light) !important;
+      }
+
+      .btn-header:hover::after {
+        width: 100%;
+      }
+
+      /* ========================================
+         PAGE HERO
+         ======================================== */
+      .page-hero {
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        color: var(--white);
+        padding-top: var(--header-height);
+        overflow: hidden;
+        background: linear-gradient(135deg, var(--primary-color) 0%, #0047b3 100%);
+      }
+
+      .page-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+        opacity: 0.3;
+      }
+
+      .page-hero-content {
+        max-width: 900px;
+        padding: 0 var(--spacing-md);
+        position: relative;
+        z-index: 2;
+      }
+
+      .page-title {
+        font-size: var(--font-size-4xl);
+        font-weight: 900;
+        margin-bottom: var(--spacing-md);
+        line-height: 1.1;
+        letter-spacing: -2px;
+        animation: fadeInUp 1s ease;
+      }
+
+      .page-subtitle {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-lg);
+        opacity: 0.95;
+        animation: fadeInUp 1s ease 0.2s forwards;
+        opacity: 0;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* ========================================
+         VISION SECTION
+         ======================================== */
+      .vision {
+        background-color: var(--white);
+      }
+
+      .vision-content {
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .vision-icon {
+        font-size: 4rem;
+        color: var(--primary-color);
+        margin-bottom: var(--spacing-lg);
+        opacity: 0.9;
+      }
+
+      .vision-text {
+        font-size: var(--font-size-lg);
+        line-height: 1.9;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-md);
+      }
+
+      .vision-text strong {
+        color: var(--primary-color);
+        font-weight: 700;
+      }
+
+      .vision-highlights {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-2xl);
+      }
+
+      .highlight-item {
+        padding: var(--spacing-lg);
+        background-color: var(--light-bg);
+        border-radius: var(--border-radius-md);
+        transition: var(--transition-base);
+      }
+
+      .highlight-item:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .highlight-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: var(--spacing-md);
+      }
+
+      .highlight-title {
+        font-size: var(--font-size-md);
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-family-accent);
+      }
+
+      .highlight-text {
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
+
+      /* ========================================
+         CARD SYSTEM
+         ======================================== */
+      .card {
+        background-color: var(--white);
+        border-radius: var(--border-radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition-base);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 280px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition-slow);
+      }
+
+      .card:hover .card-image img {
+        transform: scale(1.08);
+      }
+
+      .card-body {
+        padding: var(--spacing-lg);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-title {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        margin-bottom: var(--spacing-xs);
+        color: var(--text-dark);
+        font-family: var(--font-family-accent);
+      }
+
+      .card-subtitle {
+        color: var(--primary-color);
+        font-size: var(--font-size-sm);
+        font-weight: 600;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .card-text {
+        color: var(--text-muted);
+        line-height: 1.7;
+        flex: 1;
+      }
+
+      .card-meta {
+        display: flex;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-md);
+        padding-top: var(--spacing-md);
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .card-meta-item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+      }
+
+      .card-meta-item i {
+        color: var(--primary-color);
+      }
+
+      /* Social Links in Cards */
+      .card-socials {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-md);
+      }
+
+      .card-socials a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.04);
+        transition: var(--transition-base);
+        font-size: var(--font-size-sm);
+      }
+
+      .card-socials a:hover {
+        background-color: var(--primary-color);
+        color: var(--white);
+        transform: translateY(-3px);
+      }
+
+      /* ========================================
+         GRID SYSTEM
+         ======================================== */
+      .grid {
+        display: grid;
+        gap: var(--spacing-lg);
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      /* ========================================
+         VORSTAND SECTION
+         ======================================== */
+      .vorstand {
+        background-color: var(--light-bg);
+      }
+
+      /* ========================================
+         TRAINER SECTION
+         ======================================== */
+      .trainer {
+        background-color: var(--white);
+      }
+
+      .trainer-card {
+        text-align: center;
+      }
+
+      /* ========================================
+         DOWNLOADS SECTION
+         ======================================== */
+      .downloads {
+        background-color: var(--dark-bg);
+        color: var(--white);
+      }
+
+      .downloads .section-title {
+        color: var(--white);
+      }
+
+      .downloads .section-title::after {
+        background-color: var(--white);
+      }
+
+      .downloads .section-subtitle {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .download-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--spacing-lg);
+      }
+
+      .download-card {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius-md);
+        padding: var(--spacing-lg);
+        transition: var(--transition-base);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+
+      .download-card:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-5px);
+      }
+
+      .download-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .download-title {
+        font-size: var(--font-size-md);
+        font-weight: 700;
+        margin-bottom: var(--spacing-xs);
+        font-family: var(--font-family-accent);
+      }
+
+      .download-description {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: var(--font-size-sm);
+        line-height: 1.7;
+        flex: 1;
+      }
+
+      .download-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: var(--font-size-xs);
+        color: rgba(255, 255, 255, 0.5);
+        padding-top: var(--spacing-sm);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .download-btn {
+        width: 100%;
+        justify-content: center;
+        margin-top: var(--spacing-sm);
+      }
+
+      /* ========================================
+         FOOTER
+         ======================================== */
+      footer {
+        background-color: var(--dark-bg);
+        color: var(--white);
+        padding: var(--spacing-2xl) 0 var(--spacing-lg);
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-xl);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .footer-logo {
+        margin-bottom: var(--spacing-md);
+      }
+
+      .footer-logo img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+      }
+
+      .footer-about p {
+        margin-bottom: var(--spacing-md);
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.7;
+      }
+
+      .footer-title {
+        font-size: var(--font-size-md);
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
+        position: relative;
+        font-family: var(--font-family-accent);
+      }
+
+      .footer-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background-color: var(--primary-color);
+        border-radius: var(--border-radius-sm);
+      }
+
+      .footer-links li {
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: var(--font-size-sm);
+      }
+
+      .footer-links a:hover {
+        color: var(--white);
+        padding-left: var(--spacing-xs);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: var(--spacing-lg);
+        text-align: center;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: var(--font-size-sm);
+      }
+
+      .footer-bottom a {
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 var(--spacing-sm);
+      }
+
+      .footer-bottom a:hover {
+        color: var(--white);
+      }
+
+      /* Social Links */
+      .social-links {
+        display: flex;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-md);
+      }
+
+      .social-links a {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition-base);
+      }
+
+      .social-links a:hover {
+        background-color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      .footer-social {
+        display: flex;
+        gap: var(--spacing-sm);
+      }
+
+      .footer-social a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+        transition: var(--transition-base);
+      }
+
+      .footer-social a:hover {
+        background-color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      /* ========================================
+         ANIMATIONS
+         ======================================== */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ========================================
+         RESPONSIVE DESIGN
+         ======================================== */
+      @media (max-width: 1200px) {
+        :root {
+          --spacing-3xl: 100px;
+          --font-size-4xl: 3.5rem;
+          --font-size-3xl: 2.5rem;
+        }
+      }
+
+      @media (max-width: 992px) {
+        :root {
+          --spacing-3xl: 80px;
+          --spacing-2xl: 60px;
+          --spacing-xl: 40px;
+          --font-size-4xl: 3rem;
+          --font-size-3xl: 2.2rem;
+          --font-size-2xl: 1.8rem;
+        }
+
+        .nav-desktop {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        :root {
+          --spacing-3xl: 60px;
+          --spacing-2xl: 40px;
+          --font-size-4xl: 2.5rem;
+          --font-size-3xl: 2rem;
+        }
+
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+          grid-template-columns: 1fr;
+        }
+
+        .page-hero {
+          min-height: 50vh;
+        }
+      }
+
+      @media (max-width: 576px) {
+        :root {
+          --font-size-4xl: 2rem;
+          --font-size-3xl: 1.75rem;
+          --font-size-2xl: 1.5rem;
+        }
+      }
+
+      /* ========================================
+         ACCESSIBILITY
+         ======================================== */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid var(--primary-color);
+        outline-offset: 2px;
+      }
+
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: var(--primary-color);
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        z-index: 100;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <a href="merc-improved.html">
+            <img
+              src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
+              alt="Mannheimer ERC Logo"
+            />
+          </a>
+          <span class="logo-text">Mannheimer ERC</span>
+        </div>
+        <nav class="nav-desktop" aria-label="Hauptnavigation">
+          <ul>
+            <li><a href="merc-improved.html">Home</a></li>
+            <li><a href="ueber-uns.html" class="active">Über Uns</a></li>
+            <li><a href="#sportarten">Sportarten</a></li>
+            <li><a href="#wettbewerbe">Wettbewerbe</a></li>
+            <li><a href="#kontakt" class="btn-header">Kontakt</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <!-- Page Hero -->
+      <section class="page-hero">
+        <div class="page-hero-content">
+          <h1 class="page-title">Unser Verein</h1>
+          <p class="page-subtitle">
+            Seit Jahrzehnten ein Zuhause für Eiskunstläufer und Eisschnellläufer –
+            von der ersten Pirouette bis zur Meisterschaft
+          </p>
+        </div>
+      </section>
+
+      <!-- Vision Section -->
+      <section id="vision" class="section vision">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Unsere Vision</h2>
+            <p class="section-subtitle">
+              Was uns antreibt und verbindet
+            </p>
+          </div>
+          <div class="vision-content fade-in">
+            <div class="vision-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <p class="vision-text">
+              Unser Verein steht für <strong>mehr als nur Sport</strong> – wir fördern 
+              Teamgeist, Fairness und persönliche Entwicklung. Jeder Athlet, vom Anfänger 
+              bis zum Wettkampfsportler, findet bei uns eine Umgebung, in der <strong>Leidenschaft, 
+              Disziplin und Gemeinschaft</strong> zusammenkommen.
+            </p>
+            <p class="vision-text">
+              Wir glauben daran, dass Eissport nicht nur den Körper, sondern auch den 
+              Geist formt. Durch <strong>professionelles Training, individuelle Betreuung 
+              und ein starkes Miteinander</strong> schaffen wir die Grundlage für sportliche 
+              Erfolge und lebenslange Freundschaften.
+            </p>
+
+            <div class="vision-highlights">
+              <div class="highlight-item fade-in">
+                <div class="highlight-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h3 class="highlight-title">Gemeinschaft</h3>
+                <p class="highlight-text">
+                  Ein starkes Team, das zusammenhält – auf und neben dem Eis
+                </p>
+              </div>
+
+              <div class="highlight-item fade-in">
+                <div class="highlight-icon">
+                  <i class="fas fa-trophy"></i>
+                </div>
+                <h3 class="highlight-title">Spitzenleistung</h3>
+                <p class="highlight-text">
+                  Professionelle Förderung von Talenten auf dem Weg zur Meisterschaft
+                </p>
+              </div>
+
+              <div class="highlight-item fade-in">
+                <div class="highlight-icon">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="highlight-title">Persönliche Entwicklung</h3>
+                <p class="highlight-text">
+                  Wir begleiten jeden Sportler individuell auf seinem persönlichen Weg
+                </p>
+              </div>
+
+              <div class="highlight-item fade-in">
+                <div class="highlight-icon">
+                  <i class="fas fa-handshake"></i>
+                </div>
+                <h3 class="highlight-title">Fairness & Respekt</h3>
+                <p class="highlight-text">
+                  Werte, die wir leben – im Training, im Wettkampf und im Alltag
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vorstand Section -->
+      <section id="vorstand" class="section vorstand">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Unser Vorstand</h2>
+            <p class="section-subtitle">
+              Die Menschen, die unseren Verein leiten und voranbringen
+            </p>
+          </div>
+          <div class="grid grid-3">
+            <div class="card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/400/280"
+                  alt="Dr. Michael Weber"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Dr. Michael Weber</h3>
+                <p class="card-subtitle">1. Vorsitzender</p>
+                <p class="card-text">
+                  Seit 2018 leitet Dr. Weber unseren Verein mit Leidenschaft und 
+                  Weitblick. Als ehemaliger Eiskunstläufer kennt er die Bedürfnisse 
+                  unserer Athleten aus erster Hand.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-envelope"></i>
+                    m.weber@merc-online.de
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/400/280"
+                  alt="Sandra Hoffmann"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Sandra Hoffmann</h3>
+                <p class="card-subtitle">2. Vorsitzende</p>
+                <p class="card-text">
+                  Sandra koordiniert alle sportlichen Aktivitäten und ist die 
+                  Ansprechpartnerin für Trainer und Athleten. Ihre organisatorische 
+                  Kompetenz ist das Rückgrat unseres Vereins.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-envelope"></i>
+                    s.hoffmann@merc-online.de
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/400/280"
+                  alt="Thomas Müller"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Thomas Müller</h3>
+                <p class="card-subtitle">Schatzmeister</p>
+                <p class="card-text">
+                  Thomas verwaltet die Finanzen des Vereins mit größter Sorgfalt 
+                  und sorgt dafür, dass unsere Mittel optimal für die Förderung 
+                  des Sports eingesetzt werden.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-envelope"></i>
+                    t.mueller@merc-online.de
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/400/280"
+                  alt="Julia Schneider"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Julia Schneider</h3>
+                <p class="card-subtitle">Jugendwartin</p>
+                <p class="card-text">
+                  Julia kümmert sich um die Belange unserer jungen Talente und 
+                  organisiert spezielle Nachwuchsprogramme und Veranstaltungen.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-envelope"></i>
+                    j.schneider@merc-online.de
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/400/280"
+                  alt="Marc Fischer"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Marc Fischer</h3>
+                <p class="card-subtitle">Pressewart</p>
+                <p class="card-text">
+                  Marc ist für unsere Öffentlichkeitsarbeit zuständig und hält 
+                  Mitglieder sowie Interessierte über Neuigkeiten und Erfolge 
+                  auf dem Laufenden.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-envelope"></i>
+                    presse@merc-online.de
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/400/280"
+                  alt="Lisa Wagner"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Lisa Wagner</h3>
+                <p class="card-subtitle">Beisitzerin</p>
+                <p class="card-text">
+                  Lisa unterstützt den Vorstand in allen Bereichen und bringt 
+                  ihre Expertise in der Veranstaltungsorganisation ein.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-envelope"></i>
+                    office@merc-online.de
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trainer Section -->
+      <section id="trainer" class="section trainer">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Unser Trainerteam</h2>
+            <p class="section-subtitle">
+              Erfahrene Profis, die aus Leidenschaft trainieren
+            </p>
+          </div>
+          <div class="grid grid-4">
+            <div class="card trainer-card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/350/280"
+                  alt="Adrian Schager"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Adrian Schager</h3>
+                <p class="card-subtitle">Haupttrainer Eiskunstlauf</p>
+                <p class="card-text">
+                  15 Jahre internationale Wettkampferfahrung. Spezialisiert auf 
+                  Einzellauf und technische Perfektion.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-star"></i>
+                    A-Lizenz
+                  </span>
+                  <span class="card-meta-item">
+                    <i class="fas fa-clock"></i>
+                    Seit 2015
+                  </span>
+                </div>
+                <div class="card-socials">
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card trainer-card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/350/280"
+                  alt="Dora Hus"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Dora Hus</h3>
+                <p class="card-subtitle">Choreografin & Trainerin</p>
+                <p class="card-text">
+                  Ehemalige Profitänzerin mit Schwerpunkt auf künstlerischem 
+                  Ausdruck und Kürgestaltung.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-star"></i>
+                    B-Lizenz
+                  </span>
+                  <span class="card-meta-item">
+                    <i class="fas fa-clock"></i>
+                    Seit 2017
+                  </span>
+                </div>
+                <div class="card-socials">
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card trainer-card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/350/280"
+                  alt="Simone Lang"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Simone Lang</h3>
+                <p class="card-subtitle">Jugendtrainerin</p>
+                <p class="card-text">
+                  Spezialistin für Nachwuchsförderung mit pädagogischem Hintergrund. 
+                  Betreut unsere jüngsten Talente.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-star"></i>
+                    C-Lizenz
+                  </span>
+                  <span class="card-meta-item">
+                    <i class="fas fa-clock"></i>
+                    Seit 2019
+                  </span>
+                </div>
+                <div class="card-socials">
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card trainer-card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/350/280"
+                  alt="Günter Zöller"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Günter Zöller</h3>
+                <p class="card-subtitle">Eisschnelllauf-Trainer</p>
+                <p class="card-text">
+                  Olympia-Teilnehmer 1998. Experte für Technik, Ausdauer und 
+                  mentale Vorbereitung im Eisschnelllauf.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-star"></i>
+                    A-Lizenz
+                  </span>
+                  <span class="card-meta-item">
+                    <i class="fas fa-clock"></i>
+                    Seit 2012
+                  </span>
+                </div>
+                <div class="card-socials">
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card trainer-card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/350/280"
+                  alt="Petra Bachmann"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Petra Bachmann</h3>
+                <p class="card-subtitle">Synchron-Trainerin</p>
+                <p class="card-text">
+                  Ehemalige Nationalmannschafts-Athletin. Leitet unser 
+                  Synchron-Team mit Expertise und Teamgeist.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-star"></i>
+                    B-Lizenz
+                  </span>
+                  <span class="card-meta-item">
+                    <i class="fas fa-clock"></i>
+                    Seit 2016
+                  </span>
+                </div>
+                <div class="card-socials">
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card trainer-card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/350/280"
+                  alt="Robert Steiner"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Robert Steiner</h3>
+                <p class="card-subtitle">Konditionstrainer</p>
+                <p class="card-text">
+                  Sportwissenschaftler und Physiotherapeut. Verantwortlich für 
+                  Off-Ice-Training und Verletzungsprävention.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-dumbbell"></i>
+                    Fitness
+                  </span>
+                  <span class="card-meta-item">
+                    <i class="fas fa-clock"></i>
+                    Seit 2018
+                  </span>
+                </div>
+                <div class="card-socials">
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card trainer-card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/350/280"
+                  alt="Anna Keller"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Anna Keller</h3>
+                <p class="card-subtitle">Assistenztrainerin</p>
+                <p class="card-text">
+                  Junge, dynamische Trainerin mit frischen Ideen. Unterstützt 
+                  in allen Bereichen und betreut Anfängergruppen.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-star"></i>
+                    C-Lizenz
+                  </span>
+                  <span class="card-meta-item">
+                    <i class="fas fa-clock"></i>
+                    Seit 2022
+                  </span>
+                </div>
+                <div class="card-socials">
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card trainer-card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/350/280"
+                  alt="Michael Herrmann"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Michael Herrmann</h3>
+                <p class="card-subtitle">Mentaltrainer</p>
+                <p class="card-text">
+                  Sportpsychologe mit Fokus auf Wettkampfvorbereitung und 
+                  mentale Stärke. Hilft unseren Athleten, ihr volles Potenzial abzurufen.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-brain"></i>
+                    Mental
+                  </span>
+                  <span class="card-meta-item">
+                    <i class="fas fa-clock"></i>
+                    Seit 2020
+                  </span>
+                </div>
+                <div class="card-socials">
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Downloads Section -->
+      <section id="downloads" class="section downloads">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Downloads & Formulare</h2>
+            <p class="section-subtitle">
+              Alle wichtigen Dokumente für Mitglieder und Interessierte
+            </p>
+          </div>
+          <div class="download-grid">
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Aufnahmeantrag</h3>
+              <p class="download-description">
+                Antrag zur Mitgliedschaft im Mannheimer ERC. Bitte ausgefüllt 
+                per E-Mail oder Post an uns zurücksenden.
+              </p>
+              <div class="download-meta">
+                <span>PDF, 245 KB</span>
+                <span>Aktualisiert: 15.01.2025</span>
+              </div>
+              <a href="#" class="btn btn-primary download-btn">
+                <i class="fas fa-download"></i>
+                Herunterladen
+              </a>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Beitragsordnung</h3>
+              <p class="download-description">
+                Aktuelle Übersicht über Mitgliedsbeiträge, Trainingsgebühren und 
+                Ermäßigungen im Mannheimer ERC.
+              </p>
+              <div class="download-meta">
+                <span>PDF, 312 KB</span>
+                <span>Aktualisiert: 01.01.2025</span>
+              </div>
+              <a href="#" class="btn btn-primary download-btn">
+                <i class="fas fa-download"></i>
+                Herunterladen
+              </a>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Trainingszeiten</h3>
+              <p class="download-description">
+                Aktuelle Übersicht aller Trainingszeiten, Gruppen und 
+                Hallenzeiten für die Saison 2024/2025.
+              </p>
+              <div class="download-meta">
+                <span>PDF, 189 KB</span>
+                <span>Aktualisiert: 05.01.2025</span>
+              </div>
+              <a href="#" class="btn btn-primary download-btn">
+                <i class="fas fa-download"></i>
+                Herunterladen
+              </a>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Datenschutzerklärung</h3>
+              <p class="download-description">
+                Informationen zur Verarbeitung personenbezogener Daten im 
+                Mannheimer ERC gemäß DSGVO.
+              </p>
+              <div class="download-meta">
+                <span>PDF, 334 KB</span>
+                <span>Aktualisiert: 15.12.2024</span>
+              </div>
+              <a href="#" class="btn btn-primary download-btn">
+                <i class="fas fa-download"></i>
+                Herunterladen
+              </a>
+            </div>
+          </div>
+
+          <div style="margin-top: 60px; text-align: center;" class="fade-in">
+            <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; font-size: var(--font-size-md);">
+              Benötigen Sie ein Formular, das hier nicht aufgeführt ist?
+            </p>
+            <a href="#kontakt" class="btn btn-primary">
+              <i class="fas fa-envelope"></i>
+              Kontakt aufnehmen
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-about">
+            <div class="footer-logo">
+              <img
+                src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
+                alt="Mannheimer ERC Logo"
+              />
+            </div>
+            <p>
+              Der Mannheimer ERC ist seit Jahrzehnten ein Begriff im Eissport
+              und bietet optimale Trainingsbedingungen für Sportlerinnen und
+              Sportler jeden Alters.
+            </p>
+            <div class="footer-social">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h3 class="footer-title">Schnellzugriff</h3>
+            <ul>
+              <li><a href="merc-improved.html">Home</a></li>
+              <li><a href="ueber-uns.html">Über Uns</a></li>
+              <li><a href="#sportarten">Sportarten</a></li>
+              <li><a href="#wettbewerbe">Wettbewerbe</a></li>
+              <li><a href="#trainer">Trainer</a></li>
+              <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h3 class="footer-title">Kontakt</h3>
+            <ul>
+              <li>
+                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                <span>Käthe-Kollwitz-Straße 23<br />D-68169 Mannheim</span>
+              </li>
+              <li>
+                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                <span>office@merc-online.de</span>
+              </li>
+              <li>
+                <span class="contact-icon"><i class="fas fa-clock"></i></span>
+                <span>Di: 16:00 - 18:00 Uhr<br />Sa: 10:00 - 12:00 Uhr</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 by Mannheim ERC. Alle Rechte vorbehalten.</p>
+          <p>
+            <a href="#">Impressum</a>
+            <a href="#" style="margin-left: 20px">Datenschutz</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // ========================================
+      // STICKY HEADER
+      // ========================================
+      const header = document.querySelector("header");
+      
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // ========================================
+      // SCROLL ANIMATIONS
+      // ========================================
+      const fadeElements = document.querySelectorAll(".fade-in");
+      
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      fadeElements.forEach((element) => {
+        observer.observe(element);
+      });
+
+      // ========================================
+      // SMOOTH SCROLL
+      // ========================================
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href !== "#" && href !== "") {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              const headerHeight = header.offsetHeight;
+              const targetPosition = target.offsetTop - headerHeight;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+              });
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
