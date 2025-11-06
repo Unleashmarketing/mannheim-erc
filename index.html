@@ -65,7 +65,8 @@
         --spacing-3xl: 120px;
         
         /* Typography */
-        --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --font-family-accent: "Space Grotesk", monospace;
         --font-size-xs: 0.875rem;
         --font-size-sm: 1rem;
         --font-size-md: 1.125rem;
@@ -117,6 +118,16 @@
         font-weight: 400;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Accent font for special elements */
+      .logo-text,
+      .section-title,
+      .hero-title,
+      .cta-title,
+      .btn {
+        font-family: var(--font-family-accent);
+        letter-spacing: -0.02em;
       }
 
       a {
@@ -1402,7 +1413,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
