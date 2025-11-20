@@ -1,6 +1,7 @@
 // npm install jspdf
 const { jsPDF } = require("jspdf");
 const fs = require("fs");
+const path = require("node:path");
 
 function isValidIBANNumber(input) {
   var CODE_LENGTHS = {
@@ -214,7 +215,15 @@ function prettyPrintJson(data, x, pageState, lineHeight, indentStep) {
  */
 function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
   /*documentType = 0: Membership
-                 1: ELS*/
+                   1: ELS*/
+  if (
+    !(
+      fs.existsSync(outputFilePath) &&
+      fs.lstatSync(outputFilePath).isDirectory()
+    )
+  ) {
+    return [false, "outputFilePath either does not exist or is not a folder"];
+  }
   if (!(documentType in [0, 1])) {
     return [false, "Document type must be 0 or 1"];
   }
@@ -385,11 +394,13 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
 
     // 3. Call the recursive pretty printer
     prettyPrintJson(parsedJson, leftMargin, pageState, lineHeight, indentStep);
-
+    const randomString = Math.random().toString(36).slice(2, 8);
     // 4. Save the file to the disk using Node's fs module
-    fs.writeFileSync(outputFilePath, doc.output());
-    console.log(`Successfully generated PDF at: ${outputFilePath}`);
-    return [true, "success"];
+    const generatedFileFullPath =
+      path.join(outputFilePath, randomString) + ".pdf";
+    fs.writeFileSync(generatedFileFullPath, doc.output());
+    console.log(`Successfully generated PDF at: ${generatedFileFullPath}`);
+    return [true, generatedFileFullPath];
   } catch (error) {
     // Handle PDF generation errors
     console.error("PDF Generation Error:", error.message);
@@ -432,8 +443,9 @@ const sampleJsonString = `
 `;
 
 // Define the output file path
-const outputFilename = "generated_document.pdf";
+const outputFilePath =
+  "/home/jacky_treehorn/gitRepos/mannheim-erc/functions/generatePdfFromJson/artefacts/";
 
 // Call the function
-out = generatePdfFromJson(sampleJsonString, outputFilename);
+out = generatePdfFromJson(sampleJsonString, outputFilePath);
 console.log(out);
