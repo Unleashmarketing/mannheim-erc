@@ -1,10 +1,10 @@
 // npm install jspdf
 const { jsPDF } = require("jspdf");
-const fs = require("fs");
+const fs = require("node:fs");
 const path = require("node:path");
 
 function isValidIBANNumber(input) {
-  var CODE_LENGTHS = {
+  const CODE_LENGTHS = {
     AD: 24,
     AE: 23,
     AT: 20,
@@ -84,19 +84,21 @@ function isValidIBANNumber(input) {
     VG: 24,
     XK: 20,
   };
-  var iban = String(input)
-      .toUpperCase()
-      .replace(/[^A-Z0-9]/g, ""), // keep only alphanumeric characters
-    code = iban.match(/^([A-Z]{2})(\d{2})([A-Z\d]+)$/), // match and capture (1) the country code, (2) the check digits, and (3) the rest
-    digits;
+  const iban = String(input)
+    .toUpperCase()
+    .replace(/[^A-Z0-9]/g, ""); // keep only alphanumeric characters
+  const code = iban.match(/^([A-Z]{2})(\d{2})([A-Z\d]+)$/); // match and capture (1) the country code, (2) the check digits, and (3) the rest
   // check syntax and length
   if (!code || iban.length !== CODE_LENGTHS[code[1]]) {
     return false;
   }
   // rearrange country code and check digits, and convert chars to ints
-  digits = (code[3] + code[1] + code[2]).replace(/[A-Z]/g, function (letter) {
-    return letter.charCodeAt(0) - 55;
-  });
+  const digits = (code[3] + code[1] + code[2]).replace(
+    /[A-Z]/g,
+    function (letter) {
+      return letter.charCodeAt(0) - 55;
+    }
+  );
   // final check
   return mod97(digits) === 1;
 }
@@ -242,35 +244,65 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
 
   let requiredKeys = [];
   let optionalKeys = [];
-  if (documentType == 0) {
-    requiredKeys = [
-      "Name",
-      "Vorname",
-      "Straße",
-      "PLZ",
-      "Wohnort",
-      "Geburtsdatum",
-      "Geschlecht",
-      "Staatsangehörigkeit",
-      "Telefon/Mobil",
-      "e-Mail",
-      "Name Kreditinstitut",
-      "Kontoinhaber",
-      "IBAN",
-      "Abteilung",
-      "Einzugsermächtigung",
-    ];
-    optionalKeys = [
-      "Unterabteilung",
-      "Minderj-Name",
-      "Minderj-Vorname",
-      "Minderj-Straße",
-      "Minderj-PLZ",
-      "Minderj-Wohnort",
-      "Minderj-Geburtsdatum",
-      "Minderj-Geschlecht",
-      "Minderj-Staatsangehörigkeit",
-    ];
+  let title = "";
+  switch (documentType) {
+    case 0: {
+      title = "Aufnahmeantrag";
+      requiredKeys = [
+        "Name",
+        "Vorname",
+        "Straße",
+        "PLZ",
+        "Wohnort",
+        "Geburtsdatum",
+        "Geschlecht",
+        "Staatsangehörigkeit",
+        "Telefon/Mobil",
+        "e-Mail",
+        "Abteilung",
+        "Name Kreditinstitut",
+        "Kontoinhaber",
+        "IBAN",
+        "Einzugsermächtigung",
+      ];
+      optionalKeys = [
+        "Unterabteilung",
+        "Minderj-Name",
+        "Minderj-Vorname",
+        "Minderj-Straße",
+        "Minderj-PLZ",
+        "Minderj-Wohnort",
+        "Minderj-Geburtsdatum",
+        "Minderj-Geschlecht",
+        "Minderj-Staatsangehörigkeit",
+      ];
+      break;
+    }
+    case 1: {
+      title = "Eislaufschule";
+      requiredKeys = [
+        "NameTeilnehmer0",
+        "VornameTeilnehmer0",
+        "GeburtsdatumTeilnehmer0",
+        "Straße",
+        "PLZ",
+        "Wohnort",
+        "Telefon/Mobil",
+        "e-Mail",
+      ];
+      optionalKeys = [
+        "NameTeilnehmer1",
+        "VornameTeilnehmer1",
+        "GeburtsdatumTeilnehmer1",
+        "NameTeilnehmer2",
+        "VornameTeilnehmer2",
+        "GeburtsdatumTeilnehmer2",
+        "NameErziehungsberechtigte",
+        "VornameErziehungsberechtigte",
+        "GeburtsdatumErziehungsberechtigte",
+      ];
+      break;
+    }
   }
   const isInteger = (string) => string == Number.parseInt(string);
   const validateEmail = (email) => {
@@ -282,27 +314,57 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
   };
   let removableKeys = [];
   for (const [key, _value] of Object.entries(parsedJson)) {
-    if (requiredKeys.includes(key) || optionalKeys.includes(key)) {
+    if (requiredKeys.includes(key)) {
       continue;
+    }
+    if (optionalKeys.includes(key)) {
+      if (documentType == 0) {
+        if (key.toLowerCase().includes("minderj")) {
+          requiredKeys = requiredKeys.concat(optionalKeys.slice(1));
+          continue;
+        }
+      }
+      if (documentType == 1) {
+        if (key.toLowerCase().includes("teilnehmer1")) {
+          requiredKeys = requiredKeys.concat(optionalKeys.slice(0, 3));
+          continue;
+        }
+        if (key.toLowerCase().includes("teilnehmer2")) {
+          requiredKeys = requiredKeys.concat(optionalKeys.slice(3, 6));
+          continue;
+        }
+        if (key.toLowerCase().includes("erziehungsberechtigte")) {
+          requiredKeys = requiredKeys.concat(optionalKeys.slice(6));
+          continue;
+        }
+      }
     }
     removableKeys.push(key);
   }
   for (let i in removableKeys) {
-    key = removableKeys[i];
+    const key = removableKeys[i];
     delete parsedJson[key];
   }
   for (let i in requiredKeys) {
-    reqKey = requiredKeys[i];
+    const reqKey = requiredKeys[i];
     if (!(reqKey in parsedJson)) {
       return [false, "Field " + reqKey + " missing from payload"];
     }
-    if (!(typeof parsedJson[reqKey] == "string")) {
+    if (typeof parsedJson[reqKey] != "string") {
       return [false, "Field " + reqKey + " is not a string"];
     }
     if (parsedJson[reqKey].length == 0) {
       return [false, "Field " + reqKey + " can not be empty"];
     }
-    switch (reqKey) {
+    let reqKeySimplified = reqKey;
+    if (reqKeySimplified.toLowerCase().includes("geburtsdatum")) {
+      reqKeySimplified = "Geburtsdatum";
+    }
+    if (reqKeySimplified.includes("PLZ")) {
+      reqKeySimplified = "PLZ";
+    }
+
+    switch (reqKeySimplified) {
       case "PLZ": {
         if (!isInteger(parsedJson[reqKey])) {
           return [false, "Field " + reqKey + " must be an integer"];
@@ -310,20 +372,20 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
         break;
       }
       case "Geburtsdatum": {
-        if (isNaN(new Date(parsedJson[reqKey]))) {
+        if (Number.isNaN(new Date(parsedJson[reqKey]))) {
           return [false, reqKey + " must be a valid date"];
         }
         break;
       }
       case "Telefon/Mobil": {
         let checkPhone = parsedJson[reqKey];
-        while (parsedJson[reqKey][0] == "+") {
+        while (parsedJson[reqKey].startsWith("+")) {
           checkPhone = parsedJson[reqKey].substring(1);
           if (length(checkPhone) == 0) {
             return [false, reqKey + " invalid format"];
           }
         }
-        while (checkPhone[0] == "0") {
+        while (checkPhone.startsWith("0")) {
           checkPhone = checkPhone.substring(1);
           if (checkPhone.length == 0) {
             return [false, reqKey + " invalid format"];
@@ -341,7 +403,9 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
         break;
       }
       case "IBAN": {
-        parsedJson[reqKey].replace(/\s/g, "");
+        if (!parsedJson[reqKey].replaceAll(/\s/g, "")) {
+          return [false, reqKey + " invalid format"];
+        }
         if (!isValidIBANNumber(parsedJson[reqKey])) {
           return [false, reqKey + " invalid format"];
         }
@@ -376,10 +440,6 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
     const leftMargin = 15;
     const lineHeight = 8; // Smaller line height for denser text
     const indentStep = 7; // Smaller indent
-    title = "";
-    if (documentType == 0) {
-      title = "Aufnahmeantrag";
-    }
     doc.setFontSize(16);
     doc.text(title, leftMargin, yPosition);
     doc.setFontSize(11); // Use a smaller font for data
@@ -392,8 +452,14 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
       topMargin: 20, // Top margin for new pages
     };
 
+    const sortedDict = {};
+    for (key of requiredKeys) {
+      if (parsedJson.hasOwnProperty(key)) {
+        sortedDict[key] = parsedJson[key];
+      }
+    }
     // 3. Call the recursive pretty printer
-    prettyPrintJson(parsedJson, leftMargin, pageState, lineHeight, indentStep);
+    prettyPrintJson(sortedDict, leftMargin, pageState, lineHeight, indentStep);
     const randomString = Math.random().toString(36).slice(2, 8);
     // 4. Save the file to the disk using Node's fs module
     const generatedFileFullPath =
@@ -408,9 +474,7 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
   }
 }
 
-// --- Example Usage ---
-// You can replace this with your own JSON string
-const sampleJsonString = `
+let sampleJsonString = `
 {
     "5":"hi",
     "Name": "Doe",
@@ -439,13 +503,42 @@ const sampleJsonString = `
     "IBAN":"DE06 4306 0967 7912 5497 00",
     "Einzugsermächtigung":"ja",
     "Abteilung":"Eisschnelllauf"
-}
-`;
+}`;
 
 // Define the output file path
 const outputFilePath =
   "/home/jacky_treehorn/gitRepos/mannheim-erc/functions/generatePdfFromJson/artefacts/";
 
 // Call the function
-out = generatePdfFromJson(sampleJsonString, outputFilePath);
+let out = generatePdfFromJson(sampleJsonString, outputFilePath);
+console.log(out);
+
+sampleJsonString = `
+{
+    "5":"hi",
+    "NameTeilnehmer0": "Doe",
+    "VornameTeilnehmer0": "John",
+    "GeburtsdatumTeilnehmer0": "1977-04-30",
+    "isStudent": "false",
+    "courses": [
+        { "title": "History 101", "credits": 3 },
+        { "title": "Math 202", "credits": 4 }
+    ],
+    "address": {
+        "street": "123 Main St",
+        "city": "Anytown",
+        "zipcode": "12345"
+    },
+    "longText": "This is a very long text string that will hopefully be wrapped correctly by the jsPDF library to fit within the page margins.",
+    "Straße":"Hauptstraße 1",
+    "PLZ":"09434",
+    "Wohnort":"Hirschhorn",
+    "NameTeilnehmer1":"Doe",
+    "VornameTeilnehmer1":"Jane",
+    "Telefon/Mobil":"04433327",
+    "e-Mail":"smallMan@johnson.com",
+    "GeburtsdatumTeilnehmer1":"1978-05-30"
+}`;
+
+out = generatePdfFromJson(sampleJsonString, outputFilePath, 1);
 console.log(out);
