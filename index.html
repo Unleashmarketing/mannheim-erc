@@ -18,8 +18,6 @@
           <li><a href="#synchron">Synchron Eiskunstlauf</a></li>
         </ul>
       </li>
-      <li><a href="#competitions">Wettbewerbe</a></li>
-      <li><a href="#trainers">Trainer</a></li>
     </ul>
   </template>
   <template id="contactBtn">
@@ -1006,11 +1004,11 @@
       }
 
       /* ========================================
-         CTA SECTION
+         CTA & CONTACT SECTION (COMBINED)
          ======================================== */
       .cta {
-        background-color: var(--primary-color);
-        color: var(--white);
+        background-color: var(--light-bg);
+        color: var(--text-dark);
         text-align: center;
         padding: var(--spacing-3xl) 0;
         position: relative;
@@ -1023,7 +1021,7 @@
         position: absolute;
         width: 300px;
         height: 300px;
-        background-color: rgba(255, 255, 255, 0.05);
+        background-color: rgba(0, 98, 255, 0.03);
         border-radius: 50%;
       }
 
@@ -1044,89 +1042,61 @@
         position: relative;
         z-index: 2;
         letter-spacing: -1px;
+        color: var(--text-dark);
       }
 
       .cta-text {
         max-width: 700px;
-        margin: 0 auto var(--spacing-lg);
+        margin: 0 auto var(--spacing-2xl);
         font-size: var(--font-size-md);
         position: relative;
         z-index: 2;
-        opacity: 0.95;
+        color: var(--text-muted);
       }
 
-      .cta-btn {
-        position: relative;
-        z-index: 2;
-        font-size: var(--font-size-md);
-      }
-
-      /* ========================================
-         CONTACT SECTION
-         ======================================== */
-      .contact {
-        background-color: var(--light-bg);
-      }
-
-      .contact-content {
+      .cta .contact-content {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--spacing-xl);
+        text-align: left;
+        position: relative;
+        z-index: 2;
+        max-width: 1100px;
+        margin: 0 auto;
       }
 
-      .contact-info h3 {
+      .cta .contact-info h3,
+      .cta .contact-info h4 {
+        color: var(--text-dark);
+      }
+
+      .cta .contact-info h3 {
         font-size: var(--font-size-lg);
         font-weight: 700;
         margin-bottom: var(--spacing-md);
       }
 
-      .contact-info h4 {
+      .cta .contact-info h4 {
         font-size: var(--font-size-md);
         font-weight: 600;
         margin-bottom: var(--spacing-sm);
         margin-top: var(--spacing-lg);
       }
 
-      .contact-info p {
+      .cta .contact-info p {
         color: var(--text-muted);
         margin-bottom: var(--spacing-xs);
         line-height: 1.8;
       }
 
-      .social-links {
-        display: flex;
-        gap: var(--spacing-sm);
-        margin-top: var(--spacing-md);
-      }
-
-      .social-links a {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background-color: var(--white);
-        color: var(--primary-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: var(--shadow-sm);
-        transition: var(--transition-base);
-      }
-
-      .social-links a:hover {
-        background-color: var(--primary-color);
-        color: var(--white);
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-md);
-      }
-
-      .contact-form {
+      .cta .contact-form {
         background-color: var(--white);
         padding: var(--spacing-xl);
         border-radius: var(--border-radius-md);
-        box-shadow: var(--shadow-sm);
+        box-shadow: var(--shadow-xl);
       }
 
-      .contact-form label {
+      .cta .contact-form label {
         font-weight: 600;
         color: var(--text-dark);
         margin-bottom: var(--spacing-xs);
@@ -1134,8 +1104,8 @@
         font-size: var(--font-size-sm);
       }
 
-      .contact-form input,
-      .contact-form textarea {
+      .cta .contact-form input,
+      .cta .contact-form textarea {
         width: 100%;
         padding: var(--spacing-sm);
         border: 1px solid rgba(0, 0, 0, 0.1);
@@ -1146,27 +1116,25 @@
         transition: var(--transition-base);
       }
 
-      .contact-form input:focus,
-      .contact-form textarea:focus {
+      .cta .contact-form input:focus,
+      .cta .contact-form textarea:focus {
         outline: none;
         border-color: var(--primary-color);
         box-shadow: 0 0 0 3px rgba(0, 98, 255, 0.1);
       }
 
-      .contact-form textarea {
+      .cta .contact-form textarea {
         resize: vertical;
         min-height: 120px;
       }
 
-      .contact-form button {
+      .cta .contact-form button {
         width: 100%;
         padding: var(--spacing-sm);
         font-size: var(--font-size-md);
       }
 
-      /* ========================================
-         FOOTER
-         ======================================== */
+      /* FOOTER */
       footer {
         background-color: var(--dark-bg);
         color: var(--white);
@@ -1259,6 +1227,29 @@
         min-width: 20px;
       }
 
+      .footer-social {
+        display: flex;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-md);
+      }
+
+      .footer-social a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+        transition: var(--transition-base);
+      }
+
+      .footer-social a:hover {
+        background-color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
       .footer-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         padding-top: var(--spacing-lg);
@@ -1275,10 +1266,12 @@
       .footer-bottom a:hover {
         color: var(--white);
       }
+      
+      .footer-links .submenu {
+        display: none !important;
+      }
 
-      /* ========================================
-         ANIMATIONS
-         ======================================== */
+      /* ANIMATIONS */
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -1299,9 +1292,7 @@
         }
       }
 
-      /* ========================================
-         RESPONSIVE DESIGN
-         ======================================== */
+      /* RESPONSIVE DESIGN */
       @media (max-width: 1200px) {
         :root {
           --spacing-3xl: 100px;
@@ -1321,7 +1312,7 @@
         }
 
         .about-content,
-        .contact-content {
+        .cta .contact-content {
           grid-template-columns: 1fr;
         }
 
@@ -1371,9 +1362,7 @@
         }
       }
 
-      /* ========================================
-         ACCESSIBILITY IMPROVEMENTS
-         ======================================== */
+      /* ACCESSIBILITY IMPROVEMENTS */
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
@@ -1805,8 +1794,8 @@
         </div>
       </section>
 
-      <!-- Call to Action -->
-      <section id="cta" class="cta">
+      <!-- CTA & Contact Section (Combined) -->
+      <section id="contact" class="cta">
         <div class="container">
           <h2 class="cta-title">Bist du bereit?</h2>
           <p class="cta-text">
@@ -1814,22 +1803,10 @@
             Fortgeschrittener - wir freuen uns darauf, dich in unserem Team zu
             begrüßen.
           </p>
-          <a href="#contact" class="btn btn-light cta-btn">Kontakt aufnehmen</a>
-        </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section id="contact" class="section contact">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Kontakt</h2>
-            <p class="section-subtitle">
-              Wir freuen uns auf deine Nachricht
-            </p>
-          </div>
+          
           <div class="contact-content">
             <div class="contact-info fade-in">
-              <h3>Unsere Standorte</h3>
+              <h3>Unser Standort</h3>
               <div style="margin-bottom: 30px">
                 <h4>Eissportzentrum Herzogenried</h4>
                 <p>Eugen-Romminger-Halle</p>
@@ -1843,12 +1820,6 @@
 
               <h4>Kontaktdaten</h4>
               <p>E-Mail: office@merc-online.de</p>
-              
-              <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-              </div>
             </div>
 
             <div class="contact-form fade-in">
@@ -1898,7 +1869,7 @@
               und bietet optimale Trainingsbedingungen für Sportlerinnen und
               Sportler jeden Alters.
             </p>
-            <div class="social-links">
+            <div class="footer-social">
               <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
               <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
               <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
@@ -1939,9 +1910,6 @@
     </footer>
 
     <script>
-      // ========================================
-      // MOBILE MENU
-      // ========================================
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileMenu = document.querySelector(".mobile-menu");
       const overlay = document.querySelector(".overlay");
@@ -1987,9 +1955,6 @@
         }
       });
 
-      // ========================================
-      // NAVIGATION SETUP
-      // ========================================
       function insertNavigationElements() {
         const template = document.getElementById("navigation-template1");
         const contactBtn = document.getElementById("contactBtn");
@@ -2028,9 +1993,6 @@
         }
       }
 
-      // ========================================
-      // MOBILE SUBMENU
-      // ========================================
       function setupMobileSubmenus() {
         const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
         submenuParents.forEach((toggle) => {
@@ -2050,9 +2012,6 @@
         });
       }
 
-      // ========================================
-      // STICKY HEADER
-      // ========================================
       const header = document.querySelector("header");
       let lastScroll = 0;
 
@@ -2068,9 +2027,6 @@
         lastScroll = currentScroll;
       });
 
-      // ========================================
-      // SCROLL ANIMATIONS
-      // ========================================
       const fadeElements = document.querySelectorAll(".fade-in");
       
       const observerOptions = {
@@ -2090,9 +2046,6 @@
         observer.observe(element);
       });
 
-      // ========================================
-      // VIDEO FALLBACK
-      // ========================================
       document.addEventListener("DOMContentLoaded", function () {
         const heroVideo = document.querySelector(".hero-video");
         
@@ -2116,9 +2069,6 @@
         setupMobileSubmenus();
       });
 
-      // ========================================
-      // SMOOTH SCROLL FOR ANCHOR LINKS
-      // ========================================
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
           const href = this.getAttribute("href");
