@@ -1,4 +1,3 @@
-<script>
 // ========================================
 // MOBILE MENU FUNKTIONALITÄT
 // ========================================
@@ -204,4 +203,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
-</script>
