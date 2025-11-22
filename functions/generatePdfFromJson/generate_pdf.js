@@ -323,6 +323,9 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
           requiredKeys = requiredKeys.concat(optionalKeys.slice(1));
           continue;
         }
+        if (key.toLowerCase().includes("unterabteilung")) {
+          requiredKeys.push("Unterabteilung");
+        }
       }
       if (documentType == 1) {
         if (key.toLowerCase().includes("teilnehmer1")) {
@@ -426,6 +429,16 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
         }
         break;
       }
+      case "Unterabteilung": {
+        // Muss noch geklaert werden welche Unterabteilungen man hier eintragen darf.
+        if (
+          parsedJson[reqKey].toLowerCase() != "synchro" &&
+          parsedJson[reqKey].toLowerCase() != "inline"
+        ) {
+          return [false, reqKey + " must be synchro or inline."];
+        }
+        break;
+      }
     }
   }
   try {
@@ -453,11 +466,12 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
     };
 
     const sortedDict = {};
-    for (key of requiredKeys) {
+    for (const key of requiredKeys) {
       if (parsedJson.hasOwnProperty(key)) {
         sortedDict[key] = parsedJson[key];
       }
     }
+    sortedDict["Erstellungsdatum"] = new Date().toISOString();
     // 3. Call the recursive pretty printer
     prettyPrintJson(sortedDict, leftMargin, pageState, lineHeight, indentStep);
     const randomString = Math.random().toString(36).slice(2, 8);
