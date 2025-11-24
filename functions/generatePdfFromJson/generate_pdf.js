@@ -215,7 +215,12 @@ function prettyPrintJson(data, x, pageState, lineHeight, indentStep) {
  * * @param {string} jsonString - The JSON string to parse.
  * @param {string} outputFilePath - The path to save the PDF file (e.g., "output.pdf").
  */
-function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
+function generatePdfFromJson(
+  jsonString,
+  outputFilePath,
+  documentType = 0,
+  buildPdf = false
+) {
   /*documentType = 0: Membership
                    1: ELS*/
   if (
@@ -453,6 +458,10 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
         break;
       }
     }
+  }
+  if (!buildPdf) {
+    // Use this to check entries before building the pdf.
+    return [true, ""];
   }
   try {
     // 2. Initialize a new jsPDF document
