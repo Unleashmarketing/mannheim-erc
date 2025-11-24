@@ -325,6 +325,7 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
         }
         if (key.toLowerCase().includes("unterabteilung")) {
           requiredKeys.push("Unterabteilung");
+          continue;
         }
       }
       if (documentType == 1) {
@@ -422,8 +423,8 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
       }
       case "Abteilung": {
         if (
-          parsedJson[reqKey].toLowerCase() != "eiskunstlauf" &&
-          parsedJson[reqKey].toLowerCase() != "eisschnelllauf"
+          parsedJson[reqKey].toLowerCase() != "kunstlauf" &&
+          parsedJson[reqKey].toLowerCase() != "schnelllauf"
         ) {
           return [false, reqKey + " must be Eiskunstlauf or Eisschnelllauf."];
         }
@@ -432,10 +433,22 @@ function generatePdfFromJson(jsonString, outputFilePath, documentType = 0) {
       case "Unterabteilung": {
         // Muss noch geklaert werden welche Unterabteilungen man hier eintragen darf.
         if (
-          parsedJson[reqKey].toLowerCase() != "synchro" &&
-          parsedJson[reqKey].toLowerCase() != "inline"
+          parsedJson["Abteilung"].toLowerCase() == "schnelllauf" &&
+          parsedJson[reqKey].toLowerCase() != "shorttrack"
         ) {
-          return [false, reqKey + " must be synchro or inline."];
+          return [false, reqKey + " must be shorttrack."];
+        }
+        if (
+          parsedJson["Abteilung"].toLowerCase() == "kunstlauf" &&
+          parsedJson[reqKey].toLowerCase() != "einzel" &&
+          parsedJson[reqKey].toLowerCase() != "paarlauf" &&
+          parsedJson[reqKey].toLowerCase() != "formation" &&
+          parsedJson[reqKey].toLowerCase() != "erwachsene"
+        ) {
+          return [
+            false,
+            reqKey + " must be einzel, paarlauf, formation, erwachsene.",
+          ];
         }
         break;
       }
@@ -516,7 +529,8 @@ let sampleJsonString = `
     "Kontoinhaber":"Me",
     "IBAN":"DE06 4306 0967 7912 5497 00",
     "Einzugsermächtigung":"ja",
-    "Abteilung":"Eisschnelllauf"
+    "Abteilung":"Schnelllauf",
+    "Unterabteilung":"Shorttrack"
 }`;
 
 // Define the output file path
