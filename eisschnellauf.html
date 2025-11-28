@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="de">
+  <template id="navigation-template1">
+    <ul>
+      <li><a href="about.html">Unser Verein</a></li>
+      <li><a href="eiskunstlauf.html">Eiskunstlauf</a></li>
+      <li><a href="eisschnelllauf.html">Eisschnelllauf</a></li>
+      <li><a href="synchron.html">Synchron Eiskunstlauf</a></li>
+    </ul>
+  </template>
+  <template id="contactBtn">
+    <ul>
+      <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
+    </ul>
+  </template>
+  <template id="contactStandard">
+    <ul>
+      <li><a href="index.html#contact">Kontakt</a></li>
+    </ul>
+  </template>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eisschnelllauf - Mannheimer ERC</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ========================================
+         CSS VARIABLES - Zentrale Steuerung
+         ======================================== */
+      :root {
+        /* Farben */
+        --primary-color: #0062ff;
+        --primary-hover: #0052d9;
+        --secondary-color: #e4e3d3;
+        --dark-bg: #111111;
+        --light-bg: #f7f7f2;
+        --accent-color: #ff3a29;
+        --text-dark: #222222;
+        --text-light: #f7f7f7;
+        --text-muted: #555555;
+        --gray-light: #e0e0e0;
+        --gray-medium: #999999;
+        --white: #ffffff;
+        
+        /* Spacing System */
+        --spacing-xs: 8px;
+        --spacing-sm: 16px;
+        --spacing-md: 24px;
+        --spacing-lg: 40px;
+        --spacing-xl: 60px;
+        --spacing-2xl: 80px;
+        --spacing-3xl: 120px;
+        
+        /* Typography */
+        --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --font-family-accent: "Space Grotesk", monospace;
+        --font-size-xs: 0.875rem;
+        --font-size-sm: 1rem;
+        --font-size-md: 1.125rem;
+        --font-size-lg: 1.5rem;
+        --font-size-xl: 2rem;
+        --font-size-2xl: 2.5rem;
+        --font-size-3xl: 3rem;
+        --font-size-4xl: 4rem;
+        
+        /* Layout */
+        --border-radius-sm: 4px;
+        --border-radius-md: 8px;
+        --border-radius-lg: 12px;
+        --max-width: 1300px;
+        --header-height: 80px;
+        
+        /* Transitions */
+        --transition-fast: 0.15s ease;
+        --transition-base: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        --transition-slow: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        
+        /* Shadows */
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+        --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+      }
+
+      /* ========================================
+         RESET & BASE STYLES
+         ======================================== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: var(--font-family);
+        background-color: var(--light-bg);
+        color: var(--text-dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Accent font for special elements */
+      .logo-text,
+      .section-title,
+      .hero-title,
+      .page-title,
+      .btn {
+        font-family: var(--font-family-accent);
+        letter-spacing: -0.02em;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition-base);
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+
+      /* ========================================
+         UTILITY CLASSES
+         ======================================== */
+      .container {
+        width: 90%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+      }
+
+      .section {
+        padding: var(--spacing-3xl) 0;
+        position: relative;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+      }
+
+      .section-title {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-md);
+        letter-spacing: -1px;
+        line-height: 1.2;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: var(--spacing-md) auto 0;
+        border-radius: var(--border-radius-sm);
+      }
+
+      .section-subtitle {
+        font-size: var(--font-size-md);
+        color: var(--text-muted);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* Fade In Animation */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity var(--transition-slow), transform var(--transition-slow);
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ========================================
+         BUTTON SYSTEM
+         ======================================== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-xs);
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: var(--font-size-sm);
+        font-weight: 600;
+        border-radius: var(--border-radius-md);
+        transition: var(--transition-base);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        transition: var(--transition-base);
+      }
+
+      .btn:hover::before {
+        left: 0;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: var(--white);
+        box-shadow: var(--shadow-md);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-hover);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--primary-color);
+        color: var(--white);
+      }
+
+      .btn-header {
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 12px 28px;
+        border-radius: var(--border-radius-md);
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        transition: var(--transition-base);
+        border: 2px solid var(--primary-color);
+      }
+
+      .btn-header:hover {
+        background-color: var(--primary-hover);
+        border-color: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      /* ========================================
+         HEADER & NAVIGATION
+         ======================================== */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        z-index: 1000;
+        transition: var(--transition-base);
+        box-shadow: var(--shadow-sm);
+      }
+
+      header.scrolled {
+        box-shadow: var(--shadow-md);
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+      }
+
+      .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--spacing-sm) 0;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        width: 90%;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        color: var(--text-dark);
+      }
+
+      .logo img {
+        height: 50px;
+        width: auto;
+      }
+
+      .logo-text {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+      }
+
+      /* Desktop Navigation */
+      nav {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+      }
+
+      nav ul {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+      }
+
+      nav a {
+        color: var(--text-dark);
+        font-weight: 500;
+        font-size: var(--font-size-sm);
+        position: relative;
+        padding: var(--spacing-xs) 0;
+      }
+
+      nav a:hover {
+        color: var(--primary-color);
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: var(--transition-base);
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      /* Mobile Menu Toggle */
+      .mobile-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        padding: var(--spacing-xs);
+        background: none;
+        border: none;
+        z-index: 1001;
+      }
+
+      .mobile-toggle span {
+        width: 28px;
+        height: 3px;
+        background-color: var(--text-dark);
+        border-radius: 2px;
+        transition: var(--transition-base);
+      }
+
+      .mobile-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      .mobile-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+      }
+
+      /* Mobile Menu */
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 320px;
+        height: 100vh;
+        background-color: var(--white);
+        box-shadow: var(--shadow-xl);
+        padding: var(--spacing-2xl) var(--spacing-lg);
+        transition: var(--transition-base);
+        z-index: 1000;
+        overflow-y: auto;
+      }
+
+      .mobile-menu.active {
+        right: 0;
+      }
+
+      .mobile-menu-close {
+        position: absolute;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        font-size: var(--font-size-xl);
+        color: var(--text-dark);
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: var(--spacing-xs);
+        line-height: 1;
+      }
+
+      .mobile-menu ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-xl);
+      }
+
+      .mobile-menu a {
+        font-size: var(--font-size-md);
+        color: var(--text-dark);
+        display: block;
+        padding: var(--spacing-sm) 0;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition-base);
+        z-index: 999;
+      }
+
+      .overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* ========================================
+         PAGE HERO
+         ======================================== */
+      .page-hero {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #004dbf 100%);
+        padding: 140px 0 var(--spacing-2xl);
+        color: var(--white);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+          radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+      }
+
+      .page-hero .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .page-title {
+        font-size: var(--font-size-4xl);
+        font-weight: 900;
+        margin-bottom: var(--spacing-md);
+        line-height: 1.1;
+      }
+
+      .page-subtitle {
+        font-size: var(--font-size-lg);
+        opacity: 0.95;
+        max-width: 700px;
+        margin: 0 auto;
+        font-weight: 300;
+      }
+
+      /* ========================================
+         INFO CARDS
+         ======================================== */
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-2xl);
+      }
+
+      .info-card {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow-md);
+        transition: var(--transition-base);
+        border: 2px solid transparent;
+      }
+
+      .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary-color);
+      }
+
+      .info-card-header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+      }
+
+      .info-card-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--primary-color), #0052d9);
+        border-radius: var(--border-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: var(--font-size-lg);
+      }
+
+      .info-card-title {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        color: var(--text-dark);
+        font-family: var(--font-family-accent);
+      }
+
+      .info-card-content {
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      .info-card-content strong {
+        color: var(--text-dark);
+        font-weight: 600;
+      }
+
+      /* ========================================
+         CONTENT SECTIONS
+         ======================================== */
+      .content-section {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-xl);
+        margin-bottom: var(--spacing-lg);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .content-section h3 {
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-md);
+        font-family: var(--font-family-accent);
+      }
+
+      .content-section p {
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .content-section ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .content-section ul li {
+        padding-left: var(--spacing-lg);
+        position: relative;
+        margin-bottom: var(--spacing-sm);
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      .content-section ul li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--primary-color);
+        font-weight: 700;
+      }
+
+      /* ========================================
+         SCHNUPPERTRAINING BOXES
+         ======================================== */
+      .schnupper-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-2xl);
+      }
+
+      .schnupper-box {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-xl);
+        box-shadow: var(--shadow-md);
+        border-left: 4px solid var(--primary-color);
+        transition: var(--transition-base);
+      }
+
+      .schnupper-box:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .schnupper-box h3 {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-md);
+        font-family: var(--font-family-accent);
+        border-bottom: 2px solid var(--gray-light);
+        padding-bottom: var(--spacing-sm);
+      }
+
+      .schnupper-box p {
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .schnupper-box strong {
+        color: var(--text-dark);
+      }
+
+      /* ========================================
+         FOOTER
+         ======================================== */
+      footer {
+        background-color: var(--dark-bg);
+        color: var(--text-light);
+        padding: var(--spacing-2xl) 0 var(--spacing-lg);
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-xl);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .footer-logo img {
+        height: 60px;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .footer-about p {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .footer-social {
+        display: flex;
+        gap: var(--spacing-sm);
+      }
+
+      .footer-social a {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition-base);
+      }
+
+      .footer-social a:hover {
+        background-color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      .footer-title {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        font-family: var(--font-family-accent);
+      }
+
+      .footer-links ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        transition: var(--transition-base);
+      }
+
+      .footer-links a:hover {
+        color: var(--white);
+        padding-left: 8px;
+      }
+
+      .footer-contact ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+
+      .footer-contact li {
+        display: flex;
+        gap: var(--spacing-sm);
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .contact-icon {
+        color: var(--primary-color);
+        min-width: 20px;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: var(--spacing-lg);
+        margin-top: var(--spacing-xl);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .footer-bottom a {
+        color: rgba(255, 255, 255, 0.5);
+        margin-left: var(--spacing-md);
+      }
+
+      .footer-bottom a:hover {
+        color: var(--white);
+      }
+
+      /* ========================================
+         RESPONSIVE DESIGN
+         ======================================== */
+      @media (max-width: 1135px) {
+        nav {
+          display: none;
+        }
+
+        .mobile-toggle {
+          display: flex;
+        }
+
+        .page-title {
+          font-size: var(--font-size-2xl);
+        }
+
+        .section-title {
+          font-size: var(--font-size-xl);
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .mobile-menu {
+          width: 100%;
+          right: -100%;
+        }
+
+        .page-hero {
+          padding: 100px 0 var(--spacing-lg);
+        }
+
+        .section {
+          padding: var(--spacing-xl) 0;
+        }
+
+        .content-section {
+          padding: var(--spacing-md);
+        }
+
+        .schnupper-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <a href="index.html" class="logo">
+          <img
+            src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
+            alt="Mannheimer ERC Logo"
+          />
+          <span class="logo-text">Mannheimer ERC</span>
+        </a>
+
+        <nav id="pageElementsDesktop"></nav>
+
+        <button
+          class="mobile-toggle"
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+      <button class="mobile-menu-close" aria-label="Menü schließen">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Page Hero -->
+      <section class="page-hero">
+        <div class="container">
+          <h1 class="page-title">Eisschnelllauf</h1>
+          <p class="page-subtitle">
+            Geschwindigkeit und Präzision - Erlebe die Faszination des Eisschnelllaufs
+          </p>
+        </div>
+      </section>
+
+      <!-- Eislaufschule Section -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Eislaufschule Saison 2025/2026</h2>
+            <p class="section-subtitle">
+              Eislaufen für Jung und Alt - Erlernen Sie die Grundtechniken des Eislaufens
+            </p>
+          </div>
+
+          <div class="content-section fade-in">
+            <h3>Kursinformationen</h3>
+            <p>
+              <strong>Die Eislaufschule beginnt am Sonntag, den 26.10.2025 um 8:30.</strong> 
+              Sie findet jeden Sonntag bis März statt.
+            </p>
+            <p>
+              Eislaufen für Jung und Alt. Erlernen Sie die Grundtechniken des Eislaufens.
+            </p>
+          </div>
+
+          <div class="content-section fade-in">
+            <h3>Über unsere Eislaufschule</h3>
+            <p>
+              Erfahrene Eisschnellläufer unseres Vereins bringen jedem, der Interesse und Spaß am Eislaufen 
+              hat, das Schlittschuhlaufen bei. Unser Ziel ist es, dass Menschen das Schlittschuhlaufen erlernen 
+              ohne sich dabei auf eine bestimmte Eissportart festlegen zu müssen.
+            </p>
+            <p>
+              Also eine hervorragende Gelegenheit sich mit dem Eis vertraut zu machen bevor man sich 
+              möglicherweise für Sportarten wie Kunstlauf, Eishockey oder Eisschnelllauf entscheidet.
+            </p>
+          </div>
+
+          <div class="content-section fade-in">
+            <h3>Wichtige Details</h3>
+            <p>
+              Die Eislaufschule findet in der Wintersaison von Mitte Oktober bis März statt und am Ende gibt es 
+              ein Eislaufdiplom! Die genauen Termine entnehmen Sie bitte unseren Trainingszeiten im Hauptmenü.
+            </p>
+            <p>
+              <strong>Die Kosten für die Eislaufschule betragen: 90 Euro je Person/Saison.</strong>
+            </p>
+            <p>
+              Anmeldungen werden gerne über unser Kontaktformular oder vor Ort entgegengenommen.
+            </p>
+            <p>
+              Bitte - wenn vorhanden - eigene Schlittschuhe und Schutzausrüstung (Helm, Knie-, Ellenbogen-, 
+              Handgelenkschützer) mitbringen. Alternativ können Schlittschuhe kostenlos vor Ort geliehen werden.
+            </p>
+            <p style="font-weight: 600; color: var(--primary-color); margin-top: var(--spacing-md);">
+              Wir freuen uns auf Ihr/ Euer Kommen!
+            </p>
+          </div>
+
+          <!-- Ansprechpartner -->
+          <div class="info-card fade-in" style="max-width: 600px; margin: var(--spacing-2xl) auto 0;">
+            <div class="info-card-header">
+              <div class="info-card-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <h3 class="info-card-title">Ansprechpartner</h3>
+            </div>
+            <div class="info-card-content">
+              <p><strong>Kontakt:</strong></p>
+              <p>
+                E-Mail: <a href="mailto:Eislaufeninmannheim@gmx.de" style="color: var(--primary-color); font-weight: 600;">Eislaufeninmannheim@gmx.de</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Schnuppertraining Section -->
+      <section class="section" style="background-color: var(--white);">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Schnuppertraining</h2>
+            <p class="section-subtitle">
+              Du möchtest Eisschnelllauf ausprobieren? Kein Problem!
+            </p>
+          </div>
+
+          <div class="schnupper-grid">
+            <div class="schnupper-box fade-in">
+              <h3>Ich kann eislaufen und würde Eisschnelllauf gerne einmal ausprobieren</h3>
+              <p>
+                Du möchtest Eisschnelllauf ausprobieren? Kein Problem. Schreib uns eine kurze Mail, 
+                damit wir wissen, dass Du kommst und ob Du evtl. etwas an Ausrüstung brauchst!
+              </p>
+              <p>
+                Verwende dazu am besten unser <strong>Kontaktformular</strong>.
+              </p>
+            </div>
+
+            <div class="schnupper-box fade-in">
+              <h3>Ich kann nicht eislaufen, würde es aber gerne lernen</h3>
+              <p>
+                Du würdest gerne einmal Eisschnelllaufen ausprobieren, kannst aber nicht eislaufen? 
+                Kein Problem, denn in unserer Eislaufschule kannst Du die Grundlagen des Eislaufens 
+                lernen und das zunächst erstmal ohne Dich auf eine Sportart festzulegen.
+              </p>
+              <p>
+                Mehr Informationen hierzu unter unserer Rubrik <strong>Training > Eislaufschule</strong> oder 
+                <a href="#eislaufschule" style="color: var(--primary-color); font-weight: 600;">hier</a>.
+              </p>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: var(--spacing-2xl);" class="fade-in">
+            <a href="index.html#contact" class="btn btn-primary">
+              <i class="fas fa-envelope"></i>
+              Jetzt Kontakt aufnehmen
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-about">
+            <div class="footer-logo">
+              <img
+                src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
+                alt="Mannheimer ERC Logo"
+              />
+            </div>
+            <p>
+              Der Mannheimer ERC ist seit Jahrzehnten ein Begriff im Eissport
+              und bietet optimale Trainingsbedingungen für Sportlerinnen und
+              Sportler jeden Alters.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-links" id="footerLinksWithMenuElements">
+            <h3 class="footer-title">Schnellzugriff</h3>
+          </div>
+
+          <div class="footer-contact">
+            <h3 class="footer-title">Kontakt</h3>
+            <ul>
+              <li>
+                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                <span>Käthe-Kollwitz-Straße 23<br />D-68169 Mannheim</span>
+              </li>
+              <li>
+                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                <span>info@merc-online.de</span>
+              </li>
+              <li>
+                <span class="contact-icon"><i class="fas fa-clock"></i></span>
+                <span>Di: 16:00 - 18:00 Uhr<br />Sa: 10:00 - 12:00 Uhr</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Mannheimer ERC. Alle Rechte vorbehalten.</p>
+          <p>
+            <a href="#">Impressum</a>
+            <a href="#">Datenschutz</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const mobileToggle = document.querySelector(".mobile-toggle");
+      const mobileMenu = document.querySelector(".mobile-menu");
+      const overlay = document.querySelector(".overlay");
+      const mobileClose = document.querySelector(".mobile-menu-close");
+      const mobileLinks = document.querySelectorAll(".mobile-menu a");
+
+      function openMenu() {
+        mobileMenu.classList.add("active");
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+        mobileToggle.classList.add("active");
+        mobileToggle.setAttribute("aria-expanded", "true");
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+        mobileToggle.classList.remove("active");
+        mobileToggle.setAttribute("aria-expanded", "false");
+      }
+
+      mobileToggle.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.contains("active");
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      mobileClose.addEventListener("click", closeMenu);
+      overlay.addEventListener("click", closeMenu);
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          if (link.getAttribute("href").startsWith("#")) {
+            closeMenu();
+          }
+        });
+      });
+
+      // Close menu on Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+          closeMenu();
+        }
+      });
+
+      function insertNavigationElements() {
+        const template = document.getElementById("navigation-template1");
+        const contactBtn = document.getElementById("contactBtn");
+        const contactStandard = document.getElementById("contactStandard");
+
+        // Desktop Navigation
+        const desktopNav = document.getElementById("pageElementsDesktop");
+        if (template && desktopNav) {
+          const clone = template.content.cloneNode(true);
+          desktopNav.prepend(clone);
+          const ul = desktopNav.querySelector("ul");
+          if (ul && contactBtn) {
+            ul.append(contactBtn.content.cloneNode(true));
+          }
+        }
+
+        // Mobile Navigation
+        if (template && mobileMenu) {
+          const clone = template.content.cloneNode(true);
+          mobileMenu.prepend(clone);
+          const ul = mobileMenu.querySelector("ul");
+          if (ul && contactStandard) {
+            ul.append(contactStandard.content.cloneNode(true));
+          }
+        }
+
+        // Footer Navigation
+        const footerLinks = document.getElementById("footerLinksWithMenuElements");
+        if (template && footerLinks) {
+          const clone = template.content.cloneNode(true);
+          footerLinks.append(clone);
+          const ul = footerLinks.querySelector("ul");
+          if (ul && contactStandard) {
+            ul.append(contactStandard.content.cloneNode(true));
+          }
+        }
+      }
+
+      const header = document.querySelector("header");
+      let lastScroll = 0;
+
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+        
+        lastScroll = currentScroll;
+      });
+
+      const fadeElements = document.querySelectorAll(".fade-in");
+      
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      fadeElements.forEach((element) => {
+        observer.observe(element);
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize navigation
+        insertNavigationElements();
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href !== "#" && href !== "") {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              const headerHeight = header.offsetHeight;
+              const targetPosition = target.offsetTop - headerHeight;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+              });
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
