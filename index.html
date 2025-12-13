@@ -8,6 +8,11 @@
       <li><a href="synchron.html">Synchron Eiskunstlauf</a></li>
     </ul>
   </template>
+  <template id="memberBtn">
+    <ul>
+      <li><a href="mitglieder.html" class="btn-header">Mitgliederbereich</a></li>
+    </ul>
+  </template>
   <template id="contactBtn">
     <ul>
       <li><a href="#contact" class="btn-header">Kontakt</a></li>
@@ -1812,7 +1817,7 @@
               <p>Samstags 10:00 Uhr – 12:00 Uhr</p>
 
               <h4>Kontaktdaten</h4>
-              <p>E-Mail: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="345b52525d57517459514657195b5a585d5a511a5051">[email&#160;protected]</a></p>
+              <p>E-Mail: <a href="mailto:[email protected]">[email protected]</a></p>
             </div>
 
             <div class="contact-form fade-in">
@@ -1882,7 +1887,7 @@
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="325d54545b5157725f5740511f5d5c5e5b5c571c5657">[email&#160;protected]</a></span>
+                <span><a href="mailto:[email protected]">[email protected]</a></span>
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-clock"></i></span>
@@ -1950,6 +1955,7 @@
       function insertNavigationElements() {
         const template = document.getElementById("navigation-template1");
         const contactBtn = document.getElementById("contactBtn");
+        const memberBtn = document.getElementById("memberBtn");
         const contactStandard = document.getElementById("contactStandard");
 
         // Desktop Navigation
@@ -1958,8 +1964,13 @@
           const clone = template.content.cloneNode(true);
           desktopNav.prepend(clone);
           const ul = desktopNav.querySelector("ul");
-          if (ul && contactBtn) {
-            ul.append(contactBtn.content.cloneNode(true));
+          if (ul) {
+            if (memberBtn) {
+              ul.append(memberBtn.content.cloneNode(true));
+            }
+            if (contactBtn) {
+              ul.append(contactBtn.content.cloneNode(true));
+            }
           }
         }
 
