@@ -18,10 +18,21 @@
       <li><a href="#contact" class="btn-header">Kontakt</a></li>
     </ul>
   </template>
+  <template id="memberStandard">
+    <ul>
+      <li><a href="mitglieder.html">Mitgliederbereich</a></li>
+    </ul>
+  </template>
   <template id="contactStandard">
     <ul>
       <li><a href="#contact">Kontakt</a></li>
     </ul>
+  </template>
+  <template id="mobileCTAButtons">
+    <div class="mobile-cta-buttons">
+      <a href="mitglieder.html">Mitgliederbereich</a>
+      <a href="#contact">Kontakt</a>
+    </div>
   </template>
   <head>
     <meta charset="UTF-8" />
@@ -432,30 +443,38 @@
       .mobile-toggle {
         display: none;
         flex-direction: column;
-        gap: 6px;
-        padding: var(--spacing-xs);
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        padding: 10px;
         z-index: 1001;
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+        background: none;
+        border: none;
       }
 
       .mobile-toggle span {
         display: block;
-        width: 28px;
-        height: 2px;
+        width: 26px;
+        height: 3px;
         background-color: var(--text-dark);
-        transition: var(--transition-base);
-        border-radius: var(--border-radius-sm);
+        transition: all 0.3s ease;
+        border-radius: 3px;
       }
 
       .mobile-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(8px, 8px);
+        transform: rotate(45deg) translate(6px, 6px);
       }
 
       .mobile-toggle.active span:nth-child(2) {
         opacity: 0;
+        transform: translateX(-10px);
       }
 
       .mobile-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(8px, -8px);
+        transform: rotate(-45deg) translate(6px, -6px);
       }
 
       /* Mobile Menu */
@@ -468,7 +487,7 @@
         height: 100vh;
         background-color: var(--white);
         box-shadow: var(--shadow-xl);
-        padding: var(--spacing-3xl) var(--spacing-lg);
+        padding: 120px var(--spacing-lg) var(--spacing-lg);
         transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         z-index: 999;
         overflow-y: auto;
@@ -497,6 +516,34 @@
       .mobile-menu a:hover {
         color: var(--primary-color);
         padding-left: var(--spacing-xs);
+      }
+
+      /* Mobile Menu CTA Buttons */
+      .mobile-menu .mobile-cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-xl);
+        padding-top: var(--spacing-lg);
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .mobile-menu .mobile-cta-buttons a {
+        background-color: var(--primary-color);
+        color: var(--white) !important;
+        padding: 14px 24px !important;
+        border-radius: var(--border-radius-md);
+        font-weight: 600;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition-base);
+      }
+
+      .mobile-menu .mobile-cta-buttons a:hover {
+        background-color: var(--primary-hover);
+        box-shadow: var(--shadow-md);
+        padding-left: 24px !important;
+        transform: translateY(-2px);
       }
 
       .mobile-menu .has-submenu > .submenu {
@@ -528,15 +575,32 @@
 
       .mobile-menu-close {
         position: absolute;
-        top: var(--spacing-md);
-        right: var(--spacing-md);
-        font-size: var(--font-size-xl);
+        top: var(--spacing-lg);
+        right: var(--spacing-lg);
+        font-size: 28px;
         color: var(--text-dark);
         transition: var(--transition-base);
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.04);
+        border: none;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        border-radius: 50%;
+        line-height: 1;
+      }
+
+      .mobile-menu-close i {
+        line-height: 1;
+        display: block;
       }
 
       .mobile-menu-close:hover {
-        color: var(--primary-color);
+        color: var(--white);
+        background-color: var(--primary-color);
         transform: rotate(90deg);
       }
 
@@ -630,10 +694,38 @@
         opacity: 0;
       }
 
-      .hero-btn {
+      .hero-scroll-hint {
         animation: fadeInUp 1s ease 0.4s forwards;
         opacity: 0;
         font-size: var(--font-size-md);
+        color: var(--white);
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
+        transition: var(--transition-base);
+        text-decoration: none;
+      }
+
+      .hero-scroll-hint:hover {
+        transform: translateY(5px);
+      }
+
+      .hero-scroll-hint i {
+        font-size: var(--font-size-lg);
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
       }
 
       /* ========================================
@@ -1463,7 +1555,10 @@
             Technik trifft Ästhetik - Entdecke die Eleganz und Schnelligkeit des
             Eislaufs im Mannheimer ERC
           </p>
-          <a href="#about" class="btn btn-light hero-btn">Mehr über uns erfahren</a>
+          <a href="#about" class="hero-scroll-hint">
+            Mehr über uns erfahren
+            <i class="fas fa-arrow-down"></i>
+          </a>
         </div>
       </section>
 
@@ -1488,7 +1583,7 @@
                 begleiten unsere Mitglieder ganzheitlich in ihrer sportlichen und
                 persönlichen Entwicklung.
               </p>
-              <a href="#contact" class="btn btn-primary">Jetzt Mitglied werden</a>
+              <a href="about.html" class="btn btn-primary">Mehr über uns</a>
             </div>
             <div class="about-image fade-in">
               <img src="images/Bild2.jpeg" alt="Mannheimer ERC – Impressionen" />
@@ -1595,15 +1690,6 @@
               </div>
             </div>
             <div class="sponsor-item">
-              <div class="sponsor-logo">
-                <img
-                  src="images/Logo_GBG_Mannheim_200px.png"
-                  alt="GBG Mannheim Logo"
-                  class="sponsor-image"
-                />
-              </div>
-            </div>
-            <div class="sponsor-item">
               <a href="#contact" class="btn btn-primary">Sponsor werden</a>
             </div>
           </div>
@@ -1656,95 +1742,6 @@
           </div>
           <div style="margin-top: 50px; text-align: center">
             <a href="#contact" class="btn btn-primary">Alle Wettbewerbe ansehen</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Trainers Section -->
-      <section id="trainers" class="section trainers">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Lerne unsere Trainer kennen</h2>
-            <p class="section-subtitle">
-              Erfahrene Profis, die dich auf deinem Weg begleiten
-            </p>
-          </div>
-          <div class="grid grid-4">
-            <div class="card trainer-card fade-in">
-              <div class="trainer-image-container">
-                <img
-                  src="/api/placeholder/350/320"
-                  alt="Adrian Schager"
-                  class="trainer-image"
-                />
-              </div>
-              <div class="trainer-info">
-                <h3 class="trainer-name">Adrian Schager</h3>
-                <p class="trainer-position">Haupttrainer Eiskunstlauf</p>
-                <div class="trainer-socials">
-                  <a href="#" aria-label="Instagram von Adrian Schager"><i class="fab fa-instagram"></i></a>
-                  <a href="#" aria-label="LinkedIn von Adrian Schager"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="E-Mail an Adrian Schager"><i class="fas fa-envelope"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="card trainer-card fade-in">
-              <div class="trainer-image-container">
-                <img
-                  src="/api/placeholder/350/320"
-                  alt="Dora Hus"
-                  class="trainer-image"
-                />
-              </div>
-              <div class="trainer-info">
-                <h3 class="trainer-name">Dora Hus</h3>
-                <p class="trainer-position">Choreografin</p>
-                <div class="trainer-socials">
-                  <a href="#" aria-label="Instagram von Dora Hus"><i class="fab fa-instagram"></i></a>
-                  <a href="#" aria-label="LinkedIn von Dora Hus"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="E-Mail an Dora Hus"><i class="fas fa-envelope"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="card trainer-card fade-in">
-              <div class="trainer-image-container">
-                <img
-                  src="/api/placeholder/350/320"
-                  alt="Simone Lang"
-                  class="trainer-image"
-                />
-              </div>
-              <div class="trainer-info">
-                <h3 class="trainer-name">Simone Lang</h3>
-                <p class="trainer-position">Jugendtrainerin</p>
-                <div class="trainer-socials">
-                  <a href="#" aria-label="Instagram von Simone Lang"><i class="fab fa-instagram"></i></a>
-                  <a href="#" aria-label="LinkedIn von Simone Lang"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="E-Mail an Simone Lang"><i class="fas fa-envelope"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="card trainer-card fade-in">
-              <div class="trainer-image-container">
-                <img
-                  src="/api/placeholder/350/320"
-                  alt="Günter Zöller"
-                  class="trainer-image"
-                />
-              </div>
-              <div class="trainer-info">
-                <h3 class="trainer-name">Günter Zöller</h3>
-                <p class="trainer-position">Eisschnelllauf-Trainer</p>
-                <div class="trainer-socials">
-                  <a href="#" aria-label="Instagram von Günter Zöller"><i class="fab fa-instagram"></i></a>
-                  <a href="#" aria-label="LinkedIn von Günter Zöller"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="E-Mail an Günter Zöller"><i class="fas fa-envelope"></i></a>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -1963,6 +1960,8 @@
         const contactBtn = document.getElementById("contactBtn");
         const memberBtn = document.getElementById("memberBtn");
         const contactStandard = document.getElementById("contactStandard");
+        const memberStandard = document.getElementById("memberStandard");
+        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
 
         // Desktop Navigation
         const desktopNav = document.getElementById("pageElementsDesktop");
@@ -1984,9 +1983,10 @@
         if (template && mobileMenu) {
           const clone = template.content.cloneNode(true);
           mobileMenu.prepend(clone);
-          const ul = mobileMenu.querySelector("ul");
-          if (ul && contactStandard) {
-            ul.append(contactStandard.content.cloneNode(true));
+          
+          // Add CTA buttons at the end
+          if (mobileCTAButtons) {
+            mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
           }
         }
 
