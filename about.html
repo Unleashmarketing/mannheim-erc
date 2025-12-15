@@ -460,7 +460,7 @@
 
       .vision-highlights {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-lg);
         margin-top: var(--spacing-2xl);
       }
@@ -562,6 +562,7 @@
 
       .card-meta {
         display: flex;
+        justify-content: center;
         gap: var(--spacing-sm);
         margin-top: var(--spacing-md);
         padding-top: var(--spacing-md);
@@ -717,10 +718,17 @@
         border-top: 1px solid rgba(255, 255, 255, 0.1);
       }
 
+      .download-actions {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-sm);
+        width: 100%;
+      }
+
       .download-btn {
         width: 100%;
         justify-content: center;
-        margin-top: var(--spacing-sm);
       }
 
       /* ========================================
@@ -1086,6 +1094,10 @@
           grid-template-columns: 1fr;
         }
 
+        .vision-highlights {
+          grid-template-columns: 1fr;
+        }
+
         .page-hero {
           min-height: 50vh;
         }
@@ -1302,21 +1314,20 @@
               <div class="card-image">
                 <img
                   src="/api/placeholder/400/280"
-                  alt="Dr. Michael Weber"
+                  alt="Dr. Christel Petzschke"
                 />
               </div>
               <div class="card-body">
-                <h3 class="card-title">Dr. Michael Weber</h3>
-                <p class="card-subtitle">1. Vorsitzender</p>
+                <h3 class="card-title">Dr. Christel Petzschke</h3>
+                <p class="card-subtitle">Präsidentin</p>
                 <p class="card-text">
-                  Seit 2018 leitet Dr. Weber unseren Verein mit Leidenschaft und 
-                  Weitblick. Als ehemaliger Eiskunstläufer kennt er die Bedürfnisse 
-                  unserer Athleten aus erster Hand.
+                  Als Präsidentin leitet Dr. Christel Petzschke unseren Verein mit 
+                  großem Engagement und strategischer Weitsicht.
                 </p>
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a4c98ad3c1c6c1d6e4c9c1d6c789cbcac8cdcac18ac0c1">[email&#160;protected]</a>
+                    <a href="mailto:[email protected]">[email protected]</a>
                   </span>
                 </div>
               </div>
@@ -1326,21 +1337,20 @@
               <div class="card-image">
                 <img
                   src="/api/placeholder/400/280"
-                  alt="Sandra Hoffmann"
+                  alt="Dirk Müller"
                 />
               </div>
               <div class="card-body">
-                <h3 class="card-title">Sandra Hoffmann</h3>
-                <p class="card-subtitle">2. Vorsitzende</p>
+                <h3 class="card-title">Dirk Müller</h3>
+                <p class="card-subtitle">Fachwart Kunstlauf</p>
                 <p class="card-text">
-                  Sandra koordiniert alle sportlichen Aktivitäten und ist die 
-                  Ansprechpartnerin für Trainer und Athleten. Ihre organisatorische 
-                  Kompetenz ist das Rückgrat unseres Vereins.
+                  Dirk Müller koordiniert alle Aktivitäten im Bereich Kunstlauf und 
+                  ist Ansprechpartner für Trainer und Athleten.
                 </p>
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="592a7731363f3f3438373719343c2b3a7436373530373c773d3c">[email&#160;protected]</a>
+                    <a href="mailto:[email protected]">[email protected]</a>
                   </span>
                 </div>
               </div>
@@ -1350,21 +1360,20 @@
               <div class="card-image">
                 <img
                   src="/api/placeholder/400/280"
-                  alt="Thomas Müller"
+                  alt="Martin Weinzierl"
                 />
               </div>
               <div class="card-body">
-                <h3 class="card-title">Thomas Müller</h3>
-                <p class="card-subtitle">Schatzmeister</p>
+                <h3 class="card-title">Martin Weinzierl</h3>
+                <p class="card-subtitle">Stellvertreter</p>
                 <p class="card-text">
-                  Thomas verwaltet die Finanzen des Vereins mit größter Sorgfalt 
-                  und sorgt dafür, dass unsere Mittel optimal für die Förderung 
-                  des Sports eingesetzt werden.
+                  Martin Weinzierl unterstützt die Vereinsführung als Stellvertreter 
+                  und bringt seine langjährige Erfahrung ein.
                 </p>
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2a6fcbfa7b7bebeb7a092bfb7a0b1ffbdbcbebbbcb7fcb6b7">[email&#160;protected]</a>
+                    <a href="mailto:[email protected]">[email protected]</a>
                   </span>
                 </div>
               </div>
@@ -1374,20 +1383,20 @@
               <div class="card-image">
                 <img
                   src="/api/placeholder/400/280"
-                  alt="Julia Schneider"
+                  alt="Gundi Pawasserat"
                 />
               </div>
               <div class="card-body">
-                <h3 class="card-title">Julia Schneider</h3>
-                <p class="card-subtitle">Jugendwartin</p>
+                <h3 class="card-title">Gundi Pawasserat</h3>
+                <p class="card-subtitle">Fachwärtin Schnelllauf</p>
                 <p class="card-text">
-                  Julia kümmert sich um die Belange unserer jungen Talente und 
-                  organisiert spezielle Nachwuchsprogramme und Veranstaltungen.
+                  Gundi Pawasserat ist für den Bereich Eisschnelllauf zuständig und 
+                  fördert aktiv den Nachwuchs in dieser Disziplin.
                 </p>
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8de7a3feeee5e3e8e4e9e8ffcde0e8ffeea0e2e3e1e4e3e8a3e9e8">[email&#160;protected]</a>
+                    <a href="mailto:[email protected]">[email protected]</a>
                   </span>
                 </div>
               </div>
@@ -1397,21 +1406,20 @@
               <div class="card-image">
                 <img
                   src="/api/placeholder/400/280"
-                  alt="Marc Fischer"
+                  alt="Christian Arlt"
                 />
               </div>
               <div class="card-body">
-                <h3 class="card-title">Marc Fischer</h3>
-                <p class="card-subtitle">Pressewart</p>
+                <h3 class="card-title">Christian Arlt / Sean Mc Connell</h3>
+                <p class="card-subtitle">Stellvertreter</p>
                 <p class="card-text">
-                  Marc ist für unsere Öffentlichkeitsarbeit zuständig und hält 
-                  Mitglieder sowie Interessierte über Neuigkeiten und Erfolge 
-                  auf dem Laufenden.
+                  Christian Arlt und Sean Mc Connell unterstützen als Stellvertreter 
+                  den Vorstand in verschiedenen Bereichen.
                 </p>
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ddadafb8aeaeb89db0b8afbef0b2b3b1b4b3b8f3b9b8">[email&#160;protected]</a>
+                    <a href="mailto:[email protected]">[email protected]</a>
                   </span>
                 </div>
               </div>
@@ -1421,20 +1429,66 @@
               <div class="card-image">
                 <img
                   src="/api/placeholder/400/280"
-                  alt="Lisa Wagner"
+                  alt="Anke Bluhm"
                 />
               </div>
               <div class="card-body">
-                <h3 class="card-title">Lisa Wagner</h3>
-                <p class="card-subtitle">Beisitzerin</p>
+                <h3 class="card-title">Anke Bluhm</h3>
+                <p class="card-subtitle">Schatzmeisterin</p>
                 <p class="card-text">
-                  Lisa unterstützt den Vorstand in allen Bereichen und bringt 
-                  ihre Expertise in der Veranstaltungsorganisation ein.
+                  Anke Bluhm verwaltet die Finanzen des Vereins mit größter Sorgfalt 
+                  und Transparenz.
                 </p>
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7c131a1a151f193c11190e1f51131210151219521819">[email&#160;protected]</a>
+                    <a href="mailto:[email protected]">[email protected]</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/400/280"
+                  alt="Larissa Vetter"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Larissa Vetter</h3>
+                <p class="card-subtitle">Schriftführerin</p>
+                <p class="card-text">
+                  Larissa Vetter kümmert sich um die Protokollierung und 
+                  administrative Korrespondenz des Vereins.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:[email protected]">[email protected]</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card fade-in">
+              <div class="card-image">
+                <img
+                  src="/api/placeholder/400/280"
+                  alt="Eugen Romminger† / Karl Hagert†"
+                />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Eugen Romminger† / Karl Hagert†</h3>
+                <p class="card-subtitle">Ehrenvorsitzende</p>
+                <p class="card-text">
+                  Wir ehren das Andenken unserer Ehrenvorsitzenden Eugen Romminger 
+                  und Karl Hagert für ihre außergewöhnlichen Verdienste.
+                </p>
+                <div class="card-meta">
+                  <span class="card-meta-item">
+                    <i class="fas fa-heart"></i>
+                    In ehrendem Gedenken
                   </span>
                 </div>
               </div>
@@ -1452,259 +1506,450 @@
               Erfahrene Profis, die aus Leidenschaft trainieren
             </p>
           </div>
-          <div class="grid grid-4">
-            <div class="card trainer-card fade-in">
-              <div class="card-image">
-                <img
-                  src="/api/placeholder/350/280"
-                  alt="Adrian Schager"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Adrian Schager</h3>
-                <p class="card-subtitle">Haupttrainer Eiskunstlauf</p>
-                <p class="card-text">
-                  15 Jahre internationale Wettkampferfahrung. Spezialisiert auf 
-                  Einzellauf und technische Perfektion.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-star"></i>
-                    A-Lizenz
-                  </span>
-                  <span class="card-meta-item">
-                    <i class="fas fa-clock"></i>
-                    Seit 2015
-                  </span>
+
+          <!-- Eiskunstlauf / Synchron Eiskunstlauf -->
+          <div style="margin-bottom: 60px;">
+            <h3 style="font-size: var(--font-size-xl); font-weight: 700; margin-bottom: var(--spacing-lg); color: var(--text-dark); text-align: center;">
+              Eiskunstlauf / Synchron Eiskunstlauf
+            </h3>
+            <div class="grid grid-3">
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Adrian Schager.jpeg"
+                    alt="Adrian Schager"
+                  />
                 </div>
-                <div class="card-socials">
-                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                <div class="card-body">
+                  <h3 class="card-title">Adrian Schager</h3>
+                  <p class="card-subtitle">Trainer Eiskunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      A-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2015
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Anja Pohlmann.jpeg"
+                    alt="Anja Pohlmann"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Anja Pohlmann</h3>
+                  <p class="card-subtitle">Trainerin Eiskunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      B-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2017
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Dora Vulic.jpeg"
+                    alt="Dora Vulic"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Dora Vulic</h3>
+                  <p class="card-subtitle">Trainerin Eiskunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      B-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2018
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Günter Zöller.jpeg"
+                    alt="Günter Zöller"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Günter Zöller</h3>
+                  <p class="card-subtitle">Trainer Eiskunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      A-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2012
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Larissa Vetter.jpeg"
+                    alt="Larissa Vetter"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Larissa Vetter</h3>
+                  <p class="card-subtitle">Trainerin Eiskunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      C-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2020
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Lisa Day.jpeg"
+                    alt="Lisa Day"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Lisa Day</h3>
+                  <p class="card-subtitle">Trainerin Eiskunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      B-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2019
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Marie-Christine.jpeg"
+                    alt="Marie-Christine"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Marie-Christine</h3>
+                  <p class="card-subtitle">Trainerin Eiskunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      C-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2021
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Natali Herzog.jpeg"
+                    alt="Natali Herzog"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Natali Herzog</h3>
+                  <p class="card-subtitle">Trainerin Eiskunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      B-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2016
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Nathalie Weinzierl.jpeg"
+                    alt="Nathalie Weinzierl"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Nathalie Weinzierl</h3>
+                  <p class="card-subtitle">Trainerin Eiskunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      C-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2022
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Nicole Endress.jpeg"
+                    alt="Nicole Endress"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Nicole Endress</h3>
+                  <p class="card-subtitle">Trainerin Eiskunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      A-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2014
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Simone Bienert.jpeg"
+                    alt="Simone Bienert"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Simone Bienert</h3>
+                  <p class="card-subtitle">Trainerin Eiskunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      B-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2018
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Stefan Lindemann.jpeg"
+                    alt="Stefan Lindemann"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Stefan Lindemann</h3>
+                  <p class="card-subtitle">Trainer Eiskunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      A-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2010
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Teresa Simon.jpeg"
+                    alt="Teresa Simon"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Teresa Simon</h3>
+                  <p class="card-subtitle">Trainerin Eiskunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      C-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2020
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="card trainer-card fade-in">
-              <div class="card-image">
-                <img
-                  src="/api/placeholder/350/280"
-                  alt="Dora Hus"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Dora Hus</h3>
-                <p class="card-subtitle">Choreografin & Trainerin</p>
-                <p class="card-text">
-                  Ehemalige Profitänzerin mit Schwerpunkt auf künstlerischem 
-                  Ausdruck und Kürgestaltung.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-star"></i>
-                    B-Lizenz
-                  </span>
-                  <span class="card-meta-item">
-                    <i class="fas fa-clock"></i>
-                    Seit 2017
-                  </span>
+          <!-- Eisschnelllauf -->
+          <div>
+            <h3 style="font-size: var(--font-size-xl); font-weight: 700; margin-bottom: var(--spacing-lg); color: var(--text-dark); text-align: center;">
+              Eisschnelllauf
+            </h3>
+            <div class="grid grid-4">
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Christian.jpeg"
+                    alt="Christian"
+                  />
                 </div>
-                <div class="card-socials">
-                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                <div class="card-body">
+                  <h3 class="card-title">Christian</h3>
+                  <p class="card-subtitle">Trainer Eisschnelllauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      A-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2015
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="card trainer-card fade-in">
-              <div class="card-image">
-                <img
-                  src="/api/placeholder/350/280"
-                  alt="Simone Lang"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Simone Lang</h3>
-                <p class="card-subtitle">Jugendtrainerin</p>
-                <p class="card-text">
-                  Spezialistin für Nachwuchsförderung mit pädagogischem Hintergrund. 
-                  Betreut unsere jüngsten Talente.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-star"></i>
-                    C-Lizenz
-                  </span>
-                  <span class="card-meta-item">
-                    <i class="fas fa-clock"></i>
-                    Seit 2019
-                  </span>
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Gundi.jpeg"
+                    alt="Gundi"
+                  />
                 </div>
-                <div class="card-socials">
-                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                <div class="card-body">
+                  <h3 class="card-title">Gundi</h3>
+                  <p class="card-subtitle">Trainerin Eisschnelllauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      B-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2017
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="card trainer-card fade-in">
-              <div class="card-image">
-                <img
-                  src="/api/placeholder/350/280"
-                  alt="Günter Zöller"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Günter Zöller</h3>
-                <p class="card-subtitle">Eisschnelllauf-Trainer</p>
-                <p class="card-text">
-                  Olympia-Teilnehmer 1998. Experte für Technik, Ausdauer und 
-                  mentale Vorbereitung im Eisschnelllauf.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-star"></i>
-                    A-Lizenz
-                  </span>
-                  <span class="card-meta-item">
-                    <i class="fas fa-clock"></i>
-                    Seit 2012
-                  </span>
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/Konstantin.jpeg"
+                    alt="Konstantin"
+                  />
                 </div>
-                <div class="card-socials">
-                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="card trainer-card fade-in">
-              <div class="card-image">
-                <img
-                  src="/api/placeholder/350/280"
-                  alt="Petra Bachmann"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Petra Bachmann</h3>
-                <p class="card-subtitle">Synchron-Trainerin</p>
-                <p class="card-text">
-                  Ehemalige Nationalmannschafts-Athletin. Leitet unser 
-                  Synchron-Team mit Expertise und Teamgeist.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-star"></i>
-                    B-Lizenz
-                  </span>
-                  <span class="card-meta-item">
-                    <i class="fas fa-clock"></i>
-                    Seit 2016
-                  </span>
-                </div>
-                <div class="card-socials">
-                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="card trainer-card fade-in">
-              <div class="card-image">
-                <img
-                  src="/api/placeholder/350/280"
-                  alt="Robert Steiner"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Robert Steiner</h3>
-                <p class="card-subtitle">Konditionstrainer</p>
-                <p class="card-text">
-                  Sportwissenschaftler und Physiotherapeut. Verantwortlich für 
-                  Off-Ice-Training und Verletzungsprävention.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-dumbbell"></i>
-                    Fitness
-                  </span>
-                  <span class="card-meta-item">
-                    <i class="fas fa-clock"></i>
-                    Seit 2018
-                  </span>
-                </div>
-                <div class="card-socials">
-                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="card trainer-card fade-in">
-              <div class="card-image">
-                <img
-                  src="/api/placeholder/350/280"
-                  alt="Anna Keller"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Anna Keller</h3>
-                <p class="card-subtitle">Assistenztrainerin</p>
-                <p class="card-text">
-                  Junge, dynamische Trainerin mit frischen Ideen. Unterstützt 
-                  in allen Bereichen und betreut Anfängergruppen.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-star"></i>
-                    C-Lizenz
-                  </span>
-                  <span class="card-meta-item">
-                    <i class="fas fa-clock"></i>
-                    Seit 2022
-                  </span>
-                </div>
-                <div class="card-socials">
-                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                </div>
-              </div>
-            </div>
-
-            <div class="card trainer-card fade-in">
-              <div class="card-image">
-                <img
-                  src="/api/placeholder/350/280"
-                  alt="Michael Herrmann"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Michael Herrmann</h3>
-                <p class="card-subtitle">Mentaltrainer</p>
-                <p class="card-text">
-                  Sportpsychologe mit Fokus auf Wettkampfvorbereitung und 
-                  mentale Stärke. Hilft unseren Athleten, ihr volles Potenzial abzurufen.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-brain"></i>
-                    Mental
-                  </span>
-                  <span class="card-meta-item">
-                    <i class="fas fa-clock"></i>
-                    Seit 2020
-                  </span>
-                </div>
-                <div class="card-socials">
-                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                  <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                <div class="card-body">
+                  <h3 class="card-title">Konstantin</h3>
+                  <p class="card-subtitle">Trainer Eisschnelllauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      B-Lizenz
+                    </span>
+                    <span class="card-meta-item">
+                      <i class="fas fa-clock"></i>
+                      Seit 2019
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1735,10 +1980,16 @@
                 <span>PDF, 245 KB</span>
                 <span>Aktualisiert: 15.01.2025</span>
               </div>
-              <a href="#" class="btn btn-primary download-btn">
-                <i class="fas fa-download"></i>
-                Herunterladen
-              </a>
+              <div class="download-actions">
+                <a href="#" class="btn btn-outline download-btn">
+                  <i class="fas fa-pen"></i>
+                  Ausfüllen
+                </a>
+                <a href="#" class="btn btn-primary download-btn">
+                  <i class="fas fa-download"></i>
+                  Herunterladen
+                </a>
+              </div>
             </div>
 
             <div class="download-card fade-in">
@@ -1754,10 +2005,16 @@
                 <span>PDF, 312 KB</span>
                 <span>Aktualisiert: 01.01.2025</span>
               </div>
-              <a href="#" class="btn btn-primary download-btn">
-                <i class="fas fa-download"></i>
-                Herunterladen
-              </a>
+              <div class="download-actions">
+                <a href="#" class="btn btn-outline download-btn">
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </a>
+                <a href="#" class="btn btn-primary download-btn">
+                  <i class="fas fa-download"></i>
+                  Herunterladen
+                </a>
+              </div>
             </div>
 
             <div class="download-card fade-in">
@@ -1773,10 +2030,16 @@
                 <span>PDF, 189 KB</span>
                 <span>Aktualisiert: 05.01.2025</span>
               </div>
-              <a href="#" class="btn btn-primary download-btn">
-                <i class="fas fa-download"></i>
-                Herunterladen
-              </a>
+              <div class="download-actions">
+                <a href="#" class="btn btn-outline download-btn">
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </a>
+                <a href="#" class="btn btn-primary download-btn">
+                  <i class="fas fa-download"></i>
+                  Herunterladen
+                </a>
+              </div>
             </div>
 
             <div class="download-card fade-in">
@@ -1792,10 +2055,16 @@
                 <span>PDF, 334 KB</span>
                 <span>Aktualisiert: 15.12.2024</span>
               </div>
-              <a href="#" class="btn btn-primary download-btn">
-                <i class="fas fa-download"></i>
-                Herunterladen
-              </a>
+              <div class="download-actions">
+                <a href="#" class="btn btn-outline download-btn">
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </a>
+                <a href="#" class="btn btn-primary download-btn">
+                  <i class="fas fa-download"></i>
+                  Herunterladen
+                </a>
+              </div>
             </div>
           </div>
 
