@@ -8,15 +8,31 @@
       <li><a href="synchron.html">Synchron Eiskunstlauf</a></li>
     </ul>
   </template>
+  <template id="memberBtn">
+    <ul>
+      <li><a href="mitglieder.html" class="btn-header">Mitgliederbereich</a></li>
+    </ul>
+  </template>
   <template id="contactBtn">
     <ul>
       <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
+    </ul>
+  </template>
+  <template id="memberStandard">
+    <ul>
+      <li><a href="mitglieder.html">Mitgliederbereich</a></li>
     </ul>
   </template>
   <template id="contactStandard">
     <ul>
       <li><a href="index.html#contact">Kontakt</a></li>
     </ul>
+  </template>
+  <template id="mobileCTAButtons">
+    <div class="mobile-cta-buttons">
+      <a href="mitglieder.html">Mitgliederbereich</a>
+      <a href="index.html#contact">Kontakt</a>
+    </div>
   </template>
   <head>
     <meta charset="UTF-8" />
@@ -427,32 +443,38 @@
       .mobile-toggle {
         display: none;
         flex-direction: column;
-        gap: 6px;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        padding: 10px;
+        z-index: 1001;
+        width: 44px;
+        height: 44px;
         cursor: pointer;
-        padding: var(--spacing-xs);
         background: none;
         border: none;
-        z-index: 1001;
       }
 
       .mobile-toggle span {
-        width: 28px;
+        display: block;
+        width: 26px;
         height: 3px;
         background-color: var(--text-dark);
-        border-radius: 2px;
-        transition: var(--transition-base);
+        transition: all 0.3s ease;
+        border-radius: 3px;
       }
 
       .mobile-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(8px, 8px);
+        transform: rotate(45deg) translate(6px, 6px);
       }
 
       .mobile-toggle.active span:nth-child(2) {
         opacity: 0;
+        transform: translateX(-10px);
       }
 
       .mobile-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(8px, -8px);
+        transform: rotate(-45deg) translate(6px, -6px);
       }
 
       /* Mobile Menu */
@@ -464,7 +486,7 @@
         height: 100vh;
         background-color: var(--white);
         box-shadow: var(--shadow-xl);
-        padding: var(--spacing-2xl) var(--spacing-lg);
+        padding: 120px var(--spacing-lg) var(--spacing-lg);
         transition: var(--transition-base);
         z-index: 1000;
         overflow-y: auto;
@@ -476,15 +498,33 @@
 
       .mobile-menu-close {
         position: absolute;
-        top: var(--spacing-md);
-        right: var(--spacing-md);
-        font-size: var(--font-size-xl);
+        top: var(--spacing-lg);
+        right: var(--spacing-lg);
+        font-size: 28px;
         color: var(--text-dark);
+        transition: var(--transition-base);
         cursor: pointer;
-        background: none;
+        background: rgba(0, 0, 0, 0.04);
         border: none;
-        padding: var(--spacing-xs);
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        border-radius: 50%;
         line-height: 1;
+      }
+
+      .mobile-menu-close i {
+        line-height: 1;
+        display: block;
+      }
+
+      .mobile-menu-close:hover {
+        color: var(--white);
+        background-color: var(--primary-color);
+        transform: rotate(90deg);
       }
 
       .mobile-menu ul {
@@ -520,6 +560,34 @@
 
       .mobile-menu .has-submenu.open .submenu {
         display: block;
+      }
+
+      /* Mobile Menu CTA Buttons */
+      .mobile-menu .mobile-cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-xl);
+        padding-top: var(--spacing-lg);
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .mobile-menu .mobile-cta-buttons a {
+        background-color: var(--primary-color);
+        color: var(--white) !important;
+        padding: 14px 24px !important;
+        border-radius: var(--border-radius-md);
+        font-weight: 600;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition-base);
+      }
+
+      .mobile-menu .mobile-cta-buttons a:hover {
+        background-color: var(--primary-hover);
+        box-shadow: var(--shadow-md);
+        padding-left: 24px !important;
+        transform: translateY(-2px);
       }
 
       .overlay {
@@ -986,6 +1054,12 @@
       /* ========================================
          RESPONSIVE DESIGN
          ======================================== */
+      @media (max-width: 1360px) {
+        .logo-text {
+          display: none;
+        }
+      }
+
       @media (max-width: 1135px) {
         nav {
           display: none;
@@ -1634,7 +1708,10 @@
       function insertNavigationElements() {
         const template = document.getElementById("navigation-template1");
         const contactBtn = document.getElementById("contactBtn");
+        const memberBtn = document.getElementById("memberBtn");
         const contactStandard = document.getElementById("contactStandard");
+        const memberStandard = document.getElementById("memberStandard");
+        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
 
         // Desktop Navigation
         const desktopNav = document.getElementById("pageElementsDesktop");
@@ -1642,8 +1719,13 @@
           const clone = template.content.cloneNode(true);
           desktopNav.prepend(clone);
           const ul = desktopNav.querySelector("ul");
-          if (ul && contactBtn) {
-            ul.append(contactBtn.content.cloneNode(true));
+          if (ul) {
+            if (memberBtn) {
+              ul.append(memberBtn.content.cloneNode(true));
+            }
+            if (contactBtn) {
+              ul.append(contactBtn.content.cloneNode(true));
+            }
           }
         }
 
@@ -1651,9 +1733,10 @@
         if (template && mobileMenu) {
           const clone = template.content.cloneNode(true);
           mobileMenu.prepend(clone);
-          const ul = mobileMenu.querySelector("ul");
-          if (ul && contactStandard) {
-            ul.append(contactStandard.content.cloneNode(true));
+          
+          // Add CTA buttons at the end
+          if (mobileCTAButtons) {
+            mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
           }
         }
 
