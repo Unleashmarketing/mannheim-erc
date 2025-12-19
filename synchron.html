@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="de">
+  <template id="navigation-template1">
+    <ul>
+      <li><a href="about.html">Unser Verein</a></li>
+      <li><a href="eiskunstlauf.html">Eiskunstlauf</a></li>
+      <li><a href="eisschnelllauf.html">Eisschnelllauf</a></li>
+      <li><a href="synchron.html">Synchron Eiskunstlauf</a></li>
+    </ul>
+  </template>
+  <template id="memberBtn">
+    <ul>
+      <li><a href="mitglieder.html" class="btn-header">Mitgliederbereich</a></li>
+    </ul>
+  </template>
+  <template id="contactBtn">
+    <ul>
+      <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
+    </ul>
+  </template>
+  <template id="memberStandard">
+    <ul>
+      <li><a href="mitglieder.html">Mitgliederbereich</a></li>
+    </ul>
+  </template>
+  <template id="contactStandard">
+    <ul>
+      <li><a href="index.html#contact">Kontakt</a></li>
+    </ul>
+  </template>
+  <template id="mobileCTAButtons">
+    <div class="mobile-cta-buttons">
+      <a href="mitglieder.html">Mitgliederbereich</a>
+      <a href="index.html#contact">Kontakt</a>
+    </div>
+  </template>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synchron Eiskunstlauf - Mannheimer ERC</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ========================================
+         CSS VARIABLES - Zentrale Steuerung
+         ======================================== */
+      :root {
+        /* Farben */
+        --primary-color: #0062ff;
+        --primary-hover: #0052d9;
+        --secondary-color: #e4e3d3;
+        --dark-bg: #111111;
+        --light-bg: #f7f7f2;
+        --accent-color: #ff3a29;
+        --text-dark: #222222;
+        --text-light: #f7f7f7;
+        --text-muted: #555555;
+        --gray-light: #e0e0e0;
+        --gray-medium: #999999;
+        --white: #ffffff;
+        
+        /* Spacing System */
+        --spacing-xs: 8px;
+        --spacing-sm: 16px;
+        --spacing-md: 24px;
+        --spacing-lg: 40px;
+        --spacing-xl: 60px;
+        --spacing-2xl: 80px;
+        --spacing-3xl: 120px;
+        
+        /* Typography */
+        --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --font-family-accent: "Space Grotesk", monospace;
+        --font-size-xs: 0.875rem;
+        --font-size-sm: 1rem;
+        --font-size-md: 1.125rem;
+        --font-size-lg: 1.5rem;
+        --font-size-xl: 2rem;
+        --font-size-2xl: 2.5rem;
+        --font-size-3xl: 3rem;
+        --font-size-4xl: 4rem;
+        
+        /* Layout */
+        --border-radius-sm: 4px;
+        --border-radius-md: 8px;
+        --border-radius-lg: 12px;
+        --max-width: 1300px;
+        --header-height: 80px;
+        
+        /* Transitions */
+        --transition-fast: 0.15s ease;
+        --transition-base: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        --transition-slow: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        
+        /* Shadows */
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+        --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+      }
+
+      /* ========================================
+         RESET & BASE STYLES
+         ======================================== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: var(--font-family);
+        background-color: var(--light-bg);
+        color: var(--text-dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Accent font for special elements */
+      .logo-text,
+      .section-title,
+      .hero-title,
+      .page-title,
+      .btn {
+        font-family: var(--font-family-accent);
+        letter-spacing: -0.02em;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition-base);
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
+
+      /* ========================================
+         UTILITY CLASSES
+         ======================================== */
+      .container {
+        width: 90%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+      }
+
+      .section {
+        padding: var(--spacing-3xl) 0;
+        position: relative;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+      }
+
+      .section-title {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-md);
+        letter-spacing: -1px;
+        line-height: 1.2;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: var(--spacing-md) auto 0;
+        border-radius: var(--border-radius-sm);
+      }
+
+      .section-subtitle {
+        font-size: var(--font-size-md);
+        color: var(--text-muted);
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* Fade In Animation */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity var(--transition-slow), transform var(--transition-slow);
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ========================================
+         BUTTON SYSTEM
+         ======================================== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-xs);
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: var(--font-size-sm);
+        font-weight: 600;
+        border-radius: var(--border-radius-md);
+        transition: var(--transition-base);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        transition: var(--transition-base);
+      }
+
+      .btn:hover::before {
+        left: 0;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: var(--white);
+        box-shadow: var(--shadow-md);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-hover);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--primary-color);
+        color: var(--white);
+      }
+
+      .btn-header {
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 12px 28px;
+        border-radius: var(--border-radius-md);
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        transition: var(--transition-base);
+        border: 2px solid var(--primary-color);
+      }
+
+      .btn-header:hover {
+        background-color: var(--primary-hover);
+        border-color: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      /* ========================================
+         HEADER & NAVIGATION
+         ======================================== */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        z-index: 1000;
+        transition: var(--transition-base);
+        box-shadow: var(--shadow-sm);
+      }
+
+      header.scrolled {
+        box-shadow: var(--shadow-md);
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+      }
+
+      .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--spacing-sm) 0;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        width: 90%;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        color: var(--text-dark);
+      }
+
+      .logo img {
+        height: 50px;
+        width: auto;
+      }
+
+      .logo-text {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+      }
+
+      /* Desktop Navigation */
+      nav {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+      }
+
+      nav ul {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+      }
+
+      nav a {
+        color: var(--text-dark);
+        font-weight: 500;
+        font-size: var(--font-size-sm);
+        position: relative;
+        padding: var(--spacing-xs) 0;
+      }
+
+      nav a:hover {
+        color: var(--primary-color);
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: var(--transition-base);
+      }
+
+      nav a:hover::after {
+        width: 100%;
+      }
+
+      /* Dropdown Menu */
+      .has-submenu {
+        position: relative;
+      }
+
+      .submenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--white);
+        box-shadow: var(--shadow-lg);
+        border-radius: var(--border-radius-md);
+        padding: var(--spacing-sm);
+        min-width: 220px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: var(--transition-base);
+        margin-top: var(--spacing-sm);
+      }
+
+      .has-submenu:hover .submenu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .submenu li {
+        margin: 0;
+      }
+
+      .submenu a {
+        display: block;
+        padding: var(--spacing-sm);
+        border-radius: var(--border-radius-sm);
+        transition: var(--transition-fast);
+      }
+
+      .submenu a:hover {
+        background-color: var(--light-bg);
+        color: var(--primary-color);
+      }
+
+      .submenu a::after {
+        display: none;
+      }
+
+      /* Mobile Menu Toggle */
+      .mobile-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        padding: 10px;
+        z-index: 1001;
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+        background: none;
+        border: none;
+      }
+
+      .mobile-toggle span {
+        display: block;
+        width: 26px;
+        height: 3px;
+        background-color: var(--text-dark);
+        transition: all 0.3s ease;
+        border-radius: 3px;
+      }
+
+      .mobile-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .mobile-toggle.active span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-10px);
+      }
+
+      .mobile-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      /* Mobile Menu */
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 320px;
+        height: 100vh;
+        background-color: var(--white);
+        box-shadow: var(--shadow-xl);
+        padding: 120px var(--spacing-lg) var(--spacing-lg);
+        transition: var(--transition-base);
+        z-index: 1000;
+        overflow-y: auto;
+      }
+
+      .mobile-menu.active {
+        right: 0;
+      }
+
+      .mobile-menu-close {
+        position: absolute;
+        top: var(--spacing-lg);
+        right: var(--spacing-lg);
+        font-size: 28px;
+        color: var(--text-dark);
+        transition: var(--transition-base);
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.04);
+        border: none;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        border-radius: 50%;
+        line-height: 1;
+      }
+
+      .mobile-menu-close i {
+        line-height: 1;
+        display: block;
+      }
+
+      .mobile-menu-close:hover {
+        color: var(--white);
+        background-color: var(--primary-color);
+        transform: rotate(90deg);
+      }
+
+      .mobile-menu ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-xl);
+      }
+
+      .mobile-menu a {
+        font-size: var(--font-size-md);
+        color: var(--text-dark);
+        display: block;
+        padding: var(--spacing-sm) 0;
+      }
+
+      .mobile-menu .has-submenu > a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mobile-menu .submenu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding-left: var(--spacing-md);
+        margin-top: var(--spacing-sm);
+        display: none;
+      }
+
+      .mobile-menu .has-submenu.open .submenu {
+        display: block;
+      }
+
+      /* Mobile Menu CTA Buttons */
+      .mobile-menu .mobile-cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-xl);
+        padding-top: var(--spacing-lg);
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .mobile-menu .mobile-cta-buttons a {
+        background-color: var(--primary-color);
+        color: var(--white) !important;
+        padding: 14px 24px !important;
+        border-radius: var(--border-radius-md);
+        font-weight: 600;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition-base);
+      }
+
+      .mobile-menu .mobile-cta-buttons a:hover {
+        background-color: var(--primary-hover);
+        box-shadow: var(--shadow-md);
+        padding-left: 24px !important;
+        transform: translateY(-2px);
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition-base);
+        z-index: 999;
+      }
+
+      .overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* ========================================
+         PAGE HERO
+         ======================================== */
+      .page-hero {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #004dbf 100%);
+        padding: 140px 0 var(--spacing-2xl);
+        color: var(--white);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page-hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+          radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+      }
+
+      .page-hero .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .page-title {
+        font-size: var(--font-size-4xl);
+        font-weight: 900;
+        margin-bottom: var(--spacing-md);
+        line-height: 1.1;
+      }
+
+      .page-subtitle {
+        font-size: var(--font-size-lg);
+        opacity: 0.95;
+        max-width: 700px;
+        margin: 0 auto;
+        font-weight: 300;
+      }
+
+      /* ========================================
+         INFO CARDS
+         ======================================== */
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-2xl);
+      }
+
+      .info-card {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow-md);
+        transition: var(--transition-base);
+        border: 2px solid transparent;
+      }
+
+      .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary-color);
+      }
+
+      .info-card-header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+      }
+
+      .info-card-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--primary-color), #0052d9);
+        border-radius: var(--border-radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: var(--font-size-lg);
+      }
+
+      .info-card-title {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        color: var(--text-dark);
+        font-family: var(--font-family-accent);
+      }
+
+      .info-card-content {
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      .info-card-content strong {
+        color: var(--text-dark);
+        font-weight: 600;
+      }
+
+      /* ========================================
+         ALERT BOX
+         ======================================== */
+      .alert-box {
+        background-color: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: var(--spacing-md);
+        border-radius: var(--border-radius-md);
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .alert-box.alert-danger {
+        background-color: #f8d7da;
+        border-left-color: var(--accent-color);
+      }
+
+      .alert-box.alert-info {
+        background-color: #d1ecf1;
+        border-left-color: var(--primary-color);
+      }
+
+      .alert-box p {
+        margin: 0;
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      .alert-box strong {
+        font-weight: 700;
+      }
+
+      /* ========================================
+         COURSE SECTION
+         ======================================== */
+      .course-list {
+        display: grid;
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-lg);
+      }
+
+      .course-item {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-lg);
+        box-shadow: var(--shadow-sm);
+        border-left: 4px solid var(--primary-color);
+        transition: var(--transition-base);
+      }
+
+      .course-item:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateX(5px);
+      }
+
+      .course-item.ausgebucht {
+        opacity: 0.6;
+        border-left-color: var(--accent-color);
+      }
+
+      .course-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--spacing-sm);
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+      }
+
+      .course-name {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        color: var(--text-dark);
+        font-family: var(--font-family-accent);
+      }
+
+      .course-dates {
+        font-size: var(--font-size-sm);
+        color: var(--text-muted);
+      }
+
+      .course-status {
+        display: inline-block;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: var(--font-size-xs);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .course-status.available {
+        background-color: #d4edda;
+        color: #155724;
+      }
+
+      .course-status.ausgebucht {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
+
+      /* ========================================
+         CONTENT SECTIONS
+         ======================================== */
+      .content-section {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-xl);
+        margin-bottom: var(--spacing-lg);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .content-section h3 {
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-md);
+        font-family: var(--font-family-accent);
+      }
+
+      .content-section p {
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .content-section ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .content-section ul li {
+        padding-left: var(--spacing-lg);
+        position: relative;
+        margin-bottom: var(--spacing-sm);
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      .content-section ul li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--primary-color);
+        font-weight: 700;
+      }
+
+      /* ========================================
+         TRAINING TIMES TABLE
+         ======================================== */
+      .training-times {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-xl);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .training-times h3 {
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+        margin-bottom: var(--spacing-lg);
+        color: var(--text-dark);
+        font-family: var(--font-family-accent);
+      }
+
+      .time-row {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md) 0;
+        border-bottom: 1px solid var(--gray-light);
+      }
+
+      .time-row:last-child {
+        border-bottom: none;
+      }
+
+      .time-label {
+        font-weight: 700;
+        color: var(--text-dark);
+      }
+
+      .time-value {
+        color: var(--text-muted);
+      }
+
+      /* ========================================
+         DOCUMENTS SECTION
+         ======================================== */
+      .documents-list {
+        display: grid;
+        gap: var(--spacing-md);
+      }
+
+      .document-link {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+        background: var(--white);
+        border-radius: var(--border-radius-md);
+        border: 2px solid var(--gray-light);
+        transition: var(--transition-base);
+      }
+
+      .document-link:hover {
+        border-color: var(--primary-color);
+        transform: translateX(5px);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .document-icon {
+        font-size: var(--font-size-xl);
+        color: var(--accent-color);
+      }
+
+      .document-info h4 {
+        font-size: var(--font-size-md);
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 4px;
+      }
+
+      .document-info p {
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+        margin: 0;
+      }
+
+      /* ========================================
+         FOOTER
+         ======================================== */
+      footer {
+        background-color: var(--dark-bg);
+        color: var(--text-light);
+        padding: var(--spacing-2xl) 0 var(--spacing-lg);
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-xl);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .footer-logo img {
+        height: 60px;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .footer-about p {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .footer-social {
+        display: flex;
+        gap: var(--spacing-sm);
+      }
+
+      .footer-social a {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition-base);
+      }
+
+      .footer-social a:hover {
+        background-color: var(--primary-color);
+        transform: translateY(-3px);
+      }
+
+      .footer-title {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        font-family: var(--font-family-accent);
+      }
+
+      .footer-links ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        transition: var(--transition-base);
+      }
+
+      .footer-links a:hover {
+        color: var(--white);
+        padding-left: 8px;
+      }
+
+      .footer-contact ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+
+      .footer-contact li {
+        display: flex;
+        gap: var(--spacing-sm);
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .contact-icon {
+        color: var(--primary-color);
+        min-width: 20px;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: var(--spacing-lg);
+        margin-top: var(--spacing-xl);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .footer-bottom a {
+        color: rgba(255, 255, 255, 0.5);
+        margin-left: var(--spacing-md);
+      }
+
+      .footer-bottom a:hover {
+        color: var(--white);
+      }
+
+      /* ========================================
+         RESPONSIVE DESIGN
+         ======================================== */
+      @media (max-width: 1360px) {
+        .logo-text {
+          display: none;
+        }
+      }
+
+      @media (max-width: 1135px) {
+        nav {
+          display: none;
+        }
+
+        .mobile-toggle {
+          display: flex;
+        }
+
+        .page-title {
+          font-size: var(--font-size-2xl);
+        }
+
+        .section-title {
+          font-size: var(--font-size-xl);
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .time-row {
+          grid-template-columns: 1fr;
+          gap: var(--spacing-xs);
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .course-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .mobile-menu {
+          width: 100%;
+          right: -100%;
+        }
+
+        .page-hero {
+          padding: 100px 0 var(--spacing-lg);
+        }
+
+        .section {
+          padding: var(--spacing-xl) 0;
+        }
+
+        .content-section {
+          padding: var(--spacing-md);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <a href="index.html" class="logo">
+          <img
+            src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
+            alt="Mannheimer ERC Logo"
+          />
+          <span class="logo-text">Mannheimer ERC</span>
+        </a>
+
+        <nav id="pageElementsDesktop"></nav>
+
+        <button
+          class="mobile-toggle"
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+      <button class="mobile-menu-close" aria-label="Menü schließen">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Page Hero -->
+      <section class="page-hero">
+        <div class="container">
+          <h1 class="page-title">Synchron Eiskunstlauf</h1>
+          <p class="page-subtitle">
+            Teamarbeit und Präzision auf dem Eis - Gemeinsam zum Erfolg
+          </p>
+        </div>
+      </section>
+
+      <!-- Info Cards - Overview -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Synchron Eiskunstlauf beim MERC</h2>
+            <p class="section-subtitle">
+              Teamgeist und Choreografie auf höchstem Niveau
+            </p>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-card fade-in">
+              <div class="info-card-header">
+                <div class="info-card-icon">
+                  <i class="fas fa-child"></i>
+                </div>
+                <h3 class="info-card-title">Alter</h3>
+              </div>
+              <div class="info-card-content">
+                <p>
+                  Synchron Eiskunstlauf kann ab einem Alter von <strong>8 Jahren</strong> begonnen werden.
+                </p>
+                <p>
+                  Grundkenntnisse im Eiskunstlauf sind Voraussetzung. Teamfähigkeit und 
+                  Rhythmusgefühl sind wichtige Eigenschaften.
+                </p>
+              </div>
+            </div>
+
+            <div class="info-card fade-in">
+              <div class="info-card-header">
+                <div class="info-card-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="info-card-title">Laufzeiten</h3>
+              </div>
+              <div class="info-card-content">
+                <p>
+                  Training findet jeden <strong>Montag von 17:00 – 18:30 Uhr</strong> 
+                  und <strong>Freitag von 16:00 – 17:30 Uhr</strong> in der Eishalle Mannheim statt.
+                </p>
+                <p>
+                  Der Einlass beginnt bereits um <strong>16:45 Uhr</strong> bzw. <strong>15:45 Uhr</strong>.
+                </p>
+              </div>
+            </div>
+
+            <div class="info-card fade-in">
+              <div class="info-card-header">
+                <div class="info-card-icon">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="info-card-title">Ausrüstung</h3>
+              </div>
+              <div class="info-card-content">
+                <p>
+                  Zur Ausrüstung gehören <strong>Eiskunstlauf-Schlittschuhe, ein Trainingsoutfit 
+                  sowie für Wettkämpfe einheitliche Teamkostüme</strong>.
+                </p>
+                <p>
+                  Die Teamkostüme werden vom Verein bereitgestellt oder gemeinsam beschafft.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Schnupperkurs Section -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Schnuppertraining Synchron Eiskunstlauf</h2>
+            <p class="section-subtitle">
+              Der perfekte Einstieg für Teambegeisterte ab 8 Jahren
+            </p>
+          </div>
+
+          <div class="alert-box alert-danger fade-in">
+            <p>
+              <strong>Wichtig:</strong> Synchron Eiskunstlauf erfordert Grundkenntnisse im Eiskunstlauf. 
+              Wir suchen teamfähige Läufer 
+              im Alter von 3 bis 7 Jahren, die die Sportart <strong>Eiskunstlaufen</strong> 
+              ausprobieren möchten ohne Vereinsmitglied zu sein.
+            </p>
+          </div>
+
+          <div class="content-section fade-in">
+            <p>
+              Die Gebühren entnehmen Sie bitte der <strong>aktuellen Gebührenordnung</strong> 
+              des Mannheimer ERC.
+            </p>
+            <p>
+              Wenn Ihr Kind <strong>geeignet</strong> ist für die Sportart Eiskunstlaufen, 
+              dann können Sie nach dem Schnupperkurs und nach <strong>Rücksprache</strong> 
+              mit den verantwortlichen Trainern entscheiden und/oder Ihr Kind, ob es als 
+              Vereinsmitglied am Training und an Wettbewerben teilnehmen möchte.
+            </p>
+            <p>
+              Für die Schnupperkursteilnehmer findet <strong>zwei mal pro Woche</strong> 
+              das Training in der Helmut-Klees-Halle des Eissportzentrums Herzogenried statt.
+            </p>
+            <p>
+              Unter fachlicher Betreuung von Übungsleitern und lizenzierten Trainern lernen 
+              die Kinder die ersten Schritte auf dem Eis und zählen schon bald, wie lange 
+              sie im "Storch" oder im "Flieger" stehen können. Und so geht es Schritt für 
+              Schritt weiter bis vielleicht zu der ersten Pirouette.
+            </p>
+          </div>
+
+          <div class="alert-box alert-info fade-in">
+            <p>
+              <strong>Bewerbung:</strong> Sollte Ihre Kinder Interesse am Eiskunstlaufen haben, 
+              dann können Sie sich für Ihre Kinder bewerben. Das Formular senden Sie bitte 
+              ausgefüllt an folgende E-Mail Adresse: 
+              <a href="/cdn-cgi/l/email-protection#a9dacac1c7dcd9d9ccdbc2dcdbdae9c4ccdbca84c6c7c5c0c7cc87cdcc" style="color: var(--primary-color); font-weight: 600;">
+                <span class="__cf_email__" data-cfemail="9be8f8f3f5eeebebfee9f0eee9e8dbf6fee9f8b6f4f5f7f2f5feb5fffe">[email&#160;protected]</span>
+              </a>
+            </p>
+            <p style="margin-top: var(--spacing-md); margin-bottom: 0;">
+              <strong>Hinweis:</strong> Bitte beachten Sie, dass wir keine E-Mails beantworten können. 
+              Sie bekommen eine Nachricht, wenn Ihr Kind für den Schnupperkurs angenommen wurde.
+            </p>
+          </div>
+
+          <!-- Course Dates -->
+          <div class="content-section fade-in" style="margin-top: var(--spacing-2xl);">
+            <h3>Die Termine für das Synchron-Schnuppertraining der Saison 2025/2026</h3>
+            <p style="color: var(--primary-color); font-weight: 600; margin-bottom: var(--spacing-lg);">
+              Die Trainingszeiten des Schnuppertrainings sind immer montags und freitags während 
+              des regulären Synchron-Trainings.
+            </p>
+            <p style="font-style: italic; margin-bottom: var(--spacing-lg);">
+              Bitte beachten Sie auch immer die aktuellen Belegungspläne.
+            </p>
+
+            <div class="course-list">
+              <div class="course-item ausgebucht">
+                <div class="course-header">
+                  <div>
+                    <div class="course-name">Kurs 1</div>
+                    <div class="course-dates">01.10.2025 - 25.10.2025</div>
+                  </div>
+                  <span class="course-status ausgebucht">Ausgebucht</span>
+                </div>
+              </div>
+
+              <div class="course-item ausgebucht">
+                <div class="course-header">
+                  <div>
+                    <div class="course-name">Kurs 2</div>
+                    <div class="course-dates">29.10.2025 - 22.11.2025</div>
+                  </div>
+                  <span class="course-status ausgebucht">Ausgebucht</span>
+                </div>
+              </div>
+
+              <div class="course-item ausgebucht">
+                <div class="course-header">
+                  <div>
+                    <div class="course-name">Kurs 3</div>
+                    <div class="course-dates">26.11.2025 - 20.12.2025</div>
+                  </div>
+                  <span class="course-status ausgebucht">Ausgebucht</span>
+                </div>
+              </div>
+
+              <div class="course-item">
+                <div class="course-header">
+                  <div>
+                    <div class="course-name">Kurs 4</div>
+                    <div class="course-dates">07.01.2026 - 31.01.2026</div>
+                  </div>
+                  <span class="course-status available">Verfügbar</span>
+                </div>
+              </div>
+
+              <div class="course-item">
+                <div class="course-header">
+                  <div>
+                    <div class="course-name">Kurs 5</div>
+                    <div class="course-dates">04.02.2026 - 28.02.2026</div>
+                  </div>
+                  <span class="course-status available">Verfügbar</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Antragsformular Link -->
+          <div style="text-align: center; margin-top: var(--spacing-2xl);" class="fade-in">
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-md); font-family: var(--font-family-accent);">
+              Antragsformular
+            </h3>
+            <p style="color: var(--text-muted); margin-bottom: var(--spacing-lg);">
+              Das Antragsformular finden Sie hier:
+            </p>
+            <a href="#" class="btn btn-primary">
+              <i class="fas fa-file-pdf"></i>
+              Synchron-Schnuppertraining Antragsformular herunterladen
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mitgliedschaft Section -->
+      <section class="section" style="background-color: var(--white);">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Wie werde ich Mitglied?</h2>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-card fade-in">
+              <div class="info-card-header">
+                <div class="info-card-icon">
+                  <i class="fas fa-file-alt"></i>
+                </div>
+                <h3 class="info-card-title">Aufnahmeanträge</h3>
+              </div>
+              <div class="info-card-content">
+                <p>
+                  Aufnahmeanträge sind während der Geschäftszeiten in der Geschäftsstelle 
+                  des MERC erhältlich.
+                </p>
+                <p><strong>Eine einmalige Aufnahmegebühr wird fällig.</strong></p>
+              </div>
+            </div>
+
+            <div class="info-card fade-in">
+              <div class="info-card-header">
+                <div class="info-card-icon">
+                  <i class="fas fa-euro-sign"></i>
+                </div>
+                <h3 class="info-card-title">Mitgliedsbeitrag</h3>
+              </div>
+              <div class="info-card-content">
+                <p>
+                  Auch ist bei Eintritt in den Verein die Mitgliedsgebühr für das erste Jahr 
+                  sofort fällig und per EC-Karte zu bezahlen.
+                </p>
+                <p>
+                  <strong>Die Höhe der Mitgliedsbeiträge finden Sie in der aktuellen Gebührenordnung.</strong>
+                </p>
+              </div>
+            </div>
+
+            <div class="info-card fade-in">
+              <div class="info-card-header">
+                <div class="info-card-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h3 class="info-card-title">Mitgliedsarten</h3>
+              </div>
+              <div class="info-card-content">
+                <p>
+                  <strong>Bei Aufnahme eines minderjährigen Kindes</strong> muss ein 
+                  Erziehungsberechtigter gleichzeitig Mitglied werden (passives Mitglied).
+                </p>
+                <p>
+                  Die passive und Förder-Mitgliedschaft dient der Förderung des Eiskunstlaufens 
+                  und Eisschnelllaufens im Mannheimer ERC.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-section fade-in">
+            <h3>Aktive Mitgliedschaft</h3>
+            <p>
+              Die aktive Mitgliedschaft erlaubt gem. den aktuellen Abteilungsordnungen und/oder 
+              sonstigen Regelungen die Nutzung aller Trainings-Angebote des Vereins während der 
+              Hauptsaison, Stimmrecht bei Versammlungen (für volljährige Mitglieder), sowie alle 
+              übrigen Vereinsangebote.
+            </p>
+            <p style="margin-top: var(--spacing-md);">
+              Sie umfasst das Stimmrecht bei Versammlungen (für volljährige Mitglieder), sowie 
+              alle übrigen Vereinsangeboten, jedoch nicht die Nutzung von Trainingsangeboten 
+              auf dem Eis oder außerhalb.
+            </p>
+          </div>
+
+          <div class="alert-box alert-info fade-in">
+            <p>
+              <strong>Zahlung der Beiträge:</strong> Die Mitgliedsbeiträge sind gem. aktueller 
+              Gebührenordnung jeweils zu Beginn eines neuen Jahres bis spätestens 31.03. zu leisten.
+            </p>
+          </div>
+
+          <div class="content-section fade-in" style="margin-top: var(--spacing-lg);">
+            <h3>Bankverbindung & Formulare</h3>
+            <p style="margin-bottom: var(--spacing-md);">
+              Ein Lastschrift-Formular erhalten Sie in unserer Geschäftsstelle im 
+              Eissportzentrum Herzogenried oder hier:
+            </p>
+            <p style="color: var(--text-muted); margin-bottom: var(--spacing-sm);">
+              <strong>Comerzbank Mannheim</strong>
+            </p>
+            <p style="color: var(--text-muted); margin-bottom: var(--spacing-sm);">
+              BIC: COBADEFFXXX
+            </p>
+            <p style="color: var(--text-muted); margin-bottom: var(--spacing-sm);">
+              Kunstlauf IBAN: DE51 6704 0031 0341 0958 00
+            </p>
+            <p style="color: var(--text-muted);">
+              Schnelllauf IBAN: DE24 6704 0031 0341 0958 01
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Erwachsenenkunstlauf Section -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Erwachsenenkunstlauf</h2>
+            <p class="section-subtitle">
+              Für eisbegeisterte Erwachsene - Gleiten Sie über das Eis!
+            </p>
+          </div>
+
+          <div class="content-section fade-in">
+            <p>
+              Der MERC bietet eislaufbegeisterten Erwachsenen in dieser Saison die Gelegenheit 
+              über das Eis zu gleiten. Im so genannten Erwachsenenlauf stehen sogar Trainerinnen 
+              und Trainer für Privatstunden bereit. Ob Sie gerne Sprünge und Pirouetten lernen 
+              möchten oder auf dem Eis das Tanzbein schwingen, schauen Sie doch einfach mal vorbei.
+            </p>
+          </div>
+
+          <div class="training-times fade-in">
+            <h3>Trainingszeiten</h3>
+            <div class="time-row">
+              <div class="time-label">Mittwoch:</div>
+              <div class="time-value">20.30 Uhr bis 22.00 Uhr</div>
+            </div>
+            <div class="time-row">
+              <div class="time-label">Sonntag:</div>
+              <div class="time-value">18.30 Uhr bis 20.00 Uhr</div>
+            </div>
+          </div>
+
+          <div class="alert-box fade-in" style="margin-top: var(--spacing-lg);">
+            <p>
+              <strong>Wichtig:</strong> Bitte beachten Sie auch die Aushänge im Eislaufzentrum!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trainingsinfos Section -->
+      <section class="section" style="background-color: var(--white);">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Termine/Infos/Trainingspläne</h2>
+            <p class="section-subtitle">Saison 2025/2026</p>
+          </div>
+
+          <div class="content-section fade-in">
+            <h3>Regelung des Trainingsbetriebes der Kunstlaufabteilung des MERC</h3>
+            <p style="color: var(--accent-color); font-weight: 600; margin-bottom: var(--spacing-lg);">
+              die aktuellsten Trainingspläne finden Sie hier:
+            </p>
+          </div>
+
+          <div class="documents-list fade-in">
+            <a href="#" class="document-link">
+              <div class="document-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="document-info">
+                <h4>DEU-Lizenzgebühr</h4>
+                <p>Informationen zur Lizenzgebühr der Deutschen Eislauf-Union</p>
+              </div>
+            </a>
+
+            <a href="#" class="document-link">
+              <div class="document-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="document-info">
+                <h4>DEU-Sportpass</h4>
+                <p>Antragsformular für den DEU-Sportpass</p>
+              </div>
+            </a>
+
+            <a href="#" class="document-link">
+              <div class="document-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="document-info">
+                <h4>Wettbewerbsstruktur</h4>
+                <p>Übersicht über die Wettbewerbsstruktur im Eiskunstlauf</p>
+              </div>
+            </a>
+
+            <a href="#" class="document-link">
+              <div class="document-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="document-info">
+                <h4>Wettbewerbsinhalte</h4>
+                <p>Detaillierte Informationen zu Wettbewerbsinhalten</p>
+              </div>
+            </a>
+
+            <a href="#" class="document-link">
+              <div class="document-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="document-info">
+                <h4>Durchführungsbestimmungen Novice</h4>
+                <p>Bestimmungen für die Novice-Klasse</p>
+              </div>
+            </a>
+
+            <a href="#" class="document-link">
+              <div class="document-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="document-info">
+                <h4>Weitere Infos</h4>
+                <p>Zusätzliche wichtige Informationen</p>
+              </div>
+            </a>
+          </div>
+
+          <div style="text-align: center; margin-top: var(--spacing-2xl);" class="fade-in">
+            <a href="index.html#contact" class="btn btn-primary">
+              <i class="fas fa-envelope"></i>
+              Haben Sie Fragen? Kontaktieren Sie uns
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-about">
+            <div class="footer-logo">
+              <img
+                src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
+                alt="Mannheimer ERC Logo"
+              />
+            </div>
+            <p>
+              Der Mannheimer ERC ist seit Jahrzehnten ein Begriff im Eissport
+              und bietet optimale Trainingsbedingungen für Sportlerinnen und
+              Sportler jeden Alters.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-links" id="footerLinksWithMenuElements">
+            <h3 class="footer-title">Schnellzugriff</h3>
+          </div>
+
+          <div class="footer-contact">
+            <h3 class="footer-title">Kontakt</h3>
+            <ul>
+              <li>
+                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                <span>Käthe-Kollwitz-Straße 23<br />D-68169 Mannheim</span>
+              </li>
+              <li>
+                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e78e898188a78a829584ca88898b8e8982c98382">[email&#160;protected]</a></span>
+              </li>
+              <li>
+                <span class="contact-icon"><i class="fas fa-clock"></i></span>
+                <span>Di: 16:00 - 18:00 Uhr<br />Sa: 10:00 - 12:00 Uhr</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Mannheimer ERC. Alle Rechte vorbehalten.</p>
+          <p>
+            <a href="#">Impressum</a>
+            <a href="#">Datenschutz</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+      const mobileToggle = document.querySelector(".mobile-toggle");
+      const mobileMenu = document.querySelector(".mobile-menu");
+      const overlay = document.querySelector(".overlay");
+      const mobileClose = document.querySelector(".mobile-menu-close");
+      const mobileLinks = document.querySelectorAll(".mobile-menu a");
+
+      function openMenu() {
+        mobileMenu.classList.add("active");
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+        mobileToggle.classList.add("active");
+        mobileToggle.setAttribute("aria-expanded", "true");
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+        mobileToggle.classList.remove("active");
+        mobileToggle.setAttribute("aria-expanded", "false");
+      }
+
+      mobileToggle.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.contains("active");
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      mobileClose.addEventListener("click", closeMenu);
+      overlay.addEventListener("click", closeMenu);
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          if (link.getAttribute("href").startsWith("#")) {
+            closeMenu();
+          }
+        });
+      });
+
+      // Close menu on Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+          closeMenu();
+        }
+      });
+
+      function insertNavigationElements() {
+        const template = document.getElementById("navigation-template1");
+        const contactBtn = document.getElementById("contactBtn");
+        const memberBtn = document.getElementById("memberBtn");
+        const contactStandard = document.getElementById("contactStandard");
+        const memberStandard = document.getElementById("memberStandard");
+        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
+
+        // Desktop Navigation
+        const desktopNav = document.getElementById("pageElementsDesktop");
+        if (template && desktopNav) {
+          const clone = template.content.cloneNode(true);
+          desktopNav.prepend(clone);
+          const ul = desktopNav.querySelector("ul");
+          if (ul) {
+            if (memberBtn) {
+              ul.append(memberBtn.content.cloneNode(true));
+            }
+            if (contactBtn) {
+              ul.append(contactBtn.content.cloneNode(true));
+            }
+          }
+        }
+
+        // Mobile Navigation
+        if (template && mobileMenu) {
+          const clone = template.content.cloneNode(true);
+          mobileMenu.prepend(clone);
+          
+          // Add CTA buttons at the end
+          if (mobileCTAButtons) {
+            mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
+          }
+        }
+
+        // Footer Navigation
+        const footerLinks = document.getElementById("footerLinksWithMenuElements");
+        if (template && footerLinks) {
+          const clone = template.content.cloneNode(true);
+          footerLinks.append(clone);
+          const ul = footerLinks.querySelector("ul");
+          if (ul && contactStandard) {
+            ul.append(contactStandard.content.cloneNode(true));
+          }
+        }
+      }
+
+      function setupMobileSubmenus() {
+        const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
+        submenuParents.forEach((toggle) => {
+          toggle.addEventListener("click", function (e) {
+            e.preventDefault();
+            const li = this.closest(".has-submenu");
+            const isOpen = li.classList.contains("open");
+            
+            // Close other open submenus
+            mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
+              if (item !== li) item.classList.remove("open");
+            });
+            
+            li.classList.toggle("open");
+            this.setAttribute("aria-expanded", String(!isOpen));
+          });
+        });
+      }
+
+      const header = document.querySelector("header");
+      let lastScroll = 0;
+
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+        
+        lastScroll = currentScroll;
+      });
+
+      const fadeElements = document.querySelectorAll(".fade-in");
+      
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      fadeElements.forEach((element) => {
+        observer.observe(element);
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize navigation
+        insertNavigationElements();
+        setupMobileSubmenus();
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href !== "#" && href !== "") {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              const headerHeight = header.offsetHeight;
+              const targetPosition = target.offsetTop - headerHeight;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+              });
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
