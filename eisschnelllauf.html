@@ -10,7 +10,9 @@
   </template>
   <template id="memberBtn">
     <ul>
-      <li><a href="mitglieder.html" class="btn-header">Mitgliederbereich</a></li>
+      <li>
+        <a href="mitglieder.html" class="btn-header">Mitgliederbereich</a>
+      </li>
     </ul>
   </template>
   <template id="contactBtn">
@@ -50,8 +52,8 @@
     />
     <style>
       /* ========================================
-         CSS VARIABLES - Zentrale Steuerung
-         ======================================== */
+           CSS VARIABLES - Zentrale Steuerung
+           ======================================== */
       :root {
         /* Farben */
         --primary-color: #0062ff;
@@ -66,7 +68,7 @@
         --gray-light: #e0e0e0;
         --gray-medium: #999999;
         --white: #ffffff;
-        
+
         /* Spacing System */
         --spacing-xs: 8px;
         --spacing-sm: 16px;
@@ -75,9 +77,10 @@
         --spacing-xl: 60px;
         --spacing-2xl: 80px;
         --spacing-3xl: 120px;
-        
+
         /* Typography */
-        --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
         --font-family-accent: "Space Grotesk", monospace;
         --font-size-xs: 0.875rem;
         --font-size-sm: 1rem;
@@ -87,19 +90,19 @@
         --font-size-2xl: 2.5rem;
         --font-size-3xl: 3rem;
         --font-size-4xl: 4rem;
-        
+
         /* Layout */
         --border-radius-sm: 4px;
         --border-radius-md: 8px;
         --border-radius-lg: 12px;
         --max-width: 1300px;
         --header-height: 80px;
-        
+
         /* Transitions */
         --transition-fast: 0.15s ease;
         --transition-base: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         --transition-slow: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        
+
         /* Shadows */
         --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
         --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -108,8 +111,8 @@
       }
 
       /* ========================================
-         RESET & BASE STYLES
-         ======================================== */
+           RESET & BASE STYLES
+           ======================================== */
       * {
         margin: 0;
         padding: 0;
@@ -166,8 +169,8 @@
       }
 
       /* ========================================
-         UTILITY CLASSES
-         ======================================== */
+           UTILITY CLASSES
+           ======================================== */
       .container {
         width: 90%;
         max-width: var(--max-width);
@@ -216,7 +219,8 @@
       .fade-in {
         opacity: 0;
         transform: translateY(30px);
-        transition: opacity var(--transition-slow), transform var(--transition-slow);
+        transition: opacity var(--transition-slow),
+          transform var(--transition-slow);
       }
 
       .fade-in.visible {
@@ -225,8 +229,8 @@
       }
 
       /* ========================================
-         BUTTON SYSTEM
-         ======================================== */
+           BUTTON SYSTEM
+           ======================================== */
       .btn {
         display: inline-flex;
         align-items: center;
@@ -304,8 +308,8 @@
       }
 
       /* ========================================
-         HEADER & NAVIGATION
-         ======================================== */
+           HEADER & NAVIGATION
+           ======================================== */
       header {
         position: fixed;
         top: 0;
@@ -541,10 +545,14 @@
       }
 
       /* ========================================
-         PAGE HERO
-         ======================================== */
+           PAGE HERO
+           ======================================== */
       .page-hero {
-        background: linear-gradient(135deg, var(--primary-color) 0%, #004dbf 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #004dbf 100%
+        );
         padding: 140px 0 var(--spacing-2xl);
         color: var(--white);
         text-align: center;
@@ -559,9 +567,16 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: 
-          radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-          radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        background-image: radial-gradient(
+            circle at 20% 50%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          );
         pointer-events: none;
       }
 
@@ -586,8 +601,8 @@
       }
 
       /* ========================================
-         INFO CARDS
-         ======================================== */
+           INFO CARDS
+           ======================================== */
       .info-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -647,8 +662,8 @@
       }
 
       /* ========================================
-         CONTENT SECTIONS
-         ======================================== */
+           CONTENT SECTIONS
+           ======================================== */
       .content-section {
         background: var(--white);
         border-radius: var(--border-radius-lg);
@@ -693,8 +708,8 @@
       }
 
       /* ========================================
-         SCHNUPPERTRAINING BOXES
-         ======================================== */
+           SCHNUPPERTRAINING BOXES
+           ======================================== */
       .schnupper-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -737,8 +752,8 @@
       }
 
       /* ========================================
-         FOOTER
-         ======================================== */
+           FOOTER
+           ======================================== */
       footer {
         background-color: var(--dark-bg);
         color: var(--text-light);
@@ -846,8 +861,8 @@
       }
 
       /* ========================================
-         RESPONSIVE DESIGN
-         ======================================== */
+           RESPONSIVE DESIGN
+           ======================================== */
       @media (max-width: 1360px) {
         .logo-text {
           display: none;
@@ -903,6 +918,246 @@
           grid-template-columns: 1fr;
         }
       }
+
+      /* ========================================
+        CALENDAR
+        ======================================== */
+      #calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: var(--spacing-xs);
+        margin-bottom: var(--spacing-md);
+      }
+
+      #day-labels {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+        margin-bottom: var(--spacing-md);
+        font-weight: 600;
+      }
+
+      #day-labels span {
+        padding: var(--spacing-xs) 0;
+      }
+
+      #calendar-section h2 {
+        text-align: center;
+      }
+
+      #calendar-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: var(--spacing-xs);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      #current-month-year {
+        margin: 0 var(--spacing-lg);
+        text-align: center;
+        font-size: var(--font-size-lg);
+      }
+
+      #calendar-header button {
+        padding: var(--spacing-xs) var(--spacing-xs);
+        cursor: pointer;
+        border: none;
+        font-weight: bold;
+      }
+
+      #calendar-toggle-btn {
+        text-align: center;
+        margin-bottom: var(--spacing-md);
+        cursor: pointer;
+      }
+
+      #calendar-toggle-icon {
+        display: inline-block;
+        margin-left: var(--spacing-xs);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      #calendar-toggle-btn.active #calendar-toggle-icon {
+        transform: rotate(-90deg);
+      }
+
+      .day,
+      .empty-day {
+        padding: var(--spacing-xs);
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .event-day {
+        background-color: rgb(211, 223, 148);
+        color: rgba(0, 0, 0, 1);
+        border-radius: var(--spacing-xs);
+        position: relative;
+      }
+
+      .tooltip {
+        display: none;
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #3f7738;
+        color: white;
+        padding: var(--spacing-xs);
+        border-radius: var(--spacing-xs);
+        z-index: 10;
+        width: 80%;
+      }
+
+      .event-day:hover .tooltip {
+        display: block;
+      }
+
+      .calendar-collapsed {
+        display: none;
+      }
+
+      /* ========================================
+        GESCHICHTE
+        ======================================== */
+      #geschichte-section h2 {
+        text-align: center;
+      }
+
+      #geschichte-toggle-icon {
+        display: inline-block;
+        margin-left: var(--spacing-xs);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      #geschichte-toggle-btn.active #geschichte-toggle-icon {
+        transform: rotate(-90deg);
+      }
+
+      .geschichte-collapsed {
+        display: none;
+      }
+
+      /* ========================================
+        NEWS
+        ======================================== */
+      #news-section h2 {
+        text-align: center;
+      }
+
+      #news-toggle-icon {
+        display: inline-block;
+        margin-left: var(--spacing-xs);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      #news-toggle-btn.active #news-toggle-icon {
+        transform: rotate(-90deg);
+      }
+
+      .news-collapsed {
+        display: none;
+      }
+
+      .news-filters {
+        background: #f4f4f4;
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        border-radius: var(--spacing-xs);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        align-items: center;
+      }
+
+      .news-filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+      }
+
+      #news-search {
+        padding: var(--spacing-xs);
+        border: 1px solid #ccc;
+        border-radius: var(--border-radius-sm);
+        width: 250px;
+      }
+
+      #news-reset-filters {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        background-color: var(--primary-color, #243b99);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius-sm);
+        cursor: pointer;
+      }
+
+      #news-reset-filters:hover {
+        opacity: 0.9;
+      }
+
+      .range-slider-container {
+        position: relative;
+        width: 300px;
+        height: var(--spacing-lg);
+        margin-top: var(--spacing-xs);
+      }
+
+      .range-slider-container input[type="range"] {
+        position: absolute;
+        width: 100%;
+        pointer-events: none; /* This lets clicks pass through the bar */
+        appearance: none;
+        -webkit-appearance: none;
+        background: none;
+        margin: 0;
+        z-index: 2;
+      }
+
+      /* The Grabber (Thumb) - Chrome/Safari/Edge */
+      .range-slider-container input[type="range"]::-webkit-slider-thumb {
+        appearance: none;
+        -webkit-appearance: none;
+        pointer-events: auto; /* This makes the handle clickable! */
+        width: var(--spacing-md);
+        height: var(--spacing-md);
+        background: #243b99;
+        border-radius: 50%;
+        cursor: grab;
+        border: 2px solid #fff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 3;
+      }
+
+      /* The Grabber (Thumb) - Firefox */
+      .range-slider-container input[type="range"]::-moz-range-thumb {
+        pointer-events: auto;
+        width: var(--spacing-sm);
+        height: var(--spacing-sm);
+        background: #243b99;
+        border-radius: 50%;
+        cursor: grab;
+        border: 2px solid #fff;
+        z-index: 3;
+      }
+
+      /* The Background Track */
+      .range-slider-container::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: var(--spacing-xs);
+        background: #ddd;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: var(--border-radius-sm);
+        z-index: 1;
+      }
     </style>
   </head>
   <body>
@@ -948,7 +1203,8 @@
         <div class="container">
           <h1 class="page-title">Eisschnelllauf</h1>
           <p class="page-subtitle">
-            Geschwindigkeit und Präzision - Erlebe die Faszination des Eisschnelllaufs
+            Geschwindigkeit und Präzision - Erlebe die Faszination des
+            Eisschnelllaufs
           </p>
         </div>
       </section>
@@ -959,57 +1215,80 @@
           <div class="section-header">
             <h2 class="section-title">Eislaufschule Saison 2025/2026</h2>
             <p class="section-subtitle">
-              Eislaufen für Jung und Alt - Erlernen Sie die Grundtechniken des Eislaufens
+              Eislaufen für Jung und Alt - Erlernen Sie die Grundtechniken des
+              Eislaufens
             </p>
           </div>
 
           <div class="content-section fade-in">
             <h3>Kursinformationen</h3>
             <p>
-              <strong>Die Eislaufschule beginnt am Sonntag, den 26.10.2025 um 8:30.</strong> 
+              <strong
+                >Die Eislaufschule beginnt am Sonntag, den 26.10.2025 um
+                8:30.</strong
+              >
               Sie findet jeden Sonntag bis März statt.
             </p>
             <p>
-              Eislaufen für Jung und Alt. Erlernen Sie die Grundtechniken des Eislaufens.
+              Eislaufen für Jung und Alt. Erlernen Sie die Grundtechniken des
+              Eislaufens.
             </p>
           </div>
 
           <div class="content-section fade-in">
             <h3>Über unsere Eislaufschule</h3>
             <p>
-              Erfahrene Eisschnellläufer unseres Vereins bringen jedem, der Interesse und Spaß am Eislaufen 
-              hat, das Schlittschuhlaufen bei. Unser Ziel ist es, dass Menschen das Schlittschuhlaufen erlernen 
-              ohne sich dabei auf eine bestimmte Eissportart festlegen zu müssen.
+              Erfahrene Eisschnellläufer unseres Vereins bringen jedem, der
+              Interesse und Spaß am Eislaufen hat, das Schlittschuhlaufen bei.
+              Unser Ziel ist es, dass Menschen das Schlittschuhlaufen erlernen
+              ohne sich dabei auf eine bestimmte Eissportart festlegen zu
+              müssen.
             </p>
             <p>
-              Also eine hervorragende Gelegenheit sich mit dem Eis vertraut zu machen bevor man sich 
-              möglicherweise für Sportarten wie Kunstlauf, Eishockey oder Eisschnelllauf entscheidet.
+              Also eine hervorragende Gelegenheit sich mit dem Eis vertraut zu
+              machen bevor man sich möglicherweise für Sportarten wie Kunstlauf,
+              Eishockey oder Eisschnelllauf entscheidet.
             </p>
           </div>
 
           <div class="content-section fade-in">
             <h3>Wichtige Details</h3>
             <p>
-              Die Eislaufschule findet in der Wintersaison von Mitte Oktober bis März statt und am Ende gibt es 
-              ein Eislaufdiplom! Die genauen Termine entnehmen Sie bitte unseren Trainingszeiten im Hauptmenü.
+              Die Eislaufschule findet in der Wintersaison von Mitte Oktober bis
+              März statt und am Ende gibt es ein Eislaufdiplom! Die genauen
+              Termine entnehmen Sie bitte unseren Trainingszeiten im Hauptmenü.
             </p>
             <p>
-              <strong>Die Kosten für die Eislaufschule betragen: 90 Euro je Person/Saison.</strong>
+              <strong
+                >Die Kosten für die Eislaufschule betragen: 90 Euro je
+                Person/Saison.</strong
+              >
             </p>
             <p>
-              Anmeldungen werden gerne über unser Kontaktformular oder vor Ort entgegengenommen.
+              Anmeldungen werden gerne über unser Kontaktformular oder vor Ort
+              entgegengenommen.
             </p>
             <p>
-              Bitte - wenn vorhanden - eigene Schlittschuhe und Schutzausrüstung (Helm, Knie-, Ellenbogen-, 
-              Handgelenkschützer) mitbringen. Alternativ können Schlittschuhe kostenlos vor Ort geliehen werden.
+              Bitte - wenn vorhanden - eigene Schlittschuhe und Schutzausrüstung
+              (Helm, Knie-, Ellenbogen-, Handgelenkschützer) mitbringen.
+              Alternativ können Schlittschuhe kostenlos vor Ort geliehen werden.
             </p>
-            <p style="font-weight: 600; color: var(--primary-color); margin-top: var(--spacing-md);">
+            <p
+              style="
+                font-weight: 600;
+                color: var(--primary-color);
+                margin-top: var(--spacing-md);
+              "
+            >
               Wir freuen uns auf Ihr/ Euer Kommen!
             </p>
           </div>
 
           <!-- Ansprechpartner -->
-          <div class="info-card fade-in" style="max-width: 600px; margin: var(--spacing-2xl) auto 0;">
+          <div
+            class="info-card fade-in"
+            style="max-width: 600px; margin: var(--spacing-2xl) auto 0"
+          >
             <div class="info-card-header">
               <div class="info-card-icon">
                 <i class="fas fa-envelope"></i>
@@ -1019,7 +1298,16 @@
             <div class="info-card-content">
               <p><strong>Kontakt:</strong></p>
               <p>
-                E-Mail: <a href="/cdn-cgi/l/email-protection#ade8c4dec1ccd8cbc8c3c4c3c0ccc3c3c5c8c4c0edcac0d583c9c8" style="color: var(--primary-color); font-weight: 600;"><span class="__cf_email__" data-cfemail="f9bc908a95988c9f9c97909794989797919c9094b99e9481d79d9c">[email&#160;protected]</span></a>
+                E-Mail:
+                <a
+                  href="/cdn-cgi/l/email-protection#ade8c4dec1ccd8cbc8c3c4c3c0ccc3c3c5c8c4c0edcac0d583c9c8"
+                  style="color: var(--primary-color); font-weight: 600"
+                  ><span
+                    class="__cf_email__"
+                    data-cfemail="f9bc908a95988c9f9c97909794989797919c9094b99e9481d79d9c"
+                    >[email&#160;protected]</span
+                  ></a
+                >
               </p>
             </div>
           </div>
@@ -1027,7 +1315,7 @@
       </section>
 
       <!-- Schnuppertraining Section -->
-      <section class="section" style="background-color: var(--white);">
+      <section class="section" style="background-color: var(--white)">
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">Schnuppertraining</h2>
@@ -1038,10 +1326,14 @@
 
           <div class="schnupper-grid">
             <div class="schnupper-box fade-in">
-              <h3>Ich kann eislaufen und würde Eisschnelllauf gerne einmal ausprobieren</h3>
+              <h3>
+                Ich kann eislaufen und würde Eisschnelllauf gerne einmal
+                ausprobieren
+              </h3>
               <p>
-                Du möchtest Eisschnelllauf ausprobieren? Kein Problem. Schreib uns eine kurze Mail, 
-                damit wir wissen, dass Du kommst und ob Du evtl. etwas an Ausrüstung brauchst!
+                Du möchtest Eisschnelllauf ausprobieren? Kein Problem. Schreib
+                uns eine kurze Mail, damit wir wissen, dass Du kommst und ob Du
+                evtl. etwas an Ausrüstung brauchst!
               </p>
               <p>
                 Verwende dazu am besten unser <strong>Kontaktformular</strong>.
@@ -1051,22 +1343,134 @@
             <div class="schnupper-box fade-in">
               <h3>Ich kann nicht eislaufen, würde es aber gerne lernen</h3>
               <p>
-                Du würdest gerne einmal Eisschnelllaufen ausprobieren, kannst aber nicht eislaufen? 
-                Kein Problem, denn in unserer Eislaufschule kannst Du die Grundlagen des Eislaufens 
-                lernen und das zunächst erstmal ohne Dich auf eine Sportart festzulegen.
+                Du würdest gerne einmal Eisschnelllaufen ausprobieren, kannst
+                aber nicht eislaufen? Kein Problem, denn in unserer
+                Eislaufschule kannst Du die Grundlagen des Eislaufens lernen und
+                das zunächst erstmal ohne Dich auf eine Sportart festzulegen.
               </p>
               <p>
-                Mehr Informationen hierzu unter unserer Rubrik <strong>Training > Eislaufschule</strong> oder 
-                <a href="#eislaufschule" style="color: var(--primary-color); font-weight: 600;">hier</a>.
+                Mehr Informationen hierzu unter unserer Rubrik
+                <strong>Training > Eislaufschule</strong> oder
+                <a
+                  href="#eislaufschule"
+                  style="color: var(--primary-color); font-weight: 600"
+                  >hier</a
+                >.
               </p>
             </div>
           </div>
 
-          <div style="text-align: center; margin-top: var(--spacing-2xl);" class="fade-in">
+          <div
+            style="text-align: center; margin-top: var(--spacing-2xl)"
+            class="fade-in"
+          >
             <a href="index.html#contact" class="btn btn-primary">
               <i class="fas fa-envelope"></i>
               Jetzt Kontakt aufnehmen
             </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Event Calendar -->
+      <section id="calendar-section">
+        <div class="section-header">
+          <h2 id="calendar-toggle-btn">
+            Kalender <span id="calendar-toggle-icon">▼</span>
+          </h2>
+        </div>
+        <div id="calendar-container">
+          <div id="calendar-header">
+            <button id="prev-month">Letzter Monat</button>
+            <h3 id="current-month-year">Month Year</h3>
+            <button id="next-month">Nächster Monat</button>
+          </div>
+
+          <div id="day-labels">
+            <span>Montag</span>
+            <span>Dienstag</span>
+            <span>Mittwoch</span>
+            <span>Donnerstag</span>
+            <span>Freitag</span>
+            <span>Samtag</span>
+            <span>Sonntag</span>
+          </div>
+
+          <div id="calendar-grid"></div>
+        </div>
+      </section>
+
+      <!-- Schnelllauf in Mannheim -->
+      <section
+        class="geschichte-section"
+        style="background-color: var(--white)"
+      >
+        <div class="container">
+          <div class="section-header">
+            <h2 id="geschichte-toggle-btn">
+              Schnelllauf in Mannheim<span id="geschichte-toggle-icon">▼</span>
+            </h2>
+          </div>
+          <div class="content-section fade-in" id="geschichte-container">
+            <h3>Frühe Jahre</h3>
+            <p>Irgendwann mit irgendwem hats angefangen</p>
+            <h3>Mittlere Jahre</h3>
+            <p>Dann gings weiter</p>
+            <h3>Jetzt</h3>
+            <p>Hier sind wir jetzt</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- News -->
+      <section class="news-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="news-toggle-btn">
+              Berichte & Aktuelles<span id="news-toggle-icon">▼</span>
+            </h2>
+          </div>
+          <div id="news-wrapper" class="news-collapsed">
+            <div class="news-filters">
+              <div class="news-filter-group">
+                <input
+                  type="text"
+                  id="news-search"
+                  placeholder="Suche nach Stichwörtern..."
+                  oninput="handleNewsFilters()"
+                  value="#begrenzt"
+                />
+              </div>
+
+              <div class="news-filter-group">
+                <label for="date-slider">Zeitraum filtern (Wochen):</label>
+                <div class="range-slider-container">
+                  <input
+                    type="range"
+                    id="news-date-slider-min"
+                    min="0"
+                    value="0"
+                    oninput="handleNewsFilters()"
+                  />
+                  <input
+                    type="range"
+                    id="news-date-slider-max"
+                    min="0"
+                    value="100"
+                    oninput="handleNewsFilters()"
+                  />
+                </div>
+                <div id="news-date-display">Ganze Zeitspanne</div>
+                <div id="news-extra-text"></div>
+              </div>
+
+              <button id="news-reset-filters" onclick="resetNewsFilters()">
+                Alle Filter zurücksetzen
+              </button>
+            </div>
+            <div class="content-section" id="news-container">
+              <h3>Loading news...</h3>
+            </div>
           </div>
         </div>
       </section>
@@ -1089,9 +1493,15 @@
               Sportler jeden Alters.
             </p>
             <div class="footer-social">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
             </div>
           </div>
 
@@ -1103,12 +1513,23 @@
             <h3 class="footer-title">Kontakt</h3>
             <ul>
               <li>
-                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-map-marker-alt"></i
+                ></span>
                 <span>Käthe-Kollwitz-Straße 23<br />D-68169 Mannheim</span>
               </li>
               <li>
-                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f891969e97b8959d8a9bd597969491969dd69c9d">[email&#160;protected]</a></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-envelope"></i
+                ></span>
+                <span
+                  ><a
+                    href="/cdn-cgi/l/email-protection"
+                    class="__cf_email__"
+                    data-cfemail="f891969e97b8959d8a9bd597969491969dd69c9d"
+                    >[email&#160;protected]</a
+                  ></span
+                >
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-clock"></i></span>
@@ -1127,167 +1548,530 @@
         </div>
       </div>
     </footer>
+    <script src="eisschnelllauf-events.js"></script>
+    <script src="EisschnelllaufBlogArchive/Kurzmeldungen-new.js"></script>
+    <script>
+      // ========================================
+      // MOBILE MENU
+      // ========================================
 
-  <script>
-  // ========================================
-  // MOBILE MENU
-  // ========================================
-  const mobileToggle = document.querySelector(".mobile-toggle");
-  const mobileMenu = document.querySelector(".mobile-menu");
-  const overlay = document.querySelector(".overlay");
-  const mobileClose = document.querySelector(".mobile-menu-close");
-  const mobileLinks = document.querySelectorAll(".mobile-menu a");
+      const mobileToggle = document.querySelector(".mobile-toggle");
+      const mobileMenu = document.querySelector(".mobile-menu");
+      const overlay = document.querySelector(".overlay");
+      const mobileClose = document.querySelector(".mobile-menu-close");
+      const mobileLinks = document.querySelectorAll(".mobile-menu a");
 
-  function openMenu() {
-    mobileMenu.classList.add("active");
-    overlay.classList.add("active");
-    document.body.style.overflow = "hidden";
-    mobileToggle.classList.add("active");
-    mobileToggle.setAttribute("aria-expanded", "true");
-  }
-
-  function closeMenu() {
-    mobileMenu.classList.remove("active");
-    overlay.classList.remove("active");
-    document.body.style.overflow = "";
-    mobileToggle.classList.remove("active");
-    mobileToggle.setAttribute("aria-expanded", "false");
-  }
-
-  mobileToggle.addEventListener("click", () => {
-    const isOpen = mobileMenu.classList.contains("active");
-    isOpen ? closeMenu() : openMenu();
-  });
-
-  mobileClose.addEventListener("click", closeMenu);
-  overlay.addEventListener("click", closeMenu);
-
-  mobileLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      if (link.getAttribute("href").startsWith("#")) {
-        closeMenu();
+      function openMenu() {
+        mobileMenu.classList.add("active");
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+        mobileToggle.classList.add("active");
+        mobileToggle.setAttribute("aria-expanded", "true");
       }
-    });
-  });
 
-  // Close menu on Escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
-      closeMenu();
-    }
-  });
+      function closeMenu() {
+        mobileMenu.classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+        mobileToggle.classList.remove("active");
+        mobileToggle.setAttribute("aria-expanded", "false");
+      }
 
-  function insertNavigationElements() {
-    const template = document.getElementById("navigation-template1");
-    const contactBtn = document.getElementById("contactBtn");
-    const memberBtn = document.getElementById("memberBtn");
-    const contactStandard = document.getElementById("contactStandard");
-    const memberStandard = document.getElementById("memberStandard");
-    const mobileCTAButtons = document.getElementById("mobileCTAButtons");
+      mobileToggle.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.contains("active");
+        isOpen ? closeMenu() : openMenu();
+      });
 
-    // Desktop Navigation
-    const desktopNav = document.getElementById("pageElementsDesktop");
-    if (template && desktopNav) {
-      const clone = template.content.cloneNode(true);
-      desktopNav.prepend(clone);
-      const ul = desktopNav.querySelector("ul");
-      if (ul) {
-        if (memberBtn) {
-          ul.append(memberBtn.content.cloneNode(true));
+      mobileClose.addEventListener("click", closeMenu);
+      overlay.addEventListener("click", closeMenu);
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          if (link.getAttribute("href").startsWith("#")) {
+            closeMenu();
+          }
+        });
+      });
+
+      // Close menu on Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+          closeMenu();
         }
-        if (contactBtn) {
-          ul.append(contactBtn.content.cloneNode(true));
+      });
+
+      function insertNavigationElements() {
+        const template = document.getElementById("navigation-template1");
+        const contactBtn = document.getElementById("contactBtn");
+        const memberBtn = document.getElementById("memberBtn");
+        const contactStandard = document.getElementById("contactStandard");
+        // const memberStandard = document.getElementById("memberStandard");
+        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
+
+        // Desktop Navigation
+        const desktopNav = document.getElementById("pageElementsDesktop");
+        if (template && desktopNav) {
+          const clone = template.content.cloneNode(true);
+          desktopNav.prepend(clone);
+          const ul = desktopNav.querySelector("ul");
+          if (ul) {
+            if (memberBtn) {
+              ul.append(memberBtn.content.cloneNode(true));
+            }
+            if (contactBtn) {
+              ul.append(contactBtn.content.cloneNode(true));
+            }
+          }
         }
-      }
-    }
 
-    // Mobile Navigation
-    if (template && mobileMenu) {
-      const clone = template.content.cloneNode(true);
-      mobileMenu.prepend(clone);
-      
-      // Add CTA buttons at the end
-      if (mobileCTAButtons) {
-        mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
-      }
-    }
+        // Mobile Navigation
+        if (template && mobileMenu) {
+          const clone = template.content.cloneNode(true);
+          mobileMenu.prepend(clone);
 
-    // Footer Navigation
-    const footerLinks = document.getElementById("footerLinksWithMenuElements");
-    if (template && footerLinks) {
-      const clone = template.content.cloneNode(true);
-      footerLinks.append(clone);
-      const ul = footerLinks.querySelector("ul");
-      if (ul && contactStandard) {
-        ul.append(contactStandard.content.cloneNode(true));
-      }
-    }
-  }
+          // Add CTA buttons at the end
+          if (mobileCTAButtons) {
+            mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
+          }
+        }
 
-  // ========================================
-  // STICKY HEADER
-  // ========================================
-  const header = document.querySelector("header");
-  let lastScroll = 0;
-
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-    
-    lastScroll = currentScroll;
-  });
-
-  // ========================================
-  // SCROLL ANIMATIONS
-  // ========================================
-  const fadeElements = document.querySelectorAll(".fade-in");
-  
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  }, observerOptions);
-
-  fadeElements.forEach((element) => {
-    observer.observe(element);
-  });
-
-  // ========================================
-  // INITIALIZE
-  // ========================================
-  document.addEventListener("DOMContentLoaded", function () {
-    insertNavigationElements();
-  });
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-      const href = this.getAttribute("href");
-      if (href !== "#" && href !== "") {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          const headerHeight = header.offsetHeight;
-          const targetPosition = target.offsetTop - headerHeight;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth"
-          });
+        // Footer Navigation
+        const footerLinks = document.getElementById(
+          "footerLinksWithMenuElements"
+        );
+        if (template && footerLinks) {
+          const clone = template.content.cloneNode(true);
+          footerLinks.append(clone);
+          const ul = footerLinks.querySelector("ul");
+          if (ul && contactStandard) {
+            ul.append(contactStandard.content.cloneNode(true));
+          }
         }
       }
-    });
-  });
-</script>
+
+      // ========================================
+      // STICKY HEADER
+      // ========================================
+      const header = document.querySelector("header");
+      let lastScroll = 0;
+
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+
+        lastScroll = currentScroll;
+      });
+
+      // ========================================
+      // SCROLL ANIMATIONS
+      // ========================================
+      const fadeElements = document.querySelectorAll(".fade-in");
+
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      fadeElements.forEach((element) => {
+        observer.observe(element);
+      });
+
+      // ========================================
+      // EVENT CALENDAR
+      // ========================================
+
+      let desiredYear = new Date().getFullYear();
+      let desiredMonth = new Date().getMonth() + 1;
+
+      const monthNames = [
+        "Januar",
+        "Februar",
+        "März",
+        "April",
+        "Mai",
+        "Juni",
+        "Juli",
+        "August",
+        "September",
+        "Oktober",
+        "November",
+        "Dezember",
+      ];
+
+      function renderCalendar(year, month) {
+        const monthDisplay = document.getElementById("current-month-year");
+        monthDisplay.textContent = `${monthNames[month - 1]} ${year}`;
+        const grid = document.getElementById("calendar-grid");
+        grid.innerHTML = "";
+        const firstDayOfMonth = new Date(year, month - 1, 1).getDay();
+        const daysInMonth = new Date(year, month, 0).getDate();
+        for (let i = 0; i < firstDayOfMonth; i++) {
+          const emptyDiv = document.createElement("div");
+          emptyDiv.classList.add("empty-day");
+          grid.appendChild(emptyDiv);
+        }
+        for (let i = 1; i <= daysInMonth; i++) {
+          const dateString = `${year}-${String(month).padStart(
+            2,
+            "0"
+          )}-${String(i).padStart(2, "0")}`;
+          const dayDiv = document.createElement("div");
+          dayDiv.classList.add("day");
+          dayDiv.textContent = i;
+
+          if (events[dateString]) {
+            dayDiv.classList.add("event-day");
+            const tooltip = document.createElement("div");
+            tooltip.classList.add("tooltip");
+            tooltip.textContent = events[dateString];
+            dayDiv.appendChild(tooltip);
+          }
+
+          grid.appendChild(dayDiv);
+        }
+      }
+
+      function nextMonth() {
+        desiredMonth++;
+        if (desiredMonth > 12) {
+          desiredMonth = 1;
+          desiredYear++;
+        }
+        renderCalendar(desiredYear, desiredMonth);
+      }
+
+      function prevMonth() {
+        desiredMonth--;
+        if (desiredMonth < 1) {
+          desiredMonth = 12;
+          desiredYear--;
+        }
+        renderCalendar(desiredYear, desiredMonth);
+      }
+
+      function toggleCalendarVisibility() {
+        const toggleButton = document.getElementById("calendar-toggle-btn");
+        const content = document.getElementById("calendar-container");
+        if (!toggleButton || !content) {
+          return;
+        }
+        content.classList.add("calendar-collapsed");
+        toggleButton.addEventListener("click", function () {
+          content.classList.toggle("calendar-collapsed");
+          toggleButton.classList.toggle("active");
+        });
+        renderCalendar(desiredYear, desiredMonth);
+      }
+
+      let newsMinDate, newsMaxDate;
+
+      function initNewsFilters() {
+        const dates = NEWS_LIST.map((item) => parseDate(item.date))
+          .filter((d) => d !== null)
+          .sort((a, b) => a - b);
+
+        if (dates.length > 0) {
+          newsMinDate = dates[0];
+          newsMaxDate = dates[dates.length - 1];
+
+          const diffWeeks = Math.ceil(
+            (newsMaxDate - newsMinDate) / (1000 * 60 * 60 * 24 * 7)
+          );
+
+          const sliderMin = document.getElementById("news-date-slider-min");
+          const sliderMax = document.getElementById("news-date-slider-max");
+
+          sliderMin.max = diffWeeks;
+          sliderMax.max = diffWeeks;
+          sliderMax.value = diffWeeks; // Default to the latest
+        }
+      }
+
+      // Helper to handle date strings (German format)
+      function parseDate(dateStr) {
+        if (!dateStr || dateStr === "N/A" || typeof dateStr !== "string")
+          return null;
+
+        // 1. Try to find DD.MM.YYYY (Standard German format)
+        const germanMatch = dateStr.match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/);
+        if (germanMatch) {
+          // match[1] = Day, match[2] = Month (0-indexed in JS), match[3] = Year
+          return new Date(
+            Number.parseInt(germanMatch[3]),
+            Number.parseInt(germanMatch[2]) - 1,
+            Number.parseInt(germanMatch[1])
+          );
+        }
+
+        // 2. Fallback for "October 2024" or "12-13 October 2024"
+        const monthMap = {
+          januar: 0,
+          january: 0,
+          februar: 1,
+          february: 1,
+          märz: 2,
+          march: 2,
+          april: 3,
+          mai: 4,
+          may: 4,
+          juni: 5,
+          june: 5,
+          juli: 6,
+          july: 6,
+          august: 7,
+          september: 8,
+          oktober: 9,
+          october: 9,
+          november: 10,
+          dezember: 11,
+          december: 11,
+        };
+
+        const words = dateStr.toLowerCase().split(/[\s-]+/);
+        let year = words.find((w) => w.match(/^\d{4}$/));
+        let month = words.find((w) => monthMap.hasOwnProperty(w));
+
+        if (year && month !== undefined) {
+          return new Date(Number.parseInt(year), monthMap[month], 1);
+        }
+
+        return null;
+      }
+
+      function handleNewsFilters() {
+        const sliderMin = document.getElementById("news-date-slider-min");
+        const sliderMax = document.getElementById("news-date-slider-max");
+        let searchTerm = document
+          .getElementById("news-search")
+          .value.toLowerCase();
+        const dateDisplay = document.getElementById("news-date-display");
+        if (searchTerm === "#begrenzt") {
+          const validItems = NEWS_LIST.filter(
+            (item) => item.date && item.date !== "N/A"
+          );
+          const limitedList = validItems.slice(0, 3);
+          dateDisplay.textContent = "Nur aktuellste Beiträge";
+          document.getElementById("news-extra-text").textContent =
+            "Im Suchfeld clicken um Beitragsfilter zu aktivieren";
+          renderNews(limitedList);
+          return;
+        }
+
+        document.getElementById("news-extra-text").textContent = "";
+        let valMin = Number.parseInt(sliderMin.value);
+        let valMax = Number.parseInt(sliderMax.value);
+
+        // Safety: Prevent crossing
+        if (valMin >= valMax) {
+          valMin = valMax - 1;
+          sliderMin.value = valMin;
+        }
+
+        // Convert slider "weeks" back into real Date objects
+        // minDate was set in initFilters()
+        const startDate = new Date(newsMinDate);
+        startDate.setDate(startDate.getDate() + valMin * 7);
+
+        const endDate = new Date(newsMinDate);
+        endDate.setDate(endDate.getDate() + valMax * 7);
+        console.log(
+          "Filtering from:",
+          startDate.toDateString(),
+          "to:",
+          endDate.toDateString()
+        );
+        console.log("First item date parsed as:", parseDate(NEWS_LIST[0].date));
+        // Update the UI text
+        dateDisplay.textContent = `${startDate.toLocaleDateString(
+          "de-DE"
+        )} bis ${endDate.toLocaleDateString("de-DE")}`;
+
+        // Perform the Filtering
+        let filteredNews = NEWS_LIST.filter((item) => {
+          const itemDate = parseDate(item.date);
+
+          // Search Filter
+          const matchesSearch =
+            item.title.toLowerCase().includes(searchTerm) ||
+            item.text.toLowerCase().includes(searchTerm);
+
+          // Date Filter (Ignore items with no valid date)
+          let matchesDate = false;
+          if (itemDate) {
+            // Check if the item's date is inside our slider window
+            matchesDate = itemDate >= startDate && itemDate <= endDate;
+          }
+
+          return matchesSearch && matchesDate;
+        });
+        renderNews(filteredNews);
+      }
+
+      function resetNewsFilters() {
+        const searchInput = document.getElementById("news-search");
+        searchInput.value = "#begrenzt";
+        const sliderMin = document.getElementById("news-date-slider-min");
+        const sliderMax = document.getElementById("news-date-slider-max");
+        sliderMin.value = 0;
+        sliderMax.value = sliderMax.max;
+        handleNewsFilters();
+      }
+
+      function renderNews(list) {
+        const container = document.getElementById("news-container");
+        container.innerHTML = "";
+
+        if (list.length === 0) {
+          container.innerHTML = "<p>Keine Berichte gefunden.</p>";
+          return;
+        }
+
+        list.forEach((item) => {
+          if (item.date != "N/A") {
+            const articleHtml = `
+            <div class="news-item fade-in visible">
+                <h3>${item.title}</h3>
+                <p><strong>${item.date}</strong></p>
+                <p>${item.text}</p>
+                <p><a href="${item.url}">Weiterlesen...</a></p>
+            </div>
+            <span class="leading_separator">&nbsp;</span>`;
+            container.insertAdjacentHTML("beforeend", articleHtml);
+          }
+        });
+      }
+
+      function toggleNewsVisibility() {
+        // const toggleButton = document.getElementById("news-toggle-btn");
+        // const content = document.getElementById("news-wrapper");
+        // if (!toggleButton || !content) {
+        //   return;
+        // }
+        // content.classList.add("news-collapsed");
+        // initNewsFilters();
+        // toggleButton.addEventListener("click", function () {
+        //   content.classList.toggle("news-collapsed");
+        //   toggleButton.classList.toggle("active");
+        //   if (content.classList.contains("news-collapsed")) {
+        //     handleNewsFilters();
+        //     setTimeout(() => content.classList.add("visible"), 10);
+        //   }
+        // });
+        // loadNews();
+
+        const toggleButton = document.getElementById("news-toggle-btn");
+        const wrapper = document.getElementById("news-wrapper");
+
+        if (!toggleButton || !wrapper) return;
+
+        initNewsFilters();
+
+        toggleButton.addEventListener("click", function () {
+          const isExpanding = wrapper.classList.contains("news-collapsed");
+          wrapper.classList.toggle("news-collapsed");
+          toggleButton.classList.toggle("active");
+
+          if (isExpanding) {
+            // FORCE the filter logic to run immediately
+            handleNewsFilters();
+
+            setTimeout(() => {
+              wrapper.classList.add("visible");
+            }, 10);
+          }
+        });
+      }
+
+      function toggleGeschichteVisibility() {
+        const toggleButton = document.getElementById("geschichte-toggle-btn");
+        const content = document.getElementById("geschichte-container");
+        if (!toggleButton || !content) {
+          return;
+        }
+        content.classList.add("geschichte-collapsed");
+        toggleButton.addEventListener("click", function () {
+          content.classList.toggle("geschichte-collapsed");
+          toggleButton.classList.toggle("active");
+        });
+      }
+
+      function loadNews() {
+        const container = document.getElementById("news-container");
+
+        // Clear existing content
+        container.innerHTML = "";
+
+        // Loop through the constant from newsData.js
+        NEWS_LIST.forEach((item) => {
+          if (item.date != "N/A") {
+            const articleHtml = `<h3>${item.title}</h3>
+                      <p><strong>${item.date}</strong></p>
+                      <p>${item.text}</p>
+                      <p><a href="${item.url}">Weiterlesen...</a></p>`;
+            container.insertAdjacentHTML("beforeend", articleHtml);
+          }
+        });
+      }
+      // ========================================
+      // INITIALIZE
+      // ========================================
+      document.addEventListener("DOMContentLoaded", function () {
+        insertNavigationElements();
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        toggleCalendarVisibility();
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        toggleGeschichteVisibility();
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        toggleNewsVisibility();
+      });
+      document
+        .getElementById("news-search")
+        .addEventListener("focus", function () {
+          if (this.value === "#begrenzt") {
+            this.value = "";
+          }
+        });
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href !== "#" && href !== "") {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              const headerHeight = header.offsetHeight;
+              const targetPosition = target.offsetTop - headerHeight;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+              });
+            }
+          }
+        });
+      });
+      document
+        .getElementById("next-month")
+        .addEventListener("click", nextMonth);
+      document
+        .getElementById("prev-month")
+        .addEventListener("click", prevMonth);
+      renderCalendar(desiredYear, desiredMonth);
+    </script>
   </body>
 </html>
