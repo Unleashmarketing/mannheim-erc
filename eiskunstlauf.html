@@ -1251,48 +1251,67 @@
           transition-duration: 0.01ms !important;
         }
       }
+
+      /* Focus styles for accessibility */
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible {
+        outline: 3px solid var(--primary-color);
+        outline-offset: 2px;
+      }
+
+      /* Skip to main content */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: var(--primary-color);
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        z-index: 100;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
     </style>
   </head>
   <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
     <!-- Header -->
     <header>
-      <div class="container">
-        <div class="header-container">
-          <a href="index.html" class="logo">
-            <img
-              src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
-              alt="Mannheimer ERC Logo"
-            />
-            <span class="logo-text">Mannheimer ERC</span>
-          </a>
-
-          <nav class="nav-desktop" id="pageElementsDesktop"></nav>
-
-          <button
-            class="mobile-toggle"
-            aria-label="Menü öffnen"
-            aria-expanded="false"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
+            alt="Mannheimer ERC Logo"
+          />
+          <span class="logo-text">Mannheimer ERC</span>
         </div>
+        <nav id="pageElementsDesktop" class="nav-desktop" aria-label="Hauptnavigation">
+        </nav>
+        <button class="mobile-toggle" aria-label="Menü öffnen" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu">
+    <div class="mobile-menu" role="dialog" aria-label="Mobile Navigation">
       <button class="mobile-menu-close" aria-label="Menü schließen">
         <i class="fas fa-times"></i>
       </button>
     </div>
-
-    <!-- Overlay -->
-    <div class="overlay"></div>
+    <div class="overlay" aria-hidden="true"></div>
 
     <!-- Main Content -->
-    <main>
+    <main id="main-content">
       <!-- Page Hero -->
       <section class="page-hero">
         <div class="container">
