@@ -330,6 +330,70 @@
         width: 100%;
       }
 
+
+      /* Submenu Styles */
+      .nav-desktop .has-submenu {
+        position: relative;
+      }
+
+      .nav-desktop .submenu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        min-width: 220px;
+        background: var(--white);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 8px 0;
+        z-index: 1002;
+        list-style: none;
+      }
+      
+      /* Add larger invisible bridge between menu and submenu */
+      .nav-desktop .has-submenu::before {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: -10px;
+        right: -10px;
+        height: 20px;
+        background: transparent;
+        z-index: 1001;
+      }
+
+      .nav-desktop .has-submenu:hover > .submenu,
+      .nav-desktop .has-submenu:hover::before,
+      .nav-desktop .submenu:hover {
+        display: block;
+      }
+      
+      /* Keep submenu visible when hovering over bridge */
+      .nav-desktop .has-submenu::before:hover + .submenu {
+        display: block;
+      }
+
+      .nav-desktop .submenu a {
+        display: block;
+        padding: 12px 20px;
+        font-size: 1rem;
+      }
+
+      .nav-desktop .submenu a::after {
+        display: none;
+      }
+
+      .nav-desktop .submenu a:hover {
+        background-color: rgba(0, 98, 255, 0.05);
+      }
+
+      .nav-desktop .submenu-icon {
+        margin-left: 6px;
+        font-size: 0.7em;
+        transition: all 0.3s ease;
+      }
+
       /* Header Button - Original Style */
       .btn-header {
         display: inline-flex;
@@ -1012,6 +1076,48 @@
         transform: translateY(-2px);
       }
 
+      /* Mobile Submenu Styles */
+      .mobile-menu .has-submenu {
+        position: relative;
+      }
+
+      .mobile-menu .has-submenu > .submenu-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mobile-menu .submenu {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        margin-top: var(--spacing-xs);
+        margin-left: var(--spacing-md);
+        padding-left: var(--spacing-md);
+        border-left: 2px solid rgba(0, 98, 255, 0.2);
+        list-style: none;
+      }
+
+      .mobile-menu .has-submenu.open > .submenu {
+        display: flex;
+      }
+
+      .mobile-menu .submenu a {
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-xs) 0;
+      }
+
+      .mobile-menu .submenu-icon {
+        margin-left: auto;
+        font-size: 0.9rem;
+        transition: transform 0.3s ease;
+      }
+
+      .mobile-menu .has-submenu.open .submenu-icon {
+        transform: rotate(180deg);
+      }
+
+
       .overlay {
         position: fixed;
         top: 0;
@@ -1047,21 +1153,13 @@
       /* ========================================
          RESPONSIVE DESIGN
          ======================================== */
-      @media (max-width: 1360px) {
+      @media (max-width: 1415px) {
         .logo-text {
           display: none;
         }
       }
 
       @media (max-width: 1200px) {
-        :root {
-          --spacing-3xl: 100px;
-          --font-size-4xl: 3.5rem;
-          --font-size-3xl: 2.5rem;
-        }
-      }
-
-      @media (max-width: 1135px) {
         :root {
           --spacing-3xl: 80px;
           --spacing-2xl: 60px;
@@ -1078,6 +1176,10 @@
         .mobile-toggle {
           display: flex;
         }
+      }
+
+      @media (max-width: 1135px) {
+        /* Removed duplicate spacing variables */
       }
 
       @media (max-width: 768px) {
@@ -1175,10 +1277,52 @@
         </div>
         <nav class="nav-desktop" aria-label="Hauptnavigation">
           <ul>
-            <li><a href="about.html" class="active">Unser Verein</a></li>
-            <li><a href="eiskunstlauf.html">Eiskunstlauf</a></li>
-            <li><a href="eisschnelllauf.html">Eisschnelllauf</a></li>
-            <li><a href="synchron.html">Synchron Eiskunstlauf</a></li>
+            <li class="has-submenu">
+              <a href="about.html" class="submenu-toggle active">
+                Unser Verein
+                <i class="fas fa-chevron-down submenu-icon"></i>
+              </a>
+              <ul class="submenu">
+                <li><a href="about.html#vision">Vision & Werte</a></li>
+                <li><a href="about.html#vorstand">Vorstand</a></li>
+                <li><a href="about.html#trainer">Trainerteam</a></li>
+                <li><a href="about.html#downloads">Downloads</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <a href="eiskunstlauf.html" class="submenu-toggle">
+                Eiskunstlauf
+                <i class="fas fa-chevron-down submenu-icon"></i>
+              </a>
+              <ul class="submenu">
+                <li><a href="eiskunstlauf.html#info">Informationen</a></li>
+                <li><a href="eiskunstlauf.html#schnuppern">Schnupperkurs</a></li>
+                <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
+                <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <a href="eisschnelllauf.html" class="submenu-toggle">
+                Eisschnelllauf
+                <i class="fas fa-chevron-down submenu-icon"></i>
+              </a>
+              <ul class="submenu">
+                <li><a href="eisschnelllauf.html#info">Informationen</a></li>
+                <li><a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a></li>
+                <li><a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <a href="synchron.html" class="submenu-toggle">
+                Synchron Eiskunstlauf
+                <i class="fas fa-chevron-down submenu-icon"></i>
+              </a>
+              <ul class="submenu">
+                <li><a href="synchron.html#info">Informationen</a></li>
+                <li><a href="synchron.html#schnuppern">Schnuppertraining</a></li>
+                <li><a href="synchron.html#mitgliedschaft">Mitgliedschaft</a></li>
+              </ul>
+            </li>
             <li><a href="mitglieder.html" class="btn-header">Mitgliederbereich</a></li>
             <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
           </ul>
@@ -1202,10 +1346,52 @@
         <i class="fas fa-times"></i>
       </button>
       <ul>
-        <li><a href="about.html">Unser Verein</a></li>
-        <li><a href="eiskunstlauf.html">Eiskunstlauf</a></li>
-        <li><a href="eisschnelllauf.html">Eisschnelllauf</a></li>
-        <li><a href="synchron.html">Synchron Eiskunstlauf</a></li>
+        <li class="has-submenu">
+          <a href="about.html" class="submenu-toggle">
+            Unser Verein
+            <i class="fas fa-chevron-down submenu-icon"></i>
+          </a>
+          <ul class="submenu">
+            <li><a href="about.html#vision">Vision & Werte</a></li>
+            <li><a href="about.html#vorstand">Vorstand</a></li>
+            <li><a href="about.html#trainer">Trainerteam</a></li>
+            <li><a href="about.html#downloads">Downloads</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="eiskunstlauf.html" class="submenu-toggle">
+            Eiskunstlauf
+            <i class="fas fa-chevron-down submenu-icon"></i>
+          </a>
+          <ul class="submenu">
+            <li><a href="eiskunstlauf.html#info">Informationen</a></li>
+            <li><a href="eiskunstlauf.html#schnuppern">Schnupperkurs</a></li>
+            <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
+            <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="eisschnelllauf.html" class="submenu-toggle">
+            Eisschnelllauf
+            <i class="fas fa-chevron-down submenu-icon"></i>
+          </a>
+          <ul class="submenu">
+            <li><a href="eisschnelllauf.html#info">Informationen</a></li>
+            <li><a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a></li>
+            <li><a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="synchron.html" class="submenu-toggle">
+            Synchron Eiskunstlauf
+            <i class="fas fa-chevron-down submenu-icon"></i>
+          </a>
+          <ul class="submenu">
+            <li><a href="synchron.html#info">Informationen</a></li>
+            <li><a href="synchron.html#schnuppern">Schnuppertraining</a></li>
+            <li><a href="synchron.html#mitgliedschaft">Mitgliedschaft</a></li>
+          </ul>
+        </li>
       </ul>
       <div class="mobile-cta-buttons">
         <a href="mitglieder.html">Mitgliederbereich</a>
@@ -1327,7 +1513,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="mailto:[email protected]">[email protected]</a>
+                    <a href="/cdn-cgi/l/email-protection#dc87b9b1bdb5b0fcacaeb3a8b9bfa8b9b881">[email protected]</a>
                   </span>
                 </div>
               </div>
@@ -1350,7 +1536,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="mailto:[email protected]">[email protected]</a>
+                    <a href="/cdn-cgi/l/email-protection#411a242c20282d6131332e3524223524251c">[email protected]</a>
                   </span>
                 </div>
               </div>
@@ -1373,7 +1559,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="mailto:[email protected]">[email protected]</a>
+                    <a href="/cdn-cgi/l/email-protection#b4efd1d9d5ddd894c4c6dbc0d1d7c0d1d0e9">[email protected]</a>
                   </span>
                 </div>
               </div>
@@ -1396,7 +1582,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="mailto:[email protected]">[email protected]</a>
+                    <a href="/cdn-cgi/l/email-protection#3a615f575b53561a4a48554e5f594e5f5e67">[email protected]</a>
                   </span>
                 </div>
               </div>
@@ -1419,7 +1605,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="mailto:[email protected]">[email protected]</a>
+                    <a href="/cdn-cgi/l/email-protection#ebb08e868a8287cb9b99849f8e889f8e8fb6">[email protected]</a>
                   </span>
                 </div>
               </div>
@@ -1442,7 +1628,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="mailto:[email protected]">[email protected]</a>
+                    <a href="/cdn-cgi/l/email-protection#1249777f737b7e3262607d6677716677764f">[email protected]</a>
                   </span>
                 </div>
               </div>
@@ -1465,7 +1651,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="mailto:[email protected]">[email protected]</a>
+                    <a href="/cdn-cgi/l/email-protection#bbe0ded6dad2d79bcbc9d4cfded8cfdedfe6">[email protected]</a>
                   </span>
                 </div>
               </div>
@@ -2144,89 +2330,104 @@
       </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-      // ========================================
-      // STICKY HEADER
-      // ========================================
-      const header = document.querySelector("header");
-      
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 100) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-      });
-
-      // ========================================
-      // SCROLL ANIMATIONS
-      // ========================================
-      const fadeElements = document.querySelectorAll(".fade-in");
-      
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
+   <script>
+  // Setup mobile submenus
+  function setupMobileSubmenus() {
+    const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
+    submenuParents.forEach((toggle) => {
+      toggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        const li = this.closest(".has-submenu");
+        const isOpen = li.classList.contains("open");
+        
+        // Close other open submenus
+        mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
+          if (item !== li) item.classList.remove("open");
         });
-      }, observerOptions);
-
-      fadeElements.forEach((element) => {
-        observer.observe(element);
+        
+        li.classList.toggle("open");
+        this.setAttribute("aria-expanded", String(!isOpen));
       });
+    });
+  }
 
-      // ========================================
-      // MOBILE MENU
-      // ========================================
-      const mobileToggle = document.querySelector(".mobile-toggle");
-      const mobileMenu = document.querySelector(".mobile-menu");
-      const overlay = document.querySelector(".overlay");
-      const mobileClose = document.querySelector(".mobile-menu-close");
-      const mobileLinks = document.querySelectorAll(".mobile-menu a");
+  const mobileToggle = document.querySelector(".mobile-toggle");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const overlay = document.querySelector(".overlay");
+  const mobileClose = document.querySelector(".mobile-menu-close");
+  const mobileLinks = document.querySelectorAll(".mobile-menu a");
 
-      function openMenu() {
-        mobileMenu.classList.add("active");
-        overlay.classList.add("active");
-        document.body.style.overflow = "hidden";
-        mobileToggle.classList.add("active");
-        mobileToggle.setAttribute("aria-expanded", "true");
+  function openMenu() {
+    mobileMenu.classList.add("active");
+    overlay.classList.add("active");
+    document.body.style.overflow = "hidden";
+    mobileToggle.classList.add("active");
+    mobileToggle.setAttribute("aria-expanded", "true");
+  }
+
+  function closeMenu() {
+    mobileMenu.classList.remove("active");
+    overlay.classList.remove("active");
+    document.body.style.overflow = "";
+    mobileToggle.classList.remove("active");
+    mobileToggle.setAttribute("aria-expanded", "false");
+  }
+
+  mobileToggle.addEventListener("click", () => {
+    const isOpen = mobileMenu.classList.contains("active");
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  mobileClose.addEventListener("click", closeMenu);
+  overlay.addEventListener("click", closeMenu);
+
+  // Setup submenus
+  setupMobileSubmenus();
+
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      if (link.getAttribute("href").startsWith("#")) {
+        closeMenu();
       }
+    });
+  });
 
-      function closeMenu() {
-        mobileMenu.classList.remove("active");
-        overlay.classList.remove("active");
-        document.body.style.overflow = "";
-        mobileToggle.classList.remove("active");
-        mobileToggle.setAttribute("aria-expanded", "false");
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+      closeMenu();
+    }
+  });
+
+  // Sticky Header
+  const header = document.querySelector("header");
+  
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 100) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+
+  // Scroll Animations
+  const fadeElements = document.querySelectorAll(".fade-in");
+  
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
       }
+    });
+  }, observerOptions);
 
-      mobileToggle.addEventListener("click", () => {
-        const isOpen = mobileMenu.classList.contains("active");
-        isOpen ? closeMenu() : openMenu();
-      });
-
-      mobileClose.addEventListener("click", closeMenu);
-      overlay.addEventListener("click", closeMenu);
-
-      mobileLinks.forEach((link) => {
-        link.addEventListener("click", (e) => {
-          if (link.getAttribute("href").startsWith("#")) {
-            closeMenu();
-          }
-        });
-      });
-
-      // Close menu on Escape key
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
-          closeMenu();
-        }
-      });
-    </script>
+  fadeElements.forEach((element) => {
+    observer.observe(element);
+  });
+  </script>
   </body>
 </html>
