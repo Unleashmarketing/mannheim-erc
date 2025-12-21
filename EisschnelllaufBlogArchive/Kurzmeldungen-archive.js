@@ -1,4 +1,4 @@
-const NEWS_LIST = [
+const ARCHIVE_NEWS_LIST = [
   {
     title: "Oberstdorf Summercamp 2025",
     date: "09.08.2025",
