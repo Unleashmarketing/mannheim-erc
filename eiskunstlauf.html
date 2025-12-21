@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html lang="de">
-  <template id="navigation-template1">
+    <template id="navigation-template1">
     <ul>
-      <li><a href="about.html">Unser Verein</a></li>
-      <li><a href="eiskunstlauf.html">Eiskunstlauf</a></li>
-      <li><a href="eisschnelllauf.html">Eisschnelllauf</a></li>
-      <li><a href="synchron.html">Synchron Eiskunstlauf</a></li>
+      <li class="has-submenu">
+        <a href="about.html" class="submenu-toggle">
+          Unser Verein
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
+        <ul class="submenu">
+          <li><a href="about.html#vision">Vision & Werte</a></li>
+          <li><a href="about.html#vorstand">Vorstand</a></li>
+          <li><a href="about.html#trainer">Trainerteam</a></li>
+          <li><a href="about.html#downloads">Downloads</a></li>
+        </ul>
+      </li>
+      <li class="has-submenu">
+        <a href="eiskunstlauf.html" class="submenu-toggle">
+          Eiskunstlauf
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
+        <ul class="submenu">
+          <li><a href="eiskunstlauf.html#info">Informationen</a></li>
+          <li><a href="eiskunstlauf.html#schnuppern">Schnupperkurs</a></li>
+          <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
+          <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
+        </ul>
+      </li>
+      <li class="has-submenu">
+        <a href="eisschnelllauf.html" class="submenu-toggle">
+          Eisschnelllauf
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
+        <ul class="submenu">
+          <li><a href="eisschnelllauf.html#info">Informationen</a></li>
+          <li><a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a></li>
+          <li><a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a></li>
+        </ul>
+      </li>
+      <li class="has-submenu">
+        <a href="synchron.html" class="submenu-toggle">
+          Synchron Eiskunstlauf
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
+        <ul class="submenu">
+          <li><a href="synchron.html#info">Informationen</a></li>
+          <li><a href="synchron.html#schnuppern">Schnuppertraining</a></li>
+          <li><a href="synchron.html#mitgliedschaft">Mitgliedschaft</a></li>
+        </ul>
+      </li>
     </ul>
   </template>
   <template id="memberBtn">
@@ -439,6 +481,75 @@
         display: none;
       }
 
+
+      /* Submenu Styles */
+      .nav-desktop .has-submenu {
+        position: relative;
+      }
+
+            .nav-desktop .submenu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        min-width: 220px;
+        background: var(--white);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: var(--shadow-lg);
+        border-radius: var(--border-radius-md);
+        padding: var(--spacing-xs) 0;
+        z-index: 1002;
+        list-style: none;
+      }
+      
+      /* Add larger invisible bridge between menu and submenu */
+      .nav-desktop .has-submenu::before {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: -10px;
+        right: -10px;
+        height: 20px;
+        background: transparent;
+        z-index: 1001;
+      }
+
+      .nav-desktop .has-submenu:hover > .submenu,
+      .nav-desktop .has-submenu:hover::before,
+      .nav-desktop .submenu:hover {
+        display: block;
+      }
+      
+      /* Keep submenu visible when hovering over bridge */
+      .nav-desktop .has-submenu::before:hover + .submenu {
+        display: block;
+      }
+      
+      /* Keep submenu visible when hovering over bridge */
+      .nav-desktop .has-submenu::before:hover + .submenu {
+        display: block;
+      }
+
+      .nav-desktop .submenu a {
+        display: block;
+        padding: 12px 20px;
+        font-size: var(--font-size-sm);
+      }
+
+      .nav-desktop .submenu a::after {
+        display: none;
+      }
+
+      .nav-desktop .submenu a:hover {
+        background-color: rgba(0, 98, 255, 0.05);
+      }
+
+      .nav-desktop .submenu-icon {
+        margin-left: 6px;
+        font-size: 0.7em;
+        transition: var(--transition-base);
+      }
+
       /* Mobile Menu Toggle */
       .mobile-toggle {
         display: none;
@@ -560,6 +671,48 @@
 
       .mobile-menu .has-submenu.open .submenu {
         display: block;
+      }
+
+
+      /* Mobile Submenu Styles */
+      .mobile-menu .has-submenu {
+        position: relative;
+      }
+
+      .mobile-menu .has-submenu > .submenu-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mobile-menu .submenu {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        margin-top: var(--spacing-xs);
+        margin-left: var(--spacing-md);
+        padding-left: var(--spacing-md);
+        border-left: 2px solid rgba(0, 98, 255, 0.2);
+        list-style: none;
+      }
+
+      .mobile-menu .has-submenu.open > .submenu {
+        display: flex;
+      }
+
+      .mobile-menu .submenu a {
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-xs) 0;
+      }
+
+      .mobile-menu .submenu-icon {
+        margin-left: auto;
+        font-size: 0.9rem;
+        transition: transform 0.3s ease;
+      }
+
+      .mobile-menu .has-submenu.open .submenu-icon {
+        transform: rotate(180deg);
       }
 
       /* Mobile Menu CTA Buttons */
@@ -1054,24 +1207,30 @@
       /* ========================================
          RESPONSIVE DESIGN
          ======================================== */
-      @media (max-width: 1360px) {
+      @media (max-width: 1415px) {
         .logo-text {
           display: none;
         }
       }
 
-      @media (max-width: 1135px) {
-        nav {
+      @media (max-width: 1200px) {
+        :root {
+          --spacing-3xl: 80px;
+          --spacing-2xl: 60px;
+          --spacing-xl: 40px;
+          --font-size-4xl: 3rem;
+          --font-size-3xl: 2.2rem;
+          --font-size-2xl: 1.8rem;
+        }
+
+        .nav-desktop {
           display: none;
         }
 
         .mobile-toggle {
           display: flex;
         }
-
-        .page-title {
-          font-size: var(--font-size-2xl);
-        }
+      }
 
         .section-title {
           font-size: var(--font-size-xl);
@@ -1166,7 +1325,7 @@
       </section>
 
       <!-- Info Cards - Overview -->
-      <section class="section">
+      <section id="info" class="section">
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">Eiskunstlauf beim MERC</h2>
@@ -1235,7 +1394,7 @@
       </section>
 
       <!-- Schnupperkurs Section -->
-      <section class="section">
+      <section id="schnuppern" class="section">
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">Vier Wochen Schnuppern?</h2>
@@ -1372,7 +1531,7 @@
       </section>
 
       <!-- Mitgliedschaft Section -->
-      <section class="section" style="background-color: var(--white);">
+      <section id="mitgliedschaft" class="section" style="background-color: var(--white);">
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">Wie werde ich Mitglied?</h2>
@@ -1478,7 +1637,7 @@
       </section>
 
       <!-- Erwachsenenkunstlauf Section -->
-      <section class="section">
+      <section id="erwachsene" class="section">
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">Erwachsenenkunstlauf</h2>
