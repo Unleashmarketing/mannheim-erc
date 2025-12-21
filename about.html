@@ -396,44 +396,21 @@
 
       /* Header Button - Original Style */
       .btn-header {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
         padding: 12px 24px !important;
         background-color: var(--primary-color);
-        color: var(--text-light) !important;
-        border: none;
+        color: var(--white) !important;
         border-radius: var(--border-radius-md);
-        cursor: pointer;
-        transition: var(--transition-base);
         font-weight: 600;
-        text-align: center;
-        letter-spacing: 0.5px;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0, 98, 255, 0.15);
+        box-shadow: var(--shadow-sm);
       }
 
       .btn-header::after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: rgba(255, 255, 255, 0.1);
-        transition: var(--transition-base);
         display: none;
       }
 
       .btn-header:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0, 98, 255, 0.2);
-        color: var(--text-light) !important;
-      }
-
-      .btn-header:hover::after {
-        width: 100%;
+        background-color: var(--primary-hover);
+        box-shadow: var(--shadow-md);
       }
 
       /* ========================================
@@ -2330,103 +2307,7 @@
       </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-      // ========================================
-      // STICKY HEADER
-      // ========================================
-      const header = document.querySelector("header");
-      
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 100) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-      });
-
-      // ========================================
-      // SCROLL ANIMATIONS
-      // ========================================
-      const fadeElements = document.querySelectorAll(".fade-in");
-      
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, observerOptions);
-
-      fadeElements.forEach((element) => {
-        observer.observe(element);
-      });
-
-      // ========================================
-      // MOBILE MENU
-      // ========================================
-      
-      // Setup mobile submenus
-      function setupMobileSubmenus() {
-        const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
-        submenuParents.forEach((toggle) => {
-          toggle.addEventListener("click", function (e) {
-            e.preventDefault();
-            const li = this.closest(".has-submenu");
-            const isOpen = li.classList.contains("open");
-            
-            // Close other open submenus
-            mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
-              if (item !== li) item.classList.remove("open");
-            });
-            
-            li.classList.toggle("open");
-            this.setAttribute("aria-expanded", String(!isOpen));
-          });
-        });
-      }
-
-      const mobileToggle = document.querySelector(".mobile-toggle");
-      const mobileMenu = document.querySelector(".mobile-menu");
-      const overlay = document.querySelector(".overlay");
-      const mobileClose = document.querySelector(".mobile-menu-close");
-      const mobileLinks = document.querySelectorAll(".mobile-menu a");
-
-      function openMenu() {
-        mobileMenu.classList.add("active");
-        overlay.classList.add("active");
-        document.body.style.overflow = "hidden";
-        mobileToggle.classList.add("active");
-        mobileToggle.setAttribute("aria-expanded", "true");
-      }
-
-      function closeMenu() {
-        mobileMenu.classList.remove("active");
-        overlay.classList.remove("active");
-        document.body.style.overflow = "";
-        mobileToggle.classList.remove("active");
-        mobileToggle.setAttribute("aria-expanded", "false");
-      }
-
-      mobileToggle.addEventListener("click", () => {
-        const isOpen = mobileMenu.classList.contains("active");
-        isOpen ? closeMenu() : openMenu();
-      });
-
-      mobileClose.addEventListener("click", closeMenu);
-      overlay.addEventListener("click", closeMenu);
-
-      // Setup submenus
-      setupMobileSubmenus();
-
-      mobileLinks.forEach((link) => {
-        link.addE
-
-   <script>
+<script>
   // Setup mobile submenus
   function setupMobileSubmenus() {
     const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
@@ -2524,6 +2405,6 @@
   fadeElements.forEach((element) => {
     observer.observe(element);
   });
-  </script>
+</script>
   </body>
 </html>
