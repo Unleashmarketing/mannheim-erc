@@ -330,7 +330,6 @@
         width: 100%;
       }
 
-
       /* Submenu Styles */
       .nav-desktop .has-submenu {
         position: relative;
@@ -351,7 +350,6 @@
         list-style: none;
       }
       
-      /* Add larger invisible bridge between menu and submenu */
       .nav-desktop .has-submenu::before {
         content: '';
         position: absolute;
@@ -366,11 +364,6 @@
       .nav-desktop .has-submenu:hover > .submenu,
       .nav-desktop .has-submenu:hover::before,
       .nav-desktop .submenu:hover {
-        display: block;
-      }
-      
-      /* Keep submenu visible when hovering over bridge */
-      .nav-desktop .has-submenu::before:hover + .submenu {
         display: block;
       }
 
@@ -394,7 +387,6 @@
         transition: all 0.3s ease;
       }
 
-      /* Header Button - Original Style */
       .btn-header {
         padding: 12px 24px !important;
         background-color: var(--primary-color);
@@ -622,7 +614,6 @@
         color: var(--primary-color);
       }
 
-      /* Social Links in Cards */
       .card-socials {
         display: flex;
         justify-content: center;
@@ -668,16 +659,10 @@
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       }
 
-      /* ========================================
-         VORSTAND SECTION
-         ======================================== */
       .vorstand {
         background-color: var(--light-bg);
       }
 
-      /* ========================================
-         TRAINER SECTION
-         ======================================== */
       .trainer {
         background-color: var(--white);
       }
@@ -855,30 +840,6 @@
         color: var(--white);
       }
 
-      /* Social Links */
-      .social-links {
-        display: flex;
-        gap: var(--spacing-sm);
-        margin-top: var(--spacing-md);
-      }
-
-      .social-links a {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.1);
-        color: var(--white);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: var(--transition-base);
-      }
-
-      .social-links a:hover {
-        background-color: var(--primary-color);
-        transform: translateY(-3px);
-      }
-
       .footer-social {
         display: flex;
         gap: var(--spacing-sm);
@@ -1025,7 +986,6 @@
         color: var(--primary-color);
       }
 
-      /* Mobile Menu CTA Buttons */
       .mobile-menu .mobile-cta-buttons {
         display: flex;
         flex-direction: column;
@@ -1053,7 +1013,6 @@
         transform: translateY(-2px);
       }
 
-      /* Mobile Submenu Styles */
       .mobile-menu .has-submenu {
         position: relative;
       }
@@ -1094,7 +1053,6 @@
         transform: rotate(180deg);
       }
 
-
       .overlay {
         position: fixed;
         top: 0;
@@ -1113,9 +1071,6 @@
         visibility: visible;
       }
 
-      /* ========================================
-         ANIMATIONS
-         ======================================== */
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -1155,10 +1110,6 @@
         }
       }
 
-      @media (max-width: 1135px) {
-        /* Removed duplicate spacing variables */
-      }
-
       @media (max-width: 768px) {
         :root {
           --spacing-3xl: 60px;
@@ -1190,9 +1141,6 @@
         }
       }
 
-      /* ========================================
-         ACCESSIBILITY
-         ======================================== */
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
@@ -1237,10 +1185,8 @@
     />
   </head>
   <body>
-    <!-- Skip Link for Accessibility -->
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
-    <!-- Header -->
     <header>
       <div class="container header-container">
         <div class="logo">
@@ -1317,7 +1263,6 @@
       </div>
     </header>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu">
       <button class="mobile-menu-close" aria-label="Menü schließen">
         <i class="fas fa-times"></i>
@@ -1376,12 +1321,9 @@
       </div>
     </div>
 
-    <!-- Overlay -->
     <div class="overlay"></div>
 
-    <!-- Main Content -->
     <main id="main-content">
-      <!-- Page Hero -->
       <section class="page-hero">
         <div class="page-hero-content">
           <h1 class="page-title">Unser Verein</h1>
@@ -1392,7 +1334,6 @@
         </div>
       </section>
 
-      <!-- Vision Section -->
       <section id="vision" class="section vision">
         <div class="container">
           <div class="section-header">
@@ -1463,7 +1404,6 @@
         </div>
       </section>
 
-      <!-- Vorstand Section -->
       <section id="vorstand" class="section vorstand">
         <div class="container">
           <div class="section-header">
@@ -1490,7 +1430,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#dc87b9b1bdb5b0fcacaeb3a8b9bfa8b9b881">[email protected]</a>
+                    <a href="mailto:info@merc-mannheim.de">info@merc-mannheim.de</a>
                   </span>
                 </div>
               </div>
@@ -1513,7 +1453,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#411a242c20282d6131332e3524223524251c">[email protected]</a>
+                    <a href="mailto:info@merc-mannheim.de">info@merc-mannheim.de</a>
                   </span>
                 </div>
               </div>
@@ -1536,7 +1476,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#b4efd1d9d5ddd894c4c6dbc0d1d7c0d1d0e9">[email protected]</a>
+                    <a href="mailto:info@merc-mannheim.de">info@merc-mannheim.de</a>
                   </span>
                 </div>
               </div>
@@ -1559,7 +1499,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#3a615f575b53561a4a48554e5f594e5f5e67">[email protected]</a>
+                    <a href="mailto:info@merc-mannheim.de">info@merc-mannheim.de</a>
                   </span>
                 </div>
               </div>
@@ -1582,7 +1522,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#ebb08e868a8287cb9b99849f8e889f8e8fb6">[email protected]</a>
+                    <a href="mailto:info@merc-mannheim.de">info@merc-mannheim.de</a>
                   </span>
                 </div>
               </div>
@@ -1605,7 +1545,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#1249777f737b7e3262607d6677716677764f">[email protected]</a>
+                    <a href="mailto:info@merc-mannheim.de">info@merc-mannheim.de</a>
                   </span>
                 </div>
               </div>
@@ -1628,7 +1568,7 @@
                 <div class="card-meta">
                   <span class="card-meta-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#bbe0ded6dad2d79bcbc9d4cfded8cfdedfe6">[email protected]</a>
+                    <a href="mailto:info@merc-mannheim.de">info@merc-mannheim.de</a>
                   </span>
                 </div>
               </div>
@@ -1660,7 +1600,6 @@
         </div>
       </section>
 
-      <!-- Trainer Section -->
       <section id="trainer" class="section trainer">
         <div class="container">
           <div class="section-header">
@@ -1670,31 +1609,22 @@
             </p>
           </div>
 
-          <!-- Eiskunstlauf / Synchron Eiskunstlauf -->
+          <!-- Eiskunstlauf -->
           <div style="margin-bottom: 60px;">
             <h3 style="font-size: var(--font-size-xl); font-weight: 700; margin-bottom: var(--spacing-lg); color: var(--text-dark); text-align: center;">
-              Eiskunstlauf / Synchron Eiskunstlauf
+              Eiskunstlauf
             </h3>
             <div class="grid grid-3">
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Adrian Schager.jpeg"
-                    alt="Adrian Schager"
-                  />
+                  <img src="images/Adrian Schager.jpeg" alt="Adrian Schager" />
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Adrian Schager</h3>
                   <p class="card-subtitle">Trainer Eiskunstlauf</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      A-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2015
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>A-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2015</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1705,23 +1635,14 @@
 
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Anja Pohlmann.jpeg"
-                    alt="Anja Pohlmann"
-                  />
+                  <img src="images/Anja Pohlmann.jpeg" alt="Anja Pohlmann" />
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Anja Pohlmann</h3>
                   <p class="card-subtitle">Trainerin Eiskunstlauf</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      B-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2017
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>B-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2017</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1732,23 +1653,14 @@
 
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Dora Vulic.jpeg"
-                    alt="Dora Vulic"
-                  />
+                  <img src="images/Dora Vulic.jpeg" alt="Dora Vulic" />
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Dora Vulic</h3>
                   <p class="card-subtitle">Trainerin Eiskunstlauf</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      B-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2018
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>B-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2018</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1759,23 +1671,14 @@
 
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Günter Zöller.jpeg"
-                    alt="Günter Zöller"
-                  />
+                  <img src="images/Günter Zöller.jpeg" alt="Günter Zöller" />
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Günter Zöller</h3>
                   <p class="card-subtitle">Trainer Eiskunstlauf</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      A-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2012
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>A-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2012</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1786,23 +1689,14 @@
 
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Larissa Vetter.jpeg"
-                    alt="Larissa Vetter"
-                  />
+                  <img src="images/Larissa Vetter.jpeg" alt="Larissa Vetter" />
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Larissa Vetter</h3>
                   <p class="card-subtitle">Trainerin Eiskunstlauf</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      C-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2020
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>C-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2020</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1813,23 +1707,14 @@
 
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Lisa Day.jpeg"
-                    alt="Lisa Day"
-                  />
+                  <img src="images/Lisa Day.jpeg" alt="Lisa Day" />
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Lisa Day</h3>
                   <p class="card-subtitle">Trainerin Eiskunstlauf</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      B-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2019
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>B-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2019</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1840,23 +1725,14 @@
 
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Marie-Christine Hube.jpeg"
-                    alt="Marie-Christine Hube"
-                  />
+                  <img src="images/Marie-Christine Hube.jpeg" alt="Marie-Christine Hube" />
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Marie-Christine Hube</h3>
                   <p class="card-subtitle">Trainerin Eiskunstlauf</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      C-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2021
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>C-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2021</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1867,23 +1743,14 @@
 
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Natali Herzog.jpeg"
-                    alt="Natali Herzog"
-                  />
+                  <img src="images/Natali Herzog.jpeg" alt="Natali Herzog" />
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Natali Herzog</h3>
                   <p class="card-subtitle">Trainerin Eiskunstlauf</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      B-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2016
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>B-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2016</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1894,23 +1761,14 @@
 
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Nathalie Weinzierl.jpeg"
-                    alt="Nathalie Weinzierl"
-                  />
+                  <img src="images/Nathalie Weinzierl.jpeg" alt="Nathalie Weinzierl" />
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Nathalie Weinzierl</h3>
                   <p class="card-subtitle">Trainerin Eiskunstlauf</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      C-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2022
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>C-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2022</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1921,50 +1779,14 @@
 
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Nicole Endress.jpeg"
-                    alt="Nicole Endress"
-                  />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Nicole Endress</h3>
-                  <p class="card-subtitle">Trainerin Synchron Eiskunstlauf</p>
-                  <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      A-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2014
-                    </span>
-                  </div>
-                  <div class="card-socials">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img
-                    src="images/Simone Bienert.jpeg"
-                    alt="Simone Bienert"
-                  />
+                  <img src="images/Simone Bienert.jpeg" alt="Simone Bienert" />
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Simone Bienert</h3>
                   <p class="card-subtitle">Trainerin Eiskunstlauf</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      B-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2018
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>B-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2018</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1975,23 +1797,14 @@
 
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Stefan Lindemann.jpeg"
-                    alt="Stefan Lindemann"
-                  />
+                  <img src="images/Stefan Lindemann.jpeg" alt="Stefan Lindemann" />
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Stefan Lindemann</h3>
                   <p class="card-subtitle">Trainer Eiskunstlauf</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      A-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2010
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>A-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2010</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -2002,23 +1815,14 @@
 
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Teresa Simon.jpeg"
-                    alt="Teresa Simon"
-                  />
+                  <img src="images/Teresa Simon.jpeg" alt="Teresa Simon" />
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Teresa Simon</h3>
                   <p class="card-subtitle">Trainerin Eiskunstlauf</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      C-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2020
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>C-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2020</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -2029,31 +1833,48 @@
             </div>
           </div>
 
-          <!-- Eisschnelllauf -->
-          <div>
+          <!-- Synchron Eiskunstlauf -->
+          <div style="margin-bottom: 60px;">
             <h3 style="font-size: var(--font-size-xl); font-weight: 700; margin-bottom: var(--spacing-lg); color: var(--text-dark); text-align: center;">
-              Eisschnelllauf
+              Synchron Eiskunstlauf
             </h3>
             <div class="grid grid-4">
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Christian.jpeg"
-                    alt="Christian"
-                  />
+                  <img src="images/Nicole Endress.jpeg" alt="Nicole Endress" />
                 </div>
                 <div class="card-body">
-                  <h3 class="card-title">Christian</h3>
-                  <p class="card-subtitle">Trainer Eisschnelllauf</p>
+                  <h3 class="card-title">Nicole Endress</h3>
+                  <p class="card-subtitle">Trainerin Synchron Eiskunstlauf</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      A-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2015
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>A-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2014</span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shorttrack -->
+          <div>
+            <h3 style="font-size: var(--font-size-xl); font-weight: 700; margin-bottom: var(--spacing-lg); color: var(--text-dark); text-align: center;">
+              Shorttrack
+            </h3>
+            <div class="grid grid-4">
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img src="images/Sean McConnell.jpeg" alt="Sean McConnell" />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Sean McConnell</h3>
+                  <p class="card-subtitle">Stellvertretender Abteilungsleiter Shorttrack</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item"><i class="fas fa-star"></i>B-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2018</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -2064,23 +1885,14 @@
 
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Gundi.jpeg"
-                    alt="Gundi"
-                  />
+                  <img src="images/Christian Arlt.jpeg" alt="Christian Arlt" />
                 </div>
                 <div class="card-body">
-                  <h3 class="card-title">Gundi</h3>
-                  <p class="card-subtitle">Trainerin Eisschnelllauf</p>
+                  <h3 class="card-title">Christian Arlt</h3>
+                  <p class="card-subtitle">Stellvertretender Abteilungsleiter Shorttrack, Trainer</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      B-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2017
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>A-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2015</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -2091,23 +1903,32 @@
 
               <div class="card trainer-card fade-in">
                 <div class="card-image">
-                  <img
-                    src="images/Konstantin.jpeg"
-                    alt="Konstantin"
-                  />
+                  <img src="images/Gundi Pawasserat.jpeg" alt="Gundi Pawasserat" />
                 </div>
                 <div class="card-body">
-                  <h3 class="card-title">Konstantin</h3>
-                  <p class="card-subtitle">Trainer Eisschnelllauf</p>
+                  <h3 class="card-title">Gundi Pawasserat</h3>
+                  <p class="card-subtitle">Vizepräsident, Abteilungsleiter Shorttrack, Trainer</p>
                   <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      B-Lizenz
-                    </span>
-                    <span class="card-meta-item">
-                      <i class="fas fa-clock"></i>
-                      Seit 2019
-                    </span>
+                    <span class="card-meta-item"><i class="fas fa-star"></i>A-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2010</span>
+                  </div>
+                  <div class="card-socials">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img src="images/Jenny Ehrhard.jpeg" alt="Jenny Ehrhard" />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Jenny Ehrhard</h3>
+                  <p class="card-subtitle">Trainer Shorttrack</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item"><i class="fas fa-star"></i>B-Lizenz</span>
+                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2019</span>
                   </div>
                   <div class="card-socials">
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -2287,7 +2108,7 @@
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="761910101f1513361b1304155b19181a1f1813581213">[email&#160;protected]</a></span>
+                <span><a href="mailto:info@merc-mannheim.de">info@merc-mannheim.de</a></span>
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-clock"></i></span>
@@ -2308,7 +2129,6 @@
     </footer>
 
 <script>
-  // Setup mobile submenus
   function setupMobileSubmenus() {
     const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
     submenuParents.forEach((toggle) => {
@@ -2317,7 +2137,6 @@
         const li = this.closest(".has-submenu");
         const isOpen = li.classList.contains("open");
         
-        // Close other open submenus
         mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
           if (item !== li) item.classList.remove("open");
         });
@@ -2358,7 +2177,6 @@
   mobileClose.addEventListener("click", closeMenu);
   overlay.addEventListener("click", closeMenu);
 
-  // Setup submenus
   setupMobileSubmenus();
 
   mobileLinks.forEach((link) => {
@@ -2375,7 +2193,6 @@
     }
   });
 
-  // Sticky Header
   const header = document.querySelector("header");
   
   window.addEventListener("scroll", () => {
@@ -2386,7 +2203,6 @@
     }
   });
 
-  // Scroll Animations
   const fadeElements = document.querySelectorAll(".fade-in");
   
   const observerOptions = {
