@@ -33,8 +33,12 @@
         </a>
         <ul class="submenu">
           <li><a href="eisschnelllauf.html#info">Informationen</a></li>
-          <li><a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a></li>
-          <li><a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a></li>
+          <li>
+            <a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a>
+          </li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -52,7 +56,9 @@
   </template>
   <template id="memberBtn">
     <ul>
-      <li><a href="mitglieder.html" class="btn-header">Mitgliederbereich</a></li>
+      <li>
+        <a href="mitglieder.html" class="btn-header">Mitgliederbereich</a>
+      </li>
     </ul>
   </template>
   <template id="contactBtn">
@@ -438,23 +444,23 @@
       }
 
       /* Header Button */
-      .btn-header {
+      /* .btn-header {
         padding: 12px 24px !important;
         background-color: var(--primary-color);
         color: var(--white) !important;
         border-radius: var(--border-radius-md);
         font-weight: 600;
         box-shadow: var(--shadow-sm);
-      }
+      } */
 
       .btn-header::after {
         display: none;
       }
 
-      .btn-header:hover {
+      /* .btn-header:hover {
         background-color: var(--primary-hover);
         box-shadow: var(--shadow-md);
-      }
+      } */
 
       /* Desktop Submenu */
       .nav-desktop .has-submenu {
@@ -474,10 +480,10 @@
         padding: var(--spacing-xs) 0;
         z-index: 1002;
       }
-      
+
       /* Add larger invisible bridge between menu and submenu */
       .nav-desktop .has-submenu::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 100%;
         left: -10px;
@@ -492,7 +498,7 @@
       .nav-desktop .submenu:hover {
         display: block;
       }
-      
+
       /* Keep submenu visible when hovering over bridge */
       .nav-desktop .has-submenu::before:hover + .submenu {
         display: block;
@@ -1633,7 +1639,11 @@
           <span class="logo-text">Mannheimer ERC</span>
         </a>
 
-        <nav class="nav-desktop" id="pageElementsDesktop" aria-label="Hauptnavigation"></nav>
+        <nav
+          class="nav-desktop"
+          id="pageElementsDesktop"
+          aria-label="Hauptnavigation"
+        ></nav>
 
         <button
           class="mobile-toggle"
@@ -1797,7 +1807,11 @@
                 evtl. etwas an Ausrüstung brauchst!
               </p>
               <p>
-                Verwende dazu am besten unser <strong>Kontaktformular</strong>.
+                Verwende dazu am besten unser
+                <strong>Kontaktformular</strong> oder schaut vorbei, in der
+                Hauptsaison haben wir Mittwochs ab 18:30, Freitags ab 18:10 und
+                Samstags ab 09:00 Shorttrack Training. An Dienstag um 19:45 und
+                Samstag um 08:00 haben wir Schnelllauf Training.
               </p>
             </div>
 
@@ -1871,7 +1885,10 @@
               Schnelllauf in Mannheim<span id="geschichte-toggle-icon">▼</span>
             </h2>
           </div>
-          <div class="content-section fade-in geschichte-collapsed" id="geschichte-container">
+          <div
+            class="content-section fade-in geschichte-collapsed"
+            id="geschichte-container"
+          >
             <h3>Schnelllauf</h3>
             <h4>1938</h4>
             <p>
@@ -2209,13 +2226,15 @@
 
       // Mobile submenu toggle
       function setupMobileSubmenus() {
-        const mobileSubmenus = document.querySelectorAll('.mobile-menu .has-submenu');
-        mobileSubmenus.forEach(item => {
-          const toggle = item.querySelector('.submenu-toggle');
+        const mobileSubmenus = document.querySelectorAll(
+          ".mobile-menu .has-submenu"
+        );
+        mobileSubmenus.forEach((item) => {
+          const toggle = item.querySelector(".submenu-toggle");
           if (toggle) {
-            toggle.addEventListener('click', (e) => {
+            toggle.addEventListener("click", (e) => {
               e.preventDefault();
-              item.classList.toggle('open');
+              item.classList.toggle("open");
             });
           }
         });
@@ -2253,7 +2272,7 @@
           if (mobileCTAButtons) {
             mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
           }
-          
+
           // Setup submenu toggles for mobile
           setupMobileSubmenus();
         }
@@ -2340,15 +2359,16 @@
         const grid = document.getElementById("calendar-grid");
         grid.innerHTML = "";
         const firstDayOfMonth = new Date(year, month - 1, 1).getDay();
-        const adjustedFirstDay = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
+        const adjustedFirstDay =
+          firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
         const daysInMonth = new Date(year, month, 0).getDate();
-        
+
         for (let i = 0; i < adjustedFirstDay; i++) {
           const emptyDiv = document.createElement("div");
           emptyDiv.classList.add("empty-day");
           grid.appendChild(emptyDiv);
         }
-        
+
         for (let i = 1; i <= daysInMonth; i++) {
           const dateString = `${year}-${String(month).padStart(
             2,
@@ -2490,7 +2510,7 @@
         const dateDisplay = document.getElementById(
           "archive-news-date-display"
         );
-        
+
         if (searchTerm === "#begrenzt") {
           const validItems = ARCHIVE_NEWS_LIST.filter(
             (item) => item.date && item.date !== "N/A"
@@ -2620,7 +2640,7 @@
         toggleGeschichteVisibility();
         toggleArchiveNewsVisibility();
       });
-      
+
       document
         .getElementById("archive-news-search")
         .addEventListener("focus", function () {
@@ -2646,7 +2666,7 @@
           }
         });
       });
-      
+
       document
         .getElementById("next-month")
         .addEventListener("click", nextMonth);
