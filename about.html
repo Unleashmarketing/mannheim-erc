@@ -2121,45 +2121,98 @@
     </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  function setupMobileSubmenus() {
-    const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
-    submenuParents.forEach((toggle) => {
-      toggle.addEventListener("click", function (e) {
-        e.preventDefault();
-        const li = this.closest(".has-submenu");
-        const isOpen = li.classList.contains("open");
-        
-        mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
-          if (item !== li) item.classList.remove("open");
-        });
-        
-        li.classList.toggle("open");
-        this.setAttribute("aria-expanded", String(!isOpen));
+ function setupMobileSubmenus() {
+  const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
+  submenuParents.forEach((toggle) => {
+    toggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      const li = this.closest(".has-submenu");
+      const isOpen = li.classList.contains("open");
+      
+      mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
+        if (item !== li) item.classList.remove("open");
       });
+      
+      li.classList.toggle("open");
+      this.setAttribute("aria-expanded", String(!isOpen));
     });
+  });
+}
+
+const mobileToggle = document.querySelector(".mobile-toggle");
+const mobileMenu = document.querySelector(".mobile-menu");
+const overlay = document.querySelector(".overlay");
+const mobileClose = document.querySelector(".mobile-menu-close");
+const mobileLinks = document.querySelectorAll(".mobile-menu a");
+
+function openMenu() {
+  mobileMenu.classList.add("active");
+  overlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+  mobileToggle.classList.add("active");
+  mobileToggle.setAttribute("aria-expanded", "true");
+}
+
+function closeMenu() {
+  mobileMenu.classList.remove("active");
+  overlay.classList.remove("active");
+  document.body.style.overflow = "";
+  mobileToggle.classList.remove("active");
+  mobileToggle.setAttribute("aria-expanded", "false");
+}
+
+mobileToggle.addEventListener("click", () => {
+  const isOpen = mobileMenu.classList.contains("active");
+  isOpen ? closeMenu() : openMenu();
+});
+
+mobileClose.addEventListener("click", closeMenu);
+overlay.addEventListener("click", closeMenu);
+
+setupMobileSubmenus();
+
+mobileLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    if (link.getAttribute("href").startsWith("#")) {
+      closeMenu();
+    }
+  });
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
+    closeMenu();
   }
+});
 
-  const mobileToggle = document.querySelector(".mobile-toggle");
-  const mobileMenu = document.querySelector(".mobile-menu");
-  const overlay = document.querySelector(".overlay");
-  const mobileClose = document.querySelector(".mobile-menu-close");
-  const mobileLinks = document.querySelectorAll(".mobile-menu a");
+const header = document.querySelector("header");
 
-  function openMenu() {
-    mobileMenu.classList.add("active");
-    overlay.classList.add("active");
-    document.body.style.overflow = "hidden";
-    mobileToggle.classList.add("active");
-    mobileToggle.setAttribute("aria-expanded", "true");
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 100) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
   }
+});
 
-  function closeMenu() {
-    mobileMenu.classList.remove("active");
-    overlay.classList.remove("active");
-    document.body.style.overflow = "";
-    mobileToggle.classList.remove("active");
-    mobileToggle.setAttribute("aria-expanded", "false");
-  }
+const fadeElements = document.querySelectorAll(".fade-in");
 
-  mobileToggle.addEventListener("click", () => {
-    const isOpen = mobileMenu.classList.contains("active"
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px"
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, observerOptions);
+
+fadeElements.forEach((element) => {
+  observer.observe(element);
+});
+</script>
+</body>
+</html>
