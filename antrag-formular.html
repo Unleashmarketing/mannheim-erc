@@ -109,6 +109,35 @@
       position: relative;
     }
 
+    .back-button-top {
+      position: absolute;
+      top: var(--spacing-md);
+      left: var(--spacing-md);
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: var(--border-radius-md);
+      font-weight: 600;
+      font-size: var(--font-size-sm);
+      transition: var(--transition-base);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .back-button-top:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateX(-4px);
+    }
+
+    .back-button-top i {
+      font-size: 1.1em;
+    }
+
     .form-header::before {
       content: "";
       position: absolute;
@@ -401,6 +430,21 @@
         padding: var(--spacing-xl) var(--spacing-md);
       }
 
+      .back-button-top {
+        top: var(--spacing-sm);
+        left: var(--spacing-sm);
+        padding: 10px 16px;
+        font-size: var(--font-size-xs);
+      }
+
+      .back-button-top span {
+        display: none;
+      }
+
+      .back-button-top i {
+        font-size: 1.2em;
+      }
+
       .form-header h1 {
         font-size: var(--font-size-xl);
       }
@@ -438,6 +482,10 @@
 <body>
   <div class="form-container">
     <div class="form-header">
+      <a href="about.html" class="back-button-top">
+        <i class="fas fa-arrow-left"></i>
+        <span>Zurück</span>
+      </a>
       <div class="form-header-content">
         <h1>Antrag Eislaufschule 2026</h1>
         <p>Bitte füllen Sie alle erforderlichen Felder aus</p>
@@ -575,7 +623,7 @@
 
         <!-- Buttons -->
         <div class="btn-container">
-          <button type="button" class="btn-secondary" onclick="window.history.back()">Zurück</button>
+          <a href="about.html" class="btn-secondary" style="text-decoration: none; display: inline-block;">Zurück</a>
           <button type="submit" class="btn-primary" id="submitBtn">
             <span id="btnText">PDF erstellen & herunterladen</span>
           </button>
