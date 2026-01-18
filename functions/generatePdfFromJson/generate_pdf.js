@@ -211,6 +211,30 @@ function prettyPrintJson(data, x, pageState, lineHeight, indentStep) {
   }
 }
 
+async function deleteFile(filePath) {
+  try {
+    await fs.unlink(filePath);
+    console.log(`Successfully deleted ${filePath}`);
+  } catch (error) {
+    if (error.code === "ENOENT") {
+      console.log("File does not exist, nothing to delete.");
+    } else {
+      console.error("Error deleting file:", error.message);
+    }
+  }
+}
+
+async function getFileAsByteArray(filePath) {
+  try {
+    const buffer = await fs.readFile(filePath);
+    const byteArray = new Uint8Array(buffer);
+    console.log(`Read ${byteArray.length} bytes.`);
+    return byteArray;
+  } catch (error) {
+    console.error("Error reading file:", error);
+  }
+}
+
 async function sendEmailWithAttachment(
   filename,
   path,
@@ -250,10 +274,14 @@ async function sendEmailWithAttachment(
 }
 
 /**
- * Takes a JSON formatted string, parses it, and saves a PDF
- * file pretty-printing its key-value pairs.
- * * @param {string} jsonString - The JSON string to parse.
+ * Takes a JSON formatted string, parses it, saves a PDF, sends the PDF to an email address.
+ * The PDF file is then read into a bytearray and then deleted.
+ * The function returns a list: [bool: pdfgenerated Y/N?, string: error messages, bool: email sent Y/N?, Uint8Array: PDF as bytearray]
+ * @param {string} jsonString - The JSON string to parse.
  * @param {string} outputFilePath - The path to save the PDF file (e.g., "output.pdf").
+ * @param {int} documentType - 0: Membership, 1: ELS
+ * @param {boolean} buildPdf - false: pdf won't be built, in this case the function
+ * can be used to test if input fields are correct, true: pdf will be created.
  */
 async function generatePdfFromJson(
   jsonString,
@@ -261,9 +289,7 @@ async function generatePdfFromJson(
   documentType = 0,
   buildPdf = false,
 ) {
-  /*documentType = 0: Membership
-                   1: ELS*/
-
+  let byteArray = new Uint8Array(0);
   try {
     const stats = await fs.lstat(outputFilePath);
     if (!stats.isDirectory()) throw new Error();
@@ -272,26 +298,11 @@ async function generatePdfFromJson(
       false,
       "outputFilePath either does not exist or is not a folder",
       false,
+      byteArray,
     ];
   }
-  // Async Cleanup
-  const allFiles = await fs.readdir(outputFilePath);
-  const now = Date.now();
-  const twentyFourHoursAgo = now - 24 * 60 * 60 * 1000;
-  const deletePromises = allFiles
-    .filter((file) => path.extname(file).toLowerCase() === ".pdf")
-    .map(async (file) => {
-      const filePath = path.join(outputFilePath, file);
-      const stats = await fs.stat(filePath);
-      if (stats.mtimeMs < twentyFourHoursAgo) {
-        console.log(`Deleting old file: ${file} (Modified: ${stats.mtime})`);
-        return fs.unlink(filePath);
-      }
-    });
-
-  await Promise.all(deletePromises);
-  if (!(documentType in [0, 1])) {
-    return [false, "Document type must be 0 or 1", false];
+  if (!([0, 1].indexOf(documentType) > -1)) {
+    return [false, "Document type must be 0 or 1", false, byteArray];
   }
   let parsedJson;
   try {
@@ -303,7 +314,7 @@ async function generatePdfFromJson(
     }
   } catch (error) {
     console.error("JSON Parsing Error:", error.message);
-    return [false, "JSON Parsing Error", false]; // Stop execution
+    return [false, "JSON Parsing Error", false, byteArray]; // Stop execution
   }
 
   let requiredKeys = [];
@@ -416,13 +427,18 @@ async function generatePdfFromJson(
   for (let i in requiredKeys) {
     const reqKey = requiredKeys[i];
     if (!(reqKey in parsedJson)) {
-      return [false, "Field " + reqKey + " missing from payload", false];
+      return [
+        false,
+        "Field " + reqKey + " missing from payload",
+        false,
+        byteArray,
+      ];
     }
     if (typeof parsedJson[reqKey] != "string") {
-      return [false, "Field " + reqKey + " is not a string", false];
+      return [false, "Field " + reqKey + " is not a string", false, byteArray];
     }
     if (parsedJson[reqKey].length == 0) {
-      return [false, "Field " + reqKey + " can not be empty", false];
+      return [false, "Field " + reqKey + " can not be empty", false, byteArray];
     }
     let reqKeySimplified = reqKey;
     if (reqKeySimplified.toLowerCase().includes("geburtsdatum")) {
@@ -435,13 +451,18 @@ async function generatePdfFromJson(
     switch (reqKeySimplified) {
       case "PLZ": {
         if (!isInteger(parsedJson[reqKey])) {
-          return [false, "Field " + reqKey + " must be an integer", false];
+          return [
+            false,
+            "Field " + reqKey + " must be an integer",
+            false,
+            byteArray,
+          ];
         }
         break;
       }
       case "Geburtsdatum": {
         if (Number.isNaN(new Date(parsedJson[reqKey]))) {
-          return [false, reqKey + " must be a valid date", false];
+          return [false, reqKey + " must be a valid date", false, byteArray];
         }
         break;
       }
@@ -450,38 +471,43 @@ async function generatePdfFromJson(
         while (parsedJson[reqKey].startsWith("+")) {
           checkPhone = parsedJson[reqKey].substring(1);
           if (length(checkPhone) == 0) {
-            return [false, reqKey + " invalid format", false];
+            return [false, reqKey + " invalid format", false, byteArray];
           }
         }
         while (checkPhone.startsWith("0")) {
           checkPhone = checkPhone.substring(1);
           if (checkPhone.length == 0) {
-            return [false, reqKey + " invalid format", false];
+            return [false, reqKey + " invalid format", false, byteArray];
           }
         }
         if (!isInteger(checkPhone)) {
-          return [false, reqKey + " must contain only numbers", false];
+          return [
+            false,
+            reqKey + " must contain only numbers",
+            false,
+            byteArray,
+          ];
         }
         break;
       }
       case "e-Mail": {
         if (!validateEmail(parsedJson[reqKey])) {
-          return [false, reqKey + " invalid format", false];
+          return [false, reqKey + " invalid format", false, byteArray];
         }
         break;
       }
       case "IBAN": {
         if (!parsedJson[reqKey].replaceAll(/\s/g, "")) {
-          return [false, reqKey + " invalid format", false];
+          return [false, reqKey + " invalid format", false, byteArray];
         }
         if (!isValidIBANNumber(parsedJson[reqKey])) {
-          return [false, reqKey + " invalid format", false];
+          return [false, reqKey + " invalid format", false, byteArray];
         }
         break;
       }
       case "Einzugsermächtigung": {
         if (parsedJson[reqKey].toLowerCase() != "ja") {
-          return [false, reqKey + " not accepted.", false];
+          return [false, reqKey + " not accepted.", false, byteArray];
         }
         break;
       }
@@ -494,17 +520,17 @@ async function generatePdfFromJson(
             false,
             reqKey + " must be Eiskunstlauf or Eisschnelllauf.",
             false,
+            byteArray,
           ];
         }
         break;
       }
       case "Unterabteilung": {
-        // Muss noch geklaert werden welche Unterabteilungen man hier eintragen darf.
         if (
           parsedJson["Abteilung"].toLowerCase() == "schnelllauf" &&
           parsedJson[reqKey].toLowerCase() != "shorttrack"
         ) {
-          return [false, reqKey + " must be shorttrack.", false];
+          return [false, reqKey + " must be shorttrack.", false, byteArray];
         }
         if (
           parsedJson["Abteilung"].toLowerCase() == "kunstlauf" &&
@@ -517,6 +543,7 @@ async function generatePdfFromJson(
             false,
             reqKey + " must be einzel, paarlauf, formation, erwachsene.",
             false,
+            byteArray,
           ];
         }
         break;
@@ -524,8 +551,7 @@ async function generatePdfFromJson(
     }
   }
   if (!buildPdf) {
-    // Use this to check entries before building the pdf.
-    return [true, "", false];
+    return [true, "", false, byteArray];
   }
   let b_mailSent = false;
   try {
@@ -559,10 +585,8 @@ async function generatePdfFromJson(
       }
     }
     sortedDict["Erstellungsdatum"] = new Date().toISOString();
-    // 3. Call the recursive pretty printer
     prettyPrintJson(sortedDict, leftMargin, pageState, lineHeight, indentStep);
     const randomString = Math.random().toString(36).slice(2, 8);
-    // 4. Save the file to the disk using Node's fs module
     const generatedFileFullPath =
       path.join(outputFilePath, randomString) + ".pdf";
     await fs.writeFile(generatedFileFullPath, doc.output(), "binary");
@@ -571,12 +595,13 @@ async function generatePdfFromJson(
       generatedFileFullPath,
       randomString,
     );
-    console.log(`Successfully generated PDF at: ${generatedFileFullPath}`);
-    return [true, generatedFileFullPath, b_mailSent];
+    byteArray = await getFileAsByteArray(generatedFileFullPath);
+    await deleteFile(generatedFileFullPath);
+    return [true, "", b_mailSent, byteArray];
   } catch (error) {
     // Handle PDF generation errors
     console.error("PDF Generation Error:", error.message);
-    return [false, error.message, b_mailSent];
+    return [false, error.message, b_mailSent, byteArray];
   }
 }
 
