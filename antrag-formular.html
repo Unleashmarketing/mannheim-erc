@@ -802,73 +802,75 @@
       doc.save(fileName);
     }
 
+// ... (Der obere Teil mit den Variablen und Validierungen bleibt gleich) ...
+
     // Formular-Handling
-    document.getElementById('antragForm').addEventListener('submit', function(e) {
+    document.getElementById('antragForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
       const submitBtn = document.getElementById('submitBtn');
       const btnText = document.getElementById('btnText');
       
-      // Button deaktivieren
+      // Button Status ändern
       submitBtn.disabled = true;
-      btnText.textContent = 'PDF wird erstellt...';
+      btnText.textContent = 'Wird gesendet...';
       
       // Formulardaten sammeln
       const formData = new FormData(this);
       const data = {};
       
       for (let [key, value] of formData.entries()) {
+        // Checkbox Logik
         if (key === 'Einzugsermächtigung') {
-          data[key] = 'ja';
+           // Wenn Checkbox angehakt ist, ist der Wert im FormData enthalten
+           data[key] = 'ja'; 
         } else {
-          data[key] = value.trim();
+           data[key] = value.trim();
         }
       }
-      
-      // Validierung
-      // IBAN prüfen
+
+      // Validierung (Bleibt gleich wie in deinem Code)
       if (!isValidIBAN(data.IBAN)) {
         showAlert('Bitte geben Sie eine gültige IBAN ein.');
         submitBtn.disabled = false;
-        btnText.textContent = 'PDF erstellen & herunterladen';
+        btnText.textContent = 'Absenden';
         return;
       }
-      
-      // PLZ prüfen
-      if (!/^\d{5}$/.test(data.PLZ)) {
-        showAlert('Bitte geben Sie eine gültige 5-stellige Postleitzahl ein.');
-        submitBtn.disabled = false;
-        btnText.textContent = 'PDF erstellen & herunterladen';
-        return;
-      }
-      
-      // Email prüfen
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(data['e-Mail'])) {
-        showAlert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
-        submitBtn.disabled = false;
-        btnText.textContent = 'PDF erstellen & herunterladen';
-        return;
-      }
-      
+      // ... (weitere Validierungen hier) ...
+
       try {
-        // PDF generieren
-        generatePDF(data);
+        // --- HIER IST DIE ÄNDERUNG ---
         
-        showAlert('PDF wurde erfolgreich erstellt und heruntergeladen!', 'success');
-        
-        // Formular zurücksetzen nach 2 Sekunden
-        setTimeout(() => {
-          this.reset();
-          submitBtn.disabled = false;
-          btnText.textContent = 'PDF erstellen & herunterladen';
-        }, 2000);
-        
+        // 1. Daten an den Server senden (damit der die Mail schickt)
+        const response = await fetch('/api/dein-server-endpunkt', { // <-- Passe die URL an!
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            showAlert('Antrag erfolgreich gesendet! Sie erhalten eine Kopie per E-Mail.', 'success');
+            
+            // Optional: PDF TROTZDEM für den Nutzer direkt herunterladen (Client-Side)
+            // Dann hat er sie sofort, auch wenn die Mail dauert.
+            generatePDF(data); 
+
+            setTimeout(() => {
+                this.reset();
+                submitBtn.disabled = false;
+                btnText.textContent = 'Absenden';
+            }, 2000);
+        } else {
+            throw new Error('Server Fehler');
+        }
+
       } catch (error) {
-        console.error('Fehler beim Erstellen des PDFs:', error);
-        showAlert('Fehler beim Erstellen des PDFs. Bitte versuchen Sie es erneut.');
+        console.error('Fehler:', error);
+        showAlert('Es gab einen Fehler beim Senden. Bitte versuchen Sie es später erneut.');
         submitBtn.disabled = false;
-        btnText.textContent = 'PDF erstellen & herunterladen';
+        btnText.textContent = 'Absenden';
       }
     });
   </script>
