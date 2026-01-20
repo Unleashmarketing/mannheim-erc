@@ -1017,6 +1017,240 @@
       }
 
       /* ========================================
+         NEWS SECTION
+         ======================================== */
+      .news-section {
+        padding: var(--spacing-3xl) 0;
+        background-color: var(--light-bg);
+      }
+
+      #archive-news-toggle-btn {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        color: var(--text-dark);
+        font-family: var(--font-family-accent);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        transition: var(--transition-base);
+        position: relative;
+      }
+
+      #archive-news-toggle-btn:hover {
+        color: var(--primary-color);
+      }
+
+      #archive-news-toggle-btn::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: var(--spacing-md) auto 0;
+        border-radius: var(--border-radius-sm);
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #archive-news-toggle-icon {
+        display: inline-block;
+        transition: transform 0.3s ease;
+        font-size: var(--font-size-lg);
+        color: var(--primary-color);
+      }
+
+      #archive-news-toggle-btn.active #archive-news-toggle-icon {
+        transform: rotate(-180deg);
+      }
+
+      .news-collapsed {
+        display: none;
+      }
+
+      .news-filters {
+        background: var(--white);
+        padding: var(--spacing-lg);
+        margin: var(--spacing-xl) 0 var(--spacing-lg);
+        border-radius: var(--border-radius-lg);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-lg);
+        align-items: flex-end;
+        box-shadow: var(--shadow-sm);
+        border: 2px solid var(--gray-light);
+      }
+
+      .news-filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .news-filter-group label {
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        color: var(--text-dark);
+      }
+
+      #archive-news-search {
+        padding: var(--spacing-sm);
+        border: 2px solid var(--gray-light);
+        border-radius: var(--border-radius-md);
+        font-size: var(--font-size-sm);
+        font-family: var(--font-family);
+        width: 100%;
+        transition: var(--transition-base);
+      }
+
+      #archive-news-search:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 98, 255, 0.1);
+      }
+
+      #archive-news-reset-filters {
+        padding: var(--spacing-sm) var(--spacing-md);
+        background-color: var(--primary-color);
+        color: var(--white);
+        border: none;
+        border-radius: var(--border-radius-md);
+        cursor: pointer;
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        transition: var(--transition-base);
+        box-shadow: var(--shadow-sm);
+      }
+
+      #archive-news-reset-filters:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .range-slider-container {
+        position: relative;
+        width: 100%;
+        height: var(--spacing-lg);
+        margin-top: var(--spacing-sm);
+      }
+
+      .range-slider-container input[type="range"] {
+        position: absolute;
+        width: 100%;
+        pointer-events: none;
+        appearance: none;
+        -webkit-appearance: none;
+        background: none;
+        margin: 0;
+        z-index: 2;
+      }
+
+      .range-slider-container input[type="range"]::-webkit-slider-thumb {
+        appearance: none;
+        -webkit-appearance: none;
+        pointer-events: auto;
+        width: 20px;
+        height: 20px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        cursor: grab;
+        border: 3px solid var(--white);
+        box-shadow: var(--shadow-md);
+        position: relative;
+        z-index: 3;
+        transition: var(--transition-base);
+      }
+
+      .range-slider-container input[type="range"]::-webkit-slider-thumb:hover {
+        transform: scale(1.15);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .range-slider-container input[type="range"]::-moz-range-thumb {
+        pointer-events: auto;
+        width: 16px;
+        height: 16px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        cursor: grab;
+        border: 3px solid var(--white);
+        box-shadow: var(--shadow-md);
+        z-index: 3;
+      }
+
+      .range-slider-container::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 6px;
+        background: var(--gray-light);
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: var(--border-radius-sm);
+        z-index: 1;
+      }
+
+      #archive-news-date-display,
+      #archive-news-extra-text {
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+        margin-top: var(--spacing-xs);
+        font-style: italic;
+      }
+
+      .news-item {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+        box-shadow: var(--shadow-sm);
+        border-left: 4px solid var(--primary-color);
+        transition: var(--transition-base);
+      }
+
+      .news-item:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateX(5px);
+      }
+
+      .news-item h3 {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-family-accent);
+      }
+
+      .news-item p {
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .news-item a {
+        color: var(--primary-color);
+        font-weight: 600;
+        text-decoration: underline;
+        transition: var(--transition-base);
+      }
+
+      .news-item a:hover {
+        color: var(--primary-hover);
+      }
+
+      .leading_separator {
+        display: block;
+        height: 1px;
+        background: var(--gray-light);
+        margin: var(--spacing-lg) 0;
+      }
+
+      /* ========================================
          FOOTER
          ======================================== */
       footer {
@@ -1180,6 +1414,10 @@
           flex-direction: column;
           align-items: flex-start;
         }
+
+        #archive-news-toggle-btn {
+          font-size: var(--font-size-xl);
+        }
       }
 
       @media (max-width: 768px) {
@@ -1188,6 +1426,15 @@
           --spacing-2xl: 40px;
           --font-size-4xl: 2.5rem;
           --font-size-3xl: 2rem;
+        }
+
+        .news-filters {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .news-filter-group {
+          min-width: 100%;
         }
       }
 
@@ -1261,10 +1508,8 @@
     </style>
   </head>
   <body>
-    <!-- Skip Link for Accessibility -->
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
-    <!-- Header -->
     <header>
       <div class="container header-container">
         <a href="index.html" class="logo">
@@ -1284,7 +1529,6 @@
       </div>
     </header>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu" role="dialog" aria-label="Mobile Navigation">
       <button class="mobile-menu-close" aria-label="Menü schließen">
         <i class="fas fa-times"></i>
@@ -1292,9 +1536,7 @@
     </div>
     <div class="overlay" aria-hidden="true"></div>
 
-    <!-- Main Content -->
     <main id="main-content">
-      <!-- Page Hero -->
       <section class="page-hero">
         <div class="container">
           <h1 class="page-title">Eiskunstlauf</h1>
@@ -1304,7 +1546,6 @@
         </div>
       </section>
 
-      <!-- Info Cards - Overview -->
       <section class="section">
         <div class="container">
           <div class="section-header">
@@ -1373,7 +1614,6 @@
         </div>
       </section>
 
-      <!-- Schnupperkurs Section -->
       <section class="section">
         <div class="container">
           <div class="section-header">
@@ -1421,7 +1661,7 @@
               dann können Sie sich für Ihre Kinder bewerben. Das Formular senden Sie bitte 
               ausgefüllt an folgende E-Mail Adresse: 
               <a href="/cdn-cgi/l/email-protection#a9dacac1c7dcd9d9ccdbc2dcdbdae9c4ccdbca84c6c7c5c0c7cc87cdcc" style="color: var(--primary-color); font-weight: 600;">
-                <span class="__cf_email__" data-cfemail="9be8f8f3f5eeebebfee9f0eee9e8dbf6fee9f8b6f4f5f7f2f5feb5fffe">[email&#160;protected]</span>
+                <span class="__cf_email__" data-cfemail="9be8f8f3f5eeebebfee9f0eee9e8dbf6fee9f8b6f4f5f7f2f5feb5fffe">[email protected]</span>
               </a>
             </p>
             <p style="margin-top: var(--spacing-md); margin-bottom: 0;">
@@ -1430,7 +1670,6 @@
             </p>
           </div>
 
-          <!-- Course Dates -->
           <div class="content-section fade-in" style="margin-top: var(--spacing-2xl);">
             <h3>Die Termine für die Schnupperkurse der Saison 2025/2026</h3>
             <p style="color: var(--primary-color); font-weight: 600; margin-bottom: var(--spacing-lg);">
@@ -1494,7 +1733,6 @@
             </div>
           </div>
 
-          <!-- Antragsformular Link -->
           <div style="text-align: center; margin-top: var(--spacing-2xl);" class="fade-in">
             <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-md); font-family: var(--font-family-accent);">
               Antragsformular
@@ -1510,7 +1748,6 @@
         </div>
       </section>
 
-      <!-- Mitgliedschaft Section -->
       <section class="section" style="background-color: var(--white);">
         <div class="container">
           <div class="section-header">
@@ -1616,7 +1853,6 @@
         </div>
       </section>
 
-      <!-- Erwachsenenkunstlauf Section -->
       <section class="section">
         <div class="container">
           <div class="section-header">
@@ -1655,7 +1891,6 @@
         </div>
       </section>
 
-      <!-- Trainingsinfos Section -->
       <section class="section" style="background-color: var(--white);">
         <div class="container">
           <div class="section-header">
@@ -1740,9 +1975,64 @@
           </div>
         </div>
       </section>
+
+      <section class="news-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="archive-news-toggle-btn">
+              Archivierte Berichte<span id="archive-news-toggle-icon">▼</span>
+            </h2>
+          </div>
+          <div id="archive-news-wrapper" class="news-collapsed">
+            <div class="news-filters">
+              <div class="news-filter-group">
+                <label for="archive-news-search">Suchbegriff:</label>
+                <input
+                  type="text"
+                  id="archive-news-search"
+                  placeholder="Suche nach Stichwörtern..."
+                  oninput="handleArchiveNewsFilters()"
+                  value="#begrenzt"
+                />
+              </div>
+
+              <div class="news-filter-group">
+                <label for="date-slider">Zeitraum filtern (Wochen):</label>
+                <div class="range-slider-container">
+                  <input
+                    type="range"
+                    id="archive-news-date-slider-min"
+                    min="0"
+                    value="0"
+                    oninput="handleArchiveNewsFilters()"
+                  />
+                  <input
+                    type="range"
+                    id="archive-news-date-slider-max"
+                    min="0"
+                    value="100"
+                    oninput="handleArchiveNewsFilters()"
+                  />
+                </div>
+                <div id="archive-news-date-display">Ganze Zeitspanne</div>
+                <div id="archive-news-extra-text"></div>
+              </div>
+
+              <button
+                id="archive-news-reset-filters"
+                onclick="resetArchiveNewsFilters()"
+              >
+                Filter zurücksetzen
+              </button>
+            </div>
+            <div class="content-section" id="archive-news-container">
+              <h3>Loading news...</h3>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- Footer -->
     <footer>
       <div class="container">
         <div class="footer-container">
@@ -1778,7 +2068,7 @@
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e78e898188a78a829584ca88898b8e8982c98382">[email&#160;protected]</a></span>
+                <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e78e898188a78a829584ca88898b8e8982c98382">[email protected]</a></span>
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-clock"></i></span>
@@ -1789,7 +2079,7 @@
         </div>
 
         <div class="footer-bottom">
-          <p>&copy; 2025 Mannheimer ERC. Alle Rechte vorbehalten.</p>
+          <p>© 2025 Mannheimer ERC. Alle Rechte vorbehalten.</p>
           <p>
             <a href="#">Impressum</a>
             <a href="#">Datenschutz</a>
@@ -1798,7 +2088,9 @@
       </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="EiskunstlaufBlogArchive/Kurzmeldungen-archive.js"></script>
+    <script>
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileMenu = document.querySelector(".mobile-menu");
       const overlay = document.querySelector(".overlay");
@@ -1944,10 +2236,195 @@
         observer.observe(element);
       });
 
+      // ========================================
+      // ARCHIVED NEWS LOGIC
+      // ========================================
+
+      let archiveNewsMinDate, archiveNewsMaxDate;
+
+      function initArchiveNewsFilters() {
+        // Expecting ARCHIVE_NEWS_LIST from external JS file
+        if (typeof ARCHIVE_NEWS_LIST === 'undefined') return;
+
+        const dates = ARCHIVE_NEWS_LIST.map((item) => parseDate(item.date))
+          .filter((d) => d !== null)
+          .sort((a, b) => a - b);
+
+        if (dates.length > 0) {
+          archiveNewsMinDate = dates[0];
+          archiveNewsMaxDate = dates[dates.length - 1];
+
+          const diffWeeks = Math.ceil(
+            (archiveNewsMaxDate - archiveNewsMinDate) /
+              (1000 * 60 * 60 * 24 * 7)
+          );
+
+          const sliderMin = document.getElementById(
+            "archive-news-date-slider-min"
+          );
+          const sliderMax = document.getElementById(
+            "archive-news-date-slider-max"
+          );
+
+          sliderMin.max = diffWeeks;
+          sliderMax.max = diffWeeks;
+          sliderMax.value = diffWeeks;
+        }
+      }
+
+      function parseDate(dateStr) {
+        if (!dateStr || dateStr === "N/A" || typeof dateStr !== "string")
+          return null;
+
+        const germanMatch = dateStr.match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/);
+        if (germanMatch) {
+          return new Date(
+            Number.parseInt(germanMatch[3]),
+            Number.parseInt(germanMatch[2]) - 1,
+            Number.parseInt(germanMatch[1])
+          );
+        }
+
+        const monthMap = {
+          januar: 0, january: 0, februar: 1, february: 1, märz: 2, march: 2,
+          april: 3, mai: 4, may: 4, juni: 5, june: 5, juli: 6, july: 6,
+          august: 7, september: 8, oktober: 9, october: 9, november: 10,
+          dezember: 11, december: 11,
+        };
+
+        const words = dateStr.toLowerCase().split(/[\s-]+/);
+        let year = words.find((w) => w.match(/^\d{4}$/));
+        let month = words.find((w) => monthMap.hasOwnProperty(w));
+
+        if (year && month !== undefined) {
+          return new Date(Number.parseInt(year), monthMap[month], 1);
+        }
+
+        return null;
+      }
+
+      function handleArchiveNewsFilters() {
+        if (typeof ARCHIVE_NEWS_LIST === 'undefined') return;
+
+        const sliderMin = document.getElementById("archive-news-date-slider-min");
+        const sliderMax = document.getElementById("archive-news-date-slider-max");
+        let searchTerm = document.getElementById("archive-news-search").value.toLowerCase();
+        const dateDisplay = document.getElementById("archive-news-date-display");
+
+        if (searchTerm === "#begrenzt") {
+          const validItems = ARCHIVE_NEWS_LIST.filter(
+            (item) => item.date && item.date !== "N/A"
+          );
+          const limitedList = validItems.slice(0, 3);
+          dateDisplay.textContent = "Nur aktuellste Beiträge";
+          document.getElementById("archive-news-extra-text").textContent =
+            "Im Suchfeld clicken um Beitragsfilter zu aktivieren";
+          renderArchiveNews(limitedList);
+          return;
+        }
+
+        document.getElementById("archive-news-extra-text").textContent = "";
+        let valMin = Number.parseInt(sliderMin.value);
+        let valMax = Number.parseInt(sliderMax.value);
+
+        if (valMin >= valMax) {
+          valMin = valMax - 1;
+          sliderMin.value = valMin;
+        }
+
+        const startDate = new Date(archiveNewsMinDate);
+        startDate.setDate(startDate.getDate() + valMin * 7);
+
+        const endDate = new Date(archiveNewsMinDate);
+        endDate.setDate(endDate.getDate() + valMax * 7);
+
+        dateDisplay.textContent = `${startDate.toLocaleDateString(
+          "de-DE"
+        )} bis ${endDate.toLocaleDateString("de-DE")}`;
+
+        let filteredNews = ARCHIVE_NEWS_LIST.filter((item) => {
+          const itemDate = parseDate(item.date);
+
+          const matchesSearch =
+            item.title.toLowerCase().includes(searchTerm) ||
+            item.text.toLowerCase().includes(searchTerm);
+
+          let matchesDate = false;
+          if (itemDate) {
+            matchesDate = itemDate >= startDate && itemDate <= endDate;
+          }
+
+          return matchesSearch && matchesDate;
+        });
+        renderArchiveNews(filteredNews);
+      }
+
+      function resetArchiveNewsFilters() {
+        const searchInput = document.getElementById("archive-news-search");
+        searchInput.value = "#begrenzt";
+        const sliderMin = document.getElementById("archive-news-date-slider-min");
+        const sliderMax = document.getElementById("archive-news-date-slider-max");
+        sliderMin.value = 0;
+        sliderMax.value = sliderMax.max;
+        handleArchiveNewsFilters();
+      }
+
+      function renderArchiveNews(list) {
+        const container = document.getElementById("archive-news-container");
+        container.innerHTML = "";
+
+        if (list.length === 0) {
+          container.innerHTML = "<p>Keine Berichte gefunden.</p>";
+          return;
+        }
+
+        list.forEach((item) => {
+          if (item.date != "N/A") {
+            const articleHtml = `
+            <div class="news-item fade-in visible">
+                <h3>${item.title}</h3>
+                <p><strong>${item.date}</strong></p>
+                <p>${item.text}</p>
+                <p><a href="${item.url}">Weiterlesen...</a></p>
+            </div>`;
+            container.insertAdjacentHTML("beforeend", articleHtml);
+          }
+        });
+      }
+
+      function toggleArchiveNewsVisibility() {
+        const toggleButton = document.getElementById("archive-news-toggle-btn");
+        const wrapper = document.getElementById("archive-news-wrapper");
+
+        if (!toggleButton || !wrapper) return;
+
+        initArchiveNewsFilters();
+
+        toggleButton.addEventListener("click", function () {
+          const isExpanding = wrapper.classList.contains("news-collapsed");
+          wrapper.classList.toggle("news-collapsed");
+          toggleButton.classList.toggle("active");
+
+          if (isExpanding) {
+            handleArchiveNewsFilters();
+            setTimeout(() => {
+              wrapper.classList.add("visible");
+            }, 10);
+          }
+        });
+      }
+
+      document.getElementById("archive-news-search").addEventListener("focus", function () {
+        if (this.value === "#begrenzt") {
+          this.value = "";
+        }
+      });
+
       document.addEventListener("DOMContentLoaded", function () {
         // Initialize navigation
         insertNavigationElements();
         setupMobileSubmenus();
+        toggleArchiveNewsVisibility();
       });
 
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
