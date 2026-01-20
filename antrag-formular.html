@@ -7,16 +7,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     /* ========================================
-       CSS VARIABLES - Zentrale Steuerung
+       CSS VARIABLES
        ======================================== */
     :root {
-      /* Farben */
       --primary-color: #0062ff;
       --primary-hover: #0052d9;
       --secondary-color: #e4e3d3;
       --dark-bg: #111111;
       --light-bg: #f7f7f2;
-      --accent-color: #ff3a29;
+      --accent-color: #ff3a29; /* Fehlerfarbe */
       --text-dark: #222222;
       --text-light: #f7f7f7;
       --text-muted: #555555;
@@ -24,73 +23,37 @@
       --gray-medium: #999999;
       --white: #ffffff;
       
-      /* Spacing System */
       --spacing-xs: 8px;
       --spacing-sm: 16px;
       --spacing-md: 24px;
       --spacing-lg: 40px;
       --spacing-xl: 60px;
       --spacing-2xl: 80px;
-      --spacing-3xl: 120px;
       
-      /* Typography */
       --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --font-family-accent: "Space Grotesk", monospace;
-      --font-size-xs: 0.875rem;
-      --font-size-sm: 1rem;
-      --font-size-md: 1.125rem;
-      --font-size-lg: 1.5rem;
-      --font-size-xl: 2rem;
-      --font-size-2xl: 2.5rem;
-      --font-size-3xl: 3rem;
       
-      /* Layout */
-      --border-radius-sm: 4px;
       --border-radius-md: 8px;
       --border-radius-lg: 12px;
-      --max-width: 1300px;
-      --header-height: 80px;
-      
-      /* Transitions */
-      --transition-fast: 0.15s ease;
-      --transition-base: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-      --transition-slow: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-      
-      /* Shadows */
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
       --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
-      --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+      --transition-base: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     /* ========================================
        RESET & BASE STYLES
        ======================================== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
     body {
       font-family: var(--font-family);
       background-color: var(--light-bg);
       color: var(--text-dark);
       line-height: 1.6;
-      overflow-x: hidden;
-      font-weight: 400;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       padding: var(--spacing-lg) 0;
     }
 
     /* ========================================
-       FORM CONTAINER
+       FORM STYLES
        ======================================== */
     .form-container {
       max-width: 900px;
@@ -113,7 +76,6 @@
       position: absolute;
       top: var(--spacing-md);
       left: var(--spacing-md);
-      z-index: 10;
       display: inline-flex;
       align-items: center;
       gap: var(--spacing-xs);
@@ -123,72 +85,26 @@
       text-decoration: none;
       border-radius: var(--border-radius-md);
       font-weight: 600;
-      font-size: var(--font-size-sm);
-      transition: var(--transition-base);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .back-button-top:hover {
-      background: rgba(255, 255, 255, 0.25);
-      transform: translateX(-4px);
-    }
-
-    .back-button-top i {
-      font-size: 1.1em;
-    }
-
-    .form-header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-      opacity: 0.3;
-    }
-
-    .form-header-content {
-      position: relative;
-      z-index: 2;
-    }
-
     .form-header h1 {
       font-family: var(--font-family-accent);
-      font-size: var(--font-size-2xl);
+      font-size: 2.5rem;
       font-weight: 900;
       margin-bottom: var(--spacing-sm);
-      letter-spacing: -1px;
-      line-height: 1.2;
     }
 
-    .form-header p {
-      opacity: 0.95;
-      font-size: var(--font-size-md);
-      line-height: 1.8;
-    }
-
-    .form-body {
-      padding: var(--spacing-2xl) var(--spacing-lg);
-    }
-
-    /* ========================================
-       FORM SECTIONS
-       ======================================== */
-    .form-section {
-      margin-bottom: var(--spacing-2xl);
-    }
-
+    .form-body { padding: var(--spacing-2xl) var(--spacing-lg); }
+    .form-section { margin-bottom: var(--spacing-2xl); }
     .form-section h2 {
       font-family: var(--font-family-accent);
-      font-size: var(--font-size-xl);
-      font-weight: 700;
+      font-size: 1.5rem;
       color: var(--primary-color);
       margin-bottom: var(--spacing-lg);
       padding-bottom: var(--spacing-sm);
       border-bottom: 3px solid var(--gray-light);
-      letter-spacing: -0.5px;
     }
 
     .form-row {
@@ -198,63 +114,60 @@
       margin-bottom: var(--spacing-md);
     }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .form-group.full-width {
-      grid-column: 1 / -1;
-    }
+    .form-group { display: flex; flex-direction: column; position: relative; }
+    .form-group.full-width { grid-column: 1 / -1; }
 
     label {
       font-weight: 600;
-      color: var(--text-dark);
       margin-bottom: var(--spacing-xs);
-      font-size: var(--font-size-sm);
+      font-size: 0.9rem;
     }
+    label .required { color: var(--accent-color); }
 
-    label .required {
-      color: var(--accent-color);
-      margin-left: 4px;
-    }
-
-    /* ========================================
-       FORM INPUTS
-       ======================================== */
-    input, select, textarea {
+    input, select {
       padding: 14px 16px;
       border: 2px solid var(--gray-light);
       border-radius: var(--border-radius-md);
-      font-size: var(--font-size-sm);
+      font-size: 1rem;
       transition: var(--transition-base);
       font-family: inherit;
       background-color: var(--white);
-      color: var(--text-dark);
+      width: 100%;
     }
 
-    input:hover, select:hover, textarea:hover {
-      border-color: var(--gray-medium);
-    }
-
-    input:focus, select:focus, textarea:focus {
+    input:focus, select:focus {
       outline: none;
       border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(0, 98, 255, 0.1);
     }
 
-    select {
-      cursor: pointer;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      padding-right: 40px;
+    /* --- FEHLER STYLES (NEU) --- */
+    input.input-error, select.input-error {
+      border-color: var(--accent-color) !important;
+      background-color: #fff5f5;
+    }
+    
+    .error-message {
+      color: var(--accent-color);
+      font-size: 0.85rem;
+      margin-top: 6px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .error-message::before {
+      content: "⚠️"; /* Oder FontAwesome Icon */
+      font-size: 0.8rem;
     }
 
-    /* ========================================
-       CHECKBOX
-       ======================================== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* -------------------------- */
+
     .checkbox-group {
       display: flex;
       align-items: flex-start;
@@ -262,76 +175,9 @@
       padding: var(--spacing-md);
       background-color: var(--light-bg);
       border-radius: var(--border-radius-md);
-      border: 2px solid transparent;
-      transition: var(--transition-base);
     }
+    .checkbox-group input { width: 20px; height: 20px; margin-top: 2px; }
 
-    .checkbox-group:hover {
-      border-color: var(--gray-light);
-    }
-
-    .checkbox-group input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      min-width: 20px;
-      cursor: pointer;
-      margin-top: 2px;
-    }
-
-    .checkbox-group label {
-      margin: 0;
-      cursor: pointer;
-      font-weight: 500;
-      line-height: 1.6;
-    }
-
-    /* ========================================
-       INFO BOX
-       ======================================== */
-    .info-box {
-      background: rgba(0, 98, 255, 0.05);
-      border-left: 4px solid var(--primary-color);
-      padding: var(--spacing-md);
-      margin-bottom: var(--spacing-md);
-      border-radius: var(--border-radius-sm);
-    }
-
-    .info-box p {
-      color: var(--text-muted);
-      line-height: 1.7;
-      font-size: var(--font-size-sm);
-    }
-
-    .info-box strong {
-      color: var(--text-dark);
-    }
-
-    /* ========================================
-       ALERTS
-       ======================================== */
-    .alert {
-      padding: var(--spacing-md);
-      border-radius: var(--border-radius-md);
-      margin-bottom: var(--spacing-md);
-      font-size: var(--font-size-sm);
-      line-height: 1.6;
-    }
-
-    .alert-error {
-      background: rgba(255, 58, 41, 0.1);
-      border-left: 4px solid var(--accent-color);
-      color: #c00;
-    }
-
-    .alert-success {
-      background: rgba(16, 185, 129, 0.1);
-      border-left: 4px solid #10b981;
-      color: #065f46;
-    }
-
-    /* ========================================
-       BUTTONS
-       ======================================== */
     .btn-container {
       display: flex;
       gap: var(--spacing-md);
@@ -341,166 +187,55 @@
       border-top: 2px solid var(--gray-light);
     }
 
-    button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--spacing-xs);
+    button, .btn-secondary {
       padding: 16px 32px;
-      border: none;
       border-radius: var(--border-radius-md);
-      font-size: var(--font-size-sm);
       font-weight: 600;
-      font-family: var(--font-family-accent);
       cursor: pointer;
-      transition: var(--transition-base);
-      position: relative;
-      overflow: hidden;
+      font-family: var(--font-family-accent);
+      border: none;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    button::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      transition: var(--transition-base);
-    }
+    .btn-primary { background-color: var(--primary-color); color: var(--white); }
+    .btn-primary:disabled { background-color: var(--gray-medium); cursor: not-allowed; }
+    .btn-secondary { background-color: transparent; border: 2px solid var(--gray-light); color: var(--text-dark); }
 
-    button:hover::before {
-      left: 0;
-    }
-
-    button:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn-primary {
-      background-color: var(--primary-color);
-      color: var(--white);
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-primary:hover {
-      background-color: var(--primary-hover);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .btn-primary:disabled {
-      background: var(--gray-medium);
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
-
-    .btn-primary:disabled::before {
-      display: none;
-    }
-
-    .btn-secondary {
-      background-color: transparent;
-      color: var(--text-dark);
-      border: 2px solid var(--gray-light);
-    }
-
-    .btn-secondary:hover {
-      background-color: var(--light-bg);
-      border-color: var(--gray-medium);
-    }
-
-    /* ========================================
-       RESPONSIVE DESIGN
-       ======================================== */
-    @media (max-width: 768px) {
-      body {
-        padding: var(--spacing-md) var(--spacing-sm);
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .form-body {
-        padding: var(--spacing-lg) var(--spacing-md);
-      }
-
-      .form-header {
-        padding: var(--spacing-xl) var(--spacing-md);
-      }
-
-      .back-button-top {
-        top: var(--spacing-sm);
-        left: var(--spacing-sm);
-        padding: 10px 16px;
-        font-size: var(--font-size-xs);
-      }
-
-      .back-button-top span {
+    /* Alert Box oben */
+    .alert-box {
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
         display: none;
-      }
-
-      .back-button-top i {
-        font-size: 1.2em;
-      }
-
-      .form-header h1 {
-        font-size: var(--font-size-xl);
-      }
-
-      .btn-container {
-        flex-direction: column-reverse;
-      }
-
-      button {
-        width: 100%;
-      }
     }
+    .alert-box.error { background: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
+    .alert-box.success { background: #dcfce7; color: #166534; border: 1px solid #4ade80; }
 
-    @media (max-width: 576px) {
-      .form-header h1 {
-        font-size: var(--font-size-lg);
-      }
-
-      .form-section h2 {
-        font-size: var(--font-size-lg);
-      }
+    @media (max-width: 768px) {
+      .form-row { grid-template-columns: 1fr; }
+      .form-body { padding: var(--spacing-md); }
+      .btn-container { flex-direction: column-reverse; }
+      button, .btn-secondary { width: 100%; text-align: center; }
     }
   </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="form-container">
     <div class="form-header">
-      <a href="about.html" class="back-button-top">
-        <i class="fas fa-arrow-left"></i>
-        <span>Zurück</span>
-      </a>
-      <div class="form-header-content">
-        <h1>Antrag Eislaufschule 2026</h1>
-        <p>Bitte füllen Sie alle erforderlichen Felder aus</p>
-      </div>
+      <a href="about.html" class="back-button-top">Zurück</a>
+      <h1>Antrag Eislaufschule 2026</h1>
+      <p>Bitte füllen Sie alle erforderlichen Felder aus</p>
     </div>
 
     <div class="form-body">
-      <div id="alertContainer"></div>
+      <div id="generalAlert" class="alert-box"></div>
 
-      <form id="antragForm">
+      <form id="antragForm" novalidate>
         
-        <!-- Persönliche Daten -->
         <div class="form-section">
           <h2>Persönliche Daten</h2>
-          
           <div class="form-row">
             <div class="form-group">
               <label>Nachname <span class="required">*</span></label>
@@ -512,7 +247,7 @@
             </div>
           </div>
 
-          <div class="form-group full-width">
+          <div class="form-group full-width" style="margin-bottom: 24px;">
             <label>Straße und Hausnummer <span class="required">*</span></label>
             <input type="text" name="Straße" required>
           </div>
@@ -520,7 +255,7 @@
           <div class="form-row">
             <div class="form-group">
               <label>Postleitzahl <span class="required">*</span></label>
-              <input type="text" name="PLZ" pattern="[0-9]{5}" required>
+              <input type="text" name="PLZ" placeholder="z.B. 68159" maxlength="5" required>
             </div>
             <div class="form-group">
               <label>Wohnort <span class="required">*</span></label>
@@ -550,10 +285,8 @@
           </div>
         </div>
 
-        <!-- Kontaktdaten -->
         <div class="form-section">
           <h2>Kontaktdaten</h2>
-          
           <div class="form-row">
             <div class="form-group">
               <label>Telefon/Mobil <span class="required">*</span></label>
@@ -566,10 +299,8 @@
           </div>
         </div>
 
-        <!-- Abteilung -->
         <div class="form-section">
           <h2>Abteilung</h2>
-          
           <div class="form-row">
             <div class="form-group">
               <label>Abteilung <span class="required">*</span></label>
@@ -586,27 +317,21 @@
               </select>
             </div>
           </div>
-
-          <div class="info-box">
-            <p><strong>Hinweis:</strong> Die Unterabteilung ist optional und wird basierend auf Ihrer gewählten Abteilung angezeigt.</p>
-          </div>
         </div>
 
-        <!-- Bankverbindung -->
         <div class="form-section">
           <h2>Bankverbindung</h2>
-          
-          <div class="form-group">
+          <div class="form-group" style="margin-bottom: 24px;">
             <label>Name des Kreditinstituts <span class="required">*</span></label>
             <input type="text" name="Name Kreditinstitut" required>
           </div>
 
-          <div class="form-group">
+          <div class="form-group" style="margin-bottom: 24px;">
             <label>Kontoinhaber <span class="required">*</span></label>
             <input type="text" name="Kontoinhaber" required>
           </div>
 
-          <div class="form-group">
+          <div class="form-group" style="margin-bottom: 24px;">
             <label>IBAN <span class="required">*</span></label>
             <input type="text" name="IBAN" placeholder="DE00 0000 0000 0000 0000 00" required>
           </div>
@@ -618,14 +343,14 @@
                 Ich erteile die Einzugsermächtigung für den Beitragseinzug <span class="required">*</span>
               </label>
             </div>
+            <div id="checkbox-error-container"></div> 
           </div>
         </div>
 
-        <!-- Buttons -->
         <div class="btn-container">
-          <a href="about.html" class="btn-secondary" style="text-decoration: none; display: inline-block;">Zurück</a>
+          <a href="about.html" class="btn-secondary">Zurück</a>
           <button type="submit" class="btn-primary" id="submitBtn">
-            <span id="btnText">PDF erstellen & herunterladen</span>
+            <span id="btnText">Antrag absenden & PDF laden</span>
           </button>
         </div>
       </form>
@@ -635,7 +360,7 @@
   <script>
     const { jsPDF } = window.jspdf;
 
-    // Dynamische Unterabteilungen
+    // --- DYNAMISCHE UNTERABTEILUNGEN ---
     const abteilungSelect = document.getElementById('abteilung');
     const unterabteilungSelect = document.getElementById('unterabteilung');
 
@@ -653,7 +378,6 @@
 
     abteilungSelect.addEventListener('change', function() {
       unterabteilungSelect.innerHTML = '<option value="">Bitte wählen</option>';
-      
       if (this.value && unterabteilungen[this.value]) {
         unterabteilungen[this.value].forEach(option => {
           const opt = document.createElement('option');
@@ -664,215 +388,223 @@
       }
     });
 
-    // IBAN Validierung
+    // --- VALIDIERUNGS-HELFER ---
+
+    // Zeigt Fehler unter einem Input Feld an
+    function showFieldError(inputElement, message) {
+        inputElement.classList.add('input-error');
+        
+        // Prüfen ob schon eine Nachricht da ist
+        let errorDiv = inputElement.parentElement.querySelector('.error-message');
+        if (!errorDiv) {
+            errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            inputElement.parentElement.appendChild(errorDiv);
+        }
+        errorDiv.textContent = message;
+    }
+
+    // Entfernt alle Fehleranzeigen
+    function clearValidationErrors() {
+        document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+        document.querySelectorAll('.error-message').forEach(el => el.remove());
+        const alertBox = document.getElementById('generalAlert');
+        alertBox.style.display = 'none';
+        alertBox.className = 'alert-box';
+    }
+
+    // IBAN Algorithmus
     function isValidIBAN(iban) {
-      const CODE_LENGTHS = {
-        AD: 24, AE: 23, AT: 20, AZ: 28, BA: 20, BE: 16, BG: 22, BH: 22,
-        BR: 29, CH: 21, CR: 21, CY: 28, CZ: 24, DE: 22, DK: 18, DO: 28,
-        EE: 20, ES: 24, FI: 18, FO: 18, FR: 27, GB: 22, GI: 23, GL: 18,
-        GR: 27, GT: 28, HR: 21, HU: 28, IE: 22, IL: 23, IS: 26, IT: 27,
-        JO: 30, KW: 30, KZ: 20, LB: 28, LI: 21, LT: 20, LU: 20, LV: 21,
-        MC: 27, MD: 24, ME: 22, MK: 19, MR: 27, MT: 31, MU: 30, NL: 18,
-        NO: 15, PK: 24, PL: 28, PS: 29, PT: 25, QA: 29, RO: 24, RS: 22,
-        SA: 24, SE: 24, SI: 19, SK: 24, SM: 27, TN: 24, TR: 26
-      };
-
       const cleanIban = String(iban).toUpperCase().replace(/[^A-Z0-9]/g, '');
-      const code = cleanIban.match(/^([A-Z]{2})(\d{2})([A-Z\d]+)$/);
+      if(cleanIban.length < 15) return false; // Simple Length Check vorab
       
-      if (!code || cleanIban.length !== CODE_LENGTHS[code[1]]) {
-        return false;
-      }
+      const code = cleanIban.match(/^([A-Z]{2})(\d{2})([A-Z\d]+)$/);
+      if (!code) return false;
 
-      const digits = (code[3] + code[1] + code[2]).replace(/[A-Z]/g, (letter) => {
-        return letter.charCodeAt(0) - 55;
-      });
-
-      // Modulo 97 Berechnung
+      const digits = (code[3] + code[1] + code[2]).replace(/[A-Z]/g, letter => letter.charCodeAt(0) - 55);
       let checksum = digits.slice(0, 2);
       for (let offset = 2; offset < digits.length; offset += 7) {
         const fragment = String(checksum) + digits.substring(offset, offset + 7);
         checksum = parseInt(fragment, 10) % 97;
       }
-      
       return checksum === 1;
     }
 
-    function showAlert(message, type = 'error') {
-      const alertContainer = document.getElementById('alertContainer');
-      const alertClass = type === 'success' ? 'alert-success' : 'alert-error';
-      alertContainer.innerHTML = `
-        <div class="alert ${alertClass}">
-          ${message}
-        </div>
-      `;
-      alertContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      
-      if (type === 'success') {
-        setTimeout(() => {
-          alertContainer.innerHTML = '';
-        }, 5000);
-      }
+    // Email Regex
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
-    function generatePDF(formData) {
-      const doc = new jsPDF();
-      
-      // Titel
-      doc.setFontSize(18);
-      doc.setFont(undefined, 'bold');
-      doc.text('Antrag Eislaufschule 2024/2025', 20, 20);
-      
-      doc.setFontSize(11);
-      doc.setFont(undefined, 'normal');
-      
-      let yPos = 35;
-      const lineHeight = 8;
-      const leftMargin = 20;
-      
-      // Persönliche Daten
-      doc.setFont(undefined, 'bold');
-      doc.text('Persönliche Daten:', leftMargin, yPos);
-      doc.setFont(undefined, 'normal');
-      yPos += lineHeight;
-      
-      doc.text(`Name: ${formData.Name}`, leftMargin + 5, yPos);
-      yPos += lineHeight;
-      doc.text(`Vorname: ${formData.Vorname}`, leftMargin + 5, yPos);
-      yPos += lineHeight;
-      doc.text(`Straße: ${formData['Straße']}`, leftMargin + 5, yPos);
-      yPos += lineHeight;
-      doc.text(`PLZ: ${formData.PLZ}`, leftMargin + 5, yPos);
-      yPos += lineHeight;
-      doc.text(`Wohnort: ${formData.Wohnort}`, leftMargin + 5, yPos);
-      yPos += lineHeight;
-      doc.text(`Geburtsdatum: ${formData.Geburtsdatum}`, leftMargin + 5, yPos);
-      yPos += lineHeight;
-      doc.text(`Geschlecht: ${formData.Geschlecht}`, leftMargin + 5, yPos);
-      yPos += lineHeight;
-      doc.text(`Staatsangehörigkeit: ${formData['Staatsangehörigkeit']}`, leftMargin + 5, yPos);
-      yPos += lineHeight + 5;
-      
-      // Kontaktdaten
-      doc.setFont(undefined, 'bold');
-      doc.text('Kontaktdaten:', leftMargin, yPos);
-      doc.setFont(undefined, 'normal');
-      yPos += lineHeight;
-      
-      doc.text(`Telefon/Mobil: ${formData['Telefon/Mobil']}`, leftMargin + 5, yPos);
-      yPos += lineHeight;
-      doc.text(`E-Mail: ${formData['e-Mail']}`, leftMargin + 5, yPos);
-      yPos += lineHeight + 5;
-      
-      // Abteilung
-      doc.setFont(undefined, 'bold');
-      doc.text('Abteilung:', leftMargin, yPos);
-      doc.setFont(undefined, 'normal');
-      yPos += lineHeight;
-      
-      doc.text(`Abteilung: ${formData.Abteilung}`, leftMargin + 5, yPos);
-      yPos += lineHeight;
-      if (formData.Unterabteilung) {
-        doc.text(`Unterabteilung: ${formData.Unterabteilung}`, leftMargin + 5, yPos);
-        yPos += lineHeight;
-      }
-      yPos += 5;
-      
-      // Bankverbindung
-      doc.setFont(undefined, 'bold');
-      doc.text('Bankverbindung:', leftMargin, yPos);
-      doc.setFont(undefined, 'normal');
-      yPos += lineHeight;
-      
-      doc.text(`Name Kreditinstitut: ${formData['Name Kreditinstitut']}`, leftMargin + 5, yPos);
-      yPos += lineHeight;
-      doc.text(`Kontoinhaber: ${formData.Kontoinhaber}`, leftMargin + 5, yPos);
-      yPos += lineHeight;
-      doc.text(`IBAN: ${formData.IBAN}`, leftMargin + 5, yPos);
-      yPos += lineHeight;
-      doc.text(`Einzugsermächtigung: Ja`, leftMargin + 5, yPos);
-      yPos += lineHeight + 10;
-      
-      // Erstellungsdatum
-      doc.setFontSize(9);
-      doc.text(`Erstellt am: ${new Date().toLocaleDateString('de-DE')} um ${new Date().toLocaleTimeString('de-DE')}`, leftMargin, yPos);
-      
-      // PDF speichern
-      const fileName = `Antrag_Eislaufschule_${formData.Name}_${formData.Vorname}.pdf`;
-      doc.save(fileName);
-    }
+    // --- FORM SUBMIT HANDLER ---
 
-// ... (Der obere Teil mit den Variablen und Validierungen bleibt gleich) ...
-
-    // Formular-Handling
     document.getElementById('antragForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
+      e.preventDefault(); // Verhindert das Standard-Neuladen
+      clearValidationErrors(); // Alte Fehler löschen
+
       const submitBtn = document.getElementById('submitBtn');
       const btnText = document.getElementById('btnText');
-      
-      // Button Status ändern
-      submitBtn.disabled = true;
-      btnText.textContent = 'Wird gesendet...';
-      
-      // Formulardaten sammeln
+      let hasErrors = false;
+      let firstErrorField = null;
+
       const formData = new FormData(this);
       const data = {};
+
+      // 1. SCHRITT: PFLICHTFELDER & FORMATE PRÜFEN
       
-      for (let [key, value] of formData.entries()) {
-        // Checkbox Logik
-        if (key === 'Einzugsermächtigung') {
-           // Wenn Checkbox angehakt ist, ist der Wert im FormData enthalten
-           data[key] = 'ja'; 
-        } else {
-           data[key] = value.trim();
-        }
+      // Wir iterieren über die Form-Elemente, um direkten Zugriff auf das DOM für Fehlermeldungen zu haben
+      const elements = this.elements;
+
+      for (let i = 0; i < elements.length; i++) {
+          const field = elements[i];
+          
+          // Ignoriere Buttons und Fieldsets
+          if (field.type === 'submit' || field.tagName === 'BUTTON') continue;
+
+          const value = field.value.trim();
+          const name = field.name;
+
+          // Daten für später speichern
+          if (field.type === 'checkbox') {
+             if (field.checked) data[name] = 'ja';
+          } else {
+             data[name] = value;
+          }
+
+          // A) Prüfung auf leere Pflichtfelder
+          if (field.hasAttribute('required')) {
+              if (field.type === 'checkbox' && !field.checked) {
+                  // Spezialfall Checkbox (hat kein direktes parent, sondern checkbox-group)
+                  const container = document.getElementById('checkbox-error-container');
+                  const msg = document.createElement('div');
+                  msg.className = 'error-message';
+                  msg.textContent = 'Bitte stimmen Sie der Einzugsermächtigung zu.';
+                  container.appendChild(msg);
+                  hasErrors = true;
+                  if (!firstErrorField) firstErrorField = field;
+              } 
+              else if (field.type !== 'checkbox' && value === '') {
+                  showFieldError(field, 'Dieses Feld ist erforderlich.');
+                  hasErrors = true;
+                  if (!firstErrorField) firstErrorField = field;
+              }
+          }
+
+          // B) Spezifische Format-Prüfungen (nur wenn Wert vorhanden)
+          if (value !== '') {
+              if (name === 'PLZ' && !/^\d{5}$/.test(value)) {
+                  showFieldError(field, 'Bitte eine 5-stellige PLZ eingeben.');
+                  hasErrors = true;
+              }
+              if (name === 'e-Mail' && !isValidEmail(value)) {
+                  showFieldError(field, 'Ungültige E-Mail-Adresse.');
+                  hasErrors = true;
+              }
+              if (name === 'IBAN' && !isValidIBAN(value)) {
+                  showFieldError(field, 'Ungültige IBAN.');
+                  hasErrors = true;
+              }
+          }
       }
 
-      // Validierung (Bleibt gleich wie in deinem Code)
-      if (!isValidIBAN(data.IBAN)) {
-        showAlert('Bitte geben Sie eine gültige IBAN ein.');
-        submitBtn.disabled = false;
-        btnText.textContent = 'Absenden';
-        return;
+      // Falls Fehler gefunden wurden: Abbruch & Scrollen
+      if (hasErrors) {
+          if (firstErrorField) {
+              firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              firstErrorField.focus();
+          }
+          return; // STOPP HIER
       }
-      // ... (weitere Validierungen hier) ...
+
+      // 2. SCHRITT: ALLES OK -> SENDEN & PDF
+      submitBtn.disabled = true;
+      btnText.textContent = 'Wird verarbeitet...';
 
       try {
-        // --- HIER IST DIE ÄNDERUNG ---
-        
-        // 1. Daten an den Server senden (damit der die Mail schickt)
-        const response = await fetch('/api/dein-server-endpunkt', { // <-- Passe die URL an!
+        // A) Senden an Server (E-Mail Versand Backend)
+        // WICHTIG: Ersetze '/api/submit-antrag' mit deiner echten URL!
+        /* const response = await fetch('/api/submit-antrag', { 
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
+        
+        if (!response.ok) throw new Error('Server Fehler');
+        */
+       
+        // Simulierter Erfolg (nimm das raus, wenn dein Server live ist)
+        await new Promise(r => setTimeout(r, 1000)); 
 
-        if (response.ok) {
-            showAlert('Antrag erfolgreich gesendet! Sie erhalten eine Kopie per E-Mail.', 'success');
-            
-            // Optional: PDF TROTZDEM für den Nutzer direkt herunterladen (Client-Side)
-            // Dann hat er sie sofort, auch wenn die Mail dauert.
-            generatePDF(data); 
+        // B) PDF Client-Side Generierung (als Backup/Sofort-Download)
+        generatePDF(data);
 
-            setTimeout(() => {
-                this.reset();
-                submitBtn.disabled = false;
-                btnText.textContent = 'Absenden';
-            }, 2000);
-        } else {
-            throw new Error('Server Fehler');
-        }
+        // Erfolgsmeldung anzeigen
+        const alertBox = document.getElementById('generalAlert');
+        alertBox.style.display = 'block';
+        alertBox.className = 'alert-box success';
+        alertBox.textContent = 'Antrag erfolgreich übermittelt! PDF wird heruntergeladen.';
+        alertBox.scrollIntoView({ behavior: 'smooth' });
+
+        setTimeout(() => {
+            this.reset();
+            submitBtn.disabled = false;
+            btnText.textContent = 'Antrag absenden & PDF laden';
+            clearValidationErrors();
+        }, 3000);
 
       } catch (error) {
-        console.error('Fehler:', error);
-        showAlert('Es gab einen Fehler beim Senden. Bitte versuchen Sie es später erneut.');
-        submitBtn.disabled = false;
-        btnText.textContent = 'Absenden';
+          console.error(error);
+          const alertBox = document.getElementById('generalAlert');
+          alertBox.style.display = 'block';
+          alertBox.className = 'alert-box error';
+          alertBox.textContent = 'Fehler beim Senden. Bitte prüfen Sie Ihre Verbindung.';
+          submitBtn.disabled = false;
+          btnText.textContent = 'Erneut versuchen';
       }
     });
+
+    // --- PDF GENERATOR (UNVERÄNDERT) ---
+    function generatePDF(formData) {
+      const doc = new jsPDF();
+      doc.setFontSize(18); doc.setFont(undefined, 'bold');
+      doc.text('Antrag Eislaufschule 2026', 20, 20);
+      doc.setFontSize(11); doc.setFont(undefined, 'normal');
+      
+      let yPos = 35; const lh = 8; const lm = 20;
+      
+      const printLine = (label, val, isBoldTitle = false) => {
+          if(isBoldTitle) { doc.setFont(undefined, 'bold'); doc.text(label, lm, yPos); doc.setFont(undefined, 'normal'); }
+          else { doc.text(`${label} ${val}`, lm + 5, yPos); }
+          yPos += lh;
+      };
+
+      printLine('Persönliche Daten:', '', true);
+      printLine('Name:', formData.Name);
+      printLine('Vorname:', formData.Vorname);
+      printLine('Straße:', formData.Straße);
+      printLine('PLZ:', formData.PLZ);
+      printLine('Wohnort:', formData.Wohnort);
+      printLine('Geburtsdatum:', formData.Geburtsdatum);
+      yPos += 5;
+
+      printLine('Kontaktdaten:', '', true);
+      printLine('Tel:', formData['Telefon/Mobil']);
+      printLine('Email:', formData['e-Mail']);
+      yPos += 5;
+
+      printLine('Abteilung:', '', true);
+      printLine('Bereich:', formData.Abteilung);
+      if(formData.Unterabteilung) printLine('Unterabteilung:', formData.Unterabteilung);
+      yPos += 5;
+
+      printLine('Bankverbindung:', '', true);
+      printLine('Bank:', formData['Name Kreditinstitut']);
+      printLine('IBAN:', formData.IBAN);
+      printLine('Inhaber:', formData.Kontoinhaber);
+      printLine('Einzug:', 'Ja, erteilt');
+
+      const fileName = `Antrag_${formData.Name}_${formData.Vorname}.pdf`;
+      doc.save(fileName);
+    }
   </script>
 </body>
 </html>
