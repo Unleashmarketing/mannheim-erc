@@ -252,7 +252,7 @@ async function sendEmailWithAttachment(
 
   const mailOptions = {
     from: stvCreds.user,
-    to: "rastapopoulis@hotmail.com", // Change this to office@merc-online.de for deployment
+    to: "dunghuyhx@gmail.com", // Change this to office@merc-online.de for deployment
     subject: "Neues Formular: " + formularName,
     text: "Das angehaengte Formular wurde auf der Webseite erstellt.",
     attachments: [
@@ -681,3 +681,4 @@ async function generatePdfFromJson(
   out = await generatePdfFromJson(sampleJsonString, outputFilePath, 1, true);
   console.log(out);
 })();
+
