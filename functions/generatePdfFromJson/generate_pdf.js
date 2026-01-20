@@ -1,7 +1,9 @@
 // npm install jspdf
 const { jsPDF } = require("jspdf");
-const fs = require("node:fs");
+const fs = require("node:fs").promises;
 const path = require("node:path");
+const nodemailer = require("nodemailer");
+const stvCreds = require("./stvSchnelllaufCreds.json"); // Do not ever add this file to GIT!
 
 function isValidIBANNumber(input) {
   const CODE_LENGTHS = {
@@ -97,7 +99,7 @@ function isValidIBANNumber(input) {
     /[A-Z]/g,
     function (letter) {
       return letter.charCodeAt(0) - 55;
-    }
+    },
   );
   // final check
   return mod97(digits) === 1;
@@ -141,7 +143,7 @@ function prettyPrintJson(data, x, pageState, lineHeight, indentStep) {
           x + indentStep,
           pageState,
           lineHeight,
-          indentStep
+          indentStep,
         );
         pageState.x -= indentStep;
       });
@@ -167,7 +169,7 @@ function prettyPrintJson(data, x, pageState, lineHeight, indentStep) {
               x + indentStep,
               pageState,
               lineHeight,
-              indentStep
+              indentStep,
             );
           } else {
             // Primitive value, print it on the same line as the key
@@ -209,30 +211,98 @@ function prettyPrintJson(data, x, pageState, lineHeight, indentStep) {
   }
 }
 
+async function deleteFile(filePath) {
+  try {
+    await fs.unlink(filePath);
+    console.log(`Successfully deleted ${filePath}`);
+  } catch (error) {
+    if (error.code === "ENOENT") {
+      console.log("File does not exist, nothing to delete.");
+    } else {
+      console.error("Error deleting file:", error.message);
+    }
+  }
+}
+
+async function getFileAsByteArray(filePath) {
+  try {
+    const buffer = await fs.readFile(filePath);
+    const byteArray = new Uint8Array(buffer);
+    console.log(`Read ${byteArray.length} bytes.`);
+    return byteArray;
+  } catch (error) {
+    console.error("Error reading file:", error);
+  }
+}
+
+async function sendEmailWithAttachment(
+  filename,
+  path,
+  formularName = "default",
+) {
+  const transporter = nodemailer.createTransport({
+    host: "smtp.strato.de",
+    port: 465,
+    secure: true,
+    auth: {
+      user: stvCreds.user,
+      pass: stvCreds.pass,
+    },
+  });
+
+  const mailOptions = {
+    from: stvCreds.user,
+    to: "rastapopoulis@hotmail.com", // Change this to office@merc-online.de for deployment
+    subject: "Neues Formular: " + formularName,
+    text: "Das angehaengte Formular wurde auf der Webseite erstellt.",
+    attachments: [
+      {
+        filename: filename,
+        path: path,
+      },
+    ],
+  };
+
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent successfully:", info.response);
+    return true;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+  return false;
+}
+
 /**
- * Takes a JSON formatted string, parses it, and saves a PDF
- * file pretty-printing its key-value pairs.
- * * @param {string} jsonString - The JSON string to parse.
+ * Takes a JSON formatted string, parses it, saves a PDF, sends the PDF to an email address.
+ * The PDF file is then read into a bytearray and then deleted.
+ * The function returns a list: [bool: pdfgenerated Y/N?, string: error messages, bool: email sent Y/N?, Uint8Array: PDF as bytearray]
+ * @param {string} jsonString - The JSON string to parse.
  * @param {string} outputFilePath - The path to save the PDF file (e.g., "output.pdf").
+ * @param {int} documentType - 0: Membership, 1: ELS
+ * @param {boolean} buildPdf - false: pdf won't be built, in this case the function
+ * can be used to test if input fields are correct, true: pdf will be created.
  */
-function generatePdfFromJson(
+async function generatePdfFromJson(
   jsonString,
   outputFilePath,
   documentType = 0,
-  buildPdf = false
+  buildPdf = false,
 ) {
-  /*documentType = 0: Membership
-                   1: ELS*/
-  if (
-    !(
-      fs.existsSync(outputFilePath) &&
-      fs.lstatSync(outputFilePath).isDirectory()
-    )
-  ) {
-    return [false, "outputFilePath either does not exist or is not a folder"];
+  let byteArray = new Uint8Array(0);
+  try {
+    const stats = await fs.lstat(outputFilePath);
+    if (!stats.isDirectory()) throw new Error();
+  } catch (e) {
+    return [
+      false,
+      "outputFilePath either does not exist or is not a folder",
+      false,
+      byteArray,
+    ];
   }
-  if (!(documentType in [0, 1])) {
-    return [false, "Document type must be 0 or 1"];
+  if (!([0, 1].indexOf(documentType) > -1)) {
+    return [false, "Document type must be 0 or 1", false, byteArray];
   }
   let parsedJson;
   try {
@@ -244,7 +314,7 @@ function generatePdfFromJson(
     }
   } catch (error) {
     console.error("JSON Parsing Error:", error.message);
-    return [false, "JSON Parsing Error"]; // Stop execution
+    return [false, "JSON Parsing Error", false, byteArray]; // Stop execution
   }
 
   let requiredKeys = [];
@@ -314,7 +384,7 @@ function generatePdfFromJson(
     return String(email)
       .toLowerCase()
       .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
       );
   };
   let removableKeys = [];
@@ -357,13 +427,18 @@ function generatePdfFromJson(
   for (let i in requiredKeys) {
     const reqKey = requiredKeys[i];
     if (!(reqKey in parsedJson)) {
-      return [false, "Field " + reqKey + " missing from payload"];
+      return [
+        false,
+        "Field " + reqKey + " missing from payload",
+        false,
+        byteArray,
+      ];
     }
     if (typeof parsedJson[reqKey] != "string") {
-      return [false, "Field " + reqKey + " is not a string"];
+      return [false, "Field " + reqKey + " is not a string", false, byteArray];
     }
     if (parsedJson[reqKey].length == 0) {
-      return [false, "Field " + reqKey + " can not be empty"];
+      return [false, "Field " + reqKey + " can not be empty", false, byteArray];
     }
     let reqKeySimplified = reqKey;
     if (reqKeySimplified.toLowerCase().includes("geburtsdatum")) {
@@ -376,13 +451,18 @@ function generatePdfFromJson(
     switch (reqKeySimplified) {
       case "PLZ": {
         if (!isInteger(parsedJson[reqKey])) {
-          return [false, "Field " + reqKey + " must be an integer"];
+          return [
+            false,
+            "Field " + reqKey + " must be an integer",
+            false,
+            byteArray,
+          ];
         }
         break;
       }
       case "Geburtsdatum": {
         if (Number.isNaN(new Date(parsedJson[reqKey]))) {
-          return [false, reqKey + " must be a valid date"];
+          return [false, reqKey + " must be a valid date", false, byteArray];
         }
         break;
       }
@@ -391,38 +471,43 @@ function generatePdfFromJson(
         while (parsedJson[reqKey].startsWith("+")) {
           checkPhone = parsedJson[reqKey].substring(1);
           if (length(checkPhone) == 0) {
-            return [false, reqKey + " invalid format"];
+            return [false, reqKey + " invalid format", false, byteArray];
           }
         }
         while (checkPhone.startsWith("0")) {
           checkPhone = checkPhone.substring(1);
           if (checkPhone.length == 0) {
-            return [false, reqKey + " invalid format"];
+            return [false, reqKey + " invalid format", false, byteArray];
           }
         }
         if (!isInteger(checkPhone)) {
-          return [false, reqKey + " must contain only numbers"];
+          return [
+            false,
+            reqKey + " must contain only numbers",
+            false,
+            byteArray,
+          ];
         }
         break;
       }
       case "e-Mail": {
         if (!validateEmail(parsedJson[reqKey])) {
-          return [false, reqKey + " invalid format"];
+          return [false, reqKey + " invalid format", false, byteArray];
         }
         break;
       }
       case "IBAN": {
         if (!parsedJson[reqKey].replaceAll(/\s/g, "")) {
-          return [false, reqKey + " invalid format"];
+          return [false, reqKey + " invalid format", false, byteArray];
         }
         if (!isValidIBANNumber(parsedJson[reqKey])) {
-          return [false, reqKey + " invalid format"];
+          return [false, reqKey + " invalid format", false, byteArray];
         }
         break;
       }
       case "Einzugsermächtigung": {
         if (parsedJson[reqKey].toLowerCase() != "ja") {
-          return [false, reqKey + " not accepted."];
+          return [false, reqKey + " not accepted.", false, byteArray];
         }
         break;
       }
@@ -431,17 +516,21 @@ function generatePdfFromJson(
           parsedJson[reqKey].toLowerCase() != "kunstlauf" &&
           parsedJson[reqKey].toLowerCase() != "schnelllauf"
         ) {
-          return [false, reqKey + " must be Eiskunstlauf or Eisschnelllauf."];
+          return [
+            false,
+            reqKey + " must be Eiskunstlauf or Eisschnelllauf.",
+            false,
+            byteArray,
+          ];
         }
         break;
       }
       case "Unterabteilung": {
-        // Muss noch geklaert werden welche Unterabteilungen man hier eintragen darf.
         if (
           parsedJson["Abteilung"].toLowerCase() == "schnelllauf" &&
           parsedJson[reqKey].toLowerCase() != "shorttrack"
         ) {
-          return [false, reqKey + " must be shorttrack."];
+          return [false, reqKey + " must be shorttrack.", false, byteArray];
         }
         if (
           parsedJson["Abteilung"].toLowerCase() == "kunstlauf" &&
@@ -453,6 +542,8 @@ function generatePdfFromJson(
           return [
             false,
             reqKey + " must be einzel, paarlauf, formation, erwachsene.",
+            false,
+            byteArray,
           ];
         }
         break;
@@ -460,13 +551,13 @@ function generatePdfFromJson(
     }
   }
   if (!buildPdf) {
-    // Use this to check entries before building the pdf.
-    return [true, ""];
+    return [true, "", false, byteArray];
   }
+  let b_mailSent = false;
   try {
     // 2. Initialize a new jsPDF document
     const doc = new jsPDF();
-    const font = fs.readFileSync("aurulent-sans.ttf", "binary");
+    const font = await fs.readFile("aurulent-sans.ttf", "binary");
     doc.addFileToVFS("aurulent-sans.ttf", font);
     doc.addFont("aurulent-sans.ttf", "aurulent-sans", "normal");
     doc.setFont("aurulent-sans");
@@ -494,88 +585,99 @@ function generatePdfFromJson(
       }
     }
     sortedDict["Erstellungsdatum"] = new Date().toISOString();
-    // 3. Call the recursive pretty printer
     prettyPrintJson(sortedDict, leftMargin, pageState, lineHeight, indentStep);
     const randomString = Math.random().toString(36).slice(2, 8);
-    // 4. Save the file to the disk using Node's fs module
     const generatedFileFullPath =
       path.join(outputFilePath, randomString) + ".pdf";
-    fs.writeFileSync(generatedFileFullPath, doc.output());
-    console.log(`Successfully generated PDF at: ${generatedFileFullPath}`);
-    return [true, generatedFileFullPath];
+    await fs.writeFile(generatedFileFullPath, doc.output(), "binary");
+    b_mailSent = await sendEmailWithAttachment(
+      randomString + ".pdf",
+      generatedFileFullPath,
+      randomString,
+    );
+    byteArray = await getFileAsByteArray(generatedFileFullPath);
+    await deleteFile(generatedFileFullPath);
+    return [true, "", b_mailSent, byteArray];
   } catch (error) {
     // Handle PDF generation errors
     console.error("PDF Generation Error:", error.message);
-    return [false, error.message];
+    return [false, error.message, b_mailSent, byteArray];
   }
 }
 
-let sampleJsonString = `
-{
-    "5":"hi",
-    "Name": "Doe",
-    "Vorname": "John",
-    "Geburtsdatum": "1977-04-30",
-    "isStudent": "false",
-    "courses": [
-        { "title": "History 101", "credits": 3 },
-        { "title": "Math 202", "credits": 4 }
-    ],
-    "address": {
-        "street": "123 Main St",
-        "city": "Anytown",
-        "zipcode": "12345"
-    },
-    "longText": "This is a very long text string that will hopefully be wrapped correctly by the jsPDF library to fit within the page margins.",
-    "Straße":"Hauptstraße 1",
-    "PLZ":"09434",
-    "Wohnort":"Hirschhorn",
-    "Geschlecht":"M",
-    "Staatsangehörigkeit":"Eritrea",
-    "Telefon/Mobil":"04433321",
-    "e-Mail":"bigMan@johnson.com",
-    "Name Kreditinstitut":"Bank",
-    "Kontoinhaber":"Me",
-    "IBAN":"DE06 4306 0967 7912 5497 00",
-    "Einzugsermächtigung":"ja",
-    "Abteilung":"Schnelllauf",
-    "Unterabteilung":"Shorttrack"
-}`;
+(async () => {
+  let sampleJsonString = `
+  {
+      "5":"hi",
+      "Name": "Doe",
+      "Vorname": "John",
+      "Geburtsdatum": "1977-04-30",
+      "isStudent": "false",
+      "courses": [
+          { "title": "History 101", "credits": 3 },
+          { "title": "Math 202", "credits": 4 }
+      ],
+      "address": {
+          "street": "123 Main St",
+          "city": "Anytown",
+          "zipcode": "12345"
+      },
+      "longText": "This is a very long text string that will hopefully be wrapped correctly by the jsPDF library to fit within the page margins.",
+      "Straße":"Hauptstraße 1",
+      "PLZ":"09434",
+      "Wohnort":"Berlin",
+      "Geschlecht":"M",
+      "Staatsangehörigkeit":"Eritrea",
+      "Telefon/Mobil":"04433321",
+      "e-Mail":"bigMan@johnson.com",
+      "Name Kreditinstitut":"Bank",
+      "Kontoinhaber":"Me",
+      "IBAN":"DE06 4306 0967 7912 5497 00",
+      "Einzugsermächtigung":"ja",
+      "Abteilung":"Schnelllauf",
+      "Unterabteilung":"Shorttrack"
+  }`;
 
-// Define the output file path
-const outputFilePath =
-  "/home/jacky_treehorn/gitRepos/mannheim-erc/functions/generatePdfFromJson/artefacts/";
+  // Define the output file path
+  const outputFilePath =
+    "/home/jacky_treehorn/gitRepos/mannheim-erc/functions/generatePdfFromJson/artefacts/";
 
-// Call the function
-let out = generatePdfFromJson(sampleJsonString, outputFilePath);
-console.log(out);
+  // Call the function
+  let out = await generatePdfFromJson(
+    sampleJsonString,
+    outputFilePath,
+    0,
+    true,
+  );
+  console.log(out);
 
-sampleJsonString = `
-{
-    "5":"hi",
-    "NameTeilnehmer0": "Doe",
-    "VornameTeilnehmer0": "John",
-    "GeburtsdatumTeilnehmer0": "1977-04-30",
-    "isStudent": "false",
-    "courses": [
-        { "title": "History 101", "credits": 3 },
-        { "title": "Math 202", "credits": 4 }
-    ],
-    "address": {
-        "street": "123 Main St",
-        "city": "Anytown",
-        "zipcode": "12345"
-    },
-    "longText": "This is a very long text string that will hopefully be wrapped correctly by the jsPDF library to fit within the page margins.",
-    "Straße":"Hauptstraße 1",
-    "PLZ":"09434",
-    "Wohnort":"Hirschhorn",
-    "NameTeilnehmer1":"Doe",
-    "VornameTeilnehmer1":"Jane",
-    "Telefon/Mobil":"04433327",
-    "e-Mail":"smallMan@johnson.com",
-    "GeburtsdatumTeilnehmer1":"1978-05-30"
-}`;
+  sampleJsonString = `
+  {
+      "5":"hi",
+      "NameTeilnehmer0": "Doe",
+      "VornameTeilnehmer0": "John",
+      "GeburtsdatumTeilnehmer0": "1977-04-30",
+      "isStudent": "false",
+      "courses": [
+          { "title": "History 101", "credits": 3 },
+          { "title": "Math 202", "credits": 4 }
+      ],
+      "address": {
+          "street": "123 Main St",
+          "city": "Anytown",
+          "zipcode": "12345"
+      },
+      "longText": "This is a very long text string that will hopefully be wrapped correctly by the jsPDF library to fit within the page margins.",
+      "Straße":"Hauptstraße 1",
+      "PLZ":"09434",
+      "Wohnort":"Berlin",
+      "NameTeilnehmer1":"Doe",
+      "VornameTeilnehmer1":"Jane",
+      "Telefon/Mobil":"04433327",
+      "e-Mail":"smallMan@johnson.com",
+      "GeburtsdatumTeilnehmer1":"1978-05-30"
+  }`;
 
-out = generatePdfFromJson(sampleJsonString, outputFilePath, 1);
-console.log(out);
+  out = await generatePdfFromJson(sampleJsonString, outputFilePath, 1, true);
+  console.log(out);
+})();
