@@ -443,13 +443,15 @@
       .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl); }
       .footer-logo img { height: 60px; margin-bottom: var(--spacing-md); }
       .footer-title { font-size: var(--font-size-lg); font-weight: 700; margin-bottom: var(--spacing-md); font-family: var(--font-family-accent); border-bottom: 3px solid var(--primary-color); display: inline-block; padding-bottom: 5px; }
+      /* Footer Links entfernt, da Schnellzugriff weg ist */
+      .footer-contact li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+      .footer-bottom { margin-top: var(--spacing-xl); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; }
       .footer-links a, .footer-contact li, .footer-bottom { color: rgba(255, 255, 255, 0.7); }
       .footer-links a:hover { color: var(--white); padding-left: 8px; }
       .footer-social { display: flex; gap: var(--spacing-sm); }
       .footer-social a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
       .footer-social a:hover { background: var(--primary-color); transform: translateY(-3px); }
       .contact-icon { color: var(--primary-color); margin-right: 10px; }
-      .footer-bottom { margin-top: var(--spacing-xl); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; }
       
       /* RESPONSIVE */
       @media (max-width: 1200px) { .nav-desktop { display: none; } .mobile-toggle { display: flex; } }
@@ -539,10 +541,6 @@
             </div>
           </div>
 
-          <div class="footer-links" id="footerLinksWithMenuElements">
-            <h3 class="footer-title">Schnellzugriff</h3>
-          </div>
-
           <div class="footer-contact">
             <h3 class="footer-title">Kontakt</h3>
             <ul>
@@ -552,7 +550,7 @@
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                <span><a href="mailto:info@merc.de">info@merc.de</a></span>
+                <span><a href="mailto:info@merc-online.de">info@merc-online.de</a></span>
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-clock"></i></span>
@@ -566,7 +564,7 @@
           <p>© 2025 Mannheimer ERC. Alle Rechte vorbehalten.</p>
           <p>
             <a href="#">Impressum</a>
-            <a href="#">Datenschutz</a>
+            <a href="#" style="margin-left: 20px;">Datenschutz</a>
           </p>
         </div>
       </div>
@@ -711,16 +709,10 @@
           setupMobileSubmenus();
         }
 
-        // Footer Navigation
-        const footerLinks = document.getElementById("footerLinksWithMenuElements");
-        if (template && footerLinks) {
-          const clone = template.content.cloneNode(true);
-          footerLinks.append(clone);
-          const ul = footerLinks.querySelector("ul");
-          if (ul && contactStandard) {
-            ul.append(contactStandard.content.cloneNode(true));
-          }
-        }
+        // Footer Navigation - Block entfernt, da Schnellzugriff weg ist
+        /* const footerLinks = document.getElementById("footerLinksWithMenuElements");
+        if (template && footerLinks) { ... }
+        */
       }
 
       function setupMobileSubmenus() {
