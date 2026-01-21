@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="de">
+  <template id="navigation-template1">
+    <ul>
+      <li class="has-submenu">
+        <a href="about.html" class="submenu-toggle">
+          Unser Verein
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
+        <ul class="submenu">
+          <li><a href="about.html#vision">Vision & Werte</a></li>
+          <li><a href="about.html#vorstand">Vorstand</a></li>
+          <li><a href="about.html#trainer">Trainerteam</a></li>
+          <li><a href="about.html#downloads">Downloads</a></li>
+        </ul>
+      </li>
+      <li class="has-submenu">
+        <a href="eiskunstlauf.html" class="submenu-toggle">
+          Eiskunstlauf
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
+        <ul class="submenu">
+          <li><a href="eiskunstlauf.html#info">Informationen</a></li>
+          <li><a href="eiskunstlauf.html#schnuppern">Schnupperkurs</a></li>
+          <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
+          <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
+        </ul>
+      </li>
+      <li class="has-submenu">
+        <a href="eisschnelllauf.html" class="submenu-toggle">
+          Eisschnelllauf
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
+        <ul class="submenu">
+          <li><a href="eisschnelllauf.html#info">Informationen</a></li>
+          <li><a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a></li>
+          <li><a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a></li>
+        </ul>
+      </li>
+      <li class="has-submenu">
+        <a href="synchron.html" class="submenu-toggle">
+          Synchron Eiskunstlauf
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
+        <ul class="submenu">
+          <li><a href="synchron.html#info">Informationen</a></li>
+          <li><a href="synchron.html#schnuppern">Schnuppertraining</a></li>
+          <li><a href="synchron.html#mitgliedschaft">Mitgliedschaft</a></li>
+        </ul>
+      </li>
+    </ul>
+  </template>
+  <template id="memberBtn">
+    <ul>
+      <li><a href="mitglieder.html" class="btn-header">Mitgliederbereich</a></li>
+    </ul>
+  </template>
+  <template id="contactBtn">
+    <ul>
+      <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
+    </ul>
+  </template>
+  <template id="contactStandard">
+    <ul>
+      <li><a href="index.html#contact">Kontakt</a></li>
+    </ul>
+  </template>
+  <template id="mobileCTAButtons">
+    <div class="mobile-cta-buttons">
+      <a href="mitglieder.html">Mitgliederbereich</a>
+      <a href="index.html#contact">Kontakt</a>
+    </div>
+  </template>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wettbewerbe - Mannheimer ERC</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ========================================
+         CSS VARIABLES (Identisch zu den anderen Seiten)
+         ======================================== */
+      :root {
+        --primary-color: #0062ff;
+        --primary-hover: #0052d9;
+        --secondary-color: #e4e3d3;
+        --dark-bg: #111111;
+        --light-bg: #f7f7f2;
+        --accent-color: #ff3a29;
+        --text-dark: #222222;
+        --text-light: #f7f7f7;
+        --text-muted: #555555;
+        --gray-light: #e0e0e0;
+        --gray-medium: #999999;
+        --white: #ffffff;
+        
+        --spacing-xs: 8px;
+        --spacing-sm: 16px;
+        --spacing-md: 24px;
+        --spacing-lg: 40px;
+        --spacing-xl: 60px;
+        --spacing-2xl: 80px;
+        --spacing-3xl: 120px;
+        
+        --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --font-family-accent: "Space Grotesk", monospace;
+        
+        --font-size-xs: 0.875rem;
+        --font-size-sm: 1rem;
+        --font-size-md: 1.125rem;
+        --font-size-lg: 1.5rem;
+        --font-size-xl: 2rem;
+        --font-size-2xl: 2.5rem;
+        --font-size-3xl: 3rem;
+        --font-size-4xl: 4rem;
+        
+        --border-radius-sm: 4px;
+        --border-radius-md: 8px;
+        --border-radius-lg: 12px;
+        --max-width: 1300px;
+        --header-height: 80px;
+        
+        --transition-fast: 0.15s ease;
+        --transition-base: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        --transition-slow: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+        --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+      }
+
+      /* RESET & BASE STYLES */
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; font-size: 16px; }
+      body {
+        font-family: var(--font-family);
+        background-color: var(--light-bg);
+        color: var(--text-dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      .logo-text, .section-title, .page-title, .btn {
+        font-family: var(--font-family-accent);
+        letter-spacing: -0.02em;
+      }
+      a { text-decoration: none; color: inherit; transition: var(--transition-base); }
+      ul { list-style: none; }
+      img { max-width: 100%; height: auto; display: block; }
+      button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+      /* UTILITY CLASSES */
+      .container { width: 90%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-md); }
+      .section { padding: var(--spacing-3xl) 0; position: relative; }
+      .section-header { text-align: center; margin-bottom: var(--spacing-2xl); }
+      .section-title {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-md);
+        letter-spacing: -1px;
+        line-height: 1.2;
+      }
+      .section-title::after {
+        content: ""; display: block; width: 60px; height: 4px;
+        background-color: var(--primary-color);
+        margin: var(--spacing-md) auto 0;
+        border-radius: var(--border-radius-sm);
+      }
+      .section-subtitle {
+        font-size: var(--font-size-md); color: var(--text-muted);
+        max-width: 700px; margin: 0 auto;
+      }
+      .fade-in {
+        opacity: 0; transform: translateY(30px);
+        transition: opacity var(--transition-slow), transform var(--transition-slow);
+      }
+      .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+      /* HEADER & NAV (Identisch) */
+      header {
+        position: fixed; top: 0; left: 0; width: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-sm);
+        z-index: 1000; transition: var(--transition-base);
+      }
+      header.scrolled { box-shadow: var(--shadow-md); }
+      .header-container {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: var(--spacing-sm) 0; min-height: var(--header-height);
+      }
+      .logo { display: flex; align-items: center; gap: var(--spacing-sm); }
+      .logo img { width: 60px; height: 60px; object-fit: contain; }
+      .logo-text { font-size: var(--font-size-lg); font-weight: 800; color: var(--text-dark); letter-spacing: -0.5px; }
+
+      .nav-desktop { display: flex; align-items: center; gap: var(--spacing-lg); }
+      .nav-desktop ul { display: flex; align-items: center; gap: var(--spacing-lg); }
+      .nav-desktop a { font-weight: 500; color: var(--text-dark); padding: var(--spacing-xs) 0; position: relative; }
+      .nav-desktop a:hover { color: var(--primary-color); }
+      .nav-desktop .has-submenu { position: relative; }
+      .nav-desktop .submenu {
+        display: none; position: absolute; top: calc(100% + 8px); left: 0;
+        min-width: 220px; background: var(--white);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: var(--shadow-lg); border-radius: var(--border-radius-md);
+        padding: var(--spacing-xs) 0; z-index: 1002;
+      }
+      .nav-desktop .has-submenu::before { content: ''; position: absolute; top: 100%; left: -10px; right: -10px; height: 20px; z-index: 1001; }
+      .nav-desktop .has-submenu:hover > .submenu, .nav-desktop .has-submenu:hover::before { display: block; }
+      .nav-desktop .submenu a { display: block; padding: 12px 20px; font-size: var(--font-size-sm); }
+      .nav-desktop .submenu a:hover { background-color: rgba(0, 98, 255, 0.05); }
+      .btn-header {
+        padding: 12px 24px !important; background-color: var(--primary-color);
+        color: var(--white) !important; border-radius: var(--border-radius-md);
+        font-weight: 600; box-shadow: var(--shadow-sm);
+      }
+      
+      /* Mobile Menu Styles (Condensed) */
+      .mobile-toggle { display: none; flex-direction: column; gap: 5px; width: 44px; z-index: 1001; }
+      .mobile-toggle span { width: 26px; height: 3px; background: var(--text-dark); transition: 0.3s; }
+      .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+      .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+      .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+      .mobile-menu {
+        position: fixed; top: 0; right: -100%; width: 85%; max-width: 400px; height: 100vh;
+        background: var(--white); box-shadow: var(--shadow-xl);
+        padding: 120px var(--spacing-lg) var(--spacing-lg);
+        transition: right 0.4s; z-index: 999; overflow-y: auto;
+      }
+      .mobile-menu.active { right: 0; }
+      .mobile-menu-close { position: absolute; top: 20px; right: 20px; font-size: 28px; }
+      .mobile-menu a { display: block; padding: 10px 0; font-weight: 600; color: var(--text-dark); }
+      .mobile-menu .submenu { display: none; padding-left: 20px; }
+      .mobile-menu .has-submenu.open > .submenu { display: block; }
+      .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); opacity: 0; visibility: hidden; transition: 0.3s; z-index: 998; }
+      .overlay.active { opacity: 1; visibility: visible; }
+
+      /* PAGE HERO */
+      .page-hero {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #004dbf 100%);
+        padding: 140px 0 var(--spacing-2xl); color: var(--white);
+        text-align: center; position: relative; overflow: hidden;
+      }
+      .page-hero::before {
+        content: ""; position: absolute; inset: 0;
+        background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        pointer-events: none;
+      }
+      .page-title { font-size: var(--font-size-4xl); font-weight: 900; margin-bottom: var(--spacing-md); line-height: 1.1; }
+      .page-subtitle { font-size: var(--font-size-lg); opacity: 0.95; max-width: 700px; margin: 0 auto; font-weight: 300; }
+
+      /* ========================================
+         WETTBEWERBE SPEZIFISCH
+         ======================================== */
+      .wettbewerb-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--spacing-lg);
+      }
+
+      .comp-card {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition-base);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        border: 2px solid transparent;
+      }
+
+      .comp-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--primary-color);
+      }
+
+      .comp-image-wrapper {
+        position: relative;
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .comp-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition-slow);
+      }
+
+      .comp-card:hover .comp-image-wrapper img {
+        transform: scale(1.1);
+      }
+
+      .comp-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        padding: var(--spacing-md);
+        color: var(--white);
+        opacity: 0;
+        transition: var(--transition-base);
+      }
+      
+      .comp-card:hover .comp-overlay {
+        opacity: 1;
+      }
+
+      .comp-body {
+        padding: var(--spacing-lg);
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .comp-date {
+        color: var(--primary-color);
+        font-weight: 700;
+        font-size: var(--font-size-xs);
+        text-transform: uppercase;
+        margin-bottom: var(--spacing-xs);
+        letter-spacing: 1px;
+      }
+
+      .comp-title {
+        font-family: var(--font-family-accent);
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.3;
+      }
+
+      .comp-desc {
+        color: var(--text-muted);
+        font-size: var(--font-size-sm);
+        flex: 1;
+      }
+
+      .comp-footer {
+        margin-top: var(--spacing-md);
+        padding-top: var(--spacing-md);
+        border-top: 1px solid var(--gray-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      /* LIGHTBOX / MODAL */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        padding-top: 50px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.95);
+        backdrop-filter: blur(5px);
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+        z-index: 2002;
+        background: none;
+        border: none;
+      }
+
+      .modal-close:hover {
+        color: var(--primary-color);
+      }
+
+      .modal-content-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .modal-header {
+        text-align: center;
+        color: var(--white);
+        margin-bottom: var(--spacing-xl);
+      }
+
+      .modal-title {
+        font-family: var(--font-family-accent);
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--spacing-xs);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 15px;
+      }
+
+      .gallery-item {
+        border-radius: var(--border-radius-md);
+        overflow: hidden;
+        cursor: zoom-in;
+        height: 200px;
+        position: relative;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      /* FOOTER Styles (Identisch) */
+      footer { background-color: var(--dark-bg); color: var(--text-light); padding: var(--spacing-2xl) 0 var(--spacing-lg); }
+      .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl); }
+      .footer-logo img { height: 60px; margin-bottom: var(--spacing-md); }
+      .footer-title { font-size: var(--font-size-lg); font-weight: 700; margin-bottom: var(--spacing-md); font-family: var(--font-family-accent); border-bottom: 3px solid var(--primary-color); display: inline-block; padding-bottom: 5px; }
+      .footer-links a, .footer-contact li, .footer-bottom { color: rgba(255, 255, 255, 0.7); }
+      .footer-links a:hover { color: var(--white); padding-left: 8px; }
+      .footer-social { display: flex; gap: var(--spacing-sm); }
+      .footer-social a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+      .footer-social a:hover { background: var(--primary-color); transform: translateY(-3px); }
+      .contact-icon { color: var(--primary-color); margin-right: 10px; }
+      .footer-bottom { margin-top: var(--spacing-xl); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; }
+      
+      /* RESPONSIVE */
+      @media (max-width: 1200px) { .nav-desktop { display: none; } .mobile-toggle { display: flex; } }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
+    <header>
+      <div class="container header-container">
+        <a href="index.html" class="logo">
+          <img
+            src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
+            alt="Mannheimer ERC Logo"
+          />
+          <span class="logo-text">Mannheimer ERC</span>
+        </a>
+        <nav id="pageElementsDesktop" class="nav-desktop" aria-label="Hauptnavigation"></nav>
+        <button class="mobile-toggle" aria-label="Menü öffnen" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="mobile-menu" role="dialog" aria-label="Mobile Navigation">
+      <button class="mobile-menu-close" aria-label="Menü schließen">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="overlay" aria-hidden="true"></div>
+
+    <main id="main-content">
+      <section class="page-hero">
+        <div class="container">
+          <h1 class="page-title">Wettbewerbe</h1>
+          <p class="page-subtitle">
+            Rückblicke, Impressionen und Ergebnisse unserer Turniere
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Unsere Highlights</h2>
+            <p class="section-subtitle">Klicken Sie auf ein Event, um die Galerie zu öffnen</p>
+          </div>
+          
+          <div id="wettbewerbe-container" class="wettbewerb-grid">
+            <p>Wettbewerbe werden geladen...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="galleryModal" class="modal">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div class="modal-content-wrapper">
+        <div class="modal-header">
+          <h2 id="modalTitle" class="modal-title">Event Titel</h2>
+          <p id="modalDate">Datum</p>
+        </div>
+        <div id="galleryGrid" class="gallery-grid">
+          </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-about">
+            <div class="footer-logo">
+              <img
+                src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
+                alt="Mannheimer ERC Logo"
+              />
+            </div>
+            <p>
+              Der Mannheimer ERC ist seit Jahrzehnten ein Begriff im Eissport
+              und bietet optimale Trainingsbedingungen für Sportlerinnen und
+              Sportler jeden Alters.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-links" id="footerLinksWithMenuElements">
+            <h3 class="footer-title">Schnellzugriff</h3>
+          </div>
+
+          <div class="footer-contact">
+            <h3 class="footer-title">Kontakt</h3>
+            <ul>
+              <li>
+                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                <span>Käthe-Kollwitz-Straße 23<br />D-68169 Mannheim</span>
+              </li>
+              <li>
+                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                <span><a href="mailto:info@merc.de">info@merc.de</a></span>
+              </li>
+              <li>
+                <span class="contact-icon"><i class="fas fa-clock"></i></span>
+                <span>Di: 16:00 - 18:00 Uhr<br />Sa: 10:00 - 12:00 Uhr</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2025 Mannheimer ERC. Alle Rechte vorbehalten.</p>
+          <p>
+            <a href="#">Impressum</a>
+            <a href="#">Datenschutz</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="wettbewerbe-data.js"></script>
+    
+    <script>
+      // ========================================
+      // WETTBEWERBE LOGIK
+      // ========================================
+      
+      function renderCompetitions() {
+        const container = document.getElementById('wettbewerbe-container');
+        if (!container || typeof wettbewerbeData === 'undefined') return;
+
+        container.innerHTML = ''; // Loading Text entfernen
+
+        wettbewerbeData.forEach(comp => {
+          const card = document.createElement('div');
+          card.className = 'comp-card fade-in';
+          card.onclick = () => openGallery(comp.id);
+
+          card.innerHTML = `
+            <div class="comp-image-wrapper">
+              <img src="${comp.coverImage}" alt="${comp.title}">
+              <div class="comp-overlay">
+                <i class="fas fa-images"></i> Galerie ansehen
+              </div>
+            </div>
+            <div class="comp-body">
+              <span class="comp-date">${comp.date}</span>
+              <h3 class="comp-title">${comp.title}</h3>
+              <p class="comp-desc">${comp.description}</p>
+              <div class="comp-footer">
+                <span>${comp.gallery.length} Bilder</span>
+                <i class="fas fa-arrow-right"></i>
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+        
+        // Trigger animations for new elements
+        observeFadeElements();
+      }
+
+      function openGallery(id) {
+        const comp = wettbewerbeData.find(c => c.id === id);
+        if (!comp) return;
+
+        const modal = document.getElementById('galleryModal');
+        document.getElementById('modalTitle').textContent = comp.title;
+        document.getElementById('modalDate').textContent = comp.date;
+        
+        const grid = document.getElementById('galleryGrid');
+        grid.innerHTML = '';
+
+        comp.gallery.forEach(imgSrc => {
+          const item = document.createElement('div');
+          item.className = 'gallery-item';
+          // Einfaches Öffnen des Bildes in neuem Tab bei Klick im Modal
+          item.onclick = (e) => { e.stopPropagation(); window.open(imgSrc, '_blank'); };
+          item.innerHTML = `<img src="${imgSrc}" alt="Galeriebild" loading="lazy">`;
+          grid.appendChild(item);
+        });
+
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden"; // Scrollen verhindern
+      }
+
+      function closeModal() {
+        const modal = document.getElementById('galleryModal');
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+      }
+
+      // Schließen wenn man neben das Bild klickt
+      window.onclick = function(event) {
+        const modal = document.getElementById('galleryModal');
+        if (event.target == modal) {
+          closeModal();
+        }
+      }
+
+      // ========================================
+      // STANDARD NAVIGATION LOGIK (Aus CI übernommen)
+      // ========================================
+      
+      const mobileToggle = document.querySelector(".mobile-toggle");
+      const mobileMenu = document.querySelector(".mobile-menu");
+      const overlay = document.querySelector(".overlay");
+      const mobileClose = document.querySelector(".mobile-menu-close");
+      const mobileLinks = document.querySelectorAll(".mobile-menu a");
+
+      function openMenu() {
+        mobileMenu.classList.add("active");
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+        mobileToggle.classList.add("active");
+        mobileToggle.setAttribute("aria-expanded", "true");
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+        mobileToggle.classList.remove("active");
+        mobileToggle.setAttribute("aria-expanded", "false");
+      }
+
+      if(mobileToggle) mobileToggle.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.contains("active");
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      if(mobileClose) mobileClose.addEventListener("click", closeMenu);
+      if(overlay) overlay.addEventListener("click", closeMenu);
+
+      function insertNavigationElements() {
+        const template = document.getElementById("navigation-template1");
+        const contactBtn = document.getElementById("contactBtn");
+        const memberBtn = document.getElementById("memberBtn");
+        const contactStandard = document.getElementById("contactStandard");
+        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
+
+        // Desktop Navigation
+        const desktopNav = document.getElementById("pageElementsDesktop");
+        if (template && desktopNav) {
+          const clone = template.content.cloneNode(true);
+          desktopNav.prepend(clone);
+          const ul = desktopNav.querySelector("ul");
+          if (ul) {
+            if (memberBtn) ul.append(memberBtn.content.cloneNode(true));
+            if (contactBtn) ul.append(contactBtn.content.cloneNode(true));
+          }
+        }
+
+        // Mobile Navigation
+        if (template && mobileMenu) {
+          const clone = template.content.cloneNode(true);
+          mobileMenu.prepend(clone);
+          if (mobileCTAButtons) mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
+          setupMobileSubmenus();
+        }
+
+        // Footer Navigation
+        const footerLinks = document.getElementById("footerLinksWithMenuElements");
+        if (template && footerLinks) {
+          const clone = template.content.cloneNode(true);
+          footerLinks.append(clone);
+          const ul = footerLinks.querySelector("ul");
+          if (ul && contactStandard) {
+            ul.append(contactStandard.content.cloneNode(true));
+          }
+        }
+      }
+
+      function setupMobileSubmenus() {
+        const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
+        submenuParents.forEach((toggle) => {
+          toggle.addEventListener("click", function (e) {
+            e.preventDefault();
+            const li = this.closest(".has-submenu");
+            const isOpen = li.classList.contains("open");
+            mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
+              if (item !== li) item.classList.remove("open");
+            });
+            li.classList.toggle("open");
+            this.setAttribute("aria-expanded", String(!isOpen));
+          });
+        });
+      }
+
+      // Scroll Header
+      const header = document.querySelector("header");
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Animation Observer
+      function observeFadeElements() {
+        const fadeElements = document.querySelectorAll(".fade-in");
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        }, observerOptions);
+        fadeElements.forEach((element) => {
+          observer.observe(element);
+        });
+      }
+
+      // Init
+      document.addEventListener("DOMContentLoaded", function () {
+        insertNavigationElements();
+        renderCompetitions(); // Daten rendern
+      });
+    </script>
+  </body>
+</html>
