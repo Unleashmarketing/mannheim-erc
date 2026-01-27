@@ -6,10 +6,9 @@
     <title>Über Uns - Mannheimer ERC</title>
     <style> 
       /* ========================================
-         CSS VARIABLES - Zentrale Steuerung
+         CSS VARIABLES
          ======================================== */
       :root {
-        /* Farben */
         --primary-color: #0062ff;
         --primary-hover: #0052d9;
         --secondary-color: #e4e3d3;
@@ -23,7 +22,6 @@
         --gray-medium: #999999;
         --white: #ffffff;
         
-        /* Spacing System */
         --spacing-xs: 8px;
         --spacing-sm: 16px;
         --spacing-md: 24px;
@@ -32,7 +30,6 @@
         --spacing-2xl: 80px;
         --spacing-3xl: 120px;
         
-        /* Typography */
         --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         --font-family-accent: "Space Grotesk", monospace;
         --font-size-xs: 0.875rem;
@@ -44,19 +41,14 @@
         --font-size-3xl: 3rem;
         --font-size-4xl: 4rem;
         
-        /* Layout */
         --border-radius-sm: 4px;
         --border-radius-md: 8px;
         --border-radius-lg: 12px;
         --max-width: 1300px;
         --header-height: 80px;
         
-        /* Transitions */
-        --transition-fast: 0.15s ease;
         --transition-base: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         --transition-slow: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        
-        /* Shadows */
         --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
         --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
         --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
@@ -66,1550 +58,167 @@
       /* ========================================
          RESET & BASE STYLES
          ======================================== */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-        font-size: 16px;
-      }
-
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; font-size: 16px; }
       body {
         font-family: var(--font-family);
         background-color: var(--light-bg);
         color: var(--text-dark);
         line-height: 1.6;
         overflow-x: hidden;
-        font-weight: 400;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
       }
 
-      /* Accent font for special elements */
-      .logo-text,
-      .section-title,
-      .hero-title,
-      .page-title,
-      .btn {
+      .logo-text, .section-title, .hero-title, .page-title, .btn {
         font-family: var(--font-family-accent);
         letter-spacing: -0.02em;
       }
 
-      a {
-        text-decoration: none;
-        color: inherit;
-        transition: var(--transition-base);
-      }
+      a { text-decoration: none; color: inherit; transition: var(--transition-base); }
+      ul { list-style: none; }
+      img { max-width: 100%; height: auto; display: block; }
 
-      ul {
-        list-style: none;
-      }
-
-      img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      button {
-        font-family: inherit;
-        cursor: pointer;
-        border: none;
-        background: none;
-      }
-
-      /* ========================================
-         UTILITY CLASSES
-         ======================================== */
-      .container {
-        width: 90%;
-        max-width: var(--max-width);
-        margin: 0 auto;
-        padding: 0 var(--spacing-md);
-      }
-
-      .section {
-        padding: var(--spacing-3xl) 0;
-        position: relative;
-      }
-
-      .section-header {
-        text-align: center;
-        margin-bottom: var(--spacing-2xl);
-      }
-
-      .section-title {
-        font-size: var(--font-size-3xl);
-        font-weight: 800;
-        color: var(--text-dark);
-        margin-bottom: var(--spacing-md);
-        letter-spacing: -1px;
-        line-height: 1.2;
-      }
-
+      .container { width: 90%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-md); }
+      .section { padding: var(--spacing-3xl) 0; position: relative; }
+      .section-header { text-align: center; margin-bottom: var(--spacing-2xl); }
+      .section-title { font-size: var(--font-size-3xl); font-weight: 800; margin-bottom: var(--spacing-md); }
       .section-title::after {
-        content: "";
-        display: block;
-        width: 60px;
-        height: 4px;
-        background-color: var(--primary-color);
-        margin: var(--spacing-md) auto 0;
-        border-radius: var(--border-radius-sm);
+        content: ""; display: block; width: 60px; height: 4px; 
+        background-color: var(--primary-color); margin: var(--spacing-md) auto 0; border-radius: var(--border-radius-sm);
       }
+      .section-subtitle { font-size: var(--font-size-md); color: var(--text-muted); max-width: 700px; margin: 0 auto; }
 
-      .section-subtitle {
-        font-size: var(--font-size-md);
-        color: var(--text-muted);
-        max-width: 700px;
-        margin: 0 auto;
-        line-height: 1.8;
-      }
+      /* Animation */
+      .fade-in { opacity: 0; transform: translateY(30px); transition: opacity var(--transition-slow), transform var(--transition-slow); }
+      .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-      /* Fade In Animation */
-      .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity var(--transition-slow), transform var(--transition-slow);
-      }
-
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* ========================================
-         BUTTON SYSTEM
-         ======================================== */
+      /* Buttons */
       .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--spacing-xs);
-        padding: var(--spacing-sm) var(--spacing-lg);
-        font-size: var(--font-size-sm);
-        font-weight: 600;
-        border-radius: var(--border-radius-md);
-        transition: var(--transition-base);
-        position: relative;
-        overflow: hidden;
-        text-align: center;
-        cursor: pointer;
-        border: 2px solid transparent;
+        display: inline-flex; align-items: center; justify-content: center; gap: var(--spacing-xs);
+        padding: var(--spacing-sm) var(--spacing-lg); font-size: var(--font-size-sm); font-weight: 600;
+        border-radius: var(--border-radius-md); transition: var(--transition-base); cursor: pointer; border: 2px solid transparent;
       }
-
-      .btn::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.1);
-        transition: var(--transition-base);
-      }
-
-      .btn:hover::before {
-        left: 0;
-      }
-
-      .btn:hover {
-        transform: translateY(-3px);
-      }
-
-      .btn-primary {
-        background-color: var(--primary-color);
-        color: var(--white);
-        box-shadow: var(--shadow-md);
-      }
-
-      .btn-primary:hover {
-        background-color: var(--primary-hover);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .btn-outline {
-        background-color: transparent;
-        border-color: var(--primary-color);
-        color: var(--primary-color);
-      }
-
-      .btn-outline:hover {
-        background-color: var(--primary-color);
-        color: var(--white);
-      }
+      .btn-primary { background-color: var(--primary-color); color: var(--white); box-shadow: var(--shadow-md); }
+      .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-3px); }
+      .btn-outline { background-color: transparent; border-color: var(--primary-color); color: var(--primary-color); }
+      .btn-outline:hover { background-color: var(--primary-color); color: var(--white); }
 
       /* ========================================
-         HEADER
+         MODAL STYLES (Lösung 2)
+         ======================================== */
+      .pdf-modal {
+        display: none; position: fixed; z-index: 3000; left: 0; top: 0;
+        width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
+      }
+      .pdf-modal-content {
+        position: relative; background-color: #fff; margin: 2vh auto;
+        width: 90%; height: 95vh; border-radius: var(--border-radius-lg); overflow: hidden;
+      }
+      .close-pdf {
+        position: absolute; right: 25px; top: 15px; color: #000; font-size: 35px;
+        font-weight: bold; cursor: pointer; z-index: 3001; line-height: 1;
+      }
+      .close-pdf:hover { color: var(--primary-color); }
+
+      /* ========================================
+         HEADER & NAV
          ======================================== */
       header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        box-shadow: var(--shadow-sm);
-        z-index: 1000;
-        transition: var(--transition-base);
+        position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px); box-shadow: var(--shadow-sm); z-index: 1000; transition: var(--transition-base);
       }
-
-      header.scrolled {
-        box-shadow: var(--shadow-md);
-      }
-
-      .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: var(--spacing-sm) 0;
-        min-height: var(--header-height);
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-      }
-
-      .logo img {
-        width: 60px;
-        height: 60px;
-        object-fit: contain;
-        transition: var(--transition-base);
-      }
-
-      .logo:hover img {
-        transform: scale(1.05);
-      }
-
-      .logo-text {
-        font-size: var(--font-size-lg);
-        font-weight: 800;
-        color: var(--text-dark);
-        letter-spacing: -0.5px;
-      }
-
-      .nav-desktop {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-lg);
-      }
-
-      .nav-desktop ul {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-lg);
-      }
-
-      .nav-desktop a {
-        font-weight: 500;
-        color: var(--text-dark);
-        padding: var(--spacing-xs) 0;
-        position: relative;
-      }
-
-      .nav-desktop a::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--primary-color);
-        transition: var(--transition-base);
-      }
-
-      .nav-desktop a:hover {
-        color: var(--primary-color);
-      }
-
-      .nav-desktop a:hover::after {
-        width: 100%;
-      }
-
-      /* Submenu Styles */
-      .nav-desktop .has-submenu {
-        position: relative;
-      }
-
+      .header-container { display: flex; justify-content: space-between; align-items: center; min-height: var(--header-height); }
+      .logo { display: flex; align-items: center; gap: var(--spacing-sm); }
+      .logo img { width: 60px; height: 60px; object-fit: contain; }
+      .nav-desktop ul { display: flex; align-items: center; gap: var(--spacing-lg); }
+      .nav-desktop a { font-weight: 500; color: var(--text-dark); padding: var(--spacing-xs) 0; }
       .nav-desktop .submenu {
-        display: none;
-        position: absolute;
-        top: calc(100% + 8px);
-        left: 0;
-        min-width: 220px;
-        background: var(--white);
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        box-shadow: var(--shadow-lg);
-        border-radius: var(--border-radius-md);
-        padding: var(--spacing-xs) 0;
-        z-index: 1002;
-        list-style: none;
+        display: none; position: absolute; top: 100%; background: var(--white);
+        box-shadow: var(--shadow-lg); border-radius: var(--border-radius-md); padding: 10px 0; min-width: 200px;
       }
-      
-      .nav-desktop .has-submenu::before {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: -10px;
-        right: -10px;
-        height: 20px;
-        background: transparent;
-        z-index: 1001;
-      }
-
-      .nav-desktop .has-submenu:hover > .submenu,
-      .nav-desktop .has-submenu:hover::before,
-      .nav-desktop .submenu:hover {
-        display: block;
-      }
-
-      .nav-desktop .submenu a {
-        display: block;
-        padding: 12px 20px;
-        font-size: 1rem;
-      }
-
-      .nav-desktop .submenu a::after {
-        display: none;
-      }
-
-      .nav-desktop .submenu a:hover {
-        background-color: rgba(0, 98, 255, 0.05);
-      }
-
-      .nav-desktop .submenu-icon {
-        margin-left: 6px;
-        font-size: 0.7em;
-        transition: all 0.3s ease;
-      }
-
-      .btn-header {
-        padding: 12px 24px !important;
-        background-color: var(--primary-color);
-        color: var(--white) !important;
-        border-radius: var(--border-radius-md);
-        font-weight: 600;
-        box-shadow: var(--shadow-sm);
-      }
-
-      .btn-header::after {
-        display: none;
-      }
-
-      .btn-header:hover {
-        background-color: var(--primary-hover);
-        box-shadow: var(--shadow-md);
-      }
+      .has-submenu:hover .submenu { display: block; }
+      .submenu a { display: block; padding: 10px 20px; font-size: 0.9rem; }
 
       /* ========================================
-         PAGE HERO
+         HERO & GRID
          ======================================== */
       .page-hero {
-        min-height: 390px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        position: relative;
-        color: var(--white);
-        padding-top: 110px;
-        overflow: hidden;
+        min-height: 400px; display: flex; align-items: center; justify-content: center;
+        text-align: center; color: var(--white); padding-top: 80px;
         background: linear-gradient(135deg, var(--primary-color) 0%, #0047b3 100%);
       }
+      .grid { display: grid; gap: var(--spacing-lg); }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .grid-4 { grid-template-columns: repeat(4, 1fr); }
 
-      .page-hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-        opacity: 0.3;
-      }
-
-      .page-hero-content {
-        max-width: 900px;
-        padding: 0 var(--spacing-md);
-        position: relative;
-        z-index: 2;
-      }
-
-      .page-title {
-        font-size: var(--font-size-4xl);
-        font-weight: 900;
-        margin-bottom: var(--spacing-md);
-        line-height: 1.1;
-        letter-spacing: -2px;
-        animation: fadeInUp 1s ease;
-      }
-
-      .page-subtitle {
-        font-size: var(--font-size-lg);
-        margin-bottom: var(--spacing-lg);
-        opacity: 0.95;
-        animation: fadeInUp 1s ease 0.2s forwards;
-        opacity: 0;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      /* ========================================
-         VISION SECTION
-         ======================================== */
-      .vision {
-        background-color: var(--white);
-      }
-
-      .vision-content {
-        max-width: 900px;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .vision-text {
-        font-size: var(--font-size-lg);
-        line-height: 1.9;
-        color: var(--text-dark);
-        margin-bottom: var(--spacing-md);
-      }
-
-      .vision-text strong {
-        color: var(--primary-color);
-        font-weight: 700;
-      }
-
-      .vision-highlights {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-lg);
-        margin-top: var(--spacing-2xl);
-      }
-
-      .highlight-item {
-        padding: var(--spacing-lg);
-        background-color: var(--light-bg);
-        border-radius: var(--border-radius-md);
-        transition: var(--transition-base);
-      }
-
-      .highlight-item:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-md);
-      }
-
-      .highlight-icon {
-        font-size: 2.5rem;
-        color: var(--primary-color);
-        margin-bottom: var(--spacing-md);
-      }
-
-      .highlight-title {
-        font-size: var(--font-size-md);
-        font-weight: 700;
-        margin-bottom: var(--spacing-sm);
-        font-family: var(--font-family-accent);
-      }
-
-      .highlight-text {
-        color: var(--text-muted);
-        line-height: 1.7;
-      }
-
-      /* ========================================
-         CARD SYSTEM
-         ======================================== */
+      /* Cards */
       .card {
-        background-color: var(--white);
-        border-radius: var(--border-radius-md);
-        overflow: hidden;
-        box-shadow: var(--shadow-sm);
-        transition: var(--transition-base);
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .card-image {
-        width: 100%;
-        height: 280px;
-        overflow: hidden;
-        position: relative;
-      }
-
-      .card-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition-slow);
-      }
-
-      .card:hover .card-image img {
-        transform: scale(1.08);
-      }
-
-      .card-body {
-        padding: var(--spacing-lg);
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .card-title {
-        font-size: var(--font-size-lg);
-        font-weight: 700;
-        margin-bottom: var(--spacing-xs);
-        color: var(--text-dark);
-        font-family: var(--font-family-accent);
-      }
-
-      .card-subtitle {
-        color: var(--primary-color);
-        font-size: var(--font-size-sm);
-        font-weight: 600;
-        margin-bottom: var(--spacing-md);
-      }
-
-      .card-text {
-        color: var(--text-muted);
-        line-height: 1.7;
-        flex: 1;
-      }
-
-      .card-meta {
-        display: flex;
-        justify-content: center;
-        gap: var(--spacing-sm);
-        margin-top: var(--spacing-md);
-        padding-top: var(--spacing-md);
-        border-top: 1px solid rgba(0, 0, 0, 0.06);
-      }
-
-      .card-meta-item {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-xs);
-        font-size: var(--font-size-xs);
-        color: var(--text-muted);
-      }
-
-      .card-meta-item i {
-        color: var(--primary-color);
-      }
-
-      .card-socials {
-        display: flex;
-        justify-content: center;
-        gap: var(--spacing-sm);
-        margin-top: var(--spacing-md);
-      }
-
-      .card-socials a {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: rgba(0, 0, 0, 0.04);
-        transition: var(--transition-base);
-        font-size: var(--font-size-sm);
-      }
-
-      .card-socials a:hover {
-        background-color: var(--primary-color);
-        color: var(--white);
-        transform: translateY(-3px);
-      }
-
-      /* ========================================
-         GRID SYSTEM
-         ======================================== */
-      .grid {
-        display: grid;
-        gap: var(--spacing-lg);
-      }
-
-      .grid-2 {
-        grid-template-columns: repeat(4, minmax(300px, 1fr));
-      }
-
-      .grid-3 {
-        grid-template-columns: repeat(4, minmax(280px, 1fr));
-      }
-
-      .grid-4 {
-        grid-template-columns: repeat(4, minmax(250px, 1fr));
-      }
-
-      .vorstand {
-        background-color: var(--light-bg);
-      }
-
-      .trainer {
-        background-color: var(--white);
-      }
-
-      .trainer-card {
-        text-align: center;
-      }
-
-      /* ========================================
-         DOWNLOADS SECTION
-         ======================================== */
-      .downloads {
-        background-color: var(--dark-bg);
-        color: var(--white);
-      }
-
-      .downloads .section-title {
-        color: var(--white);
-      }
-
-      .downloads .section-title::after {
-        background-color: var(--white);
-      }
-
-      .downloads .section-subtitle {
-        color: rgba(255, 255, 255, 0.7);
-      }
-
-      .download-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: var(--spacing-lg);
-      }
-
-      .download-card {
-        background-color: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: var(--border-radius-md);
-        padding: var(--spacing-lg);
-        transition: var(--transition-base);
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-md);
-      }
-
-      .download-card:hover {
-        background-color: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.2);
-        transform: translateY(-5px);
-      }
-
-      .download-icon {
-        font-size: 2.5rem;
-        color: var(--primary-color);
-        margin-bottom: var(--spacing-sm);
-      }
-
-      .download-title {
-        font-size: var(--font-size-md);
-        font-weight: 700;
-        margin-bottom: var(--spacing-xs);
-        font-family: var(--font-family-accent);
-      }
-
-      .download-description {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: var(--font-size-sm);
-        line-height: 1.7;
-        flex: 1;
-      }
-
-      .download-meta {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: var(--font-size-xs);
-        color: rgba(255, 255, 255, 0.5);
-        padding-top: var(--spacing-sm);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .download-actions {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-sm);
-        margin-top: var(--spacing-sm);
-        width: 100%;
-      }
-
-      .download-btn {
-        width: 100%;
-        justify-content: center;
-      }
-
-      /* ========================================
-         FOOTER
-         ======================================== */
-      footer {
-        background-color: var(--dark-bg);
-        color: var(--white);
-        padding: var(--spacing-2xl) 0 var(--spacing-lg);
-      }
-
-      .footer-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: var(--spacing-xl);
-        margin-bottom: var(--spacing-xl);
-      }
-
-      .footer-logo {
-        margin-bottom: var(--spacing-md);
-      }
-
-      .footer-logo img {
-        width: 60px;
-        height: 60px;
-        object-fit: contain;
-      }
-
-      .footer-about p {
-        margin-bottom: var(--spacing-md);
-        color: rgba(255, 255, 255, 0.7);
-        line-height: 1.7;
-      }
-
-      .footer-title {
-        font-size: var(--font-size-md);
-        font-weight: 700;
-        margin-bottom: var(--spacing-md);
-        padding-bottom: var(--spacing-sm);
-        position: relative;
-        font-family: var(--font-family-accent);
-      }
-
-      .footer-title::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 40px;
-        height: 3px;
-        background-color: var(--primary-color);
-        border-radius: var(--border-radius-sm);
-      }
-
-      .footer-links li {
-        margin-bottom: var(--spacing-sm);
-      }
-
-      .footer-links a {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: var(--font-size-sm);
-      }
-
-      .footer-links a:hover {
-        color: var(--white);
-        padding-left: var(--spacing-xs);
-      }
-
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: var(--spacing-lg);
-        text-align: center;
-        color: rgba(255, 255, 255, 0.6);
-        font-size: var(--font-size-sm);
-      }
-
-      .footer-bottom a {
-        color: rgba(255, 255, 255, 0.6);
-        margin: 0 var(--spacing-sm);
-      }
-
-      .footer-bottom a:hover {
-        color: var(--white);
-      }
-
-      .footer-social {
-        display: flex;
-        gap: var(--spacing-sm);
-      }
-
-      .footer-social a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.1);
-        color: var(--white);
-        transition: var(--transition-base);
-      }
-
-      .footer-social a:hover {
-        background-color: var(--primary-color);
-        transform: translateY(-3px);
-      }
-
-      .footer-contact li {
-         margin-bottom: var(--spacing-md);
-         display: flex;
-         align-items: flex-start;
-         gap: var(--spacing-sm);
-      }
-
-      .contact-icon {
-        color: var(--primary-color);
-        font-size: var(--font-size-md);
-        min-width: 20px;
-      }
-
-      /* ========================================
-         MOBILE MENU
-         ======================================== */
-      .mobile-toggle {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-        padding: 10px;
-        z-index: 1001;
-        width: 44px;
-        height: 44px;
-        cursor: pointer;
-        background: none;
-        border: none;
-      }
-
-      .mobile-toggle span {
-        display: block;
-        width: 26px;
-        height: 3px;
-        background-color: var(--text-dark);
-        transition: all 0.3s ease;
-        border-radius: 3px;
-      }
-
-      .mobile-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-      }
-
-      .mobile-toggle.active span:nth-child(2) {
-        opacity: 0;
-        transform: translateX(-10px);
-      }
-
-      .mobile-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-      }
-
-      .mobile-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 320px;
-        height: 100vh;
-        background-color: var(--white);
-        box-shadow: var(--shadow-xl);
-        padding: 120px var(--spacing-lg) var(--spacing-lg);
-        transition: var(--transition-base);
-        z-index: 1000;
-        overflow-y: auto;
-      }
-
-      .mobile-menu.active {
-        right: 0;
-      }
-
-      .mobile-menu-close {
-        position: absolute;
-        top: var(--spacing-lg);
-        right: var(--spacing-lg);
-        font-size: 28px;
-        color: var(--text-dark);
-        transition: var(--transition-base);
-        cursor: pointer;
-        background: rgba(0, 0, 0, 0.04);
-        border: none;
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-        border-radius: 50%;
-        line-height: 1;
-      }
-
-      .mobile-menu-close i {
-        line-height: 1;
-        display: block;
-      }
-
-      .mobile-menu-close:hover {
-        color: var(--white);
-        background-color: var(--primary-color);
-        transform: rotate(90deg);
-      }
-
-      .mobile-menu ul {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-md);
-        margin-top: var(--spacing-xl);
-        list-style: none;
-        padding: 0;
-      }
-
-      .mobile-menu a {
-        font-size: var(--font-size-md);
-        color: var(--text-dark);
-        display: block;
-        padding: var(--spacing-sm) 0;
-        text-decoration: none;
-        transition: var(--transition-base);
-      }
-
-      .mobile-menu a:hover {
-        color: var(--primary-color);
-      }
-
-      .mobile-menu .mobile-cta-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-sm);
-        margin-top: var(--spacing-xl);
-        padding-top: var(--spacing-lg);
-        border-top: 1px solid rgba(0, 0, 0, 0.08);
-      }
-
-      .mobile-menu .mobile-cta-buttons a {
-        background-color: var(--primary-color);
-        color: var(--white) !important;
-        padding: 14px 24px !important;
-        border-radius: var(--border-radius-md);
-        font-weight: 600;
-        text-align: center;
-        box-shadow: var(--shadow-sm);
-        transition: var(--transition-base);
-      }
-
-      .mobile-menu .mobile-cta-buttons a:hover {
-        background-color: var(--primary-hover);
-        box-shadow: var(--shadow-md);
-        padding-left: 24px !important;
-        transform: translateY(-2px);
-      }
-
-      .mobile-menu .has-submenu {
-        position: relative;
-      }
-
-      .mobile-menu .has-submenu > .submenu-toggle {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .mobile-menu .submenu {
-        display: none;
-        flex-direction: column;
-        gap: 0;
-        margin-top: var(--spacing-xs);
-        margin-left: var(--spacing-md);
-        padding-left: var(--spacing-md);
-        border-left: 2px solid rgba(0, 98, 255, 0.2);
-        list-style: none;
-      }
-
-      .mobile-menu .has-submenu.open > .submenu {
-        display: flex;
-      }
-
-      .mobile-menu .submenu a {
-        font-size: var(--font-size-sm);
-        padding: var(--spacing-xs) 0;
-      }
-
-      .mobile-menu .submenu-icon {
-        margin-left: auto;
-        font-size: 0.9rem;
-        transition: transform 0.3s ease;
-      }
-
-      .mobile-menu .has-submenu.open .submenu-icon {
-        transform: rotate(180deg);
-      }
-
-      .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        visibility: hidden;
-        transition: var(--transition-base);
-        z-index: 999;
-      }
-
-      .overlay.active {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* ========================================
-         RESPONSIVE DESIGN
-         ======================================== */
-      @media (max-width: 1415px) {
-        .logo-text {
-          display: none;
-        }
-      }
-
-      @media (max-width: 1200px) {
-        :root {
-          --spacing-3xl: 80px;
-          --spacing-2xl: 60px;
-          --spacing-xl: 40px;
-          --font-size-4xl: 3rem;
-          --font-size-3xl: 2.2rem;
-          --font-size-2xl: 1.8rem;
-        }
-
-        .nav-desktop {
-          display: none;
-        }
-
-        .mobile-toggle {
-          display: flex;
-        }
-      }
-
-      @media (max-width: 768px) {
-        :root {
-          --spacing-3xl: 60px;
-          --spacing-2xl: 40px;
-          --font-size-4xl: 2.5rem;
-          --font-size-3xl: 2rem;
-        }
-
-        .grid-2,
-        .grid-3,
-        .grid-4 {
-          grid-template-columns: 1fr;
-        }
-
-        .vision-highlights {
-          grid-template-columns: 1fr;
-        }
-
-        .page-hero {
-          min-height: 50vh;
-        }
-      }
-
-      @media (max-width: 576px) {
-        :root {
-          --font-size-4xl: 2rem;
-          --font-size-3xl: 1.75rem;
-          --font-size-2xl: 1.5rem;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-          scroll-behavior: auto !important;
-        }
-      }
-
-      a:focus-visible,
-      button:focus-visible {
-        outline: 3px solid var(--primary-color);
-        outline-offset: 2px;
-      }
-
-      .skip-link {
-        position: absolute;
-        top: -40px;
-        left: 0;
-        background: var(--primary-color);
-        color: white;
-        padding: 8px;
-        text-decoration: none;
-        z-index: 100;
-      }
-
-      .skip-link:focus {
-        top: 0;
-      }
+        background-color: var(--white); border-radius: var(--border-radius-md);
+        overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition-base);
+        height: 100%; display: flex; flex-direction: column;
+      }
+      .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+      .card-image { width: 100%; height: 280px; overflow: hidden; }
+      .card-image img { width: 100%; height: 100%; object-fit: cover; }
+      .card-body { padding: var(--spacing-lg); flex: 1; display: flex; flex-direction: column; }
+      .card-title { font-size: var(--font-size-lg); font-weight: 700; margin-bottom: 5px; }
+      .card-subtitle { color: var(--primary-color); font-size: 0.9rem; font-weight: 600; margin-bottom: 15px; }
+      .card-meta { margin-top: auto; padding-top: 15px; border-top: 1px solid #eee; font-size: 0.85rem; color: var(--text-muted); }
+      .card-socials { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
+      .card-socials a { width: 35px; height: 35px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+      .card-socials a:hover { background: var(--primary-color); color: #fff; }
+
+      /* Downloads */
+      .downloads { background-color: var(--dark-bg); color: #fff; }
+      .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+      .download-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+      .download-icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; }
+      .download-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+
+      /* Responsive */
+      @media (max-width: 1024px) { .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 768px) { .grid-3, .grid-4 { grid-template-columns: 1fr; } }
     </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   </head>
   <body>
-    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
+    <div id="pdfModal" class="pdf-modal">
+      <div class="pdf-modal-content">
+        <span class="close-pdf">&times;</span>
+        <iframe id="pdfFrame" src="" width="100%" height="100%" style="border: none;"></iframe>
+      </div>
+    </div>
 
     <header>
       <div class="container header-container">
         <div class="logo">
-          <a href="index.html">
-            <img
-              src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
-              alt="Mannheimer ERC Logo"
-            />
-          </a>
+          <a href="index.html"><img src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs" alt="Logo" /></a>
           <span class="logo-text">Mannheimer ERC</span>
         </div>
-        <nav class="nav-desktop" aria-label="Hauptnavigation">
+        <nav class="nav-desktop">
           <ul>
             <li class="has-submenu">
-              <a href="about.html" class="submenu-toggle active">
-                Unser Verein
-                <i class="fas fa-chevron-down submenu-icon"></i>
-              </a>
+              <a href="#">Unser Verein <i class="fas fa-chevron-down" style="font-size: 0.7em;"></i></a>
               <ul class="submenu">
-                <li><a href="about.html#vision">Vision & Werte</a></li>
-                <li><a href="about.html#vorstand">Vorstand</a></li>
-                <li><a href="about.html#trainer">Trainerteam</a></li>
-                <li><a href="about.html#downloads">Downloads</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#vorstand">Vorstand</a></li>
+                <li><a href="#trainer">Trainerteam</a></li>
+                <li><a href="#downloads">Downloads</a></li>
               </ul>
             </li>
-            <li class="has-submenu">
-              <a href="eiskunstlauf.html" class="submenu-toggle">
-                Eiskunstlauf
-                <i class="fas fa-chevron-down submenu-icon"></i>
-              </a>
-              <ul class="submenu">
-                <li><a href="eiskunstlauf.html#info">Informationen</a></li>
-                <li><a href="eiskunstlauf.html#schnuppern">Schnupperkurs</a></li>
-                <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
-                <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
-              </ul>
-            </li>
-            <li class="has-submenu">
-              <a href="eisschnelllauf.html" class="submenu-toggle">
-                Eisschnelllauf
-                <i class="fas fa-chevron-down submenu-icon"></i>
-              </a>
-              <ul class="submenu">
-                <li><a href="eisschnelllauf.html#info">Informationen</a></li>
-                <li><a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a></li>
-                <li><a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a></li>
-              </ul>
-            </li>
-            <li class="has-submenu">
-              <a href="synchron.html" class="submenu-toggle">
-                Synchron Eiskunstlauf
-                <i class="fas fa-chevron-down submenu-icon"></i>
-              </a>
-              <ul class="submenu">
-                <li><a href="synchron.html#info">Informationen</a></li>
-                <li><a href="synchron.html#schnuppern">Schnuppertraining</a></li>
-                <li><a href="synchron.html#mitgliedschaft">Mitgliedschaft</a></li>
-              </ul>
-            </li>
-            <li><a href="mitglieder.html" class="btn-header">Mitgliederbereich</a></li>
-            <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
+            <li><a href="eiskunstlauf.html">Eiskunstlauf</a></li>
+            <li><a href="eisschnelllauf.html">Eisschnelllauf</a></li>
+            <li><a href="index.html#contact" class="btn btn-primary" style="padding: 8px 20px; color: white;">Kontakt</a></li>
           </ul>
         </nav>
-
-        <button
-          class="mobile-toggle"
-          aria-label="Menü öffnen"
-          aria-expanded="false"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
       </div>
     </header>
 
-    <div class="mobile-menu">
-      <button class="mobile-menu-close" aria-label="Menü schließen">
-        <i class="fas fa-times"></i>
-      </button>
-      <ul>
-        <li class="has-submenu">
-          <a href="about.html" class="submenu-toggle">
-            Unser Verein
-            <i class="fas fa-chevron-down submenu-icon"></i>
-          </a>
-          <ul class="submenu">
-            <li><a href="about.html#vision">Vision & Werte</a></li>
-            <li><a href="about.html#vorstand">Vorstand</a></li>
-            <li><a href="about.html#trainer">Trainerteam</a></li>
-            <li><a href="about.html#downloads">Downloads</a></li>
-          </ul>
-        </li>
-        <li class="has-submenu">
-          <a href="eiskunstlauf.html" class="submenu-toggle">
-            Eiskunstlauf
-            <i class="fas fa-chevron-down submenu-icon"></i>
-          </a>
-          <ul class="submenu">
-            <li><a href="eiskunstlauf.html#info">Informationen</a></li>
-            <li><a href="eiskunstlauf.html#schnuppern">Schnupperkurs</a></li>
-            <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
-            <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
-          </ul>
-        </li>
-        <li class="has-submenu">
-          <a href="eisschnelllauf.html" class="submenu-toggle">
-            Eisschnelllauf
-            <i class="fas fa-chevron-down submenu-icon"></i>
-          </a>
-          <ul class="submenu">
-            <li><a href="eisschnelllauf.html#info">Informationen</a></li>
-            <li><a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a></li>
-            <li><a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a></li>
-          </ul>
-        </li>
-        <li class="has-submenu">
-          <a href="synchron.html" class="submenu-toggle">
-            Synchron Eiskunstlauf
-            <i class="fas fa-chevron-down submenu-icon"></i>
-          </a>
-          <ul class="submenu">
-            <li><a href="synchron.html#info">Informationen</a></li>
-            <li><a href="synchron.html#schnuppern">Schnuppertraining</a></li>
-            <li><a href="synchron.html#mitgliedschaft">Mitgliedschaft</a></li>
-          </ul>
-        </li>
-      </ul>
-      <div class="mobile-cta-buttons">
-        <a href="mitglieder.html">Mitgliederbereich</a>
-        <a href="index.html#contact">Kontakt</a>
-      </div>
-    </div>
-
-    <div class="overlay"></div>
-
-    <main id="main-content">
+    <main>
       <section class="page-hero">
-        <div class="page-hero-content">
+        <div class="container">
           <h1 class="page-title">Unser Verein</h1>
-          <p class="page-subtitle">
-            Seit Jahrzehnten ein Zuhause für Eiskunstläufer und Eisschnellläufer –
-            von der ersten Pirouette bis zur Meisterschaft
-          </p>
-        </div>
-      </section>
-
-      <section id="vision" class="section vision">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Unsere Vision</h2>
-            <p class="section-subtitle">
-              Was uns antreibt und verbindet
-            </p>
-          </div>
-          <div class="vision-content fade-in">
-            <p class="vision-text">
-              Unser Verein steht für <strong>mehr als nur Sport</strong> – wir fördern 
-              Teamgeist, Fairness und persönliche Entwicklung. Jeder Athlet, vom Anfänger 
-              bis zum Wettkampfsportler, findet bei uns eine Umgebung, in der <strong>Leidenschaft, 
-              Disziplin und Gemeinschaft</strong> zusammenkommen.
-            </p>
-            <p class="vision-text">
-              Wir glauben daran, dass Eissport nicht nur den Körper, sondern auch den 
-              Geist formt. Durch <strong>professionelles Training, individuelle Betreuung 
-              und ein starkes Miteinander</strong> schaffen wir die Grundlage für sportliche 
-              Erfolge und lebenslange Freundschaften.
-            </p>
-
-            <div class="vision-highlights">
-              <div class="highlight-item fade-in">
-                <div class="highlight-icon">
-                  <i class="fas fa-users"></i>
-                </div>
-                <h3 class="highlight-title">Gemeinschaft</h3>
-                <p class="highlight-text">
-                  Ein starkes Team, das zusammenhält – auf und neben dem Eis
-                </p>
-              </div>
-
-              <div class="highlight-item fade-in">
-                <div class="highlight-icon">
-                  <i class="fas fa-trophy"></i>
-                </div>
-                <h3 class="highlight-title">Spitzenleistung</h3>
-                <p class="highlight-text">
-                  Professionelle Förderung von Talenten auf dem Weg zur Meisterschaft
-                </p>
-              </div>
-
-              <div class="highlight-item fade-in">
-                <div class="highlight-icon">
-                  <i class="fas fa-graduation-cap"></i>
-                </div>
-                <h3 class="highlight-title">Persönliche Entwicklung</h3>
-                <p class="highlight-text">
-                  Wir begleiten jeden Sportler individuell auf seinem persönlichen Weg
-                </p>
-              </div>
-
-              <div class="highlight-item fade-in">
-                <div class="highlight-icon">
-                  <i class="fas fa-handshake"></i>
-                </div>
-                <h3 class="highlight-title">Fairness & Respekt</h3>
-                <p class="highlight-text">
-                  Werte, die wir leben – im Training, im Wettkampf und im Alltag
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="vorstand" class="section vorstand">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Unser Vorstand</h2>
-            <p class="section-subtitle">
-              Die Menschen, die unseren Verein leiten und voranbringen
-            </p>
-          </div>
-          <div class="grid grid-3">
-            <div class="card fade-in">
-              <div class="card-image">
-                <img
-                  src="/api/placeholder/400/280"
-                  alt="Dr. Christel Petzschke"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Dr. Christel Petzschke</h3>
-                <p class="card-subtitle">Präsidentin</p>
-                <p class="card-text">
-                  Als Präsidentin leitet Dr. Christel Petzschke unseren Verein mit 
-                  großem Engagement und strategischer Weitsicht.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#3e575058517e535b4c5d13535f5050565b5753105a5b"><span class="__cf_email__" data-cfemail="bfd6d1d9d0ffd2dacddc92d2ded1d1d7dad6d291dbda">[email protected]</span></a>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="card fade-in">
-              <div class="card-image">
-                <img
-                  src="images/weitere funktionen/Dirk Mueller.jpeg"
-                  alt="Dirk Müller"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Dirk Müller</h3>
-                <p class="card-subtitle">Fachwart Kunstlauf</p>
-                <p class="card-text">
-                  Dirk Müller koordiniert alle Aktivitäten im Bereich Kunstlauf und 
-                  ist Ansprechpartner für Trainer und Athleten.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#472e292128072a2235246a2a2629292f222e2a692322"><span class="__cf_email__" data-cfemail="7e171018113e131b0c1d53131f1010161b1713501a1b">[email protected]</span></a>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="card fade-in">
-              <div class="card-image">
-                <img
-                  src="/api/placeholder/400/280"
-                  alt="Martin Weinzierl"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Martin Weinzierl</h3>
-                <p class="card-subtitle">Stellvertreter Kunstlauf</p>
-                <p class="card-text">
-                  Martin Weinzierl unterstützt die Vereinsführung als Stellvertreter 
-                  und bringt seine langjährige Erfahrung ein.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#ef86818980af828a9d8cc2828e8181878a8682c18b8a"><span class="__cf_email__" data-cfemail="98f1f6fef7d8f5fdeafbb5f5f9f6f6f0fdf1f5b6fcfd">[email protected]</span></a>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="card fade-in">
-              <div class="card-image">
-                <img
-                  src="images/eisschnelllauf/Gundi Pawasserat.jpeg"
-                  alt="Gundi Pawasserat"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Gundi Pawasserat</h3>
-                <p class="card-subtitle">Fachwärtin Schnelllauf</p>
-                <p class="card-text">
-                  Gundi Pawasserat ist für den Bereich Eisschnelllauf zuständig und 
-                  fördert aktiv den Nachwuchs in dieser Disziplin.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#3f565159507f525a4d5c12525e5151575a5652115b5a"><span class="__cf_email__" data-cfemail="9bf2f5fdf4dbf6fee9f8b6f6faf5f5f3fef2f6b5fffe">[email protected]</span></a>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-                        <div class="card fade-in">
-              <div class="card-image">
-                <img
-                  src="images/eisschnelllauf/Christian Arlt.jpg"
-                  alt="Christian Arlt"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Christian Arlt</h3>
-                <p class="card-subtitle">Stellvertreter Schnelllauf</p>
-                <p class="card-text">
-                  Christian Arlt unterstützt als Stellvertreter 
-                  den Vorstand in verschiedenen Bereichen.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#3f565159507f525a4d5c12525e5151575a5652115b5a"><span class="__cf_email__" data-cfemail="9bf2f5fdf4dbf6fee9f8b6f6faf5f5f3fef2f6b5fffe">[email protected]</span></a>
-                  </span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="card fade-in">
-              <div class="card-image">
-                <img
-                  src="images/eisschnelllauf/Sean Mc Connell.jpg"
-                  alt="Sean Mc Connell"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Sean Mc Connell</h3>
-                <p class="card-subtitle">Stellvertreter Eisschnelllauf</p>
-                <p class="card-text">
-                  Sean Mc Connell unterstützt als Stellvertreter 
-                  den Vorstand in verschiedenen Bereichen.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#7f161119103f121a0d1c52121e1111171a1612511b1a"><span class="__cf_email__" data-cfemail="d2bbbcb4bd92bfb7a0b1ffbfb3bcbcbab7bbbffcb6b7">[email protected]</span></a>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="card fade-in">
-              <div class="card-image">
-                <img
-                  src="/api/placeholder/400/280"
-                  alt="Anke Bluhm"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Anke Bluhm</h3>
-                <p class="card-subtitle">Schatzmeisterin</p>
-                <p class="card-text">
-                  Anke Bluhm verwaltet die Finanzen des Vereins mit größter Sorgfalt 
-                  und Transparenz.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#4b22252d240b262e392866262a2525232e2226652f2e"><span class="__cf_email__" data-cfemail="bad3d4dcd5fad7dfc8d997d7dbd4d4d2dfd3d794dedf">[email protected]</span></a>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="card fade-in">
-              <div class="card-image">
-                <img
-                  src="images/eiskunstlauf/Larissa Vetter.jpeg"
-                  alt="Larissa Vetter"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Larissa Vetter</h3>
-                <p class="card-subtitle">Schriftführerin</p>
-                <p class="card-text">
-                  Larissa Vetter kümmert sich um die Protokollierung und 
-                  administrative Korrespondenz des Vereins.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="/cdn-cgi/l/email-protection#85ecebe3eac5e8e0f7e6a8e8e4ebebede0ece8abe1e0"><span class="__cf_email__" data-cfemail="533a3d353c133e3621307e3e323d3d3b363a3e7d3736">[email protected]</span></a>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="card fade-in">
-              <div class="card-image">
-                <img
-                  src="/api/placeholder/400/280"
-                  alt="Eugen Romminger† / Karl Hagert†"
-                />
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Eugen Romminger† / Karl Hagert†</h3>
-                <p class="card-subtitle">Ehrenvorsitzende</p>
-                <p class="card-text">
-                  Wir ehren das Andenken unserer Ehrenvorsitzenden Eugen Romminger 
-                  und Karl Hagert für ihre außergewöhnlichen Verdienste.
-                </p>
-                <div class="card-meta">
-                  <span class="card-meta-item">
-                    <i class="fas fa-heart"></i>
-                    In ehrendem Gedenken
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <p>Leidenschaft auf dem Eis seit Jahrzehnten.</p>
         </div>
       </section>
 
@@ -1617,721 +226,195 @@
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">Unser Trainerteam</h2>
-            <p class="section-subtitle">
-              Erfahrene Profis, die aus Leidenschaft trainieren
-            </p>
+            <p class="section-subtitle">Erfahrene Profis für alle Disziplinen</p>
           </div>
 
-             <div style="margin-bottom: 60px;">
-            <h3 style="font-size: var(--font-size-xl); font-weight: 700; margin-bottom: var(--spacing-lg); color: var(--text-dark); text-align: center;">
-              Eiskunstlauf / Synchron Eiskunstlauf
-            </h3>
-<div class="grid grid-3">
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="images/eiskunstlauf/Stefan Lindemann.jpeg" alt="Stefan Lindemann" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Stefan Lindemann</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Leistungssport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>Diplomtrainer</span></div>
-      <div class="card-socials"><a href="mailto:stefan.lindemann@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="images/eiskunstlauf/Adrian Schager.jpeg" alt="Adrian Schager" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Adrian Schager</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Leistungssport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>A-Trainer</span></div>
-      <div class="card-socials"><a href="mailto:adrian.schager@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="images/eiskunstlauf/Teresa Simon.jpeg" alt="Teresa Simon" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Teresa Simon</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Leistungssport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>A-Trainer</span></div>
-      <div class="card-socials"><a href="mailto:teresa.simon@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="/api/placeholder/400/280" alt="Svetlana Knorr" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Svetlana Knorr</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Leistungssport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>B-Trainer</span></div>
-      <div class="card-socials"><a href="mailto:svetlana.knorr@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="/api/placeholder/400/280" alt="Gloria Drebes" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Gloria Drebes</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Leistungssport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>B-Trainer</span></div>
-      <div class="card-socials"><a href="mailto:gloria.drebes@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="/api/placeholder/400/280" alt="Denise Müller" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Denise Müller</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Leistungssport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>C-Trainer-Leistungssport</span></div>
-      <div class="card-socials"><a href="mailto:denise.mueller@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="images/eiskunstlauf/Nathalie Weinzierl.jpeg" alt="Nathalie Weinzierl" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Nathalie Weinzierl</h3>
-      <p class="card-subtitle">Trainer Kunstlauf / Choreographie</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>B-Trainer</span></div>
-      <div class="card-socials"><a href="mailto:nathalie.weinzierl@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="images/eiskunstlauf/Larissa Vetter.jpeg" alt="Larissa Vetter" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Larissa Vetter</h3>
-      <p class="card-subtitle">Trainer Kunstlauf / Choreographie</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>C-Trainer-Leistungssport</span></div>
-      <div class="card-socials"><a href="mailto:larissa.vetter@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="images/eiskunstlauf/Simone Bienert.jpeg" alt="Simone Unvericht-Bienert" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Simone Unvericht-Bienert</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Breitensport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>B-Trainer</span></div>
-      <div class="card-socials"><a href="mailto:simone.unvericht-bienert@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="images/eiskunstlauf/Guenter Zoeller.jpeg" alt="Günter Zöller" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Günter Zöller</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Breitensport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>B-Trainer</span></div>
-      <div class="card-socials"><a href="mailto:guenter.zoeller@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="/api/placeholder/400/280" alt="Carolin Morlock" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Carolin Morlock</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Breitensport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>B-Trainer</span></div>
-      <div class="card-socials"><a href="mailto:carolin.morlock@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="images/eiskunstlauf/Dora Vulic.jpeg" alt="Dora Vulic" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Dora Vulic</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Breitensport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>C-Trainer-Breitensport</span></div>
-      <div class="card-socials"><a href="mailto:dora.vulic@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="images/eiskunstlauf/Anja Pohlmann.jpeg" alt="Anja Pohlmann" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Anja Pohlmann</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Breitensport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>C-Trainer-Breitensport</span></div>
-      <div class="card-socials"><a href="mailto:anja.pohlmann@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="/api/placeholder/400/280" alt="Patricia Redinger" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Patricia Redinger</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Breitensport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>C-Trainer-Breitensport</span></div>
-      <div class="card-socials"><a href="mailto:patricia.redinger@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="/api/placeholder/400/280" alt="Simone Lang" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Simone Lang</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Breitensport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>C-Trainer-Breitensport</span></div>
-      <div class="card-socials"><a href="mailto:simone.lang@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="images/eiskunstlauf/Natali Herzog.jpeg" alt="Natali Herzog" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Natali Herzog</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Breitensport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>C-Trainer-Breitensport</span></div>
-      <div class="card-socials"><a href="mailto:natali.herzog@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="images/eiskunstlauf/Marie-Christine Hube.jpeg" alt="Marie-Christine Hube" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Marie-Christine Hube</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Breitensport)</p>
-      <div class="card-meta"><span class="card-meta-item"><i class="fas fa-star"></i>C-Trainer-Breitensport</span></div>
-      <div class="card-socials"><a href="mailto:marie-christine.hube@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="/api/placeholder/400/280" alt="Nicole Lampe" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Nicole Lampe</h3>
-      <p class="card-subtitle">Trainer Kunstlauf (Breitensport)</p>
-      <div class="card-socials"><a href="mailto:nicole.lampe@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="images/eiskunstlauf/Lisa Day.jpeg" alt="Lisa Day" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Lisa Day</h3>
-      <p class="card-subtitle">Trainerassistenz</p>
-      <div class="card-socials"><a href="mailto:lisa.day@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="/api/placeholder/400/280" alt="Olessia Terenteva" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Olessia Terenteva</h3>
-      <p class="card-subtitle">Trainerassistenz</p>
-      <div class="card-socials"><a href="mailto:olessia.terenteva@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-
-  <div class="card trainer-card fade-in">
-    <div class="card-image"><img src="images/eiskunstlauf/Nicole Endress.jpeg" alt="Nicole Endress" /></div>
-    <div class="card-body">
-      <h3 class="card-title">Nicole Endress</h3>
-      <p class="card-subtitle">Trainerin Synchroneiskunstlauf</p>
-      <div class="card-socials"><a href="mailto:nicole.endress@merc-online.de"><i class="fas fa-envelope"></i></a></div>
-    </div>
-  </div>
-</div>
-
-          <div style="margin-bottom: 60px;">
-            <h3 style="font-size: var(--font-size-xl); font-weight: 700; margin-bottom: var(--spacing-lg); color: var(--text-dark); text-align: center;">
-              Eisschnelllauf
-            </h3>
-            <div class="grid grid-4">
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img src="images/eisschnelllauf/Sean McConnell.jpg" alt="Sean McConnell" />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Sean McConnell</h3>
-                  <p class="card-subtitle">Stellvertretender Abteilungsleiter Eisschnelllauf</p>
-                  <div class="card-meta">
-                    <span class="card-meta-item"><i class="fas fa-star"></i>B-Lizenz</span>
-                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2018</span>
-                  </div>
-                  <div class="card-socials">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img src="images/eisschnelllauf/Christian Arlt.jpg" alt="Christian Arlt" />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Christian Arlt</h3>
-                  <p class="card-subtitle">Stellvertretender Abteilungsleiter Eisschnelllauf, Trainer</p>
-                  <div class="card-meta">
-                    <span class="card-meta-item"><i class="fas fa-star"></i>A-Lizenz</span>
-                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2015</span>
-                  </div>
-                  <div class="card-socials">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img src="images/eisschnelllauf/Gundi Pawasserat.jpeg" alt="Gundi Pawasserat" />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Gundi Pawasserat</h3>
-                  <p class="card-subtitle">Vizepräsident, Abteilungsleiter Eisschnelllauf, Trainer</p>
-                  <div class="card-meta">
-                    <span class="card-meta-item"><i class="fas fa-star"></i>A-Lizenz</span>
-                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2010</span>
-                  </div>
-                  <div class="card-socials">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img src="images/eisschnelllauf/Jenny Ehrhard.jpeg" alt="Jenny Ehrhard" />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Jenny Ehrhard</h3>
-                  <p class="card-subtitle">Trainer Eisschnelllauf</p>
-                  <div class="card-meta">
-                    <span class="card-meta-item"><i class="fas fa-star"></i>B-Lizenz</span>
-                    <span class="card-meta-item"><i class="fas fa-clock"></i>Seit 2019</span>
-                  </div>
-                  <div class="card-socials">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                  </div>
-                </div>
+          <h3 style="text-align: center; margin-bottom: 40px; font-size: 1.8rem;">Eiskunstlauf / Synchron</h3>
+          
+          <div class="grid grid-3">
+            <div class="card trainer-card fade-in">
+              <div class="card-image"><img src="images/eiskunstlauf/Stefan Lindemann.jpeg" alt="Stefan Lindemann" /></div>
+              <div class="card-body">
+                <h3 class="card-title">Stefan Lindemann</h3>
+                <p class="card-subtitle">Trainer Kunstlauf (Leistungssport)</p>
+                <div class="card-meta"><span><i class="fas fa-star"></i> Diplomtrainer</span></div>
+                <div class="card-socials"><a href="mailto:stefan.lindemann@merc-online.de"><i class="fas fa-envelope"></i></a></div>
               </div>
             </div>
-          </div>
 
-          <div>
-            <h3 style="font-size: var(--font-size-xl); font-weight: 700; margin-bottom: var(--spacing-lg); color: var(--text-dark); text-align: center;">
-              Weitere Funktionen
-            </h3>
-            <div class="grid grid-4">
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img src="images/weitere funktionen/Dirk Mueller.jpeg" alt="Dirk Müller" />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Dirk Müller</h3>
-                  <p class="card-subtitle">Athletik & Prävention</p>
-                  <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      B-Trainer
-                    </span>
-                  </div>
-                  <div class="card-socials">
-                    <a href="mailto:dirkmueller@merc-online.de" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                  </div>
-                </div>
+            <div class="card trainer-card fade-in">
+              <div class="card-image"><img src="images/eiskunstlauf/Adrian Schager.jpeg" alt="Adrian Schager" /></div>
+              <div class="card-body">
+                <h3 class="card-title">Adrian Schager</h3>
+                <p class="card-subtitle">Trainer Kunstlauf (Leistungssport)</p>
+                <div class="card-meta"><span><i class="fas fa-star"></i> A-Trainer</span></div>
+                <div class="card-socials"><a href="mailto:adrian.schager@merc-online.de"><i class="fas fa-envelope"></i></a></div>
               </div>
+            </div>
 
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img src="/api/placeholder/400/280" alt="Eugenie Platt" />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Eugenie Platt</h3>
-                  <p class="card-subtitle">Ballett & Tanz</p>
-                  <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      Tanzpädagogin
-                    </span>
-                  </div>
-                  <div class="card-socials">
-                    <a href="mailto:eugenieplatt@merc-online.de" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                  </div>
-                </div>
+            <div class="card trainer-card fade-in">
+              <div class="card-image"><img src="images/eiskunstlauf/Teresa Simon.jpeg" alt="Teresa Simon" /></div>
+              <div class="card-body">
+                <h3 class="card-title">Teresa Simon</h3>
+                <p class="card-subtitle">Trainer Kunstlauf (Leistungssport)</p>
+                <div class="card-meta"><span><i class="fas fa-star"></i> A-Trainer</span></div>
+                <div class="card-socials"><a href="mailto:teresa.simon@merc-online.de"><i class="fas fa-envelope"></i></a></div>
               </div>
+            </div>
 
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img src="/api/placeholder/400/280" alt="Ognjen Vulic" />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Ognjen Vulic</h3>
-                  <p class="card-subtitle">Physiotherapie</p>
-                  <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      Staatlich geprüfter Physiotherapeut
-                    </span>
-                  </div>
-                  <div class="card-socials">
-                    <a href="mailto:ognjenvulic@merc-online.de" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                  </div>
-                </div>
+            <div class="card trainer-card fade-in">
+              <div class="card-image"><img src="/api/placeholder/400/280" alt="Svetlana Knorr" /></div>
+              <div class="card-body">
+                <h3 class="card-title">Svetlana Knorr</h3>
+                <p class="card-subtitle">Trainer Kunstlauf (Leistungssport)</p>
+                <div class="card-meta"><span><i class="fas fa-star"></i> B-Trainer</span></div>
+                <div class="card-socials"><a href="mailto:svetlana.knorr@merc-online.de"><i class="fas fa-envelope"></i></a></div>
               </div>
+            </div>
 
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img src="images/weitere funktionen/Mariya Trofymova.jpeg" alt="Mariya Trofymova" />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Mariya Trofymova</h3>
-                  <p class="card-subtitle">Jugendwärtin</p>
-                  <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-users"></i>
-                      Jugendarbeit
-                    </span>
-                  </div>
-                  <div class="card-socials">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                  </div>
-                </div>
+            <div class="card trainer-card fade-in">
+              <div class="card-image"><img src="/api/placeholder/400/280" alt="Gloria Drebes" /></div>
+              <div class="card-body">
+                <h3 class="card-title">Gloria Drebes</h3>
+                <p class="card-subtitle">Trainer Kunstlauf (Leistungssport)</p>
+                <div class="card-meta"><span><i class="fas fa-star"></i> B-Trainer</span></div>
+                <div class="card-socials"><a href="mailto:gloria.drebes@merc-online.de"><i class="fas fa-envelope"></i></a></div>
               </div>
+            </div>
 
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img src="images/weitere funktionen/Tomo Ogawa.jpeg" alt="Tomo Ogawa" />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Tomo Ogawa</h3>
-                  <p class="card-subtitle">Marketing</p>
-                  <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-bullhorn"></i>
-                      Marketing & Kommunikation
-                    </span>
-                  </div>
-                  <div class="card-socials">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="E-Mail"><i class="fas fa-envelope"></i></a>
-                  </div>
-                </div>
+            <div class="card trainer-card fade-in">
+              <div class="card-image"><img src="/api/placeholder/400/280" alt="Denise Müller" /></div>
+              <div class="card-body">
+                <h3 class="card-title">Denise Müller</h3>
+                <p class="card-subtitle">Trainer Kunstlauf (Leistungssport)</p>
+                <div class="card-meta"><span><i class="fas fa-star"></i> C-Trainer-Leistungssport</span></div>
+                <div class="card-socials"><a href="mailto:denise.mueller@merc-online.de"><i class="fas fa-envelope"></i></a></div>
+              </div>
+            </div>
+
+            <div class="card trainer-card fade-in">
+              <div class="card-image"><img src="images/eiskunstlauf/Nathalie Weinzierl.jpeg" alt="Nathalie" /></div>
+              <div class="card-body">
+                <h3 class="card-title">Nathalie Weinzierl</h3>
+                <p class="card-subtitle">Choreographie (Leistungssport)</p>
+                <div class="card-meta"><span><i class="fas fa-star"></i> B-Trainer</span></div>
+                <div class="card-socials"><a href="mailto:nathalie.weinzierl@merc-online.de"><i class="fas fa-envelope"></i></a></div>
+              </div>
+            </div>
+
+            <div class="card trainer-card fade-in">
+              <div class="card-image"><img src="images/eiskunstlauf/Larissa Vetter.jpeg" alt="Larissa" /></div>
+              <div class="card-body">
+                <h3 class="card-title">Larissa Vetter</h3>
+                <p class="card-subtitle">Choreographie (Leistungssport)</p>
+                <div class="card-meta"><span><i class="fas fa-star"></i> C-Trainer-Leistungssport</span></div>
+                <div class="card-socials"><a href="mailto:larissa.vetter@merc-online.de"><i class="fas fa-envelope"></i></a></div>
+              </div>
+            </div>
+
+            <div class="card trainer-card fade-in">
+              <div class="card-image"><img src="images/eiskunstlauf/Simone Bienert.jpeg" alt="Simone" /></div>
+              <div class="card-body">
+                <h3 class="card-title">Simone Unvericht-Bienert</h3>
+                <p class="card-subtitle">Trainer Kunstlauf (Breitensport)</p>
+                <div class="card-meta"><span><i class="fas fa-star"></i> B-Trainer</span></div>
+                <div class="card-socials"><a href="mailto:simone.unvericht-bienert@merc-online.de"><i class="fas fa-envelope"></i></a></div>
+              </div>
+            </div>
+
+            <div class="card trainer-card fade-in">
+              <div class="card-image"><img src="images/eiskunstlauf/Nicole Endress.jpeg" alt="Nicole" /></div>
+              <div class="card-body">
+                <h3 class="card-title">Nicole Endress</h3>
+                <p class="card-subtitle">Trainerin Synchroneiskunstlauf</p>
+                <div class="card-socials"><a href="mailto:nicole.endress@merc-online.de"><i class="fas fa-envelope"></i></a></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section" style="padding: var(--spacing-xl) 0; background-color: var(--white);">
-        <div class="container">
-          <div class="merch-banner fade-in" style="max-width: 900px; margin: 0 auto; text-align: center; padding: var(--spacing-lg); background: linear-gradient(135deg, rgba(0, 98, 255, 0.05) 0%, rgba(0, 71, 179, 0.05) 100%); border-radius: var(--border-radius-lg); border: 2px solid rgba(0, 98, 255, 0.1);">
-            <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: var(--primary-color); border-radius: 50%; margin-bottom: var(--spacing-md);">
-              <i class="fas fa-shopping-bag" style="color: var(--white); font-size: 24px;"></i>
-            </div>
-            <h3 style="font-family: var(--font-family-accent); font-size: var(--font-size-lg); font-weight: 700; color: var(--text-dark); margin-bottom: var(--spacing-sm);">
-              Unser Merchandise Shop
-            </h3>
-            <p style="color: var(--text-muted); margin-bottom: var(--spacing-lg); line-height: 1.7;">
-              Trikots, Hoodies, Taschen und mehr – Zeigen Sie Ihre Vereinszugehörigkeit!
-            </p>
-            <a href="#" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: var(--spacing-xs); padding: 14px 28px; background-color: var(--primary-color); color: var(--white); border-radius: var(--border-radius-md); font-weight: 600; text-decoration: none; transition: var(--transition-base); box-shadow: var(--shadow-sm);">
-              <i class="fas fa-external-link-alt"></i>
-              Zum Onlineshop
-            </a>
-          </div>
-        </div>
-      </section>
-
-   <section id="downloads" class="section downloads">
+      <section id="downloads" class="section downloads">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">Downloads & Formulare</h2>
-            <p class="section-subtitle">
-              Alle wichtigen Dokumente für Mitglieder und Interessierte
-            </p>
+            <h2 class="section-title" style="color: white;">Downloads</h2>
           </div>
           <div class="download-grid">
+            
             <div class="download-card fade-in">
-              <div class="download-icon">
-                <i class="fas fa-file-pdf"></i>
-              </div>
-              <h3 class="download-title">Antrag Eislaufschule</h3>
-              <p class="download-description">
-                Antrag für die Eislaufschule 2024/2025. Bitte ausgefüllt 
-                per E-Mail oder Post an uns zurücksenden.
-              </p>
-              <div class="download-meta">
-                <span>PDF</span>
-                <span>Saison 2024/2025</span>
-              </div>
-<div class="download-actions">
-  <a href="antrag-formular.html" class="btn btn-outline download-btn" target="_blank">
-    <i class="fas fa-pen"></i>
-    Ausfüllen
-  </a>
-  <a href="dokumente/verein/antrag_eislaufschule_2024_2025_formular.pdf" class="btn btn-primary download-btn" download>
-    <i class="fas fa-download"></i>
-    Herunterladen
-  </a>
-</div>
-            </div>
-
-            <div class="download-card fade-in">
-              <div class="download-icon">
-                <i class="fas fa-file-pdf"></i>
-              </div>
-              <h3 class="download-title">Einzugsermächtigung Kunstlauf</h3>
-              <p class="download-description">
-                Einzugsermächtigung für Eiskunstlauf und Synchron Eiskunstlauf. 
-                Ermöglicht den automatischen Beitragseinzug.
-              </p>
-              <div class="download-meta">
-                <span>PDF</span>
-                <span>Kunstlauf / Synchron</span>
-              </div>
-              <div class="download-actions">
-                <a href="dokumente/verein/einzugsermaectigung_kl_2023.pdf" class="btn btn-outline download-btn" target="_blank">
-                  <i class="fas fa-eye"></i>
-                  Ansehen
-                </a>
-                <a href="dokumente/verein/einzugsermaectigung_kl_2023.pdf" class="btn btn-primary download-btn" download>
-                  <i class="fas fa-download"></i>
-                  Herunterladen
-                </a>
-              </div>
-            </div>
-
-            <div class="download-card fade-in">
-              <div class="download-icon">
-                <i class="fas fa-file-pdf"></i>
-              </div>
-              <h3 class="download-title">Einzugsermächtigung Schnelllauf</h3>
-              <p class="download-description">
-                Einzugsermächtigung für Eisschnelllauf / Shorttrack. 
-                Ermöglicht den automatischen Beitragseinzug.
-              </p>
-              <div class="download-meta">
-                <span>PDF</span>
-                <span>Schnelllauf / Shorttrack</span>
-              </div>
-              <div class="download-actions">
-                <a href="dokumente/verein/einzugsermaectigung_sl_2023.pdf" class="btn btn-outline download-btn" target="_blank">
-                  <i class="fas fa-eye"></i>
-                  Ansehen
-                </a>
-                <a href="dokumente/verein/einzugsermaectigung_sl_2023.pdf" class="btn btn-primary download-btn" download>
-                  <i class="fas fa-download"></i>
-                  Herunterladen
-                </a>
-              </div>
-            </div>
-
-            <div class="download-card fade-in">
-              <div class="download-icon">
-                <i class="fas fa-file-pdf"></i>
-              </div>
-              <h3 class="download-title">Gebührenordnung</h3>
-              <p class="download-description">
-                Aktuelle Gebührenordnung des Mannheimer ERC. 
-                Gültig ab 01.07.2025.
-              </p>
-              <div class="download-meta">
-                <span>PDF</span>
-                <span>Gültig ab 01.07.2025</span>
-              </div>
-              <div class="download-actions">
-                <a href="dokumente/verein/gebuehrenordnung_ab_01072025.pdf" class="btn btn-outline download-btn" target="_blank">
-                  <i class="fas fa-eye"></i>
-                  Ansehen
-                </a>
-                <a href="dokumente/verein/gebuehrenordnung_ab_01072025.pdf" class="btn btn-primary download-btn" download>
-                  <i class="fas fa-download"></i>
-                  Herunterladen
-                </a>
-              </div>
-            </div>
-
-            <div class="download-card fade-in">
-              <div class="download-icon">
-                <i class="fas fa-file-pdf"></i>
-              </div>
+              <div class="download-icon"><i class="fas fa-file-pdf"></i></div>
               <h3 class="download-title">Hallenbelegung</h3>
-              <p class="download-description">
-                Aktuelle Hallenbelegung und Trainingszeiten 
-                für alle Abteilungen.
-              </p>
-              <div class="download-meta">
-                <span>PDF</span>
-                <span>Trainingszeiten</span>
-              </div>
+              <p>Aktuelle Trainingszeiten für alle Abteilungen.</p>
               <div class="download-actions">
-                <a href="dokumente/verein/Hallenbelegung.pdf" class="btn btn-outline download-btn" target="_blank">
-                  <i class="fas fa-eye"></i>
-                  Ansehen
+                <a href="javascript:void(0)" onclick="openPdf('dokumente/verein/Hallenbelegung.pdf')" class="btn btn-outline">
+                  <i class="fas fa-eye"></i> Ansehen
                 </a>
-                <a href="dokumente/verein/Hallenbelegung.pdf" class="btn btn-primary download-btn" download>
-                  <i class="fas fa-download"></i>
-                  Herunterladen
+                <a href="dokumente/verein/Hallenbelegung.pdf" download class="btn btn-primary">
+                  <i class="fas fa-download"></i> Download
                 </a>
               </div>
             </div>
-          </div>
 
-          <div style="margin-top: 60px; text-align: center;" class="fade-in">
-            <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; font-size: var(--font-size-md);">
-              Benötigen Sie ein Formular, das hier nicht aufgeführt ist?
-            </p>
-            <a href="#kontakt" class="btn btn-primary">
-              <i class="fas fa-envelope"></i>
-              Kontakt aufnehmen
-            </a>
+            <div class="download-card fade-in">
+              <div class="download-icon"><i class="fas fa-file-pdf"></i></div>
+              <h3 class="download-title">Gebührenordnung</h3>
+              <p>Gültig ab 01.07.2025.</p>
+              <div class="download-actions">
+                <a href="javascript:void(0)" onclick="openPdf('dokumente/verein/gebuehrenordnung_ab_01072025.pdf')" class="btn btn-outline">
+                  <i class="fas fa-eye"></i> Ansehen
+                </a>
+                <a href="dokumente/verein/gebuehrenordnung_ab_01072025.pdf" download class="btn btn-primary">
+                  <i class="fas fa-download"></i> Download
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
     </main>
 
-
-  <footer>
-      <div class="container">
-        <div class="footer-container">
-          <div class="footer-about">
-            <div class="footer-logo">
-              <img
-                src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
-                alt="Mannheimer ERC Logo"
-              />
-            </div>
-            <p>
-              Der Mannheimer ERC ist seit Jahrzehnten ein Begriff im Eissport
-              und bietet optimale Trainingsbedingungen für Sportlerinnen und
-              Sportler jeden Alters.
-            </p>
-            <div class="footer-social">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-          </div>
-
-          <div class="footer-contact">
-            <h3 class="footer-title">Kontakt</h3>
-            <ul>
-              <li>
-                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
-                <span>Käthe-Kollwitz-Straße 23<br />D-68169 Mannheim</span>
-              </li>
-              <li>
-                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                <span><a href="mailto:info@merc-online.de">info@merc-online.de</a></span>
-              </li>
-              <li>
-                <span class="contact-icon"><i class="fas fa-clock"></i></span>
-                <span>Di: 16:00 - 18:00 Uhr<br />Sa: 10:00 - 12:00 Uhr</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>© 2026 Mannheimer ERC. Alle Rechte vorbehalten.</p>
-          <p>
-            <a href="impressum.html">Impressum</a>
-            <a href="datenschutz.html" style="margin-left: 20px;">Datenschutz</a>
-          </p>
-        </div>
+    <footer>
+      <div class="container" style="padding: 40px 0; text-align: center; border-top: 1px solid #333;">
+        <p>© 2026 Mannheimer ERC</p>
       </div>
     </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function setupMobileSubmenus() {
-  const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
-  submenuParents.forEach((toggle) => {
-    toggle.addEventListener("click", function (e) {
-      e.preventDefault();
-      const li = this.closest(".has-submenu");
-      const isOpen = li.classList.contains("open");
-      
-      mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
-        if (item !== li) item.classList.remove("open");
-      });
-      
-      li.classList.toggle("open");
-      this.setAttribute("aria-expanded", String(!isOpen));
-    });
-  });
-}
+    <script>
+      /* MODAL LOGIK */
+      const pdfModal = document.getElementById("pdfModal");
+      const pdfFrame = document.getElementById("pdfFrame");
+      const closePdf = document.querySelector(".close-pdf");
 
-const mobileToggle = document.querySelector(".mobile-toggle");
-const mobileMenu = document.querySelector(".mobile-menu");
-const overlay = document.querySelector(".overlay");
-const mobileClose = document.querySelector(".mobile-menu-close");
-const mobileLinks = document.querySelectorAll(".mobile-menu a");
+      function openPdf(pdfUrl) {
+        // #toolbar=0 versucht Download/Print Buttons im Browser-Reader zu verstecken
+        pdfFrame.src = pdfUrl + "#toolbar=0";
+        pdfModal.style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
 
-function openMenu() {
-  mobileMenu.classList.add("active");
-  overlay.classList.add("active");
-  document.body.style.overflow = "hidden";
-  mobileToggle.classList.add("active");
-  mobileToggle.setAttribute("aria-expanded", "true");
-}
+      closePdf.onclick = () => {
+        pdfModal.style.display = "none";
+        pdfFrame.src = "";
+        document.body.style.overflow = "auto";
+      };
 
-function closeMenu() {
-  mobileMenu.classList.remove("active");
-  overlay.classList.remove("active");
-  document.body.style.overflow = "";
-  mobileToggle.classList.remove("active");
-  mobileToggle.setAttribute("aria-expanded", "false");
-}
+      window.onclick = (event) => {
+        if (event.target == pdfModal) {
+          pdfModal.style.display = "none";
+          pdfFrame.src = "";
+          document.body.style.overflow = "auto";
+        }
+      };
 
-mobileToggle.addEventListener("click", () => {
-  const isOpen = mobileMenu.classList.contains("active");
-  isOpen ? closeMenu() : openMenu();
-});
+      /* FADE-IN ANIMATION */
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      }, { threshold: 0.1 });
 
-mobileClose.addEventListener("click", closeMenu);
-overlay.addEventListener("click", closeMenu);
-
-setupMobileSubmenus();
-
-mobileLinks.forEach((link) => {
-  link.addEventListener("click", (e) => {
-    if (link.getAttribute("href").startsWith("#")) {
-      closeMenu();
-    }
-  });
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
-    closeMenu();
-  }
-});
-
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-  if (window.pageYOffset > 100) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
-});
-
-const fadeElements = document.querySelectorAll(".fade-in");
-
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px"
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, observerOptions);
-
-fadeElements.forEach((element) => {
-  observer.observe(element);
-});
-</script>
+      document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+    </script>
   </body>
 </html>
