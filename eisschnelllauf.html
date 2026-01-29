@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
   <template id="navigation-template1">
     <ul>
@@ -125,8 +125,8 @@
         --spacing-3xl: 120px;
 
         /* Typography */
-        --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
+        --font-family:
+          "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         --font-family-accent: "Space Grotesk", monospace;
         --font-size-xs: 0.875rem;
         --font-size-sm: 1rem;
@@ -265,7 +265,8 @@
       .fade-in {
         opacity: 0;
         transform: translateY(30px);
-        transition: opacity var(--transition-slow),
+        transition:
+          opacity var(--transition-slow),
           transform var(--transition-slow);
       }
 
@@ -731,7 +732,8 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: radial-gradient(
+        background-image:
+          radial-gradient(
             circle at 20% 50%,
             rgba(255, 255, 255, 0.1) 0%,
             transparent 50%
@@ -2055,7 +2057,7 @@
         <div class="container">
           <div class="section-header">
             <h2 id="archive-news-toggle-btn">
-              Archivierte Berichte<span id="archive-news-toggle-icon">▼</span>
+              Berichte<span id="archive-news-toggle-icon">▼</span>
             </h2>
           </div>
           <div id="archive-news-wrapper" class="news-collapsed">
@@ -2109,7 +2111,7 @@
     </main>
 
     <!-- Footer -->
-<footer>
+    <footer>
       <div class="container">
         <div class="footer-container">
           <div class="footer-about">
@@ -2125,9 +2127,15 @@
               Sportler jeden Alters.
             </p>
             <div class="footer-social">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
             </div>
           </div>
 
@@ -2135,12 +2143,20 @@
             <h3 class="footer-title">Kontakt</h3>
             <ul>
               <li>
-                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-map-marker-alt"></i
+                ></span>
                 <span>Käthe-Kollwitz-Straße 23<br />D-68169 Mannheim</span>
               </li>
               <li>
-                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                <span><a href="mailto:info@merc-online.de">info@merc-online.de</a></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-envelope"></i
+                ></span>
+                <span
+                  ><a href="mailto:info@merc-online.de"
+                    >info@merc-online.de</a
+                  ></span
+                >
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-clock"></i></span>
@@ -2154,7 +2170,7 @@
           <p>© 2026 Mannheimer ERC. Alle Rechte vorbehalten.</p>
           <p>
             <a href="impressum.html">Impressum</a>
-            <a href="datenschutz.html" style="margin-left: 20px;">Datenschutz</a>
+            <a href="datenschutz.html" style="margin-left: 20px">Datenschutz</a>
           </p>
         </div>
       </div>
@@ -2206,7 +2222,7 @@
       // Mobile submenu toggle
       function setupMobileSubmenus() {
         const mobileSubmenus = document.querySelectorAll(
-          ".mobile-menu .has-submenu"
+          ".mobile-menu .has-submenu",
         );
         mobileSubmenus.forEach((item) => {
           const toggle = item.querySelector(".submenu-toggle");
@@ -2258,7 +2274,7 @@
 
         // Footer Navigation
         const footerLinks = document.getElementById(
-          "footerLinksWithMenuElements"
+          "footerLinksWithMenuElements",
         );
         if (template && footerLinks) {
           const clone = template.content.cloneNode(true);
@@ -2351,7 +2367,7 @@
         for (let i = 1; i <= daysInMonth; i++) {
           const dateString = `${year}-${String(month).padStart(
             2,
-            "0"
+            "0",
           )}-${String(i).padStart(2, "0")}`;
           const dayDiv = document.createElement("div");
           dayDiv.classList.add("day");
@@ -2413,14 +2429,14 @@
 
           const diffWeeks = Math.ceil(
             (archiveNewsMaxDate - archiveNewsMinDate) /
-              (1000 * 60 * 60 * 24 * 7)
+              (1000 * 60 * 60 * 24 * 7),
           );
 
           const sliderMin = document.getElementById(
-            "archive-news-date-slider-min"
+            "archive-news-date-slider-min",
           );
           const sliderMax = document.getElementById(
-            "archive-news-date-slider-max"
+            "archive-news-date-slider-max",
           );
 
           sliderMin.max = diffWeeks;
@@ -2438,7 +2454,7 @@
           return new Date(
             Number.parseInt(germanMatch[3]),
             Number.parseInt(germanMatch[2]) - 1,
-            Number.parseInt(germanMatch[1])
+            Number.parseInt(germanMatch[1]),
           );
         }
 
@@ -2478,21 +2494,21 @@
 
       function handleArchiveNewsFilters() {
         const sliderMin = document.getElementById(
-          "archive-news-date-slider-min"
+          "archive-news-date-slider-min",
         );
         const sliderMax = document.getElementById(
-          "archive-news-date-slider-max"
+          "archive-news-date-slider-max",
         );
         let searchTerm = document
           .getElementById("archive-news-search")
           .value.toLowerCase();
         const dateDisplay = document.getElementById(
-          "archive-news-date-display"
+          "archive-news-date-display",
         );
 
         if (searchTerm === "#begrenzt") {
           const validItems = ARCHIVE_NEWS_LIST.filter(
-            (item) => item.date && item.date !== "N/A"
+            (item) => item.date && item.date !== "N/A",
           );
           const limitedList = validItems.slice(0, 3);
           dateDisplay.textContent = "Nur aktuellste Beiträge";
@@ -2518,7 +2534,7 @@
         endDate.setDate(endDate.getDate() + valMax * 7);
 
         dateDisplay.textContent = `${startDate.toLocaleDateString(
-          "de-DE"
+          "de-DE",
         )} bis ${endDate.toLocaleDateString("de-DE")}`;
 
         let filteredNews = ARCHIVE_NEWS_LIST.filter((item) => {
@@ -2542,10 +2558,10 @@
         const searchInput = document.getElementById("archive-news-search");
         searchInput.value = "#begrenzt";
         const sliderMin = document.getElementById(
-          "archive-news-date-slider-min"
+          "archive-news-date-slider-min",
         );
         const sliderMax = document.getElementById(
-          "archive-news-date-slider-max"
+          "archive-news-date-slider-max",
         );
         sliderMin.value = 0;
         sliderMax.value = sliderMax.max;

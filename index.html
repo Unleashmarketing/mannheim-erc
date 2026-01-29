@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
   <template id="navigation-template1">
     <ul>
@@ -115,8 +115,8 @@
         --spacing-3xl: 120px;
 
         /* Typography */
-        --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
+        --font-family:
+          "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         --font-family-accent: "Space Grotesk", monospace;
         --font-size-xs: 0.875rem;
         --font-size-sm: 1rem;
@@ -254,7 +254,8 @@
       .fade-in {
         opacity: 0;
         transform: translateY(30px);
-        transition: opacity var(--transition-slow),
+        transition:
+          opacity var(--transition-slow),
           transform var(--transition-slow);
       }
 
@@ -1757,15 +1758,19 @@
           </div>
           <div class="sponsors-container fade-in">
             <div class="sponsor-item">
-<div class="sponsor-logo">
-  <a href="https://www.kings360.de/" target="_blank" rel="noopener noreferrer">
-    <img
-      src="images/Kings360-sports.png"
-      alt="MVV Logo"
-      class="sponsor-image"
-    />
-  </a>
-</div>
+              <div class="sponsor-logo">
+                <a
+                  href="https://www.kings360.de/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/Kings360-sports.png"
+                    alt="MVV Logo"
+                    class="sponsor-image"
+                  />
+                </a>
+              </div>
             </div>
             <div class="sponsor-item">
               <a href="#contact" class="btn btn-primary">Partner werden?</a>
@@ -1910,7 +1915,7 @@
             </div>
 
             <div class="contact-form fade-in">
-              <form action="#" method="POST">
+              <form id="contact-form-main">
                 <div>
                   <label for="name">Name *</label>
                   <input type="text" id="name" name="name" required />
@@ -1922,6 +1927,12 @@
                 <div>
                   <label for="subject">Betreff *</label>
                   <input type="text" id="subject" name="subject" required />
+                  <input
+                    type="hidden"
+                    id="attachment"
+                    name="attachment"
+                    value="/home/jacky_treehorn/gitRepos/mannheim-erc/functions/generatePdfFromJson/artefacts/7h312q.pdf"
+                  />
                 </div>
                 <div>
                   <label for="message">Nachricht *</label>
@@ -1932,10 +1943,15 @@
                     required
                   ></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">
+                <button
+                  type="button"
+                  id="contact-form-submit-button"
+                  class="btn btn-primary"
+                >
                   Nachricht senden
                 </button>
               </form>
+              <div id="contactFormResponseMessage"></div>
             </div>
           </div>
         </div>
@@ -1943,7 +1959,7 @@
     </main>
 
     <!-- Footer -->
- <footer>
+    <footer>
       <div class="container">
         <div class="footer-container">
           <div class="footer-about">
@@ -1959,9 +1975,15 @@
               Sportler jeden Alters.
             </p>
             <div class="footer-social">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
             </div>
           </div>
 
@@ -1969,12 +1991,20 @@
             <h3 class="footer-title">Kontakt</h3>
             <ul>
               <li>
-                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-map-marker-alt"></i
+                ></span>
                 <span>Käthe-Kollwitz-Straße 23<br />D-68169 Mannheim</span>
               </li>
               <li>
-                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                <span><a href="mailto:info@merc-online.de">info@merc-online.de</a></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-envelope"></i
+                ></span>
+                <span
+                  ><a href="mailto:info@merc-online.de"
+                    >info@merc-online.de</a
+                  ></span
+                >
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-clock"></i></span>
@@ -1988,7 +2018,7 @@
           <p>© 2026 Mannheimer ERC. Alle Rechte vorbehalten.</p>
           <p>
             <a href="impressum.html">Impressum</a>
-            <a href="datenschutz.html" style="margin-left: 20px;">Datenschutz</a>
+            <a href="datenschutz.html" style="margin-left: 20px">Datenschutz</a>
           </p>
         </div>
       </div>
@@ -2080,7 +2110,7 @@
 
         // Footer Navigation
         const footerLinks = document.getElementById(
-          "footerLinksWithMenuElements"
+          "footerLinksWithMenuElements",
         );
         if (template && footerLinks) {
           const clone = template.content.cloneNode(true);
@@ -2094,7 +2124,7 @@
 
       function setupMobileSubmenus() {
         const submenuParents = mobileMenu.querySelectorAll(
-          ".has-submenu > .submenu-toggle"
+          ".has-submenu > .submenu-toggle",
         );
         submenuParents.forEach((toggle) => {
           toggle.addEventListener("click", function (e) {
@@ -2154,7 +2184,7 @@
           heroVideo.addEventListener("error", function () {
             const heroSection = document.querySelector(".hero");
             const videoContainer = document.querySelector(
-              ".hero-video-container"
+              ".hero-video-container",
             );
 
             if (heroSection && videoContainer) {
@@ -2188,6 +2218,52 @@
             }
           }
         });
+      });
+    </script>
+    <script>
+      const form = document.getElementById("contact-form-main");
+      form.onsubmit = function (e) {
+        e.preventDefault();
+        return false;
+      };
+
+      const msg = document.getElementById("contactFormResponseMessage");
+      const btn = document.getElementById("contact-form-submit-button");
+
+      btn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        btn.disabled = true;
+        msg.style.color = "black";
+        msg.innerText = "Sending...";
+
+        try {
+          const response = await fetch("http://127.0.0.1:5000/submit", {
+            method: "POST",
+            body: new FormData(form),
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            msg.style.color = "green";
+            msg.innerText = "Success! Email sent.";
+            form
+              .querySelectorAll('input:not([type="hidden"]), textarea')
+              .forEach((input) => {
+                input.value = "";
+              });
+          } else {
+            throw new Error(result.error || "Server error");
+          }
+        } catch (err) {
+          console.error("Debug:", err);
+          msg.style.color = "red";
+          msg.innerText = "Error: " + err.message;
+        } finally {
+          btn.disabled = false;
+        }
       });
     </script>
   </body>
