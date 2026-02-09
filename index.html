@@ -828,6 +828,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: top center;
         transition: var(--transition-slow);
       }
 
@@ -966,7 +967,8 @@
       }
 
       .sponsor-logo {
-        background-color: rgba(255, 255, 255, 0.08);
+        background-color: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.2);
         height: 140px;
         display: flex;
         align-items: center;
@@ -978,7 +980,7 @@
       }
 
       .sponsor-item:hover .sponsor-logo {
-        background-color: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.4);
         transform: translateY(-5px);
       }
 
@@ -987,6 +989,12 @@
         max-height: 100%;
         object-fit: contain;
         filter: brightness(0) invert(1);
+      }
+
+      /* K360 Logo spezifisch kleiner */
+      .sponsor-item:first-child .sponsor-image {
+        max-width: 70%;
+        max-height: 70%;
       }
 
       /* ========================================
@@ -1009,6 +1017,7 @@
         height: 360px;
         box-shadow: var(--shadow-sm);
         transition: var(--transition-base);
+        cursor: pointer;
       }
 
       .competition-item:hover {
@@ -1699,7 +1708,7 @@
           <div class="sponsors-container fade-in">
             <div class="sponsor-item">
               <div class="sponsor-logo">
-                <a
+                
                   href="https://www.kings360.de/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -1714,7 +1723,7 @@
             </div>
             <div class="sponsor-item">
               <div class="sponsor-logo">
-                <a
+                
                   href="https://www.unleash-marketing.de/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -1744,7 +1753,7 @@
             </p>
           </div>
           <div class="competition-gallery">
-            <article class="competition-item fade-in">
+            <a href="https://unleashmarketing.github.io/mannheim-erc/wettbewerbe.html" class="competition-item fade-in">
               <img
                 src="images/Bild2.jpeg"
                 alt="Jugendmeisterschaften"
@@ -1754,8 +1763,8 @@
                 <h3 class="competition-title">Jugendmeisterschaften</h3>
                 <p class="competition-date">März 2025</p>
               </div>
-            </article>
-            <article class="competition-item fade-in">
+            </a>
+            <a href="https://unleashmarketing.github.io/mannheim-erc/wettbewerbe.html" class="competition-item fade-in">
               <img
                 src="images/82331e4d-ed93-4d10-8211-51c107e9e614.jpg"
                 alt="Deutsche Meisterschaften"
@@ -1765,8 +1774,8 @@
                 <h3 class="competition-title">Deutsche Meisterschaften</h3>
                 <p class="competition-date">Januar 2025</p>
               </div>
-            </article>
-            <article class="competition-item fade-in">
+            </a>
+            <a href="https://unleashmarketing.github.io/mannheim-erc/wettbewerbe.html" class="competition-item fade-in">
               <img
                 src="images/dc0f7fd0-3eea-4d4e-9135-640f62c069b7.jpg"
                 alt="Internationales Sommerturnier"
@@ -1776,7 +1785,7 @@
                 <h3 class="competition-title">Internationales Sommerturnier</h3>
                 <p class="competition-date">Juli 2025</p>
               </div>
-            </article>
+            </a>
           </div>
           <div style="margin-top: 50px; text-align: center">
             <a href="wettbewerbe.html" class="btn btn-primary"
@@ -1813,7 +1822,7 @@
               <h4>Kontaktdaten</h4>
               <p>
                 E-Mail:
-                <a
+                
                   href="/cdn-cgi/l/email-protection#a1fac4ccc0c8cd81d1d3ced5c4c2d5c4c5fc"
                   >[email protected]</a
                 >
