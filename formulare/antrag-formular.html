@@ -1152,6 +1152,7 @@
           yPos += lh;
         };
 
+        let formFilled = false;
         switch (integerDocType) {
           case 0: //EISLAUFSCHULE
             printLine("Persönliche Daten:", "", true);
@@ -1168,61 +1169,62 @@
             printLine("Email:", formData.eMail);
             yPos += 5;
 
-            if (form.NameErziehungsberechtigte !== "") {
+            if (formData.NameErziehungsberechtigte !== "") {
               printLine(
                 "Name Erziehungsberechtigte",
-                form.NameErziehungsberechtigte,
+                formData.NameErziehungsberechtigte,
               );
             }
-            if (form.VornameErziehungsberechtigte !== "") {
+            if (formData.VornameErziehungsberechtigte !== "") {
               printLine(
                 "Vorname Erziehungsberechtigte",
-                form.VornameErziehungsberechtigte,
+                formData.VornameErziehungsberechtigte,
               );
             }
-            if (form.GeburtsdatumErziehungsberechtigte !== "") {
+            if (formData.GeburtsdatumErziehungsberechtigte !== "") {
               printLine(
                 "Geburtsdatum Erziehungsberechtigte",
-                form.GeburtsdatumErziehungsberechtigte,
+                formData.GeburtsdatumErziehungsberechtigte,
               );
             }
-            if (form.NameZusatzteilnehmer1 !== "") {
-              printLine("Name Zusatzteilnehmer 1", form.NameZusatzteilnehmer1);
+            if (formData.NameZusatzteilnehmer1 !== "") {
+              printLine(
+                "Name Zusatzteilnehmer 1",
+                formData.NameZusatzteilnehmer1,
+              );
             }
-            if (form.VornameZusatzteilnehmer1 !== "") {
+            if (formData.VornameZusatzteilnehmer1 !== "") {
               printLine(
                 "Vorname Zusatzteilnehmer 1",
-                form.VornameZusatzteilnehmer1,
+                formData.VornameZusatzteilnehmer1,
               );
             }
-            if (form.GeburtsdatumZusatzteilnehmer1 !== "") {
+            if (formData.GeburtsdatumZusatzteilnehmer1 !== "") {
               printLine(
                 "Geburtsdatum Zusatzteilnehmer 1",
-                form.GeburtsdatumZusatzteilnehmer1,
+                formData.GeburtsdatumZusatzteilnehmer1,
               );
             }
-            if (form.NameZusatzteilnehmer2 !== "") {
-              printLine("Name Zusatzteilnehmer 2", form.NameZusatzteilnehmer2);
+            if (formData.NameZusatzteilnehmer2 !== "") {
+              printLine(
+                "Name Zusatzteilnehmer 2",
+                formData.NameZusatzteilnehmer2,
+              );
             }
-            if (form.VornameZusatzteilnehmer2 !== "") {
+            if (formData.VornameZusatzteilnehmer2 !== "") {
               printLine(
                 "Vorname Zusatzteilnehmer 2",
-                form.VornameZusatzteilnehmer2,
+                formData.VornameZusatzteilnehmer2,
               );
             }
-            if (form.GeburtsdatumZusatzteilnehmer2 !== "") {
+            if (formData.GeburtsdatumZusatzteilnehmer2 !== "") {
               printLine(
                 "Geburtsdatum Zusatzteilnehmer 2",
-                form.GeburtsdatumZusatzteilnehmer2,
+                formData.GeburtsdatumZusatzteilnehmer2,
               );
             }
             yPos += 5;
-
-            printLine("Bankverbindung:", "", true);
-            printLine("Bank:", formData.NameKreditinstitut);
-            printLine("IBAN:", formData.IBAN);
-            printLine("Inhaber:", formData.Kontoinhaber);
-            printLine("Einzug:", "Ja, erteilt");
+            formFilled = true;
             break;
 
           case 1: //AUFNAHMEANTRAG
@@ -1289,12 +1291,7 @@
             if (formData.Unterabteilung)
               printLine("Unterabteilung:", formData.Unterabteilung);
             yPos += 5;
-
-            printLine("Bankverbindung:", "", true);
-            printLine("Bank:", formData.NameKreditinstitut);
-            printLine("IBAN:", formData.IBAN);
-            printLine("Inhaber:", formData.Kontoinhaber);
-            printLine("Einzug:", "Ja, erteilt");
+            formFilled = true;
             break;
 
           default:
@@ -1304,6 +1301,13 @@
               true,
             );
             break;
+        }
+        if (formFilled) {
+          printLine("Bankverbindung:", "", true);
+          printLine("Bank:", formData.NameKreditinstitut);
+          printLine("IBAN:", formData.IBAN);
+          printLine("Inhaber:", formData.Kontoinhaber);
+          printLine("Einzug:", "Ja, erteilt");
         }
 
         const fileName = `Antrag_${tan}.pdf`;
