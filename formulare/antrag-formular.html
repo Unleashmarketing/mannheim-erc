@@ -111,7 +111,15 @@
       .form-body {
         padding: var(--spacing-2xl) var(--spacing-lg);
         display: none;
+        transition: opacity var(--transition-base);
       }
+
+      .form-body.visible {
+        display: block;
+        opacity: 1;
+        animation: fadeIn 0.4s ease-out;
+      }
+
       .form-section {
         margin-bottom: var(--spacing-2xl);
       }
@@ -1359,9 +1367,7 @@
             tanValue === tanUngueltigMsg ||
             tanValue === tanFalscheFormMsg
           ) {
-            setTimeout(() => {
-              tanButton.classList.remove("clicked");
-            }, 300);
+            return;
           }
           let params = "?tan=" + encodeURIComponent(tanValue);
           params += "&formEnum=" + encodeURIComponent(antragTyp);
@@ -1388,9 +1394,6 @@
             }
           } else if (response.ok && result === "5" && existingEmailForTan) {
             existingEmailForTan.style.display = "block";
-            setTimeout(() => {
-              tanButton.classList.remove("clicked");
-            }, 300);
           } else if (response.ok && result === "6") {
             tanField.value = tanFalscheFormMsg;
           } else {
@@ -1406,27 +1409,26 @@
             tanField.focus();
             setTimeout(() => {
               toggleButton.classList.remove("clicked");
-            }, 300);
+            }, 500);
             return;
           }
-          const invisible = wrapper.style.display === "none";
-          if (invisible) {
+          const isCurrentlyOpen = wrapper.classList.contains("visible");
+          if (!isCurrentlyOpen) {
             toggleButton.classList.remove("clicked");
             toggleButton.classList.add("active");
-            wrapper.style.display = "block";
+            void wrapper.offsetWidth;
+            wrapper.classList.add("visible");
             newStartWarning.style.display = "block";
           } else {
             setTimeout(() => {
-              wrapper.style.display = "none";
+              wrapper.classList.remove("visible");
               toggleButton.classList.remove("clicked", "active");
               tanField.readOnly = false;
               tanField.style.backgroundColor = "burlywood";
-              tanField.style.cursor = "";
               tanField.value = "";
               existingEmailForTan.value = "";
-              tanButton.classList.remove("clicked");
               boolTanValid = false;
-            }, 300);
+            }, 500);
           }
         });
       }
@@ -1442,8 +1444,6 @@
           "antrag-eislaufschule-newstart-warning",
           "0",
         );
-      });
-      document.addEventListener("DOMContentLoaded", function () {
         toggleAntragVisibility(
           "aufnahmeantrag-toggle-btn",
           "aufnahmeantrag-wrapper",
@@ -1454,8 +1454,6 @@
           "aufnahmeantrag-newstart-warning",
           "1",
         );
-      });
-      document.addEventListener("DOMContentLoaded", function () {
         handleFormSubmit(
           "antragFormEislaufschule",
           "submitBtnEislaufschule",
@@ -1465,8 +1463,6 @@
           0,
           "antrag-eislaufschule-TAN",
         );
-      });
-      document.addEventListener("DOMContentLoaded", function () {
         handleFormSubmit(
           "antragFormAufnahmeantrag",
           "submitBtnAufnahmeantrag",
