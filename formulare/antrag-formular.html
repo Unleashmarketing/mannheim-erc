@@ -65,7 +65,7 @@
        ======================================== */
       .form-container {
         max-width: 900px;
-        margin: 0 auto;
+        margin: 0 auto var(--spacing-2xl);
         background: var(--white);
         border-radius: var(--border-radius-lg);
         box-shadow: var(--shadow-lg);
@@ -1124,7 +1124,16 @@
         const doc = new jsPDF();
         doc.setFontSize(18);
         doc.setFont(undefined, "bold");
-        doc.text("Antrag Eislaufschule", 20, 20);
+        switch (integerDocType) {
+          case 0:
+            doc.text("Antrag Eislaufschule", 20, 20);
+            break;
+          case 1:
+            doc.text("Aufnahmeantrag", 20, 20);
+            break;
+          default:
+            doc.text("Antrag", 20, 20);
+        }
         doc.setFontSize(11);
         doc.setFont(undefined, "normal");
 
@@ -1297,7 +1306,7 @@
             break;
         }
 
-        const fileName = `Antrag_${formData.Name}_${formData.Vorname}.pdf`;
+        const fileName = `Antrag_${tan}.pdf`;
         let fData = new FormData();
         fData.append("subject", "Neues Formular von der Webseite");
         fData.append("message", "Siehe Anhang");
@@ -1425,6 +1434,7 @@
               toggleButton.classList.remove("clicked", "active");
               tanField.readOnly = false;
               tanField.style.backgroundColor = "burlywood";
+              tanField.style.cursor = "";
               tanField.value = "";
               existingEmailForTan.value = "";
               boolTanValid = false;

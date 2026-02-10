@@ -16,8 +16,8 @@ tanDictEmailKey = "tanDictEmailKey"
 tanDictIndexKey = "tanDictIndexKey"
 tanDictLargestIndexKey = "tanDictLargestIndex"
 tanDictFormEnumKey = "tanDictFormEnumKey"
-TAN_LIST_SIZE = 4
-TAN_LIST_RENEWAL_RETAIN_SIZE = 2
+TAN_LIST_SIZE = 128
+TAN_LIST_RENEWAL_RETAIN_SIZE = 16
 app = Flask(__name__)
 CORS(app)
 
@@ -136,8 +136,7 @@ def submit_form() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]],int]
         content = request.form.get("message", "Leer")
         from_field = request.form.get("email", "stv.schnelllauf@merc-online.de")
         attachmentDict = None
-        if file is not None:
-            if isinstance(file, str):
+        if file is not None and isinstance(file, str):
                 filename = os.path.basename(file)
                 attachmentDict = {filename: file}
         if fileAsBlob is not None:
