@@ -1,12 +1,13 @@
-import smtplib
-from email.message import EmailMessage
+#!/mnt/web412/c2/53/5128953/htdocs/pythonVirtualEnvs/webseite_2026/web2026/bin/python
+# Put this file and stvSchnelllaufCreds.json into /mnt/web412/c2/53/5128953/htdocs/cgi-bin
 import json
 import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import typing
 from threading import Lock
-import secrets
+from wsgiref.handlers import CGIHandler
+
 
 tanListFileLock = Lock()
 tanListAppLock = Lock()
@@ -19,16 +20,34 @@ tanDictFormEnumKey = "tanDictFormEnumKey"
 TAN_LIST_SIZE = 128
 TAN_LIST_RENEWAL_RETAIN_SIZE = 16
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
 
 def send_email_with_attachment(subject: str,
                                content: str,
                                from_field: str = "",
                                fileNameFilePathDict: typing.Optional[typing.Dict[str, typing.Union[str, bytes]]] = None,
                                deleteFiles: bool = True) -> bool:
-    if app.config["YOUR_STRATO_USER"] is None or app.config["YOUR_STRATO_PASS"] is None:
+    emailConfig = {}
+    emailConfig["YOUR_STRATO_USER"] = None
+    emailConfig["YOUR_STRATO_PASS"] = None
+    if os.path.exists(os.path.join(os.path.dirname(__file__), "stvSchnelllaufCreds.json")):
+        with open(os.path.join(os.path.dirname(__file__), "stvSchnelllaufCreds.json"), "r") as f:
+            stvCreds = json.load(f)
+            try:
+                emailConfig["YOUR_STRATO_USER"] = stvCreds["user"]
+                emailConfig["YOUR_STRATO_PASS"] = stvCreds["pass"]
+            except Exception as e:
+                print("Credentials file not readable", e)
+    if emailConfig["YOUR_STRATO_USER"] is None or emailConfig["YOUR_STRATO_PASS"] is None:
         return False
-    
+    from email.message import EmailMessage
     msg = EmailMessage()
     msg['Subject'] = subject
     msg['From'] = "stv.schnelllauf@merc-online.de"
@@ -55,9 +74,10 @@ def send_email_with_attachment(subject: str,
         return False
 
     try:
+        import smtplib
         # Port 465 requires SMTP_SSL
         with smtplib.SMTP_SSL("smtp.strato.de", 465) as server:
-            server.login(app.config["YOUR_STRATO_USER"], app.config["YOUR_STRATO_PASS"])
+            server.login(emailConfig["YOUR_STRATO_USER"], emailConfig["YOUR_STRATO_PASS"])
             server.send_message(msg)
             
         print("Email sent successfully")
@@ -71,6 +91,7 @@ def send_email_with_attachment(subject: str,
         return False
 
 def _generateTanListHelper() -> typing.Dict[str, typing.Dict[str, typing.Union[int,str]]]:
+    import secrets
     TAN_DICT = {}
     for _ind in range(TAN_LIST_SIZE):
         hash_hex = secrets.token_hex(nbytes=3)
@@ -98,17 +119,6 @@ def _generateTanList(TAN_DICT: typing.Optional[typing.Dict[str, typing.Dict[str,
             return jsonify({"success": False, "error": str(e)}), 500
         return jsonify({"success": False, "message": "Unbekannter Fehler"}), 500
 
-app.config["YOUR_STRATO_USER"] = None
-app.config["YOUR_STRATO_PASS"] = None
-if os.path.exists(os.path.join(os.path.dirname(__file__), "stvSchnelllaufCreds.json")):
-    with open(os.path.join(os.path.dirname(__file__), "stvSchnelllaufCreds.json"), "r") as f:
-        stvCreds = json.load(f)
-        try:
-            app.config["YOUR_STRATO_USER"] = stvCreds["user"]
-            app.config["YOUR_STRATO_PASS"] = stvCreds["pass"]
-        except Exception as e:
-            print("Credentials file not readable", e)
-
 if not os.path.exists(os.path.join(os.path.dirname(__file__), tanListFileName)):
     with app.app_context():
         out = _generateTanList()
@@ -119,13 +129,13 @@ with tanListFileLock:
     with open(os.path.join(os.path.dirname(__file__), tanListFileName), "r") as f:
         app.config[tanDictAppConfigKey] = json.load(f)
 
-@app.route('/generateNewTanList', methods=["GET"])
+@app.route('/api/generateNewTanList', methods=["GET"])
 def generateTanList() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]],int]:
     if request.method != "GET":
         return jsonify({"success":False, "error": "request.method nicht vom Typ GET"}), 400
     return _generateTanListAndAssign()
 
-@app.route('/submit', methods=['POST'])
+@app.route('/api/submit', methods=['POST'])
 def submit_form() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]],int]:
     try:
         if request.method != "POST":
@@ -152,7 +162,7 @@ def submit_form() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]],int]
         return jsonify({"success":False, "error": str(e)}), 500
     return jsonify({"success":False, "error": "Unbekannt"}), 400
 
-@app.route('/isTanValid', methods=["GET"])
+@app.route('/api/isTanValid', methods=["GET"])
 def isTanValid() -> str:
     '''Return '0': TAN existiert nicht
        Return '1': TAN gueltig, nie genutzt
@@ -162,31 +172,24 @@ def isTanValid() -> str:
        Return '5': TAN gueltig aber mit anderer Email
        Return '6': TAN gueltig aber falsche Formular'''
     if request.method != "GET":
-        print(3)
         return '3'
     if app.config[tanDictAppConfigKey] == {}:
-        print(4)
         return '4'
     tan = request.args.get('tan')
     email = request.args.get('email')
     formEnum = request.args.get('formEnum')
     if tan is not None:
         if tan not in app.config[tanDictAppConfigKey]:
-            print(0)
             return '0'
         if app.config[tanDictAppConfigKey][tan][tanDictFormEnumKey] != '-1' and (formEnum is None or formEnum != app.config[tanDictAppConfigKey][tan][tanDictFormEnumKey]):
-            print(6)
             return '6'
         if app.config[tanDictAppConfigKey][tan][tanDictEmailKey] == "":
-            print(1)
             return '1'
         if email is not None and app.config[tanDictAppConfigKey][tan][tanDictEmailKey].lower() == email.lower().strip():
-            print(2)
             return '2'
-    print(5)
     return '5'
 
-@app.route('/assignEmailToTan', methods=["POST"])
+@app.route('/api/assignEmailToTan', methods=["POST"])
 def assignEmailToTan() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]],int]:
     try:
         if request.method != "POST":
@@ -255,7 +258,7 @@ def _generateTanListAndAssign() -> typing.Tuple[typing.Dict[str, typing.Union[st
     except Exception as e:
         return jsonify({"success":False, "error": str(e)}), 500
 
-@app.route('/getTanList', methods=["GET"])
+@app.route('/api/getTanList', methods=["GET"])
 def getTanList() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]], int]:
     if request.method != "GET":
         return jsonify({"success":False, "error": "request.method nicht vom Typ GET"}), 400
@@ -269,4 +272,5 @@ def getTanList() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]], int]
     return jsonify({"success":False, "message": "TAN Liste konnte per email nicht versendet werden"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    CGIHandler().run(app)
+    # app.run(host='0.0.0.0', port=8888, debug=False)

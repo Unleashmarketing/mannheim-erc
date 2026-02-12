@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de">
   <template id="navigation-template1">
     <ul>
@@ -2239,11 +2239,10 @@
         msg.innerText = "Sending...";
 
         try {
-          const response = await fetch("http://127.0.0.1:5000/submit", {
+          const response = await fetch("https://merc-online.de/cgi-bin/apiMain.py/api/submit", {
             method: "POST",
             body: new FormData(form),
           });
-
           const result = await response.json();
 
           if (response.ok) {

@@ -1317,18 +1317,17 @@
         // fData.append("email", formData.eMail); <- may be used to CC the applicant
         fData.append("attachment", doc.output("blob", { filename: fileName }));
         fData.append("attachmentName", fileName);
-        const response = await fetch("http://127.0.0.1:5000/submit", {
+        const response = await fetch("https://merc-online.de/cgi-bin/apiMain.py/api/submit", {
           method: "POST",
           body: fData,
         });
-
         if (response.ok) {
           let fData2 = new FormData();
           fData2.append("tan", tan);
           fData2.append("email", formData.eMail);
           fData2.append("formEnum", integerDocType.toString());
           const response2 = await fetch(
-            "http://127.0.0.1:5000/assignEmailToTan",
+            "https://merc-online.de/cgi-bin/apiMain.py/api/assignEmailToTan",
             {
               method: "POST",
               body: fData2,
@@ -1388,7 +1387,7 @@
             params += "&email=" + encodeURIComponent(existingEmailForTan.value);
           }
           const response = await fetch(
-            "http://127.0.0.1:5000/isTanValid" + params,
+            "https://merc-online.de/cgi-bin/apiMain.py/api/isTanValid" + params
           );
           const result = await response.text();
           if (!response.ok || (response.ok && result !== "5")) {
@@ -1397,7 +1396,7 @@
           if (response.ok && (result === "1" || result === "2")) {
             boolTanValid = true;
             tanField.readOnly = true;
-            tanField.style.backgroundColor = "red";
+            tanField.style.backgroundColor = "#96C487";
             tanField.style.cursor = "not-allowed";
             if (result === "2") {
               emailInput.value = existingEmailForTan.value;
