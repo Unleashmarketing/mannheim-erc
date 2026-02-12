@@ -736,6 +736,10 @@
         gap: var(--spacing-lg);
       }
 
+      .info-grid-two {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .info-card {
         background: var(--white);
         border-radius: var(--border-radius-lg);
@@ -785,6 +789,130 @@
       .info-card-content strong {
         color: var(--text-dark);
         font-weight: 600;
+      }
+
+      .info-card-content ul {
+        list-style: none;
+        padding-left: 0;
+        margin-top: var(--spacing-xs);
+      }
+
+      .info-card-content ul li {
+        padding-left: 28px;
+        position: relative;
+        margin-bottom: var(--spacing-sm);
+        line-height: 1.7;
+      }
+
+      .info-card-content ul li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--primary-color);
+        font-weight: 700;
+      }
+
+      /* ========================================
+         READ MORE TOGGLE
+         ======================================== */
+      .read-more-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+      }
+
+      .read-more-content.expanded {
+        max-height: 500px;
+      }
+
+      .read-more-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: var(--spacing-sm);
+        padding: 8px 0;
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-family: var(--font-family);
+        transition: var(--transition-base);
+      }
+
+      .read-more-toggle:hover {
+        color: var(--primary-hover);
+      }
+
+      .read-more-toggle i {
+        font-size: 0.75em;
+        transition: transform 0.3s ease;
+      }
+
+      .read-more-toggle.expanded i {
+        transform: rotate(180deg);
+      }
+
+      /* ========================================
+         AUSGEBUCHT BANNER
+         ======================================== */
+      .ausgebucht-banner {
+        background: linear-gradient(135deg, #fff3cd 0%, #fff8e1 100%);
+        border: 2px solid #ffc107;
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-xl);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ausgebucht-banner::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #ffc107, #ff9800, #ffc107);
+      }
+
+      .ausgebucht-banner-icon {
+        font-size: 3rem;
+        margin-bottom: var(--spacing-md);
+        display: block;
+      }
+
+      .ausgebucht-banner h3 {
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-family-accent);
+      }
+
+      .ausgebucht-banner p {
+        color: var(--text-muted);
+        line-height: 1.8;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .ausgebucht-banner p + p {
+        margin-top: var(--spacing-sm);
+      }
+
+      .ausgebucht-banner .season-badge {
+        display: inline-block;
+        background: var(--white);
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: var(--font-size-sm);
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-md);
+        box-shadow: var(--shadow-sm);
+        font-family: var(--font-family-accent);
       }
 
       /* ========================================
@@ -1399,6 +1527,10 @@
           grid-template-columns: 1fr;
         }
 
+        .info-grid-two {
+          grid-template-columns: 1fr;
+        }
+
         .time-row {
           grid-template-columns: 1fr;
           gap: var(--spacing-xs);
@@ -1572,58 +1704,27 @@
                 <p>
                   Unser Schnupperkurs richtet sich an bewegungsfreudige und sportlich interessierte Kinder im Alter von 3 bis 7 Jahren, die neugierig auf die faszinierende Welt des Eiskunstlaufens sind und diese besondere Sportart unverbindlich kennenlernen möchten – ganz ohne sofortige Vereinsmitgliedschaft.
                 </p>
-                <p>
-                  Angesprochen werden insbesondere Kinder mit Freude an Bewegung, Rhythmusgefühl und Koordination, die Spaß daran haben, Neues auszuprobieren und sich spielerisch auf dem Eis weiterzuentwickeln. Der Kurs ist bewusst als Einstieg in den Eiskunstlauf konzipiert und nicht als reiner Eislauf-Lernkurs.
-                </p>
-                <p>
-                  Unser Ziel ist es, frühzeitig Talente zu entdecken und den Kindern einen ersten Zugang zu einer Sportart zu ermöglichen, die Körpergefühl, Konzentration und Selbstvertrauen gleichermaßen fördert.
-                </p>
+                <div class="read-more-content" id="alter-read-more">
+                  <p>
+                    Angesprochen werden insbesondere Kinder mit Freude an Bewegung, Rhythmusgefühl und Koordination, die Spaß daran haben, Neues auszuprobieren und sich spielerisch auf dem Eis weiterzuentwickeln. Der Kurs ist bewusst als Einstieg in den Eiskunstlauf konzipiert und nicht als reiner Eislauf-Lernkurs.
+                  </p>
+                  <p>
+                    Unser Ziel ist es, frühzeitig Talente zu entdecken und den Kindern einen ersten Zugang zu einer Sportart zu ermöglichen, die Körpergefühl, Konzentration und Selbstvertrauen gleichermaßen fördert.
+                  </p>
+                </div>
+                <button class="read-more-toggle" onclick="toggleReadMore('alter-read-more', this)" aria-expanded="false">
+                  Mehr lesen <i class="fas fa-chevron-down"></i>
+                </button>
               </div>
             </div> 
           </div>
-        </div>
-      </section>
 
-      <section class="section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Vier Wochen Schnuppern?</h2>
-            <p class="section-subtitle">
-              Der perfekte Einstieg für Kinder von 3 bis 7 Jahren
-            </p>
-          </div>
-
-          <div class="content-section fade-in">
-            <p>
-              Die Gebühren entnehmen Sie bitte der <strong>aktuellen Gebührenordnung</strong> 
-              des Mannheimer ERC.
-            </p>
-            <p>
-              Wenn Ihr Kind <strong>geeignet</strong> ist für die Sportart Eiskunstlaufen, 
-              dann können Sie nach dem Schnupperkurs und nach <strong>Rücksprache</strong> 
-              mit den verantwortlichen Trainern entscheiden und/oder Ihr Kind, ob es als 
-              Vereinsmitglied am Training und an Wettbewerben teilnehmen möchte.
-            </p>
-            <p>
-              Für die Schnupperkursteilnehmer findet <strong>zwei mal pro Woche</strong> 
-              das Training in der Helmut-Klees-Halle des Eissportzentrums Herzogenried statt.
-            </p>
-            <p>
-              Unter fachlicher Betreuung von Übungsleitern und lizenzierten Trainern lernen 
-              die Kinder die ersten Schritte auf dem Eis und zählen schon bald, wie lange 
-              sie im "Storch" oder im "Flieger" stehen können. Und so geht es Schritt für 
-              Schritt weiter bis vielleicht zu der ersten Pirouette.
-            </p>
-          </div>
-
-          <div class="alert-box alert-info fade-in">
+          <div class="alert-box alert-info fade-in" style="margin-top: var(--spacing-lg);">
             <p>
               <strong>Bewerbung:</strong> Sollte Ihre Kinder Interesse am Eiskunstlaufen haben, 
               dann können Sie sich für Ihre Kinder bewerben. Das Formular senden Sie bitte 
               ausgefüllt an folgende E-Mail Adresse: 
-              <a href="/cdn-cgi/l/email-protection#a9dacac1c7dcd9d9ccdbc2dcdbdae9c4ccdbca84c6c7c5c0c7cc87cdcc" style="color: var(--primary-color); font-weight: 600;">
-                <span class="__cf_email__" data-cfemail="9be8f8f3f5eeebebfee9f0eee9e8dbf6fee9f8b6f4f5f7f2f5feb5fffe">[email protected]</span>
-              </a>
+              <a href="mailto:office@merc-online.de" style="color: var(--primary-color); font-weight: 600;">office@merc-online.de</a>
             </p>
             <p style="margin-top: var(--spacing-md); margin-bottom: 0;">
               <strong>Hinweis:</strong> Bitte beachten Sie, dass wir keine E-Mails beantworten können. 
@@ -1631,8 +1732,43 @@
             </p>
           </div>
 
-          <div class="content-section fade-in" style="margin-top: var(--spacing-2xl);">
-            <h3>Die Termine für die Schnupperkurse der Saison 2025/2026</h3>
+          <div class="info-grid info-grid-two" style="margin-top: var(--spacing-lg);">
+            <div class="info-card fade-in">
+              <div class="info-card-header">
+                <div class="info-card-icon">
+                  <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3 class="info-card-title">Ablauf & Training</h3>
+              </div>
+              <div class="info-card-content">
+                <ul>
+                  <li>Dauer: 4 Wochen</li>
+                  <li>Training: 2x pro Woche (mittwochs & samstags)</li>
+                  <li>Ort: Helmut-Klaes-Halle, Eissportzentrum Herzogenried</li>
+                  <li>Betreuung durch lizenzierte Trainer und Übungsleiter</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="info-card fade-in">
+              <div class="info-card-header">
+                <div class="info-card-icon">
+                  <i class="fas fa-skating"></i>
+                </div>
+                <h3 class="info-card-title">Ausrüstung & Gebühren</h3>
+              </div>
+              <div class="info-card-content">
+                <ul>
+                  <li>Erforderlich: Eiskunstlaufschlittschuhe</li>
+                  <li>Leihschlittschuhe über den vereinseigenen Schlittschuhverleih möglich</li>
+                  <li>Gebühren gemäß aktueller Gebührenordnung des Mannheimer ERC</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-section fade-in" style="margin-top: var(--spacing-lg);">
+            <h3>Schnupperkurse – Saison 2026/2027</h3>
             <p style="color: var(--primary-color); font-weight: 600; margin-bottom: var(--spacing-lg);">
               Die Trainingszeiten der Schnupperkurse sind immer mittwochs und samstags während 
               des MERC-Anfängertrainings.
@@ -1640,72 +1776,19 @@
             <p style="font-style: italic; margin-bottom: var(--spacing-lg);">
               Bitte beachten Sie auch immer die aktuellen Belegungspläne.
             </p>
-
-            <div class="course-list">
-              <div class="course-item ausgebucht">
-                <div class="course-header">
-                  <div>
-                    <div class="course-name">Kurs 1</div>
-                    <div class="course-dates">01.10.2025 - 25.10.2025</div>
-                  </div>
-                  <span class="course-status ausgebucht">Ausgebucht</span>
-                </div>
-              </div>
-
-              <div class="course-item ausgebucht">
-                <div class="course-header">
-                  <div>
-                    <div class="course-name">Kurs 2</div>
-                    <div class="course-dates">29.10.2025 - 22.11.2025</div>
-                  </div>
-                  <span class="course-status ausgebucht">Ausgebucht</span>
-                </div>
-              </div>
-
-              <div class="course-item ausgebucht">
-                <div class="course-header">
-                  <div>
-                    <div class="course-name">Kurs 3</div>
-                    <div class="course-dates">26.11.2025 - 20.12.2025</div>
-                  </div>
-                  <span class="course-status ausgebucht">Ausgebucht</span>
-                </div>
-              </div>
-
-              <div class="course-item">
-                <div class="course-header">
-                  <div>
-                    <div class="course-name">Kurs 4</div>
-                    <div class="course-dates">07.01.2026 - 31.01.2026</div>
-                  </div>
-                  <span class="course-status available">Verfügbar</span>
-                </div>
-              </div>
-
-              <div class="course-item">
-                <div class="course-header">
-                  <div>
-                    <div class="course-name">Kurs 5</div>
-                    <div class="course-dates">04.02.2026 - 28.02.2026</div>
-                  </div>
-                  <span class="course-status available">Verfügbar</span>
-                </div>
-              </div>
+            
+            <div class="alert-box alert-danger">
+              <p>
+                <strong>Ausgebucht:</strong> Leider sind für die aktuelle Saison 2026/2027 bereits 
+                alle Schnupperkurse vollständig belegt. Sollte Ihr Kind Interesse am Eiskunstlaufen 
+                haben, können Sie sich gerne über das untenstehende Bewerbungsformular für die 
+                <strong>Warteliste</strong> registrieren. Wir informieren Sie, sobald neue Plätze 
+                verfügbar sind oder die Termine für die nächste Saison feststehen.
+              </p>
             </div>
           </div>
 
-          <div style="text-align: center; margin-top: var(--spacing-2xl);" class="fade-in">
-            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-md); font-family: var(--font-family-accent);">
-              Antragsformular
-            </h3>
-            <p style="color: var(--text-muted); margin-bottom: var(--spacing-lg);">
-              Das Antragsformular finden Sie hier:
-            </p>
-            <a href="#" class="btn btn-primary">
-              <i class="fas fa-file-pdf"></i>
-              Schnupperkurs Antragsformular herunterladen
-            </a>
-          </div>
+
         </div>
       </section>
 
@@ -2007,6 +2090,22 @@
           closeMenu();
         }
       });
+
+      // Read More Toggle
+      function toggleReadMore(contentId, btn) {
+        const content = document.getElementById(contentId);
+        const isExpanded = content.classList.contains("expanded");
+        
+        content.classList.toggle("expanded");
+        btn.classList.toggle("expanded");
+        btn.setAttribute("aria-expanded", String(!isExpanded));
+        
+        if (isExpanded) {
+          btn.innerHTML = 'Mehr lesen <i class="fas fa-chevron-down"></i>';
+        } else {
+          btn.innerHTML = 'Weniger anzeigen <i class="fas fa-chevron-down"></i>';
+        }
+      }
 
       function insertNavigationElements() {
         const template = document.getElementById("navigation-template1");
