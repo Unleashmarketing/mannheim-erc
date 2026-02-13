@@ -1927,12 +1927,6 @@
                 <div>
                   <label for="subject">Betreff *</label>
                   <input type="text" id="subject" name="subject" required />
-                  <input
-                    type="hidden"
-                    id="attachment"
-                    name="attachment"
-                    value="/home/jacky_treehorn/gitRepos/mannheim-erc/functions/generatePdfFromJson/artefacts/7h312q.pdf"
-                  />
                 </div>
                 <div>
                   <label for="message">Nachricht *</label>
@@ -2234,6 +2228,12 @@
         e.preventDefault();
         e.stopPropagation();
 
+        const formData = new FormData(form);
+        const senderName = formData.get("name") || "";
+        const originalMessage = formData.get("message") || "";
+        const combinedMessage = `Absender: ${senderName}\n\n${originalMessage}`;
+        formData.set("message", combinedMessage);
+
         btn.disabled = true;
         msg.style.color = "black";
         msg.innerText = "Sending...";
@@ -2241,7 +2241,7 @@
         try {
           const response = await fetch("https://merc-online.de/cgi-bin/apiMain.py/api/submit", {
             method: "POST",
-            body: new FormData(form),
+            body: formData,
           });
           const result = await response.json();
 
