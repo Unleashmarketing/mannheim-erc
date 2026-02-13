@@ -15,7 +15,6 @@ try:
     LOCK_FILE = os.path.join(os.path.dirname(__file__), "tanList.json.lock")
     tanListFileName = "tanList.json"
     tanListFullPath = os.path.join(os.path.dirname(__file__), tanListFileName)
-    tanDictAppConfigKey = "TAN_DICT"
     tanDictEmailKey = "tanDictEmailKey"
     tanDictIndexKey = "tanDictIndexKey"
     tanDictLargestIndexKey = "tanDictLargestIndex"
@@ -123,8 +122,6 @@ try:
 
     @app.route('/api/generateNewTanList', methods=["GET"])
     def generateTanList() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]], int]:
-        if request.method != "GET":
-            return jsonify({"success": False, "error": "request.method nicht vom Typ GET"}), 400
         return _generateTanListAndAssign()
 
     @app.route('/api/submit', methods=['POST', 'OPTIONS'])
@@ -159,12 +156,12 @@ try:
         '''Return '0': TAN existiert nicht
         Return '1': TAN gueltig, nie genutzt
         Return '2': TAN gueltig mit angegebener Email
-        Return '3': Request nicht vom Typ GET
-        Return '4': app.config["TAN_DICT"] leer
+        Return '3': TAN Datei nicht verfuegbar
+        Return '4': _config leer
         Return '5': TAN gueltig aber mit anderer Email
         Return '6': TAN gueltig aber falsche Formular'''
         if not os.path.exists(tanListFullPath):
-            return '0'
+            return '3'
         while os.path.exists(LOCK_FILE):
             time.sleep(0.1)
         try:
@@ -173,8 +170,6 @@ try:
             _config = {}
             with open(tanListFullPath, "r") as f:
                 _config = json.load(f)
-            if request.method != "GET":
-                return '3'
             if _config == {}:
                 return '4'
             tan = request.args.get('tan')
