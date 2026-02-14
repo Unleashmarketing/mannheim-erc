@@ -46,10 +46,11 @@ try:
         from email.message import EmailMessage
         msg = EmailMessage()
         msg['Subject'] = subject
-        msg['From'] = "stv.schnelllauf@merc-online.de"
         msg['To'] = "rastapopoulis@hotmail.com"  # change this for deployment
+        msg['From'] = "stv.schnelllauf@merc-online.de"
         if isinstance(from_field, str) and "@" in from_field and from_field.count("@") == 1 and from_field != msg['From'] and from_field != msg['To']:
             msg['cc'] = from_field
+            msg['Reply-To'] = from_field
         msg.set_content(content)
 
         try:
@@ -300,6 +301,30 @@ try:
         finally:
             if os.path.exists(LOCK_FILE):
                 os.remove(LOCK_FILE)
+
+    @app.route('/api/getRandomArithmeticQuestion', methods=["GET"])
+    def getRandomArithmeticQuestion() -> str:
+        import random
+        result0 = random.randrange(16)
+        result1 = random.randrange(16)
+        return str(result0) + " + "+str(result1)
+    
+    @app.route('/api/checkRandomArithmeticAnswer', methods=["GET"])
+    def checkRandomArithmeticAnswer() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]], int]:
+        try:
+            num0 = request.args.get('num0')
+            assert num0 is not None, "'num0' is None"
+            num0 = int(num0)
+            assert num0 < 16, "num0 implausible"
+            num1 = request.args.get('num1')
+            assert num1 is not None, "'num1' is None"
+            num1 = int(num1)
+            assert num1 < 16, "num1 implausible"
+            answer = request.args.get('answer')
+            assert answer is not None, "'answer' is None"
+            return jsonify({"success": num0+num1==int(answer), "message": "evaluated"}), 200
+        except Exception as e:
+            return jsonify({"success": False, "error": str(e)}), 500
 
     if __name__ == '__main__':
         CGIHandler().run(app)
