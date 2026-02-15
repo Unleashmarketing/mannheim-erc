@@ -72,7 +72,7 @@ const formularBedingungen = {
   5: {
     Allgemeines:
       "Der Vereinsvorstand weist darauf hin, dass ausreichende technische Maßnahmen zur Gewährleistung des Datenschutzes getroffen wurden. Dennoch kann bei einer Veröffentlichung von personenbezogenen Mitgliederdaten im Internet ein umfassender Datenschutz nicht garantiert werden. Daher nimmt das Vereinsmitglied die Risiken für eine eventuelle Persönlichkeitsrechtsverletzung zur Kenntnis und ist sich bewusst, dass die personenbezogenen Daten auch in Staaten abrufbar sind, die keine der Bundesrepublik Deutschland vergleichbaren Datenschutzbestimmungen kennen & die Vertraulichkeit, die Integrität (Unverletzlichkeit), die Authentizität (Echtheit) und die Verfügbarkeit der personenbezogenen Daten nicht garantiert ist Das Vereinsmitglied trifft die Entscheidung zur Veröffentlichung seiner Daten im Internet freiwillig und kann seine Einwilligung jederzeit widerrufen",
-    Erklaerung:
+    Erklärung:
       "Ich bestätige das Vorstehende zur Kenntnis genommen zu haben und willige ein, dass der Verein Mannheimer ERC folgende Daten zu meiner Person: Vorname, Zuname, Geburtsdatum, Kürklasse, Kaderzugehörigkeit, Wettkampfergebnisse, Anschrift, Telefonnummer, Faxnummer, E-Mail-Adresse wie angegeben in folgenden Internetseiten des Vereins www.merc-online.de & www.merc-ks veröffentlichen darf. Darüber hinaus gestatte ich dem Mannheimer ERC die honorarfreie, geographisch und zeitlich unbegrenzte Verwendung der von mir oder Dritten gefertigten Foto- und Filmaufnahmen meiner Person für interne und externe Zwecke, interne Kommunikation, Public Relations, Internet-Auftritte, Werbung, Öffentlichkeits- und Pressearbeit.",
   },
   6: {
