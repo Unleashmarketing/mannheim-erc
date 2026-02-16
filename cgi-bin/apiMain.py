@@ -13,6 +13,8 @@ try:
     from wsgiref.handlers import CGIHandler
 
     LOCK_FILE = os.path.join(os.path.dirname(__file__), "tanList.json.lock")
+    LOCK_FILE_WAIT_TIME = 5.0
+    LOCK_FILE_ERROR_MSG = "Sperrdatei noch belegt!"
     tanListFileName = "tanList.json"
     tanListFullPath = os.path.join(os.path.dirname(__file__), tanListFileName)
     tanDictEmailKey = "tanDictEmailKey"
@@ -23,6 +25,17 @@ try:
     TAN_LIST_RENEWAL_RETAIN_SIZE = 16
     app = Flask(__name__)
     CORS(app)
+
+    def getLockFile() -> bool:
+        waitTime = 0.0
+        lockObtainedCleanly = True
+        while os.path.exists(LOCK_FILE):
+            time.sleep(0.1)
+            waitTime += 0.1
+            if waitTime >= LOCK_FILE_WAIT_TIME:
+                lockObtainedCleanly = False
+                break;
+        return lockObtainedCleanly
 
     def send_email_with_attachment(subject: str,
                                    content: str,
@@ -96,9 +109,9 @@ try:
         return TAN_DICT
 
     def _generateTanList(TAN_DICT: typing.Optional[typing.Dict[str, typing.Dict[str, typing.Union[int, str]]]] = None) -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]], int]:
-        while os.path.exists(LOCK_FILE):
-            time.sleep(0.1)
+        lockObtained = getLockFile()
         try:
+            assert lockObtained, LOCK_FILE_ERROR_MSG
             with open(LOCK_FILE, 'w') as f:
                 f.write("locked")
             if os.path.exists(tanListFullPath):
@@ -163,9 +176,9 @@ try:
         Return '6': TAN gueltig aber falsche Formular'''
         if not os.path.exists(tanListFullPath):
             return '3'
-        while os.path.exists(LOCK_FILE):
-            time.sleep(0.1)
+        lockObtained = getLockFile()
         try:
+            assert lockObtained, LOCK_FILE_ERROR_MSG
             with open(LOCK_FILE, 'w') as f:
                 f.write("locked")
             _config = {}
@@ -196,9 +209,9 @@ try:
     def assignEmailToTan() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]], int]:
         if not os.path.exists(tanListFullPath):
             return jsonify({"success": False, "error": "TAN Liste existiert nicht"}), 503
-        while os.path.exists(LOCK_FILE):
-            time.sleep(0.1)
+        lockObtained = getLockFile()
         try:
+            assert lockObtained, LOCK_FILE_ERROR_MSG
             with open(LOCK_FILE, 'w') as f:
                 f.write("locked")
             _config = {}
@@ -249,10 +262,10 @@ try:
         return jsonify({"success": False, "message": "Bedingung nicht erfuellt"}), 412
 
     def _generateTanListAndAssign() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]], int]:
-        TAN_DICT = _generateTanListHelper()
-        while os.path.exists(LOCK_FILE):
-            time.sleep(0.1)
+        lockObtained = getLockFile()
         try:
+            assert lockObtained, LOCK_FILE_ERROR_MSG
+            TAN_DICT = _generateTanListHelper()
             with open(LOCK_FILE, 'w') as f:
                 f.write("locked")
             oldTanDict = {}
@@ -282,9 +295,9 @@ try:
 
     @app.route('/api/getTanList', methods=["GET"])
     def getTanList() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]], int]:
-        while os.path.exists(LOCK_FILE):
-            time.sleep(0.1)
+        lockObtained = getLockFile()
         try:
+            assert lockObtained, LOCK_FILE_ERROR_MSG
             with open(LOCK_FILE, 'w') as f:
                 f.write("locked")
             if os.path.exists(tanListFullPath):
