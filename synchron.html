@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
   <template id="navigation-template1">
     <ul>
@@ -455,7 +455,6 @@
         z-index: 1002;
       }
       
-      /* Add larger invisible bridge between menu and submenu */
       .nav-desktop .has-submenu::before {
         content: '';
         position: absolute;
@@ -470,11 +469,6 @@
       .nav-desktop .has-submenu:hover > .submenu,
       .nav-desktop .has-submenu:hover::before,
       .nav-desktop .submenu:hover {
-        display: block;
-      }
-      
-      /* Keep submenu visible when hovering over bridge */
-      .nav-desktop .has-submenu::before:hover + .submenu {
         display: block;
       }
 
@@ -820,75 +814,6 @@
       }
 
       /* ========================================
-         COURSE SECTION
-         ======================================== */
-      .course-list {
-        display: grid;
-        gap: var(--spacing-md);
-        margin-top: var(--spacing-lg);
-      }
-
-      .course-item {
-        background: var(--white);
-        border-radius: var(--border-radius-lg);
-        padding: var(--spacing-lg);
-        box-shadow: var(--shadow-sm);
-        border-left: 4px solid var(--primary-color);
-        transition: var(--transition-base);
-      }
-
-      .course-item:hover {
-        box-shadow: var(--shadow-md);
-        transform: translateX(5px);
-      }
-
-      .course-item.ausgebucht {
-        opacity: 0.6;
-        border-left-color: var(--accent-color);
-      }
-
-      .course-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: var(--spacing-sm);
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
-      }
-
-      .course-name {
-        font-size: var(--font-size-lg);
-        font-weight: 700;
-        color: var(--text-dark);
-        font-family: var(--font-family-accent);
-      }
-
-      .course-dates {
-        font-size: var(--font-size-sm);
-        color: var(--text-muted);
-      }
-
-      .course-status {
-        display: inline-block;
-        padding: 6px 16px;
-        border-radius: 20px;
-        font-size: var(--font-size-xs);
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-
-      .course-status.available {
-        background-color: #d4edda;
-        color: #155724;
-      }
-
-      .course-status.ausgebucht {
-        background-color: #f8d7da;
-        color: #721c24;
-      }
-
-      /* ========================================
          CONTENT SECTIONS
          ======================================== */
       .content-section {
@@ -913,6 +838,10 @@
         margin-bottom: var(--spacing-md);
       }
 
+      .content-section p:last-child {
+        margin-bottom: 0;
+      }
+
       .content-section ul {
         list-style: none;
         padding-left: 0;
@@ -932,88 +861,6 @@
         left: 0;
         color: var(--primary-color);
         font-weight: 700;
-      }
-
-      /* ========================================
-         TRAINING TIMES TABLE
-         ======================================== */
-      .training-times {
-        background: var(--white);
-        border-radius: var(--border-radius-lg);
-        padding: var(--spacing-xl);
-        box-shadow: var(--shadow-sm);
-      }
-
-      .training-times h3 {
-        font-size: var(--font-size-xl);
-        font-weight: 700;
-        margin-bottom: var(--spacing-lg);
-        color: var(--text-dark);
-        font-family: var(--font-family-accent);
-      }
-
-      .time-row {
-        display: grid;
-        grid-template-columns: 120px 1fr;
-        gap: var(--spacing-md);
-        padding: var(--spacing-md) 0;
-        border-bottom: 1px solid var(--gray-light);
-      }
-
-      .time-row:last-child {
-        border-bottom: none;
-      }
-
-      .time-label {
-        font-weight: 700;
-        color: var(--text-dark);
-      }
-
-      .time-value {
-        color: var(--text-muted);
-      }
-
-      /* ========================================
-         DOCUMENTS SECTION
-         ======================================== */
-      .documents-list {
-        display: grid;
-        gap: var(--spacing-md);
-      }
-
-      .document-link {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-md);
-        padding: var(--spacing-md);
-        background: var(--white);
-        border-radius: var(--border-radius-md);
-        border: 2px solid var(--gray-light);
-        transition: var(--transition-base);
-      }
-
-      .document-link:hover {
-        border-color: var(--primary-color);
-        transform: translateX(5px);
-        box-shadow: var(--shadow-sm);
-      }
-
-      .document-icon {
-        font-size: var(--font-size-xl);
-        color: var(--accent-color);
-      }
-
-      .document-info h4 {
-        font-size: var(--font-size-md);
-        font-weight: 600;
-        color: var(--text-dark);
-        margin-bottom: 4px;
-      }
-
-      .document-info p {
-        font-size: var(--font-size-xs);
-        color: var(--text-muted);
-        margin: 0;
       }
 
       /* ========================================
@@ -1166,19 +1013,9 @@
           grid-template-columns: 1fr;
         }
 
-        .time-row {
-          grid-template-columns: 1fr;
-          gap: var(--spacing-xs);
-        }
-
         .footer-bottom {
           flex-direction: column;
           text-align: center;
-        }
-
-        .course-header {
-          flex-direction: column;
-          align-items: flex-start;
         }
       }
 
@@ -1221,6 +1058,184 @@
           padding: 12px 24px;
           font-size: var(--font-size-sm);
         }
+      }
+
+      /* ========================================
+         COLLAPSIBLE SECTION (Erfolge)
+         ======================================== */
+      .toggle-section {
+        padding: var(--spacing-3xl) 0;
+        background-color: var(--light-bg);
+      }
+
+      #erfolge-toggle-btn {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        color: var(--text-dark);
+        font-family: var(--font-family-accent);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        transition: var(--transition-base);
+        position: relative;
+        background: none;
+        border: none;
+        padding: 0;
+      }
+
+      #erfolge-toggle-btn:hover {
+        color: var(--primary-color);
+      }
+
+      #erfolge-toggle-btn::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary-color);
+        border-radius: var(--border-radius-sm);
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #erfolge-toggle-icon {
+        display: inline-block;
+        transition: transform 0.3s ease;
+        font-size: var(--font-size-lg);
+        color: var(--primary-color);
+      }
+
+      #erfolge-toggle-btn.active #erfolge-toggle-icon {
+        transform: rotate(-180deg);
+      }
+
+      .erfolge-collapsed {
+        display: none;
+      }
+
+      .season-block {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-md);
+        box-shadow: var(--shadow-sm);
+        border-left: 4px solid var(--primary-color);
+        transition: var(--transition-base);
+      }
+
+      .season-block:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateX(5px);
+      }
+
+      .season-title {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-md);
+        font-family: var(--font-family-accent);
+        border-bottom: 2px solid var(--gray-light);
+        padding-bottom: var(--spacing-sm);
+      }
+
+      .season-theme {
+        font-size: var(--font-size-sm);
+        color: var(--primary-color);
+        font-weight: 600;
+        font-style: italic;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .result-item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-xs) 0;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      .result-item .place {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        font-weight: 700;
+        font-size: var(--font-size-xs);
+        flex-shrink: 0;
+      }
+
+      .place-1 { background: #FFD700; color: #5a4000; }
+      .place-2 { background: #C0C0C0; color: #3a3a3a; }
+      .place-3 { background: #CD7F32; color: #fff; }
+      .place-other { background: var(--light-bg); color: var(--text-dark); border: 1px solid var(--gray-light); }
+
+      /* ========================================
+         CONTACT CARD
+         ======================================== */
+      .contact-team-card {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #004dbf 100%);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-xl);
+        color: var(--white);
+        margin-top: var(--spacing-2xl);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .contact-team-card h3 {
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        font-family: var(--font-family-accent);
+      }
+
+      .contact-team-card p {
+        opacity: 0.9;
+        line-height: 1.8;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .contact-persons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .contact-person-tag {
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 20px;
+        padding: 8px 16px;
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        backdrop-filter: blur(4px);
+      }
+
+      .contact-email-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        background: var(--white);
+        color: var(--primary-color) !important;
+        padding: 12px 24px;
+        border-radius: var(--border-radius-md);
+        font-weight: 700;
+        font-size: var(--font-size-sm);
+        transition: var(--transition-base);
+        box-shadow: var(--shadow-sm);
+        margin-top: var(--spacing-sm);
+      }
+
+      .contact-email-link:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        color: var(--primary-hover) !important;
       }
 
       /* ACCESSIBILITY IMPROVEMENTS */
@@ -1310,8 +1325,8 @@
           <div class="section-header">
             <h2 class="section-title">Team New Horizons</h2>
             <p class="section-subtitle">
-              Das Synchronlaufen ist seit 2008 Teil des Mannheimer ERC und gehört organisatorisch zur Abtei-lung Eiskunstlauf. Mit dem Team New Horizons ist der MERC seit vielen Jahren im deutschen Synchroneiskunstlauf aktiv und startet regelmäßig bei nationalen und internationalen Wettbewer-ben.
-Das Synchronlaufen beim MERC verbindet Leistungssport mit starkem Teamzusammenhalt und bietet engagierten Läuferinnen und Läufern die Möglichkeit, Teil eines motivierten und erfahrenen Teams zu werden. Im Mittelpunkt stehen Teamarbeit, Präzision und der gemeinsame sportliche Anspruch. Das Team-Motto lautet: „Vertrauen, Mut und Entschlossenheit“.
+              Das Synchronlaufen ist seit 2008 Teil des Mannheimer ERC und gehört organisatorisch zur Abteilung Eiskunstlauf. Mit dem Team New Horizons ist der MERC seit vielen Jahren im deutschen Synchroneiskunstlauf aktiv und startet regelmäßig bei nationalen und internationalen Wettbewerben.
+              Das Synchronlaufen beim MERC verbindet Leistungssport mit starkem Teamzusammenhalt und bietet engagierten Läuferinnen und Läufern die Möglichkeit, Teil eines motivierten und erfahrenen Teams zu werden. Im Mittelpunkt stehen Teamarbeit, Präzision und der gemeinsame sportliche Anspruch. Das Team-Motto lautet: „Vertrauen, Mut und Entschlossenheit".
             </p>
           </div>
 
@@ -1379,17 +1394,12 @@ Das Synchronlaufen beim MERC verbindet Leistungssport mit starkem Teamzusammenha
           </div>
 
           <div class="content-section fade-in">
-            <h3>Aktive Mitgliedschaft</h3>
+            <h3>Jetzt Teil von Team New Horizons werden!</h3>
             <p>
-              Die aktive Mitgliedschaft erlaubt gem. den aktuellen Abteilungsordnungen und/oder 
-              sonstigen Regelungen die Nutzung aller Trainings-Angebote des Vereins während der 
-              Hauptsaison, Stimmrecht bei Versammlungen (für volljährige Mitglieder), sowie alle 
-              übrigen Vereinsangebote.
+              Du möchtest Teil von Team New Horizons werden? Klasse! Neue Läuferinnen und Läufer sind jederzeit willkommen. Voraussetzung für die Teilnahme sind grundlegende Eislauf- oder Eiskunstlaufkenntnisse sowie ein Mindestniveau der Kürklasse 8. Darüber hinaus legen wir Wert auf Teamfähigkeit, Verlässlichkeit und eine gute sportliche Grundfitness, da das Synchronlaufen vom gemeinsamen Arbeiten und gegenseitigem Vertrauen lebt.
             </p>
-            <p style="margin-top: var(--spacing-md);">
-              Sie umfasst das Stimmrecht bei Versammlungen (für volljährige Mitglieder), sowie 
-              alle übrigen Vereinsangeboten, jedoch nicht die Nutzung von Trainingsangeboten 
-              auf dem Eis oder außerhalb.
+            <p>
+              Der Einstieg ins Team erfolgt in mehreren Schritten. Nach der Kontaktaufnahme vereinbaren wir zunächst ein Probetraining, bei dem sich beide Seiten kennenlernen können. Im Anschluss findet eine gemeinsame Sichtung statt. Bei gegenseitigem Interesse erfolgt anschließend die Aufnahme in das Team New Horizons.
             </p>
           </div>
 
@@ -1397,34 +1407,27 @@ Das Synchronlaufen beim MERC verbindet Leistungssport mit starkem Teamzusammenha
             <div class="info-card fade-in">
               <div class="info-card-header">
                 <div class="info-card-icon">
-                  <i class="fas fa-file-alt"></i>
+                  <i class="fas fa-calendar-alt"></i>
                 </div>
-                <h3 class="info-card-title">Aufnahmeanträge</h3>
+                <h3 class="info-card-title">Training & Saisonverlauf</h3>
               </div>
               <div class="info-card-content">
                 <p>
-                  Aufnahmeanträge sind während der Geschäftszeiten in der Geschäftsstelle 
-                  des MERC erhältlich.
+                  Die Saison gliedert sich in eine Choreografie- und Aufbauphase, die anschließende Wettkampfvorbereitung sowie die Teilnahme an nationalen und internationalen Wettbewerben. In der Off-Season liegt der Fokus auf Regeneration und gezielter Weiterentwicklung.
                 </p>
-                <p><strong>Eine einmalige Aufnahmegebühr wird fällig.</strong></p>
               </div>
             </div>
 
             <div class="info-card fade-in">
               <div class="info-card-header">
                 <div class="info-card-icon">
-                  <i class="fas fa-users"></i>
+                  <i class="fas fa-euro-sign"></i>
                 </div>
-                <h3 class="info-card-title">Mitgliedsarten</h3>
+                <h3 class="info-card-title">Kosten & Mitgliedschaft</h3>
               </div>
               <div class="info-card-content">
                 <p>
-                  <strong>Bei Aufnahme eines minderjährigen Kindes</strong> muss ein 
-                  Erziehungsberechtigter gleichzeitig Mitglied werden (passives Mitglied).
-                </p>
-                <p>
-                  Die passive und Förder-Mitgliedschaft dient der Förderung des Eiskunstlaufens 
-                  und Eisschnelllaufens im Mannheimer ERC.
+                  Für die Teilnahme am Training von Team New Horizons ist eine Mitgliedschaft im Mannheimer ERC erforderlich. Zusätzlich fällt ein monatlicher Trainingsbeitrag an. Darüber hinaus können weitere Kosten entstehen, beispielsweise für Wettbewerbe, Wettkampfkleidung oder die Choreografie.
                 </p>
               </div>
             </div>
@@ -1439,7 +1442,7 @@ Das Synchronlaufen beim MERC verbindet Leistungssport mit starkem Teamzusammenha
 
           <div class="content-section fade-in" style="margin-top: var(--spacing-lg);">
             <h3>Bankverbindung & Formulare</h3>
-            <p style="margin-bottom: var(--spacing-md);">
+            <p>
               Ein Lastschrift-Formular erhalten Sie in unserer Geschäftsstelle im 
               Eissportzentrum Herzogenried oder hier:
             </p>
@@ -1456,137 +1459,111 @@ Das Synchronlaufen beim MERC verbindet Leistungssport mit starkem Teamzusammenha
               Schnelllauf IBAN: DE24 6704 0031 0341 0958 01
             </p>
           </div>
-        </div>
-      </section>
 
-      <!-- Erwachsenenkunstlauf Section -->
-      <section class="section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Erwachsenenkunstlauf</h2>
-            <p class="section-subtitle">
-              Für eisbegeisterte Erwachsene - Gleiten Sie über das Eis!
-            </p>
-          </div>
-
-          <div class="content-section fade-in">
+          <div class="contact-team-card fade-in">
+            <h3><i class="fas fa-envelope" style="margin-right: 10px;"></i>Kontakt & Probetraining</h3>
             <p>
-              Der MERC bietet eislaufbegeisterten Erwachsenen in dieser Saison die Gelegenheit 
-              über das Eis zu gleiten. Im so genannten Erwachsenenlauf stehen sogar Trainerinnen 
-              und Trainer für Privatstunden bereit. Ob Sie gerne Sprünge und Pirouetten lernen 
-              möchten oder auf dem Eis das Tanzbein schwingen, schauen Sie doch einfach mal vorbei.
+              Melde dich gerne bei uns – wir vereinbaren ein unverbindliches Probetraining und freuen uns, dich kennenzulernen.
             </p>
-          </div>
-
-          <div class="training-times fade-in">
-            <h3>Trainingszeiten</h3>
-            <div class="time-row">
-              <div class="time-label">Mittwoch:</div>
-              <div class="time-value">20.30 Uhr bis 22.00 Uhr</div>
+            <p><strong style="opacity:1;">Ansprechpartnerinnen:</strong></p>
+            <div class="contact-persons">
+              <span class="contact-person-tag"><i class="fas fa-user" style="margin-right:6px;"></i>Nicole Endress</span>
+              <span class="contact-person-tag"><i class="fas fa-user" style="margin-right:6px;"></i>Anja Pohlmann</span>
+              <span class="contact-person-tag"><i class="fas fa-user" style="margin-right:6px;"></i>Patricia Redinger</span>
             </div>
-            <div class="time-row">
-              <div class="time-label">Sonntag:</div>
-              <div class="time-value">18.30 Uhr bis 20.00 Uhr</div>
-            </div>
-          </div>
-
-          <div class="alert-box fade-in" style="margin-top: var(--spacing-lg);">
-            <p>
-              <strong>Wichtig:</strong> Bitte beachten Sie auch die Aushänge im Eislaufzentrum!
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Trainingsinfos Section -->
-      <section class="section" style="background-color: var(--white);">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Termine/Infos/Trainingspläne</h2>
-            <p class="section-subtitle">Saison 2025/2026</p>
-          </div>
-
-          <div class="content-section fade-in">
-            <h3>Regelung des Trainingsbetriebes der Kunstlaufabteilung des MERC</h3>
-            <p style="color: var(--accent-color); font-weight: 600; margin-bottom: var(--spacing-lg);">
-              die aktuellsten Trainingspläne finden Sie hier:
-            </p>
-          </div>
-
-          <div class="documents-list fade-in">
-            <a href="#" class="document-link">
-              <div class="document-icon">
-                <i class="fas fa-file-pdf"></i>
-              </div>
-              <div class="document-info">
-                <h4>DEU-Lizenzgebühr</h4>
-                <p>Informationen zur Lizenzgebühr der Deutschen Eislauf-Union</p>
-              </div>
-            </a>
-
-            <a href="#" class="document-link">
-              <div class="document-icon">
-                <i class="fas fa-file-pdf"></i>
-              </div>
-              <div class="document-info">
-                <h4>DEU-Sportpass</h4>
-                <p>Antragsformular für den DEU-Sportpass</p>
-              </div>
-            </a>
-
-            <a href="#" class="document-link">
-              <div class="document-icon">
-                <i class="fas fa-file-pdf"></i>
-              </div>
-              <div class="document-info">
-                <h4>Wettbewerbsstruktur</h4>
-                <p>Übersicht über die Wettbewerbsstruktur im Eiskunstlauf</p>
-              </div>
-            </a>
-
-            <a href="#" class="document-link">
-              <div class="document-icon">
-                <i class="fas fa-file-pdf"></i>
-              </div>
-              <div class="document-info">
-                <h4>Wettbewerbsinhalte</h4>
-                <p>Detaillierte Informationen zu Wettbewerbsinhalten</p>
-              </div>
-            </a>
-
-            <a href="#" class="document-link">
-              <div class="document-icon">
-                <i class="fas fa-file-pdf"></i>
-              </div>
-              <div class="document-info">
-                <h4>Durchführungsbestimmungen Novice</h4>
-                <p>Bestimmungen für die Novice-Klasse</p>
-              </div>
-            </a>
-
-            <a href="#" class="document-link">
-              <div class="document-icon">
-                <i class="fas fa-file-pdf"></i>
-              </div>
-              <div class="document-info">
-                <h4>Weitere Infos</h4>
-                <p>Zusätzliche wichtige Informationen</p>
-              </div>
-            </a>
-          </div>
-
-          <div style="text-align: center; margin-top: var(--spacing-2xl);" class="fade-in">
-            <a href="index.html#contact" class="btn btn-primary">
+            <a href="mailto:teamnewhorizons@merc-online.de" class="contact-email-link">
               <i class="fas fa-envelope"></i>
-              Haben Sie Fragen? Kontaktieren Sie uns
+              teamnewhorizons@merc-online.de
             </a>
           </div>
         </div>
       </section>
+
+      <!-- Erfolge & Wettbewerbe -->
+      <section class="toggle-section">
+        <div class="container">
+          <div class="section-header">
+            <button id="erfolge-toggle-btn">
+              Erfolge &amp; Wettbewerbe <span id="erfolge-toggle-icon">▼</span>
+            </button>
+          </div>
+
+          <div id="erfolge-container" class="erfolge-collapsed">
+
+            <div class="season-block fade-in visible">
+              <div class="season-title">Saison 2024/2025</div>
+              <div class="season-theme">„Girls Power"</div>
+              <div class="result-item"><span class="place place-other">5.</span> Dresden Cup 2025 (GER)</div>
+              <div class="result-item"><span class="place place-other">10.</span> Budapest Cup 2025 (HUN)</div>
+            </div>
+
+            <div class="season-block fade-in visible">
+              <div class="season-title">Saison 2023/2024</div>
+              <div class="season-theme">„Game of Thrones"</div>
+              <div class="result-item"><span class="place place-other">11.</span> Dresden Cup 2024 (GER)</div>
+              <div class="result-item"><span class="place place-other">10.</span> Bavaria Cup 2024, Nürnberg (GER)</div>
+            </div>
+
+            <div class="season-block fade-in visible">
+              <div class="season-title">Saison 2022/2023</div>
+              <div class="season-theme">„Burlesque"</div>
+              <div class="result-item"><span class="place place-other">4.</span> Bavaria Cup 2023, Nürnberg (GER)</div>
+            </div>
+
+            <div class="season-block fade-in visible">
+              <div class="season-title">Saison 2021/2022</div>
+              <div class="season-theme">„Hansel &amp; Gretel: Witch Hunters"</div>
+              <div class="result-item"><span class="place place-3">3.</span> Cup of Neuss 2022 (GER)</div>
+              <div class="result-item"><span class="place place-3">3.</span> Deutsche Meisterschaft 2022 (GER)</div>
+            </div>
+
+            <div class="season-block fade-in visible">
+              <div class="season-title">Saison 2018/2019</div>
+              <div class="season-theme">„Bird Set Free"</div>
+              <div class="result-item"><span class="place place-other">4.</span> Deutsche Meisterschaft 2019, Berlin (GER)</div>
+              <div class="result-item"><span class="place place-other">6.</span> Mozart Cup 2019, Salzburg (AUT)</div>
+              <div class="result-item"><span class="place place-2">2.</span> Dresden Cup 2019 (GER)</div>
+              <div class="result-item"><span class="place place-other">4.</span> Budapest Cup 2019 (HUN)</div>
+            </div>
+
+            <div class="season-block fade-in visible">
+              <div class="season-title">Saison 2017/2018</div>
+              <div class="result-item"><span class="place place-other">5.</span> Mozart Cup 2018, Salzburg (AUT)</div>
+              <div class="result-item"><span class="place place-1">1.</span> Hevelius Cup 2018, Danzig (POL)</div>
+              <div class="result-item"><span class="place place-3">3.</span> Lumière Cup 2018, Eindhoven (NED)</div>
+              <div class="result-item"><span class="place place-2">2.</span> NRW-Trophy 2018, Neuss (GER)</div>
+            </div>
+
+            <div class="season-block fade-in visible">
+              <div class="season-title">Saison 2016/2017</div>
+              <div class="season-theme">„Alice in Wonderland"</div>
+              <div class="result-item"><span class="place place-2">2.</span> Cup of Berlin 2017 (GER)</div>
+              <div class="result-item"><span class="place place-other">4.</span> NRW-Trophy 2017, Neuss (GER)</div>
+              <div class="result-item"><span class="place place-2">2.</span> Lumière Cup 2017, Eindhoven (NED)</div>
+              <div class="result-item"><span class="place place-other">4.</span> Budapest Cup 2017 (HUN)</div>
+            </div>
+
+            <div class="season-block fade-in visible">
+              <div class="season-title">Saison 2015/2016</div>
+              <div class="season-theme">„The Great Gatsby"</div>
+              <div class="result-item"><span class="place place-1">1.</span> Baden-Württembergische Meisterschaften 2015 (GER)</div>
+              <div class="result-item"><span class="place place-1">1.</span> NRW-Trophy 2015 (GER)</div>
+            </div>
+
+            <div class="season-block fade-in visible">
+              <div class="season-title">Saison 2014/2015</div>
+              <div class="season-theme">„James Bond"</div>
+              <div class="result-item"><span class="place place-other">4.</span> Swiss Cup 2014, Widnau (SUI)</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <!-- Footer -->
-<footer>
+    <footer>
       <div class="container">
         <div class="footer-container">
           <div class="footer-about">
@@ -1785,6 +1762,16 @@ Das Synchronlaufen beim MERC verbindet Leistungssport mit starkem Teamzusammenha
         // Initialize navigation
         insertNavigationElements();
         setupMobileSubmenus();
+
+        // Erfolge toggle
+        const erfolgeBtn = document.getElementById("erfolge-toggle-btn");
+        const erfolgeContainer = document.getElementById("erfolge-container");
+        if (erfolgeBtn && erfolgeContainer) {
+          erfolgeBtn.addEventListener("click", function () {
+            erfolgeContainer.classList.toggle("erfolge-collapsed");
+            erfolgeBtn.classList.toggle("active");
+          });
+        }
       });
 
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
