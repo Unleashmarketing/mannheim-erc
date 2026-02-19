@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
   <template id="navigation-template1">
     <ul>
@@ -33,8 +33,12 @@
         </a>
         <ul class="submenu">
           <li><a href="eisschnelllauf.html#info">Informationen</a></li>
-          <li><a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a></li>
-          <li><a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a></li>
+          <li>
+            <a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a>
+          </li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -52,12 +56,14 @@
   </template>
   <template id="memberBtn">
     <ul>
-      <li><a href="mitglieder.html" class="btn-header">Mitgliederbereich</a></li>
+      <li>
+        <a href="mitglieder.html" class="btn-header">Mitgliederbereich</a>
+      </li>
     </ul>
   </template>
   <template id="contactBtn">
     <ul>
-      <li><a href="#contact" class="btn-header">Kontakt</a></li>
+      <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
     </ul>
   </template>
   <template id="memberStandard">
@@ -67,19 +73,19 @@
   </template>
   <template id="contactStandard">
     <ul>
-      <li><a href="#contact">Kontakt</a></li>
+      <li><a href="index.html#contact">Kontakt</a></li>
     </ul>
   </template>
   <template id="mobileCTAButtons">
     <div class="mobile-cta-buttons">
       <a href="mitglieder.html">Mitgliederbereich</a>
-      <a href="#contact">Kontakt</a>
+      <a href="index.html#contact">Kontakt</a>
     </div>
   </template>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Synchron Eiskunstlauf - Mannheimer ERC</title>
+    <title>Eisschnelllauf - Mannheimer ERC</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -92,8 +98,8 @@
     />
     <style>
       /* ========================================
-         CSS VARIABLES - Zentrale Steuerung
-         ======================================== */
+           CSS VARIABLES - Zentrale Steuerung
+           ======================================== */
       :root {
         /* Farben */
         --primary-color: #0062ff;
@@ -108,7 +114,7 @@
         --gray-light: #e0e0e0;
         --gray-medium: #999999;
         --white: #ffffff;
-        
+
         /* Spacing System */
         --spacing-xs: 8px;
         --spacing-sm: 16px;
@@ -117,9 +123,10 @@
         --spacing-xl: 60px;
         --spacing-2xl: 80px;
         --spacing-3xl: 120px;
-        
+
         /* Typography */
-        --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --font-family:
+          "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         --font-family-accent: "Space Grotesk", monospace;
         --font-size-xs: 0.875rem;
         --font-size-sm: 1rem;
@@ -129,19 +136,19 @@
         --font-size-2xl: 2.5rem;
         --font-size-3xl: 3rem;
         --font-size-4xl: 4rem;
-        
+
         /* Layout */
         --border-radius-sm: 4px;
         --border-radius-md: 8px;
         --border-radius-lg: 12px;
         --max-width: 1300px;
         --header-height: 80px;
-        
+
         /* Transitions */
         --transition-fast: 0.15s ease;
         --transition-base: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         --transition-slow: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        
+
         /* Shadows */
         --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
         --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -150,8 +157,8 @@
       }
 
       /* ========================================
-         RESET & BASE STYLES
-         ======================================== */
+           RESET & BASE STYLES
+           ======================================== */
       * {
         margin: 0;
         padding: 0;
@@ -208,8 +215,8 @@
       }
 
       /* ========================================
-         UTILITY CLASSES
-         ======================================== */
+           UTILITY CLASSES
+           ======================================== */
       .container {
         width: 90%;
         max-width: var(--max-width);
@@ -258,7 +265,9 @@
       .fade-in {
         opacity: 0;
         transform: translateY(30px);
-        transition: opacity var(--transition-slow), transform var(--transition-slow);
+        transition:
+          opacity var(--transition-slow),
+          transform var(--transition-slow);
       }
 
       .fade-in.visible {
@@ -267,8 +276,8 @@
       }
 
       /* ========================================
-         BUTTON SYSTEM
-         ======================================== */
+           BUTTON SYSTEM
+           ======================================== */
       .btn {
         display: inline-flex;
         align-items: center;
@@ -327,9 +336,28 @@
         color: var(--white);
       }
 
+      /* Auskommentiert da unten Duplikate vorhanden sind */
+      /* .btn-header {
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 12px 28px;
+        border-radius: var(--border-radius-md);
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        transition: var(--transition-base);
+        border: 2px solid var(--primary-color);
+      }
+
+      .btn-header:hover {
+        background-color: var(--primary-hover);
+        border-color: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      } */
+
       /* ========================================
-         HEADER & NAVIGATION
-         ======================================== */
+           HEADER & NAVIGATION
+           ======================================== */
       header {
         position: fixed;
         top: 0;
@@ -454,9 +482,10 @@
         padding: var(--spacing-xs) 0;
         z-index: 1002;
       }
-      
+
+      /* Add larger invisible bridge between menu and submenu */
       .nav-desktop .has-submenu::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 100%;
         left: -10px;
@@ -469,6 +498,11 @@
       .nav-desktop .has-submenu:hover > .submenu,
       .nav-desktop .has-submenu:hover::before,
       .nav-desktop .submenu:hover {
+        display: block;
+      }
+
+      /* Keep submenu visible when hovering over bridge */
+      .nav-desktop .has-submenu::before:hover + .submenu {
         display: block;
       }
 
@@ -550,6 +584,82 @@
         right: 0;
       }
 
+      .mobile-menu ul {
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .mobile-menu li {
+        margin-bottom: var(--spacing-md);
+      }
+
+      .mobile-menu a {
+        font-size: var(--font-size-md);
+        font-weight: 600;
+        display: block;
+        padding: var(--spacing-xs) 0;
+        color: var(--text-dark);
+      }
+
+      .mobile-menu a:hover {
+        color: var(--primary-color);
+        padding-left: var(--spacing-xs);
+      }
+
+      /* Mobile Menu CTA Buttons */
+      .mobile-menu .mobile-cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-xl);
+        padding-top: var(--spacing-lg);
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .mobile-menu .mobile-cta-buttons a {
+        background-color: var(--primary-color);
+        color: var(--white) !important;
+        padding: 14px 24px !important;
+        border-radius: var(--border-radius-md);
+        font-weight: 600;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition-base);
+      }
+
+      .mobile-menu .mobile-cta-buttons a:hover {
+        background-color: var(--primary-hover);
+        box-shadow: var(--shadow-md);
+        padding-left: 24px !important;
+        transform: translateY(-2px);
+      }
+
+      .mobile-menu .has-submenu > .submenu {
+        display: none;
+        padding-left: var(--spacing-md);
+        border-left: 2px solid rgba(0, 0, 0, 0.08);
+        margin-top: var(--spacing-sm);
+      }
+
+      .mobile-menu .has-submenu.open > .submenu {
+        display: block;
+      }
+
+      .mobile-menu .submenu-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mobile-menu .submenu-icon {
+        margin-left: auto;
+        font-size: 0.9rem;
+        transition: var(--transition-base);
+      }
+
+      .mobile-menu .has-submenu.open .submenu-icon {
+        transform: rotate(180deg);
+      }
+
       .mobile-menu-close {
         position: absolute;
         top: var(--spacing-lg);
@@ -581,82 +691,6 @@
         transform: rotate(90deg);
       }
 
-      .mobile-menu ul {
-        margin-bottom: var(--spacing-lg);
-      }
-
-      .mobile-menu li {
-        margin-bottom: var(--spacing-md);
-      }
-
-      .mobile-menu a {
-        font-size: var(--font-size-md);
-        font-weight: 600;
-        display: block;
-        padding: var(--spacing-xs) 0;
-        color: var(--text-dark);
-      }
-
-      .mobile-menu a:hover {
-        color: var(--primary-color);
-        padding-left: var(--spacing-xs);
-      }
-
-      .mobile-menu .has-submenu > .submenu {
-        display: none;
-        padding-left: var(--spacing-md);
-        border-left: 2px solid rgba(0, 0, 0, 0.08);
-        margin-top: var(--spacing-sm);
-      }
-
-      .mobile-menu .has-submenu.open > .submenu {
-        display: block;
-      }
-
-      .mobile-menu .submenu-toggle {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .mobile-menu .submenu-icon {
-        margin-left: auto;
-        font-size: 0.9rem;
-        transition: var(--transition-base);
-      }
-
-      .mobile-menu .has-submenu.open .submenu-icon {
-        transform: rotate(180deg);
-      }
-
-      /* Mobile Menu CTA Buttons */
-      .mobile-menu .mobile-cta-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-sm);
-        margin-top: var(--spacing-xl);
-        padding-top: var(--spacing-lg);
-        border-top: 1px solid rgba(0, 0, 0, 0.08);
-      }
-
-      .mobile-menu .mobile-cta-buttons a {
-        background-color: var(--primary-color);
-        color: var(--white) !important;
-        padding: 14px 24px !important;
-        border-radius: var(--border-radius-md);
-        font-weight: 600;
-        text-align: center;
-        box-shadow: var(--shadow-sm);
-        transition: var(--transition-base);
-      }
-
-      .mobile-menu .mobile-cta-buttons a:hover {
-        background-color: var(--primary-hover);
-        box-shadow: var(--shadow-md);
-        padding-left: 24px !important;
-        transform: translateY(-2px);
-      }
-
       .overlay {
         position: fixed;
         top: 0;
@@ -677,10 +711,14 @@
       }
 
       /* ========================================
-         PAGE HERO
-         ======================================== */
+           PAGE HERO
+           ======================================== */
       .page-hero {
-        background: linear-gradient(135deg, var(--primary-color) 0%, #004dbf 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #004dbf 100%
+        );
         padding: 140px 0 var(--spacing-2xl);
         color: var(--white);
         text-align: center;
@@ -695,9 +733,17 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: 
-          radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-          radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        background-image:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          );
         pointer-events: none;
       }
 
@@ -722,8 +768,8 @@
       }
 
       /* ========================================
-         INFO CARDS
-         ======================================== */
+           INFO CARDS
+           ======================================== */
       .info-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -783,39 +829,8 @@
       }
 
       /* ========================================
-         ALERT BOX
-         ======================================== */
-      .alert-box {
-        background-color: #fff3cd;
-        border-left: 4px solid #ffc107;
-        padding: var(--spacing-md);
-        border-radius: var(--border-radius-md);
-        margin-bottom: var(--spacing-lg);
-      }
-
-      .alert-box.alert-danger {
-        background-color: #f8d7da;
-        border-left-color: var(--accent-color);
-      }
-
-      .alert-box.alert-info {
-        background-color: #d1ecf1;
-        border-left-color: var(--primary-color);
-      }
-
-      .alert-box p {
-        margin: 0;
-        color: var(--text-dark);
-        line-height: 1.6;
-      }
-
-      .alert-box strong {
-        font-weight: 700;
-      }
-
-      /* ========================================
-         CONTENT SECTIONS
-         ======================================== */
+           CONTENT SECTIONS
+           ======================================== */
       .content-section {
         background: var(--white);
         border-radius: var(--border-radius-lg);
@@ -832,14 +847,19 @@
         font-family: var(--font-family-accent);
       }
 
+      .content-section h4 {
+        font-size: var(--font-size-lg);
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-top: var(--spacing-lg);
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-family-accent);
+      }
+
       .content-section p {
         color: var(--text-muted);
         line-height: 1.8;
         margin-bottom: var(--spacing-md);
-      }
-
-      .content-section p:last-child {
-        margin-bottom: 0;
       }
 
       .content-section ul {
@@ -856,7 +876,7 @@
       }
 
       .content-section ul li::before {
-        content: "\2192";
+        content: "→";
         position: absolute;
         left: 0;
         color: var(--primary-color);
@@ -864,8 +884,541 @@
       }
 
       /* ========================================
-         FOOTER
-         ======================================== */
+           SCHNUPPERTRAINING BOXES
+           ======================================== */
+      .schnupper-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-2xl);
+      }
+
+      .schnupper-box {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-xl);
+        box-shadow: var(--shadow-md);
+        border-left: 4px solid var(--primary-color);
+        transition: var(--transition-base);
+      }
+
+      .schnupper-box:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .schnupper-box h3 {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-md);
+        font-family: var(--font-family-accent);
+        border-bottom: 2px solid var(--gray-light);
+        padding-bottom: var(--spacing-sm);
+      }
+
+      .schnupper-box p {
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .schnupper-box strong {
+        color: var(--text-dark);
+      }
+
+      /* ========================================
+           CALENDAR SECTION
+           ======================================== */
+      #calendar-section {
+        padding: var(--spacing-3xl) 0;
+        background-color: var(--light-bg);
+      }
+
+      #calendar-section .container {
+        width: 90%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+      }
+
+      #calendar-section .section-header {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+      }
+
+      #calendar-toggle-btn {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        color: var(--text-dark);
+        font-family: var(--font-family-accent);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        transition: var(--transition-base);
+        position: relative;
+      }
+
+      #calendar-toggle-btn:hover {
+        color: var(--primary-color);
+      }
+
+      #calendar-toggle-btn::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: var(--spacing-md) auto 0;
+        border-radius: var(--border-radius-sm);
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #calendar-toggle-icon {
+        display: inline-block;
+        transition: transform 0.3s ease;
+        font-size: var(--font-size-lg);
+        color: var(--primary-color);
+      }
+
+      #calendar-toggle-btn.active #calendar-toggle-icon {
+        transform: rotate(-180deg);
+      }
+
+      #calendar-container {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-xl);
+        box-shadow: var(--shadow-md);
+        margin-top: var(--spacing-xl);
+      }
+
+      #calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+        background: linear-gradient(135deg, var(--primary-color), #0052d9);
+        border-radius: var(--border-radius-md);
+        color: var(--white);
+      }
+
+      #current-month-year {
+        font-size: var(--font-size-xl);
+        font-weight: 700;
+        font-family: var(--font-family-accent);
+        text-align: center;
+        flex: 1;
+      }
+
+      #calendar-header button {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: var(--white);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: var(--border-radius-md);
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        cursor: pointer;
+        transition: var(--transition-base);
+        font-family: var(--font-family);
+      }
+
+      #calendar-header button:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        border-color: var(--white);
+        transform: translateY(-2px);
+      }
+
+      #day-labels {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: var(--spacing-xs);
+        margin-bottom: var(--spacing-md);
+        padding: var(--spacing-sm) 0;
+        border-bottom: 2px solid var(--gray-light);
+      }
+
+      #day-labels span {
+        text-align: center;
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        color: var(--text-dark);
+        padding: var(--spacing-xs);
+      }
+
+      #calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: var(--spacing-xs);
+      }
+
+      .day,
+      .empty-day {
+        padding: var(--spacing-md);
+        text-align: center;
+        cursor: pointer;
+        border-radius: var(--border-radius-sm);
+        transition: var(--transition-base);
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        color: var(--text-dark);
+        background-color: var(--light-bg);
+      }
+
+      .day:hover {
+        background-color: var(--gray-light);
+        transform: scale(1.05);
+      }
+
+      .event-day {
+        background: linear-gradient(135deg, #d3df94, #c5d180);
+        color: var(--text-dark);
+        font-weight: 700;
+        position: relative;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .event-day:hover {
+        background: linear-gradient(135deg, #c5d180, #b7c36c);
+        box-shadow: var(--shadow-md);
+      }
+
+      .tooltip {
+        display: none;
+        position: absolute;
+        bottom: 110%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--dark-bg);
+        color: var(--white);
+        padding: var(--spacing-sm);
+        border-radius: var(--border-radius-md);
+        z-index: 10;
+        width: max-content;
+        max-width: 200px;
+        font-size: var(--font-size-xs);
+        box-shadow: var(--shadow-lg);
+        white-space: normal;
+        text-align: center;
+      }
+
+      .tooltip::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: var(--dark-bg);
+      }
+
+      .event-day:hover .tooltip {
+        display: block;
+      }
+
+      .calendar-collapsed {
+        display: none;
+      }
+
+      /* ========================================
+           GESCHICHTE SECTION
+           ======================================== */
+      .geschichte-section {
+        padding: var(--spacing-3xl) 0;
+        background-color: var(--white);
+      }
+
+      #geschichte-toggle-btn {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        color: var(--text-dark);
+        font-family: var(--font-family-accent);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        transition: var(--transition-base);
+        position: relative;
+      }
+
+      #geschichte-toggle-btn:hover {
+        color: var(--primary-color);
+      }
+
+      #geschichte-toggle-btn::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: var(--spacing-md) auto 0;
+        border-radius: var(--border-radius-sm);
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #geschichte-toggle-icon {
+        display: inline-block;
+        transition: transform 0.3s ease;
+        font-size: var(--font-size-lg);
+        color: var(--primary-color);
+      }
+
+      #geschichte-toggle-btn.active #geschichte-toggle-icon {
+        transform: rotate(-180deg);
+      }
+
+      .geschichte-collapsed {
+        display: none;
+      }
+
+      /* ========================================
+           NEWS SECTION
+           ======================================== */
+      .news-section {
+        padding: var(--spacing-3xl) 0;
+        background-color: var(--light-bg);
+      }
+
+      #archive-news-toggle-btn {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        color: var(--text-dark);
+        font-family: var(--font-family-accent);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        transition: var(--transition-base);
+        position: relative;
+      }
+
+      #archive-news-toggle-btn:hover {
+        color: var(--primary-color);
+      }
+
+      #archive-news-toggle-btn::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: var(--spacing-md) auto 0;
+        border-radius: var(--border-radius-sm);
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #archive-news-toggle-icon {
+        display: inline-block;
+        transition: transform 0.3s ease;
+        font-size: var(--font-size-lg);
+        color: var(--primary-color);
+      }
+
+      #archive-news-toggle-btn.active #archive-news-toggle-icon {
+        transform: rotate(-180deg);
+      }
+
+      .news-collapsed {
+        display: none;
+      }
+
+      .news-filters {
+        background: var(--white);
+        padding: var(--spacing-lg);
+        margin: var(--spacing-xl) 0 var(--spacing-lg);
+        border-radius: var(--border-radius-lg);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-lg);
+        align-items: flex-end;
+        box-shadow: var(--shadow-sm);
+        border: 2px solid var(--gray-light);
+      }
+
+      .news-filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .news-filter-group label {
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        color: var(--text-dark);
+      }
+
+      #archive-news-search {
+        padding: var(--spacing-sm);
+        border: 2px solid var(--gray-light);
+        border-radius: var(--border-radius-md);
+        font-size: var(--font-size-sm);
+        font-family: var(--font-family);
+        width: 100%;
+        transition: var(--transition-base);
+      }
+
+      #archive-news-search:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 98, 255, 0.1);
+      }
+
+      #archive-news-reset-filters {
+        padding: var(--spacing-sm) var(--spacing-md);
+        background-color: var(--primary-color);
+        color: var(--white);
+        border: none;
+        border-radius: var(--border-radius-md);
+        cursor: pointer;
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        transition: var(--transition-base);
+        box-shadow: var(--shadow-sm);
+      }
+
+      #archive-news-reset-filters:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .range-slider-container {
+        position: relative;
+        width: 100%;
+        height: var(--spacing-lg);
+        margin-top: var(--spacing-sm);
+      }
+
+      .range-slider-container input[type="range"] {
+        position: absolute;
+        width: 100%;
+        pointer-events: none;
+        appearance: none;
+        -webkit-appearance: none;
+        background: none;
+        margin: 0;
+        z-index: 2;
+      }
+
+      .range-slider-container input[type="range"]::-webkit-slider-thumb {
+        appearance: none;
+        -webkit-appearance: none;
+        pointer-events: auto;
+        width: 20px;
+        height: 20px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        cursor: grab;
+        border: 3px solid var(--white);
+        box-shadow: var(--shadow-md);
+        position: relative;
+        z-index: 3;
+        transition: var(--transition-base);
+      }
+
+      .range-slider-container input[type="range"]::-webkit-slider-thumb:hover {
+        transform: scale(1.15);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .range-slider-container input[type="range"]::-moz-range-thumb {
+        pointer-events: auto;
+        width: 16px;
+        height: 16px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        cursor: grab;
+        border: 3px solid var(--white);
+        box-shadow: var(--shadow-md);
+        z-index: 3;
+      }
+
+      .range-slider-container::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 6px;
+        background: var(--gray-light);
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: var(--border-radius-sm);
+        z-index: 1;
+      }
+
+      #archive-news-date-display,
+      #archive-news-extra-text {
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+        margin-top: var(--spacing-xs);
+        font-style: italic;
+      }
+
+      .news-item {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+        box-shadow: var(--shadow-sm);
+        border-left: 4px solid var(--primary-color);
+        transition: var(--transition-base);
+      }
+
+      .news-item:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateX(5px);
+      }
+
+      .news-item h3 {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-family-accent);
+      }
+
+      .news-item p {
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .news-item a {
+        color: var(--primary-color);
+        font-weight: 600;
+        text-decoration: underline;
+        transition: var(--transition-base);
+      }
+
+      .news-item a:hover {
+        color: var(--primary-hover);
+      }
+
+      .leading_separator {
+        display: block;
+        height: 1px;
+        background: var(--gray-light);
+        margin: var(--spacing-lg) 0;
+      }
+
+      /* ========================================
+           FOOTER
+           ======================================== */
       footer {
         background-color: var(--dark-bg);
         color: var(--text-light);
@@ -973,24 +1526,15 @@
       }
 
       /* ========================================
-         RESPONSIVE DESIGN
-         ======================================== */
-      @media (max-width: 1415px) {
+           RESPONSIVE DESIGN
+           ======================================== */
+      @media (max-width: 1360px) {
         .logo-text {
           display: none;
         }
       }
 
-      @media (max-width: 1200px) {
-        :root {
-          --spacing-3xl: 80px;
-          --spacing-2xl: 60px;
-          --spacing-xl: 40px;
-          --font-size-4xl: 3rem;
-          --font-size-3xl: 2.2rem;
-          --font-size-2xl: 1.8rem;
-        }
-
+      @media (max-width: 1135px) {
         .nav-desktop {
           display: none;
         }
@@ -998,14 +1542,18 @@
         .mobile-toggle {
           display: flex;
         }
-      }
 
-      @media (max-width: 1135px) {
         .page-title {
           font-size: var(--font-size-2xl);
         }
 
         .section-title {
+          font-size: var(--font-size-xl);
+        }
+
+        #calendar-toggle-btn,
+        #geschichte-toggle-btn,
+        #archive-news-toggle-btn {
           font-size: var(--font-size-xl);
         }
 
@@ -1020,11 +1568,32 @@
       }
 
       @media (max-width: 768px) {
-        :root {
-          --spacing-3xl: 60px;
-          --spacing-2xl: 40px;
-          --font-size-4xl: 2.5rem;
-          --font-size-3xl: 2rem;
+        .schnupper-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .news-filters {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .news-filter-group {
+          min-width: 100%;
+        }
+
+        #calendar-grid {
+          gap: 4px;
+        }
+
+        .day,
+        .empty-day {
+          padding: var(--spacing-sm);
+          min-height: 50px;
+          font-size: var(--font-size-xs);
+        }
+
+        #day-labels span {
+          font-size: var(--font-size-xs);
         }
       }
 
@@ -1045,253 +1614,45 @@
         .content-section {
           padding: var(--spacing-md);
         }
-      }
 
-      @media (max-width: 576px) {
-        :root {
-          --font-size-4xl: 2rem;
-          --font-size-3xl: 1.75rem;
-          --font-size-2xl: 1.5rem;
+        #calendar-container {
+          padding: var(--spacing-md);
         }
 
-        .btn {
-          padding: 12px 24px;
-          font-size: var(--font-size-sm);
+        #calendar-header {
+          flex-direction: column;
+          gap: var(--spacing-sm);
         }
-      }
 
-      /* ========================================
-         COLLAPSIBLE SECTION (Erfolge)
-         ======================================== */
-      .toggle-section {
-        padding: var(--spacing-3xl) 0;
-        background-color: var(--light-bg);
-      }
-
-      #erfolge-toggle-btn {
-        font-size: var(--font-size-3xl);
-        font-weight: 800;
-        color: var(--text-dark);
-        font-family: var(--font-family-accent);
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        transition: var(--transition-base);
-        position: relative;
-        background: none;
-        border: none;
-        padding: 0;
-      }
-
-      #erfolge-toggle-btn:hover {
-        color: var(--primary-color);
-      }
-
-      #erfolge-toggle-btn::after {
-        content: "";
-        display: block;
-        width: 60px;
-        height: 4px;
-        background-color: var(--primary-color);
-        border-radius: var(--border-radius-sm);
-        position: absolute;
-        bottom: -16px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      #erfolge-toggle-icon {
-        display: inline-block;
-        transition: transform 0.3s ease;
-        font-size: var(--font-size-lg);
-        color: var(--primary-color);
-      }
-
-      #erfolge-toggle-btn.active #erfolge-toggle-icon {
-        transform: rotate(-180deg);
-      }
-
-      .erfolge-collapsed {
-        display: none;
-      }
-
-      .season-block {
-        background: var(--white);
-        border-radius: var(--border-radius-lg);
-        padding: var(--spacing-lg);
-        margin-bottom: var(--spacing-md);
-        box-shadow: var(--shadow-sm);
-        border-left: 4px solid var(--primary-color);
-        transition: var(--transition-base);
-      }
-
-      .season-block:hover {
-        box-shadow: var(--shadow-md);
-        transform: translateX(5px);
-      }
-
-      .season-title {
-        font-size: var(--font-size-lg);
-        font-weight: 700;
-        color: var(--text-dark);
-        margin-bottom: var(--spacing-md);
-        font-family: var(--font-family-accent);
-        border-bottom: 2px solid var(--gray-light);
-        padding-bottom: var(--spacing-sm);
-      }
-
-      .season-theme {
-        font-size: var(--font-size-sm);
-        color: var(--primary-color);
-        font-weight: 600;
-        font-style: italic;
-        margin-bottom: var(--spacing-sm);
-      }
-
-      .result-item {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        padding: var(--spacing-xs) 0;
-        color: var(--text-muted);
-        line-height: 1.6;
-      }
-
-      .result-item .place {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        font-weight: 700;
-        font-size: var(--font-size-xs);
-        flex-shrink: 0;
-      }
-
-      .place-1 { background: #FFD700; color: #5a4000; }
-      .place-2 { background: #C0C0C0; color: #3a3a3a; }
-      .place-3 { background: #CD7F32; color: #fff; }
-      .place-other { background: var(--light-bg); color: var(--text-dark); border: 1px solid var(--gray-light); }
-
-      /* ========================================
-         CONTACT CARD
-         ======================================== */
-      .contact-team-card {
-        background: linear-gradient(135deg, var(--primary-color) 0%, #004dbf 100%);
-        border-radius: var(--border-radius-lg);
-        padding: var(--spacing-xl);
-        color: var(--white);
-        margin-top: var(--spacing-2xl);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .contact-team-card h3 {
-        font-size: var(--font-size-xl);
-        font-weight: 700;
-        margin-bottom: var(--spacing-md);
-        font-family: var(--font-family-accent);
-      }
-
-      .contact-team-card p {
-        opacity: 0.9;
-        line-height: 1.8;
-        margin-bottom: var(--spacing-md);
-      }
-
-      .contact-persons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
-        margin-bottom: var(--spacing-lg);
-      }
-
-      .contact-person-tag {
-        background: rgba(255,255,255,0.15);
-        border: 1px solid rgba(255,255,255,0.3);
-        border-radius: 20px;
-        padding: 8px 16px;
-        font-weight: 600;
-        font-size: var(--font-size-sm);
-        backdrop-filter: blur(4px);
-      }
-
-      .contact-email-link {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--spacing-xs);
-        background: var(--white);
-        color: var(--primary-color) !important;
-        padding: 12px 24px;
-        border-radius: var(--border-radius-md);
-        font-weight: 700;
-        font-size: var(--font-size-sm);
-        transition: var(--transition-base);
-        box-shadow: var(--shadow-sm);
-        margin-top: var(--spacing-sm);
-      }
-
-      .contact-email-link:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-md);
-        color: var(--primary-hover) !important;
-      }
-
-      /* ACCESSIBILITY IMPROVEMENTS */
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
+        #current-month-year {
+          font-size: var(--font-size-lg);
         }
-      }
-
-      /* Focus styles for accessibility */
-      button:focus-visible,
-      a:focus-visible,
-      input:focus-visible,
-      textarea:focus-visible {
-        outline: 3px solid var(--primary-color);
-        outline-offset: 2px;
-      }
-
-      /* Skip to main content */
-      .skip-link {
-        position: absolute;
-        top: -40px;
-        left: 0;
-        background: var(--primary-color);
-        color: white;
-        padding: 8px;
-        text-decoration: none;
-        z-index: 100;
-      }
-
-      .skip-link:focus {
-        top: 0;
       }
     </style>
   </head>
   <body>
-    <!-- Skip Link for Accessibility -->
-    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
-
     <!-- Header -->
     <header>
       <div class="container header-container">
         <a href="index.html" class="logo">
           <img
-            src="images/Logo_MERC.gif"
+            src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
             alt="Mannheimer ERC Logo"
           />
           <span class="logo-text">Mannheimer ERC</span>
         </a>
-        <nav id="pageElementsDesktop" class="nav-desktop" aria-label="Hauptnavigation">
-        </nav>
-        <button class="mobile-toggle" aria-label="Menü öffnen" aria-expanded="false">
+
+        <nav
+          class="nav-desktop"
+          id="pageElementsDesktop"
+          aria-label="Hauptnavigation"
+        ></nav>
+
+        <button
+          class="mobile-toggle"
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -1300,266 +1661,454 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" role="dialog" aria-label="Mobile Navigation">
+    <div class="mobile-menu">
       <button class="mobile-menu-close" aria-label="Menü schließen">
         <i class="fas fa-times"></i>
       </button>
     </div>
-    <div class="overlay" aria-hidden="true"></div>
+
+    <!-- Overlay -->
+    <div class="overlay"></div>
 
     <!-- Main Content -->
-    <main id="main-content">
+    <main>
       <!-- Page Hero -->
       <section class="page-hero">
         <div class="container">
-          <h1 class="page-title">Synchron Eiskunstlauf</h1>
+          <h1 class="page-title">Eisschnelllauf</h1>
           <p class="page-subtitle">
-            Teamarbeit und Präzision auf dem Eis - Gemeinsam zum Erfolg
+            Geschwindigkeit und Präzision - Erlebe die Faszination des
+            Eisschnelllaufs
           </p>
         </div>
       </section>
 
-      <!-- Info Cards - Overview -->
+      <!-- Eislaufschule Section -->
       <section class="section">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">Team New Horizons</h2>
+            <h2 class="section-title">Eislaufschule Saison 2025/2026</h2>
             <p class="section-subtitle">
-              Das Synchronlaufen ist seit 2008 Teil des Mannheimer ERC und gehört organisatorisch zur Abteilung Eiskunstlauf. Mit dem Team New Horizons ist der MERC seit vielen Jahren im deutschen Synchroneiskunstlauf aktiv und startet regelmäßig bei nationalen und internationalen Wettbewerben.
-              Das Synchronlaufen beim MERC verbindet Leistungssport mit starkem Teamzusammenhalt und bietet engagierten Läuferinnen und Läufern die Möglichkeit, Teil eines motivierten und erfahrenen Teams zu werden. Im Mittelpunkt stehen Teamarbeit, Präzision und der gemeinsame sportliche Anspruch. Das Team-Motto lautet: „Vertrauen, Mut und Entschlossenheit".
+              Eislaufen für Jung und Alt - Erlernen Sie die Grundtechniken des
+              Eislaufens
             </p>
           </div>
 
-          <div class="info-grid">
-            <div class="info-card fade-in">
-              <div class="info-card-header">
-                <div class="info-card-icon">
-                  <i class="fas fa-child"></i>
-                </div>
-                <h3 class="info-card-title">Alter</h3>
-              </div>
-              <div class="info-card-content">
-                <p>
-                  Team New Horizons läuft in der Kategorie <strong>Mixed Age</strong>. 
-                  Im Team trainieren Läuferinnen und Läufer im Alter von 
-                  <strong>12 bis 28 Jahren</strong> gemeinsam auf dem Eis.
-                </p>
-              </div>
-            </div>
+          <div class="content-section fade-in">
+            <h3>Kursinformationen</h3>
+            <p>
+              <strong
+                >Die Eislaufschule beginnt am Sonntag, den 26.10.2025 um
+                8:30.</strong
+              >
+              Sie findet jeden Sonntag bis März statt.
+            </p>
+            <p>
+              Eislaufen für Jung und Alt. Erlernen Sie die Grundtechniken des
+              Eislaufens.
+            </p>
+          </div>
 
-            <div class="info-card fade-in">
-              <div class="info-card-header">
-                <div class="info-card-icon">
-                  <i class="fas fa-clock"></i>
-                </div>
-                <h3 class="info-card-title">Trainingszeiten</h3>
-              </div>
-              <div class="info-card-content">
-                <p>
-                  Das Training von Team New Horizons findet <strong>zweimal pro Woche</strong> 
-                  auf dem Eis statt, jeweils <strong>montags und sonntags</strong>. 
-                  Ergänzend dazu gehören Athletik-, Tanz- und Off-Ice-Einheiten fest zum 
-                  Trainingskonzept.
-                </p>
-                <p>
-                  (Die aktuellen Trainingszeiten sind dem jeweiligen Trainingsplan zu entnehmen)
-                </p>
-              </div>
-            </div>
+          <div class="content-section fade-in">
+            <h3>Über unsere Eislaufschule</h3>
+            <p>
+              Erfahrene Eisschnellläufer unseres Vereins bringen jedem, der
+              Interesse und Spaß am Eislaufen hat, das Schlittschuhlaufen bei.
+              Unser Ziel ist es, dass Menschen das Schlittschuhlaufen erlernen
+              ohne sich dabei auf eine bestimmte Eissportart festlegen zu
+              müssen.
+            </p>
+            <p>
+              Also eine hervorragende Gelegenheit sich mit dem Eis vertraut zu
+              machen bevor man sich möglicherweise für Sportarten wie Kunstlauf,
+              Eishockey oder Eisschnelllauf entscheidet.
+            </p>
+          </div>
 
-            <div class="info-card fade-in">
-              <div class="info-card-header">
-                <div class="info-card-icon">
-                  <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3 class="info-card-title">Ausrüstung</h3>
+          <div class="content-section fade-in">
+            <h3>Wichtige Details</h3>
+            <p>
+              Die Eislaufschule findet in der Wintersaison von Mitte Oktober bis
+              März statt und am Ende gibt es ein Eislaufdiplom! Die genauen
+              Termine entnehmen Sie bitte unseren Trainingszeiten im Hauptmenü.
+            </p>
+            <p>
+              <strong
+                >Die Kosten für die Eislaufschule betragen: 90 Euro je
+                Person/Saison.</strong
+              >
+            </p>
+            <p>
+              Anmeldungen werden gerne über unser Kontaktformular oder vor Ort
+              entgegengenommen.
+            </p>
+            <p>
+              Bitte - wenn vorhanden - eigene Schlittschuhe und Schutzausrüstung
+              (Helm, Knie-, Ellenbogen-, Handgelenkschützer) mitbringen.
+              Alternativ können Schlittschuhe kostenlos vor Ort geliehen werden.
+            </p>
+            <p
+              style="
+                font-weight: 600;
+                color: var(--primary-color);
+                margin-top: var(--spacing-md);
+              "
+            >
+              Wir freuen uns auf Ihr/ Euer Kommen!
+            </p>
+          </div>
+
+          <!-- Ansprechpartner -->
+          <div
+            class="info-card fade-in"
+            style="max-width: 600px; margin: var(--spacing-2xl) auto 0"
+          >
+            <div class="info-card-header">
+              <div class="info-card-icon">
+                <i class="fas fa-envelope"></i>
               </div>
-              <div class="info-card-content">
-                <p>
-                  Zur Ausrüstung gehören <strong>Eiskunstlauf-Schlittschuhe</strong> und 
-                  <strong>Trainingsoutfits</strong> sowie für Wettkämpfe 
-                  <strong>einheitliche Teamkostüme</strong>.
-                </p>
-              </div>
+              <h3 class="info-card-title">Ansprechpartner</h3>
+            </div>
+            <div class="info-card-content">
+              <p><strong>Kontakt:</strong></p>
+              <p>
+                E-Mail:
+                <a
+                  href="/cdn-cgi/l/email-protection#ade8c4dec1ccd8cbc8c3c4c3c0ccc3c3c5c8c4c0edcac0d583c9c8"
+                  style="color: var(--primary-color); font-weight: 600"
+                  ><span
+                    class="__cf_email__"
+                    data-cfemail="f9bc908a95988c9f9c97909794989797919c9094b99e9481d79d9c"
+                    >[email&#160;protected]</span
+                  ></a
+                >
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Mitgliedschaft Section -->
-      <section class="section" style="background-color: var(--white);">
+      <!-- Schnuppertraining Section -->
+      <section class="section" style="background-color: var(--white)">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">Wie werde ich Mitglied?</h2>
-          </div>
-
-          <div class="content-section fade-in">
-            <h3>Jetzt Teil von Team New Horizons werden!</h3>
-            <p>
-              Du möchtest Teil von Team New Horizons werden? Klasse! Neue Läuferinnen und Läufer sind jederzeit willkommen. Voraussetzung für die Teilnahme sind grundlegende Eislauf- oder Eiskunstlaufkenntnisse sowie ein Mindestniveau der Kürklasse 8. Darüber hinaus legen wir Wert auf Teamfähigkeit, Verlässlichkeit und eine gute sportliche Grundfitness, da das Synchronlaufen vom gemeinsamen Arbeiten und gegenseitigem Vertrauen lebt.
-            </p>
-            <p>
-              Der Einstieg ins Team erfolgt in mehreren Schritten. Nach der Kontaktaufnahme vereinbaren wir zunächst ein Probetraining, bei dem sich beide Seiten kennenlernen können. Im Anschluss findet eine gemeinsame Sichtung statt. Bei gegenseitigem Interesse erfolgt anschließend die Aufnahme in das Team New Horizons.
+            <h2 class="section-title">Schnuppertraining</h2>
+            <p class="section-subtitle">
+              Du möchtest Eisschnelllauf ausprobieren? Kein Problem!
             </p>
           </div>
 
-          <div class="info-grid">
-            <div class="info-card fade-in">
-              <div class="info-card-header">
-                <div class="info-card-icon">
-                  <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h3 class="info-card-title">Training & Saisonverlauf</h3>
-              </div>
-              <div class="info-card-content">
-                <p>
-                  Die Saison gliedert sich in eine Choreografie- und Aufbauphase, die anschließende Wettkampfvorbereitung sowie die Teilnahme an nationalen und internationalen Wettbewerben. In der Off-Season liegt der Fokus auf Regeneration und gezielter Weiterentwicklung.
-                </p>
-              </div>
+          <div class="schnupper-grid">
+            <div class="schnupper-box fade-in">
+              <h3>
+                Ich kann eislaufen und würde Eisschnelllauf gerne einmal
+                ausprobieren
+              </h3>
+              <p>
+                Du möchtest Eisschnelllauf ausprobieren? Kein Problem. Schreib
+                uns eine kurze Mail, damit wir wissen, dass Du kommst und ob Du
+                evtl. etwas an Ausrüstung brauchst!
+              </p>
+              <p>
+                Verwende dazu am besten unser
+                <strong>Kontaktformular</strong> oder schaut vorbei, in der
+                Hauptsaison haben wir Mittwochs ab 18:30, Freitags ab 18:10 und
+                Samstags ab 09:00 Shorttrack Training. An Dienstag um 19:45 und
+                Samstag um 08:00 haben wir Schnelllauf Training.
+              </p>
             </div>
 
-            <div class="info-card fade-in">
-              <div class="info-card-header">
-                <div class="info-card-icon">
-                  <i class="fas fa-euro-sign"></i>
-                </div>
-                <h3 class="info-card-title">Kosten & Mitgliedschaft</h3>
-              </div>
-              <div class="info-card-content">
-                <p>
-                  Für die Teilnahme am Training von Team New Horizons ist eine Mitgliedschaft im Mannheimer ERC erforderlich. Zusätzlich fällt ein monatlicher Trainingsbeitrag an. Darüber hinaus können weitere Kosten entstehen, beispielsweise für Wettbewerbe, Wettkampfkleidung oder die Choreografie.
-                </p>
-              </div>
+            <div class="schnupper-box fade-in">
+              <h3>Ich kann nicht eislaufen, würde es aber gerne lernen</h3>
+              <p>
+                Du würdest gerne einmal Eisschnelllaufen ausprobieren, kannst
+                aber nicht eislaufen? Kein Problem, denn in unserer
+                Eislaufschule kannst Du die Grundlagen des Eislaufens lernen und
+                das zunächst erstmal ohne Dich auf eine Sportart festzulegen.
+              </p>
+              <p>
+                Mehr Informationen hierzu unter unserer Rubrik
+                <strong>Training > Eislaufschule</strong> oder
+                <a
+                  href="#eislaufschule"
+                  style="color: var(--primary-color); font-weight: 600"
+                  >hier</a
+                >.
+              </p>
             </div>
           </div>
 
-          <div class="alert-box alert-info fade-in">
-            <p>
-              <strong>Zahlung der Beiträge:</strong> Die Mitgliedsbeiträge sind gem. aktueller 
-              Gebührenordnung jeweils zu Beginn eines neuen Jahres bis spätestens 31.03. zu leisten.
-            </p>
-          </div>
-
-          <div class="content-section fade-in" style="margin-top: var(--spacing-lg);">
-            <h3>Bankverbindung & Formulare</h3>
-            <p>
-              Ein Lastschrift-Formular erhalten Sie in unserer Geschäftsstelle im 
-              Eissportzentrum Herzogenried oder hier:
-            </p>
-            <p style="color: var(--text-muted); margin-bottom: var(--spacing-sm);">
-              <strong>Comerzbank Mannheim</strong>
-            </p>
-            <p style="color: var(--text-muted); margin-bottom: var(--spacing-sm);">
-              BIC: COBADEFFXXX
-            </p>
-            <p style="color: var(--text-muted); margin-bottom: var(--spacing-sm);">
-              Kunstlauf IBAN: DE51 6704 0031 0341 0958 00
-            </p>
-            <p style="color: var(--text-muted);">
-              Schnelllauf IBAN: DE24 6704 0031 0341 0958 01
-            </p>
-          </div>
-
-          <div class="contact-team-card fade-in">
-            <h3><i class="fas fa-envelope" style="margin-right: 10px;"></i>Kontakt & Probetraining</h3>
-            <p>
-              Melde dich gerne bei uns – wir vereinbaren ein unverbindliches Probetraining und freuen uns, dich kennenzulernen.
-            </p>
-            <p><strong style="opacity:1;">Ansprechpartnerinnen:</strong></p>
-            <div class="contact-persons">
-              <span class="contact-person-tag"><i class="fas fa-user" style="margin-right:6px;"></i>Nicole Endress</span>
-              <span class="contact-person-tag"><i class="fas fa-user" style="margin-right:6px;"></i>Anja Pohlmann</span>
-              <span class="contact-person-tag"><i class="fas fa-user" style="margin-right:6px;"></i>Patricia Redinger</span>
-            </div>
-            <a href="mailto:teamnewhorizons@merc-online.de" class="contact-email-link">
+          <div
+            style="text-align: center; margin-top: var(--spacing-2xl)"
+            class="fade-in"
+          >
+            <a href="index.html#contact" class="btn btn-primary">
               <i class="fas fa-envelope"></i>
-              teamnewhorizons@merc-online.de
+              Jetzt Kontakt aufnehmen
             </a>
           </div>
         </div>
       </section>
 
-      <!-- Erfolge & Wettbewerbe -->
-      <section class="toggle-section">
+      <!-- Event Calendar -->
+      <section id="calendar-section">
         <div class="container">
           <div class="section-header">
-            <button id="erfolge-toggle-btn">
-              Erfolge &amp; Wettbewerbe <span id="erfolge-toggle-icon">▼</span>
-            </button>
+            <h2 id="calendar-toggle-btn">
+              Kalender <span id="calendar-toggle-icon">▼</span>
+            </h2>
           </div>
-
-          <div id="erfolge-container" class="erfolge-collapsed">
-
-            <div class="season-block fade-in visible">
-              <div class="season-title">Saison 2024/2025</div>
-              <div class="season-theme">„Girls Power"</div>
-              <div class="result-item"><span class="place place-other">5.</span> Dresden Cup 2025 (GER)</div>
-              <div class="result-item"><span class="place place-other">10.</span> Budapest Cup 2025 (HUN)</div>
+          <div id="calendar-container" class="calendar-collapsed">
+            <div id="calendar-header">
+              <button id="prev-month">← Zurück</button>
+              <h3 id="current-month-year">Month Year</h3>
+              <button id="next-month">Weiter →</button>
             </div>
 
-            <div class="season-block fade-in visible">
-              <div class="season-title">Saison 2023/2024</div>
-              <div class="season-theme">„Game of Thrones"</div>
-              <div class="result-item"><span class="place place-other">11.</span> Dresden Cup 2024 (GER)</div>
-              <div class="result-item"><span class="place place-other">10.</span> Bavaria Cup 2024, Nürnberg (GER)</div>
+            <div id="day-labels">
+              <span>Mo</span>
+              <span>Di</span>
+              <span>Mi</span>
+              <span>Do</span>
+              <span>Fr</span>
+              <span>Sa</span>
+              <span>So</span>
             </div>
 
-            <div class="season-block fade-in visible">
-              <div class="season-title">Saison 2022/2023</div>
-              <div class="season-theme">„Burlesque"</div>
-              <div class="result-item"><span class="place place-other">4.</span> Bavaria Cup 2023, Nürnberg (GER)</div>
-            </div>
-
-            <div class="season-block fade-in visible">
-              <div class="season-title">Saison 2021/2022</div>
-              <div class="season-theme">„Hansel &amp; Gretel: Witch Hunters"</div>
-              <div class="result-item"><span class="place place-3">3.</span> Cup of Neuss 2022 (GER)</div>
-              <div class="result-item"><span class="place place-3">3.</span> Deutsche Meisterschaft 2022 (GER)</div>
-            </div>
-
-            <div class="season-block fade-in visible">
-              <div class="season-title">Saison 2018/2019</div>
-              <div class="season-theme">„Bird Set Free"</div>
-              <div class="result-item"><span class="place place-other">4.</span> Deutsche Meisterschaft 2019, Berlin (GER)</div>
-              <div class="result-item"><span class="place place-other">6.</span> Mozart Cup 2019, Salzburg (AUT)</div>
-              <div class="result-item"><span class="place place-2">2.</span> Dresden Cup 2019 (GER)</div>
-              <div class="result-item"><span class="place place-other">4.</span> Budapest Cup 2019 (HUN)</div>
-            </div>
-
-            <div class="season-block fade-in visible">
-              <div class="season-title">Saison 2017/2018</div>
-              <div class="result-item"><span class="place place-other">5.</span> Mozart Cup 2018, Salzburg (AUT)</div>
-              <div class="result-item"><span class="place place-1">1.</span> Hevelius Cup 2018, Danzig (POL)</div>
-              <div class="result-item"><span class="place place-3">3.</span> Lumière Cup 2018, Eindhoven (NED)</div>
-              <div class="result-item"><span class="place place-2">2.</span> NRW-Trophy 2018, Neuss (GER)</div>
-            </div>
-
-            <div class="season-block fade-in visible">
-              <div class="season-title">Saison 2016/2017</div>
-              <div class="season-theme">„Alice in Wonderland"</div>
-              <div class="result-item"><span class="place place-2">2.</span> Cup of Berlin 2017 (GER)</div>
-              <div class="result-item"><span class="place place-other">4.</span> NRW-Trophy 2017, Neuss (GER)</div>
-              <div class="result-item"><span class="place place-2">2.</span> Lumière Cup 2017, Eindhoven (NED)</div>
-              <div class="result-item"><span class="place place-other">4.</span> Budapest Cup 2017 (HUN)</div>
-            </div>
-
-            <div class="season-block fade-in visible">
-              <div class="season-title">Saison 2015/2016</div>
-              <div class="season-theme">„The Great Gatsby"</div>
-              <div class="result-item"><span class="place place-1">1.</span> Baden-Württembergische Meisterschaften 2015 (GER)</div>
-              <div class="result-item"><span class="place place-1">1.</span> NRW-Trophy 2015 (GER)</div>
-            </div>
-
-            <div class="season-block fade-in visible">
-              <div class="season-title">Saison 2014/2015</div>
-              <div class="season-theme">„James Bond"</div>
-              <div class="result-item"><span class="place place-other">4.</span> Swiss Cup 2014, Widnau (SUI)</div>
-            </div>
-
+            <div id="calendar-grid"></div>
           </div>
         </div>
       </section>
 
+      <!-- Schnelllauf in Mannheim -->
+      <section class="geschichte-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="geschichte-toggle-btn">
+              Schnelllauf in Mannheim<span id="geschichte-toggle-icon">▼</span>
+            </h2>
+          </div>
+          <div
+            class="content-section fade-in geschichte-collapsed"
+            id="geschichte-container"
+          >
+            <h3>Schnelllauf</h3>
+            <h4>1938</h4>
+            <p>
+              Begannen im Eisstadion am Friedrichspark die Aktivitäten im Roll-
+              und Eischnelllauf auf dem Eishockeyfeld.
+            </p>
+            <h4>1960</h4>
+            <p>
+              gingen bereits die ersten Medaillien der Deutschen
+              Kleinbahnmeisterschaften (200 m Bahn in Berlin) durch Karl Merdes/
+              Hager und Fred Frank nach Mannheim
+            </p>
+            <p>
+              In den folgenden Jahren ging es weiter mit den Erfolgen auf der
+              200m, 247m und 400 m Bahn, wobei die Mannheimer auf eigenem
+              Terrain, dem Eishockeyfeld nahezu unschlagbar waren. Da wurden
+              zwei-Mannschaftsrennen über 30-50 Runden, Massenstartrennen, mit
+              6-8 Läufern und natürlich auch Einzelrennen, mit
+              gegenüberliegendem Start auf Zeit, gelaufen. Alles mit den
+              gleichen Großbahnschuhen mit denen wir einige Tage später auf der
+              Großbahn liefen.
+            </p>
+            <h4>1980</h4>
+            <p>
+              Bis in dieses Jahr 1980wurde regelmäßig um die
+              Stadtmeisterschaften von Mannheim gelaufen, wobei auch die Läufer
+              aus Frankfurt, Mainz, Kaiserslautern und Ludwigshafen mitmachten.
+              So kamen Teilnehmerfelder mit bis zu 40-50 Läufer/Innen zusammen.
+            </p>
+            <p>
+              Die großen Teilnehmerfelder jener Zeit brachen dann plötzlich
+              zusammen, als man seitens der DESG (Sporthilfe) alle Aktiven, die
+              weiter als 50km von einer 400m-Bahn entfernt wohnten, aus der
+              Förderung nahm, wodurch auch bei unseren Rennen die
+              Teilnehmerfelder immer kleiner wurden.
+            </p>
+            <p>
+              Mit dem Neubau von 400 m Bahnen in den 80 ern in Frankfurt,
+              Berlin, München und Grefrath boten sich bessere Trainings-,
+              Lehrgangs- und Wettkampfbedingungen.
+            </p>
+            <h4>1981</h4>
+            <p>
+              wurde das Leistungszentrum-Eissport am neuen Meßplatz eröffnet,
+              wodurch sich die Möglichkeit ergab, Eisschnelllauf auf einer 220 m
+              Bahn, als auch das professionelle Short-Track auf einer 111,12 m
+              Bahn zu betreiben.
+            </p>
+            <p>
+              In den nun ca. 40 Jahren haben wir auf den LONG TRACK- Bahnen im
+              In-und Ausland viele große Erfolge errungen, oft die deutschen B
+              -Meisterschaften (G. Pawasserat, J. Wagner, K. Hager) gewonnen und
+              später, als diese durch die Senioren-Meisterschaften ersetzt
+              wurden, auch bei diesen die ersten Plätze belegt. Beim Aufbau der
+              Deutschen und Weltmeisterschaften für die Seniorenklassen haben
+              wir mit unserer Teilnahme mitgeholfen, (Gundi ist Stellvertreterin
+              des Senioren-Referenten), und es ist für unsere Aktiven, wenn sie
+              aus den SHORT TRACK- Rennen herausgewachsen sind, eine schöne und
+              sinnvolle Weiterführung des Sports, den man bis ins hohe Alter
+              ausüben kann. Gibt es doch Seniorenklassen in Fünfjahresstufen bis
+              über 80.
+            </p>
+            <h3>Shorttrack</h3>
+            <h4>1981</h4>
+            <p>
+              wurde mit der Eröffnung des Leistungszentrums-Eissport am neuen
+              Messplatz eine neue Variante des Eisschnelllaufens mit
+              aufgenommen, dem Short-track. In diesem Jahr namen bereits die
+              Mannheimer Gundi Gramminger und Karl Hager in Paris an den
+              Weltmeisterschaften erfolgreich teil.
+            </p>
+            <h4>1983</h4>
+            <p>
+              wurden in Mannheim die ersten Deutschen Meisterschaften
+              ausgerichtet. Und es folgten noch weitere Meisterschaften der
+              Damen und Herren (national und international) mit Aktiven aus ganz
+              Europa und sogar Australien. Eine starke Beeinträchtigung unserer
+              Aufbauarbeit des Short-Track Sports war der Brand des LZE im Dez.
+              1988, bei dem es bis auf die Grundmauern zerstört wurde.
+            </p>
+            <h4>2001-2003</h4>
+            <p>
+              wurde der Global Club Competition in Mannheim ausgetragen, eine
+              Weltmeisterschaft für Short Track Vereine. Derzeit finden
+              regelmäßig Deutsche Meisterschaften sowie Star Class
+              Junioreneuropacup Wettkämpfe in Mannheim statt.
+            </p>
+            <p>
+              Nach dem Wiederaufbau des Eissportzentrums ging es reibungslos
+              weiter mit dem Training und den Wettkämpfen. Hierbei ist
+              erwähnenswert, dass Mannheim bis zum heutigen Tag hervorragende
+              Leistungen national und international erbracht hat.
+            </p>
+            <p>
+              Gundi Pawasserat, Jörg Wagner, Karl Hager, Rolf Merdes, Torsten
+              Back, Swetlana Prislegina, Nina Herz, Rolf Wutzke, Christian Arlt,
+              Hanno Satler, Dennis Walzer, Jennifer Pawasserat, Ulrike Wutzke
+              und Peter Anderl erliefen viele Deutsche Meistertitel und
+              Medaillien und starteten bei Länderkämpfen, Universiaden,
+              Juniorenweltmeisterscahften, Europa- und Weltmeisterschaften.
+            </p>
+            <p>
+              Erwähnenswert auch die Tätigkeit auf Funktionärsebene; war seit
+              Anfang Karl Hager als Stellvertreter des SHORT TRACK- Wartes und
+              als nationaler und internationaler Kampfrichter aktiv, kamen dann
+              später Frau Sabine Poß und Frau Dr. Christel Petzschke dazu, wobei
+              letztgenannte sogar zu Europa- und Weltmeisterschaften als
+              Competitor-Stewardess berufen wurde und uns dort hervorragend
+              vertritt.
+            </p>
+            <p>
+              Dr. Christel Petzschke, Reinier Oostheim als Competitor-Stewards
+              sowie Swetlana Prislegina und Nina Herz sind als
+              Schiedsrichter/innen sind regelmäßig auf Weltcups,
+              Europameisterschaften, Weltmeisterschaften und sogar bei
+              Olympischen Winterspielen dabei.
+            </p>
+            <h3>Rollschnelllauf/ Inline Speedskating</h3>
+            <p>
+              Das Rollschnelllaufen gehörte seit Beginn der Aktivitäten im Jahr
+              1938 im Stadion am Friedrichspark als Alternative zum
+              Wintertraining fest zum Trainingsprogramm der Eisschnellläufer.
+            </p>
+            <p>
+              Trainiert wurde zumeist auf Strassen oder auf speziellen
+              Rollschuhbahnen. In den 70 er Jahren nahmen dann auch schon einige
+              Mannheimer Eisschnellläufer an einigen Rollschnelllauf-
+              Wettkämpfen teil.
+            </p>
+            <p>
+              Seit der Einführung des Inlineschuhs, sind die Mannheimer
+              Schnellläufer mit Faszination dem Inlinesport beigetreten. Das
+              regelmäßige Training im Sommer gehört derweil zum Alltag. Hier
+              besteht die Möglichkeit das spezifische Techniktraining, was
+              bisher nur im Winter möglich war, auch im Sommer durchzuführen, da
+              sich die Bewegungsabläufe der beiden Sportarten sehr ähneln.
+            </p>
+            <p>
+              In den späten 90er , frühen 2000ern: Auch bei deutschen
+              Meisterschaften als auch an vielen Rennen auf Bahn und Strasse
+              nahmen die Mannheimer bis zum heutigen Tag erfolgreich teil. So
+              erzielten Thomas Heider und Richard Schäfer Deutsche Meistertitel
+              im Inline-Marathon und Halbmarathon. Dazu kamen viele Siege und
+              weitere Super-Platzierungen bei anderen INLINE- Rennen , auch
+              durch den sehr vielversprechenden Stefan Sifflet sowie Petra
+              Backofen und Gundi Pawasserat.
+            </p>
+            <p>
+              Bereits selbstverständlich ist für uns die Organisation unseres
+              Inliner Rennens beim beim traditionellen „Sport & Spiel am
+              Wasserturm" in Mannheim.
+            </p>
+            <p>
+              Viele Short Tracker und Masters nehmen im Sommer an Inliner Rennen
+              teil. Unter anderem an Deutschen Meisterschaften,
+              Baden-Württemberg Inline Cup, German Inline Cup teil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- News -->
+      <section class="news-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="archive-news-toggle-btn">
+              Berichte<span id="archive-news-toggle-icon">▼</span>
+            </h2>
+          </div>
+          <div id="archive-news-wrapper" class="news-collapsed">
+            <div class="news-filters">
+              <div class="news-filter-group">
+                <label for="archive-news-search">Suchbegriff:</label>
+                <input
+                  type="text"
+                  id="archive-news-search"
+                  placeholder="Suche nach Stichwörtern..."
+                  oninput="handleArchiveNewsFilters()"
+                  value="#begrenzt"
+                />
+              </div>
+
+              <div class="news-filter-group">
+                <label for="date-slider">Zeitraum filtern (Wochen):</label>
+                <div class="range-slider-container">
+                  <input
+                    type="range"
+                    id="archive-news-date-slider-min"
+                    min="0"
+                    value="0"
+                    oninput="handleArchiveNewsFilters()"
+                  />
+                  <input
+                    type="range"
+                    id="archive-news-date-slider-max"
+                    min="0"
+                    value="100"
+                    oninput="handleArchiveNewsFilters()"
+                  />
+                </div>
+                <div id="archive-news-date-display">Ganze Zeitspanne</div>
+                <div id="archive-news-extra-text"></div>
+              </div>
+
+              <button
+                id="archive-news-reset-filters"
+                onclick="resetArchiveNewsFilters()"
+              >
+                Filter zurücksetzen
+              </button>
+            </div>
+            <div class="content-section" id="archive-news-container">
+              <h3>Loading news...</h3>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
@@ -1569,7 +2118,7 @@
           <div class="footer-about">
             <div class="footer-logo">
               <img
-                src="images/Logo_MERC.gif"
+                src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
                 alt="Mannheimer ERC Logo"
               />
             </div>
@@ -1579,7 +2128,15 @@
               Sportler jeden Alters.
             </p>
             <div class="footer-social">
-              <a href="https://www.instagram.com/merc_eiskunstlauf/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
             </div>
           </div>
 
@@ -1587,12 +2144,20 @@
             <h3 class="footer-title">Kontakt</h3>
             <ul>
               <li>
-                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-map-marker-alt"></i
+                ></span>
                 <span>Käthe-Kollwitz-Straße 23<br />D-68169 Mannheim</span>
               </li>
               <li>
-                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                <span><a href="mailto:office@merc-online.de">office@merc-online.de</a></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-envelope"></i
+                ></span>
+                <span
+                  ><a href="mailto:info@merc-online.de"
+                    >info@merc-online.de</a
+                  ></span
+                >
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-clock"></i></span>
@@ -1603,16 +2168,21 @@
         </div>
 
         <div class="footer-bottom">
-          <p>&copy; 2026 Mannheimer ERC. Alle Rechte vorbehalten.</p>
+          <p>© 2026 Mannheimer ERC. Alle Rechte vorbehalten.</p>
           <p>
             <a href="impressum.html">Impressum</a>
-            <a href="datenschutz.html" style="margin-left: 20px;">Datenschutz</a>
+            <a href="datenschutz.html" style="margin-left: 20px">Datenschutz</a>
           </p>
         </div>
       </div>
     </footer>
-
+    <script src="eisschnelllauf-events.js"></script>
+    <script src="EisschnelllaufBlogArchive/Kurzmeldungen-archive.js"></script>
     <script>
+      // ========================================
+      // MOBILE MENU
+      // ========================================
+
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileMenu = document.querySelector(".mobile-menu");
       const overlay = document.querySelector(".overlay");
@@ -1643,14 +2213,6 @@
       mobileClose.addEventListener("click", closeMenu);
       overlay.addEventListener("click", closeMenu);
 
-      mobileLinks.forEach((link) => {
-        link.addEventListener("click", (e) => {
-          if (link.getAttribute("href").startsWith("#")) {
-            closeMenu();
-          }
-        });
-      });
-
       // Close menu on Escape key
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
@@ -1658,12 +2220,27 @@
         }
       });
 
+      // Mobile submenu toggle
+      function setupMobileSubmenus() {
+        const mobileSubmenus = document.querySelectorAll(
+          ".mobile-menu .has-submenu",
+        );
+        mobileSubmenus.forEach((item) => {
+          const toggle = item.querySelector(".submenu-toggle");
+          if (toggle) {
+            toggle.addEventListener("click", (e) => {
+              e.preventDefault();
+              item.classList.toggle("open");
+            });
+          }
+        });
+      }
+
       function insertNavigationElements() {
         const template = document.getElementById("navigation-template1");
         const contactBtn = document.getElementById("contactBtn");
         const memberBtn = document.getElementById("memberBtn");
         const contactStandard = document.getElementById("contactStandard");
-        const memberStandard = document.getElementById("memberStandard");
         const mobileCTAButtons = document.getElementById("mobileCTAButtons");
 
         // Desktop Navigation
@@ -1686,15 +2263,20 @@
         if (template && mobileMenu) {
           const clone = template.content.cloneNode(true);
           mobileMenu.prepend(clone);
-          
+
           // Add CTA buttons at the end
           if (mobileCTAButtons) {
             mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
           }
+
+          // Setup submenu toggles for mobile
+          setupMobileSubmenus();
         }
 
         // Footer Navigation
-        const footerLinks = document.getElementById("footerLinksWithMenuElements");
+        const footerLinks = document.getElementById(
+          "footerLinksWithMenuElements",
+        );
         if (template && footerLinks) {
           const clone = template.content.cloneNode(true);
           footerLinks.append(clone);
@@ -1705,45 +2287,32 @@
         }
       }
 
-      function setupMobileSubmenus() {
-        const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
-        submenuParents.forEach((toggle) => {
-          toggle.addEventListener("click", function (e) {
-            e.preventDefault();
-            const li = this.closest(".has-submenu");
-            const isOpen = li.classList.contains("open");
-            
-            // Close other open submenus
-            mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
-              if (item !== li) item.classList.remove("open");
-            });
-            
-            li.classList.toggle("open");
-            this.setAttribute("aria-expanded", String(!isOpen));
-          });
-        });
-      }
-
+      // ========================================
+      // STICKY HEADER
+      // ========================================
       const header = document.querySelector("header");
       let lastScroll = 0;
 
       window.addEventListener("scroll", () => {
         const currentScroll = window.pageYOffset;
-        
+
         if (currentScroll > 100) {
           header.classList.add("scrolled");
         } else {
           header.classList.remove("scrolled");
         }
-        
+
         lastScroll = currentScroll;
       });
 
+      // ========================================
+      // SCROLL ANIMATIONS
+      // ========================================
       const fadeElements = document.querySelectorAll(".fade-in");
-      
+
       const observerOptions = {
         threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
+        rootMargin: "0px 0px -50px 0px",
       };
 
       const observer = new IntersectionObserver((entries) => {
@@ -1758,23 +2327,325 @@
         observer.observe(element);
       });
 
-      document.addEventListener("DOMContentLoaded", function () {
-        // Initialize navigation
-        insertNavigationElements();
-        setupMobileSubmenus();
+      // ========================================
+      // EVENT CALENDAR
+      // ========================================
 
-        // Erfolge toggle
-        const erfolgeBtn = document.getElementById("erfolge-toggle-btn");
-        const erfolgeContainer = document.getElementById("erfolge-container");
-        if (erfolgeBtn && erfolgeContainer) {
-          erfolgeBtn.addEventListener("click", function () {
-            erfolgeContainer.classList.toggle("erfolge-collapsed");
-            erfolgeBtn.classList.toggle("active");
-          });
+      let desiredYear = new Date().getFullYear();
+      let desiredMonth = new Date().getMonth() + 1;
+
+      const monthNames = [
+        "Januar",
+        "Februar",
+        "März",
+        "April",
+        "Mai",
+        "Juni",
+        "Juli",
+        "August",
+        "September",
+        "Oktober",
+        "November",
+        "Dezember",
+      ];
+
+      function renderCalendar(year, month) {
+        const monthDisplay = document.getElementById("current-month-year");
+        monthDisplay.textContent = `${monthNames[month - 1]} ${year}`;
+        const grid = document.getElementById("calendar-grid");
+        grid.innerHTML = "";
+        const firstDayOfMonth = new Date(year, month - 1, 1).getDay();
+        const adjustedFirstDay =
+          firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
+        const daysInMonth = new Date(year, month, 0).getDate();
+
+        for (let i = 0; i < adjustedFirstDay; i++) {
+          const emptyDiv = document.createElement("div");
+          emptyDiv.classList.add("empty-day");
+          grid.appendChild(emptyDiv);
         }
+
+        for (let i = 1; i <= daysInMonth; i++) {
+          const dateString = `${year}-${String(month).padStart(
+            2,
+            "0",
+          )}-${String(i).padStart(2, "0")}`;
+          const dayDiv = document.createElement("div");
+          dayDiv.classList.add("day");
+          dayDiv.textContent = i;
+
+          if (events[dateString]) {
+            dayDiv.classList.add("event-day");
+            const tooltip = document.createElement("div");
+            tooltip.classList.add("tooltip");
+            tooltip.textContent = events[dateString];
+            dayDiv.appendChild(tooltip);
+          }
+
+          grid.appendChild(dayDiv);
+        }
+      }
+
+      function nextMonth() {
+        desiredMonth++;
+        if (desiredMonth > 12) {
+          desiredMonth = 1;
+          desiredYear++;
+        }
+        renderCalendar(desiredYear, desiredMonth);
+      }
+
+      function prevMonth() {
+        desiredMonth--;
+        if (desiredMonth < 1) {
+          desiredMonth = 12;
+          desiredYear--;
+        }
+        renderCalendar(desiredYear, desiredMonth);
+      }
+
+      function toggleCalendarVisibility() {
+        const toggleButton = document.getElementById("calendar-toggle-btn");
+        const content = document.getElementById("calendar-container");
+        if (!toggleButton || !content) {
+          return;
+        }
+        toggleButton.addEventListener("click", function () {
+          content.classList.toggle("calendar-collapsed");
+          toggleButton.classList.toggle("active");
+        });
+        renderCalendar(desiredYear, desiredMonth);
+      }
+
+      let archiveNewsMinDate, archiveNewsMaxDate;
+
+      function initArchiveNewsFilters() {
+        const dates = ARCHIVE_NEWS_LIST.map((item) => parseDate(item.date))
+          .filter((d) => d !== null)
+          .sort((a, b) => a - b);
+
+        if (dates.length > 0) {
+          archiveNewsMinDate = dates[0];
+          archiveNewsMaxDate = dates[dates.length - 1];
+
+          const diffWeeks = Math.ceil(
+            (archiveNewsMaxDate - archiveNewsMinDate) /
+              (1000 * 60 * 60 * 24 * 7),
+          );
+
+          const sliderMin = document.getElementById(
+            "archive-news-date-slider-min",
+          );
+          const sliderMax = document.getElementById(
+            "archive-news-date-slider-max",
+          );
+
+          sliderMin.max = diffWeeks;
+          sliderMax.max = diffWeeks;
+          sliderMax.value = diffWeeks;
+        }
+      }
+
+      function parseDate(dateStr) {
+        if (!dateStr || dateStr === "N/A" || typeof dateStr !== "string")
+          return null;
+
+        const germanMatch = dateStr.match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/);
+        if (germanMatch) {
+          return new Date(
+            Number.parseInt(germanMatch[3]),
+            Number.parseInt(germanMatch[2]) - 1,
+            Number.parseInt(germanMatch[1]),
+          );
+        }
+
+        const monthMap = {
+          januar: 0,
+          january: 0,
+          februar: 1,
+          february: 1,
+          märz: 2,
+          march: 2,
+          april: 3,
+          mai: 4,
+          may: 4,
+          juni: 5,
+          june: 5,
+          juli: 6,
+          july: 6,
+          august: 7,
+          september: 8,
+          oktober: 9,
+          october: 9,
+          november: 10,
+          dezember: 11,
+          december: 11,
+        };
+
+        const words = dateStr.toLowerCase().split(/[\s-]+/);
+        let year = words.find((w) => w.match(/^\d{4}$/));
+        let month = words.find((w) => monthMap.hasOwnProperty(w));
+
+        if (year && month !== undefined) {
+          return new Date(Number.parseInt(year), monthMap[month], 1);
+        }
+
+        return null;
+      }
+
+      function handleArchiveNewsFilters() {
+        const sliderMin = document.getElementById(
+          "archive-news-date-slider-min",
+        );
+        const sliderMax = document.getElementById(
+          "archive-news-date-slider-max",
+        );
+        let searchTerm = document
+          .getElementById("archive-news-search")
+          .value.toLowerCase();
+        const dateDisplay = document.getElementById(
+          "archive-news-date-display",
+        );
+
+        if (searchTerm === "#begrenzt") {
+          const validItems = ARCHIVE_NEWS_LIST.filter(
+            (item) => item.date && item.date !== "N/A",
+          );
+          const limitedList = validItems.slice(0, 3);
+          dateDisplay.textContent = "Nur aktuellste Beiträge";
+          document.getElementById("archive-news-extra-text").textContent =
+            "Im Suchfeld clicken um Beitragsfilter zu aktivieren";
+          renderArchiveNews(limitedList);
+          return;
+        }
+
+        document.getElementById("archive-news-extra-text").textContent = "";
+        let valMin = Number.parseInt(sliderMin.value);
+        let valMax = Number.parseInt(sliderMax.value);
+
+        if (valMin >= valMax) {
+          valMin = valMax - 1;
+          sliderMin.value = valMin;
+        }
+
+        const startDate = new Date(archiveNewsMinDate);
+        startDate.setDate(startDate.getDate() + valMin * 7);
+
+        const endDate = new Date(archiveNewsMinDate);
+        endDate.setDate(endDate.getDate() + valMax * 7);
+
+        dateDisplay.textContent = `${startDate.toLocaleDateString(
+          "de-DE",
+        )} bis ${endDate.toLocaleDateString("de-DE")}`;
+
+        let filteredNews = ARCHIVE_NEWS_LIST.filter((item) => {
+          const itemDate = parseDate(item.date);
+
+          const matchesSearch =
+            item.title.toLowerCase().includes(searchTerm) ||
+            item.text.toLowerCase().includes(searchTerm);
+
+          let matchesDate = false;
+          if (itemDate) {
+            matchesDate = itemDate >= startDate && itemDate <= endDate;
+          }
+
+          return matchesSearch && matchesDate;
+        });
+        renderArchiveNews(filteredNews);
+      }
+
+      function resetArchiveNewsFilters() {
+        const searchInput = document.getElementById("archive-news-search");
+        searchInput.value = "#begrenzt";
+        const sliderMin = document.getElementById(
+          "archive-news-date-slider-min",
+        );
+        const sliderMax = document.getElementById(
+          "archive-news-date-slider-max",
+        );
+        sliderMin.value = 0;
+        sliderMax.value = sliderMax.max;
+        handleArchiveNewsFilters();
+      }
+
+      function renderArchiveNews(list) {
+        const container = document.getElementById("archive-news-container");
+        container.innerHTML = "";
+
+        if (list.length === 0) {
+          container.innerHTML = "<p>Keine Berichte gefunden.</p>";
+          return;
+        }
+
+        list.forEach((item) => {
+          if (item.date != "N/A") {
+            const articleHtml = `
+            <div class="news-item fade-in visible">
+                <h3>${item.title}</h3>
+                <p><strong>${item.date}</strong></p>
+                <p>${item.text}</p>
+                <p><a href="${item.url}">Weiterlesen...</a></p>
+            </div>`;
+            container.insertAdjacentHTML("beforeend", articleHtml);
+          }
+        });
+      }
+
+      function toggleArchiveNewsVisibility() {
+        const toggleButton = document.getElementById("archive-news-toggle-btn");
+        const wrapper = document.getElementById("archive-news-wrapper");
+
+        if (!toggleButton || !wrapper) return;
+
+        initArchiveNewsFilters();
+
+        toggleButton.addEventListener("click", function () {
+          const isExpanding = wrapper.classList.contains("news-collapsed");
+          wrapper.classList.toggle("news-collapsed");
+          toggleButton.classList.toggle("active");
+
+          if (isExpanding) {
+            handleArchiveNewsFilters();
+
+            setTimeout(() => {
+              wrapper.classList.add("visible");
+            }, 10);
+          }
+        });
+      }
+
+      function toggleGeschichteVisibility() {
+        const toggleButton = document.getElementById("geschichte-toggle-btn");
+        const content = document.getElementById("geschichte-container");
+        if (!toggleButton || !content) {
+          return;
+        }
+        toggleButton.addEventListener("click", function () {
+          content.classList.toggle("geschichte-collapsed");
+          toggleButton.classList.toggle("active");
+        });
+      }
+
+      // ========================================
+      // INITIALIZE
+      // ========================================
+      document.addEventListener("DOMContentLoaded", function () {
+        insertNavigationElements();
+        toggleCalendarVisibility();
+        toggleGeschichteVisibility();
+        toggleArchiveNewsVisibility();
       });
 
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      document
+        .getElementById("archive-news-search")
+        .addEventListener("focus", function () {
+          if (this.value === "#begrenzt") {
+            this.value = "";
+          }
+        });
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           const href = this.getAttribute("href");
           if (href !== "#" && href !== "") {
@@ -1785,12 +2656,19 @@
               const targetPosition = target.offsetTop - headerHeight;
               window.scrollTo({
                 top: targetPosition,
-                behavior: "smooth"
+                behavior: "smooth",
               });
             }
           }
         });
       });
+
+      document
+        .getElementById("next-month")
+        .addEventListener("click", nextMonth);
+      document
+        .getElementById("prev-month")
+        .addEventListener("click", prevMonth);
     </script>
   </body>
 </html>
