@@ -1578,7 +1578,8 @@
         </div>
         <div class="hero-content">
           <h1 class="hero-title">
-            Eiskunst und Eisschnelllauf auf höchstem Niveau
+            Dies ist eine Testversion unseres Webauftritts, besuchen Sie <a href="https://www.merc-online.de" style="color: #0052d9;">unsere Hauptseite</a>
+            <!-- Eiskunst und Eisschnelllauf auf höchstem Niveau -->
           </h1>
           <p class="hero-subtitle">
             Technik trifft Ästhetik - Entdecke die Eleganz und Schnelligkeit des
@@ -1849,6 +1850,10 @@
                     rows="5"
                     required
                   ></textarea>
+                </div>
+                <div>
+                  <label for="capcha">Sicherheitsfrage<p id="capchaQuestion">4+5=?</p></label>
+                  <input type="number" id="capchaInputField" name="capcha" required />
                 </div>
                 <button
                   type="button"
@@ -2127,6 +2132,25 @@
         e.preventDefault();
         return false;
       };
+      let capchaQ = "";
+      let capchaComponents = [];
+      const capchaObject = document.getElementById("capchaQuestion");
+      const capchaInputField = document.getElementById("capchaInputField")
+      async function getCapchaQuestion() {
+        capchaComponents = [];
+        try{
+          const responseForRandomArithmeticQuestion = await fetch(
+            "https://merc-online.de/cgi-bin/apiMain.py/api/getRandomArithmeticQuestion"
+          );
+          if (responseForRandomArithmeticQuestion.ok){
+            capchaQ = await responseForRandomArithmeticQuestion.text();
+            capchaObject.textContent = capchaQ;
+            capchaQ.split("+").forEach((number) => {capchaComponents.push(Number.parseInt(number.trim()));});
+          }
+        } catch (err) {
+          console.error("Debug:", err);
+        }
+      }
 
       const msg = document.getElementById("contactFormResponseMessage");
       const btn = document.getElementById("contact-form-submit-button");
@@ -2134,12 +2158,48 @@
       btn.addEventListener("click", async (e) => {
         e.preventDefault();
         e.stopPropagation();
+        let boolCapchaAnswer = false;
+        try{
+          let params = "?";
+          capchaComponents.forEach((number, index) => {params += "num" + index.toString() + "=" + encodeURIComponent(number) + "&"});
+          params += "answer=" + encodeURIComponent(capchaInputField.value);
+          console.error("Debug:", "https://merc-online.de/cgi-bin/apiMain.py/api/checkRandomArithmeticAnswer"+params);
+          const responseForCapcha = await fetch(
+            "https://merc-online.de/cgi-bin/apiMain.py/api/checkRandomArithmeticAnswer"+params
+          );
+          if (responseForCapcha.ok){
+            const capchaAnswer = await responseForCapcha.json();
+            boolCapchaAnswer = capchaAnswer["success"];
+          }
+        } catch (err) {
+          console.error("Debug:", err);
+        }
+        if (!boolCapchaAnswer){
+          capchaInputField.focus();
+          capchaInputField.style.backgroundColor = "red";
+          getCapchaQuestion();
+          return;
+        }
+        capchaInputField.style.backgroundColor = "";
 
         const formData = new FormData(form);
+        for (const field of form.elements){
+          if (field.hasAttribute("required")) {
+            if (field.value === ""){
+              field.focus();
+              field.style.backgroundColor = "red";
+              getCapchaQuestion();
+              return;
+            }
+          }
+          field.style.backgroundColor = "";
+        }
         const senderName = formData.get("name") || "";
         const originalMessage = formData.get("message") || "";
         const combinedMessage = `Absender: ${senderName}\n\n${originalMessage}`;
         formData.set("message", combinedMessage);
+        const subject = "Anfrage aus Kontaktformular: "+formData.get("subject");
+        formData.set("subject", subject);
 
         btn.disabled = true;
         msg.style.color = "black";
@@ -2169,8 +2229,11 @@
           msg.innerText = "Error: " + err.message;
         } finally {
           btn.disabled = false;
+          getCapchaQuestion();
         }
       });
+
+      document.addEventListener("DOMContentLoaded", function () {getCapchaQuestion();});
     </script>
   </body>
 </html>
