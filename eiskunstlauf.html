@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
   <template id="navigation-template1">
     <ul>
@@ -24,6 +24,7 @@
           <li><a href="eiskunstlauf.html#schnuppern">Schnupperkurs</a></li>
           <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
           <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
+          <li><a href="eiskunstlauf.html#termine-infos">Termine & Infos</a></li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -455,7 +456,6 @@
         z-index: 1002;
       }
       
-      /* Add larger invisible bridge between menu and submenu */
       .nav-desktop .has-submenu::before {
         content: '';
         position: absolute;
@@ -470,11 +470,6 @@
       .nav-desktop .has-submenu:hover > .submenu,
       .nav-desktop .has-submenu:hover::before,
       .nav-desktop .submenu:hover {
-        display: block;
-      }
-      
-      /* Keep submenu visible when hovering over bridge */
-      .nav-desktop .has-submenu::before:hover + .submenu {
         display: block;
       }
 
@@ -683,6 +678,48 @@
       }
 
       /* ========================================
+         PDF MODAL
+         ======================================== */
+      .pdf-modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        backdrop-filter: blur(5px);
+      }
+
+      .pdf-modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: 2% auto;
+        padding: 0;
+        width: 90%;
+        height: 90vh;
+        border-radius: var(--border-radius-lg);
+        overflow: hidden;
+      }
+
+      .close-pdf {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        color: #000;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 2001;
+        line-height: 1;
+      }
+
+      .close-pdf:hover {
+        color: var(--primary-color);
+      }
+
+      /* ========================================
          PAGE HERO
          ======================================== */
       .page-hero {
@@ -856,67 +893,6 @@
       }
 
       /* ========================================
-         AUSGEBUCHT BANNER
-         ======================================== */
-      .ausgebucht-banner {
-        background: linear-gradient(135deg, #fff3cd 0%, #fff8e1 100%);
-        border: 2px solid #ffc107;
-        border-radius: var(--border-radius-lg);
-        padding: var(--spacing-xl);
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .ausgebucht-banner::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #ffc107, #ff9800, #ffc107);
-      }
-
-      .ausgebucht-banner-icon {
-        font-size: 3rem;
-        margin-bottom: var(--spacing-md);
-        display: block;
-      }
-
-      .ausgebucht-banner h3 {
-        font-size: var(--font-size-xl);
-        font-weight: 700;
-        color: var(--text-dark);
-        margin-bottom: var(--spacing-sm);
-        font-family: var(--font-family-accent);
-      }
-
-      .ausgebucht-banner p {
-        color: var(--text-muted);
-        line-height: 1.8;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .ausgebucht-banner p + p {
-        margin-top: var(--spacing-sm);
-      }
-
-      .ausgebucht-banner .season-badge {
-        display: inline-block;
-        background: var(--white);
-        padding: 6px 16px;
-        border-radius: 20px;
-        font-weight: 700;
-        font-size: var(--font-size-sm);
-        color: var(--text-dark);
-        margin-bottom: var(--spacing-md);
-        box-shadow: var(--shadow-sm);
-        font-family: var(--font-family-accent);
-      }
-
-      /* ========================================
          ALERT BOX
          ======================================== */
       .alert-box {
@@ -945,75 +921,6 @@
 
       .alert-box strong {
         font-weight: 700;
-      }
-
-      /* ========================================
-         COURSE SECTION
-         ======================================== */
-      .course-list {
-        display: grid;
-        gap: var(--spacing-md);
-        margin-top: var(--spacing-lg);
-      }
-
-      .course-item {
-        background: var(--white);
-        border-radius: var(--border-radius-lg);
-        padding: var(--spacing-lg);
-        box-shadow: var(--shadow-sm);
-        border-left: 4px solid var(--primary-color);
-        transition: var(--transition-base);
-      }
-
-      .course-item:hover {
-        box-shadow: var(--shadow-md);
-        transform: translateX(5px);
-      }
-
-      .course-item.ausgebucht {
-        opacity: 0.6;
-        border-left-color: var(--accent-color);
-      }
-
-      .course-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: var(--spacing-sm);
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
-      }
-
-      .course-name {
-        font-size: var(--font-size-lg);
-        font-weight: 700;
-        color: var(--text-dark);
-        font-family: var(--font-family-accent);
-      }
-
-      .course-dates {
-        font-size: var(--font-size-sm);
-        color: var(--text-muted);
-      }
-
-      .course-status {
-        display: inline-block;
-        padding: 6px 16px;
-        border-radius: 20px;
-        font-size: var(--font-size-xs);
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-
-      .course-status.available {
-        background-color: #d4edda;
-        color: #155724;
-      }
-
-      .course-status.ausgebucht {
-        background-color: #f8d7da;
-        color: #721c24;
       }
 
       /* ========================================
@@ -1102,280 +1009,101 @@
       }
 
       /* ========================================
-         DOCUMENTS SECTION
+         DOWNLOADS SECTION
          ======================================== */
-      .documents-list {
+      .downloads {
+        background-color: var(--dark-bg);
+        color: var(--white);
+      }
+
+      .downloads .section-title {
+        color: var(--white);
+      }
+
+      .downloads .section-title::after {
+        background-color: var(--white);
+      }
+
+      .downloads .section-subtitle {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .download-grid {
         display: grid;
-        gap: var(--spacing-md);
-      }
-
-      .document-link {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-md);
-        padding: var(--spacing-md);
-        background: var(--white);
-        border-radius: var(--border-radius-md);
-        border: 2px solid var(--gray-light);
-        transition: var(--transition-base);
-      }
-
-      .document-link:hover {
-        border-color: var(--primary-color);
-        transform: translateX(5px);
-        box-shadow: var(--shadow-sm);
-      }
-
-      .document-icon {
-        font-size: var(--font-size-xl);
-        color: var(--accent-color);
-      }
-
-      .document-info h4 {
-        font-size: var(--font-size-md);
-        font-weight: 600;
-        color: var(--text-dark);
-        margin-bottom: 4px;
-      }
-
-      .document-info p {
-        font-size: var(--font-size-xs);
-        color: var(--text-muted);
-        margin: 0;
-      }
-
-      /* ========================================
-         NEWS SECTION
-         ======================================== */
-      .news-section {
-        padding: var(--spacing-3xl) 0;
-        background-color: var(--light-bg);
-      }
-
-      #archive-news-toggle-btn {
-        font-size: var(--font-size-3xl);
-        font-weight: 800;
-        color: var(--text-dark);
-        font-family: var(--font-family-accent);
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: var(--spacing-sm);
-        transition: var(--transition-base);
-        position: relative;
-      }
-
-      #archive-news-toggle-btn:hover {
-        color: var(--primary-color);
-      }
-
-      #archive-news-toggle-btn::after {
-        content: "";
-        display: block;
-        width: 60px;
-        height: 4px;
-        background-color: var(--primary-color);
-        margin: var(--spacing-md) auto 0;
-        border-radius: var(--border-radius-sm);
-        position: absolute;
-        bottom: -16px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      #archive-news-toggle-icon {
-        display: inline-block;
-        transition: transform 0.3s ease;
-        font-size: var(--font-size-lg);
-        color: var(--primary-color);
-      }
-
-      #archive-news-toggle-btn.active #archive-news-toggle-icon {
-        transform: rotate(-180deg);
-      }
-
-      .news-collapsed {
-        display: none;
-      }
-
-      .news-filters {
-        background: var(--white);
-        padding: var(--spacing-lg);
-        margin: var(--spacing-xl) 0 var(--spacing-lg);
-        border-radius: var(--border-radius-lg);
-        display: flex;
-        flex-wrap: wrap;
+        grid-template-columns: repeat(4, 1fr);
         gap: var(--spacing-lg);
-        align-items: flex-end;
-        box-shadow: var(--shadow-sm);
-        border: 2px solid var(--gray-light);
       }
 
-      .news-filter-group {
+      @media (max-width: 1100px) {
+        .download-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .download-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .download-card {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--border-radius-md);
+        padding: var(--spacing-lg);
+        transition: var(--transition-base);
         display: flex;
         flex-direction: column;
-        gap: var(--spacing-xs);
-        flex: 1;
-        min-width: 200px;
+        gap: var(--spacing-md);
       }
 
-      .news-filter-group label {
-        font-weight: 600;
-        font-size: var(--font-size-sm);
-        color: var(--text-dark);
+      .download-card:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-5px);
       }
 
-      #archive-news-search {
-        padding: var(--spacing-sm);
-        border: 2px solid var(--gray-light);
-        border-radius: var(--border-radius-md);
-        font-size: var(--font-size-sm);
-        font-family: var(--font-family);
-        width: 100%;
-        transition: var(--transition-base);
-      }
-
-      #archive-news-search:focus {
-        outline: none;
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(0, 98, 255, 0.1);
-      }
-
-      #archive-news-reset-filters {
-        padding: var(--spacing-sm) var(--spacing-md);
-        background-color: var(--primary-color);
-        color: var(--white);
-        border: none;
-        border-radius: var(--border-radius-md);
-        cursor: pointer;
-        font-weight: 600;
-        font-size: var(--font-size-sm);
-        transition: var(--transition-base);
-        box-shadow: var(--shadow-sm);
-      }
-
-      #archive-news-reset-filters:hover {
-        background-color: var(--primary-hover);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-      }
-
-      .range-slider-container {
-        position: relative;
-        width: 100%;
-        height: var(--spacing-lg);
-        margin-top: var(--spacing-sm);
-      }
-
-      .range-slider-container input[type="range"] {
-        position: absolute;
-        width: 100%;
-        pointer-events: none;
-        appearance: none;
-        -webkit-appearance: none;
-        background: none;
-        margin: 0;
-        z-index: 2;
-      }
-
-      .range-slider-container input[type="range"]::-webkit-slider-thumb {
-        appearance: none;
-        -webkit-appearance: none;
-        pointer-events: auto;
-        width: 20px;
-        height: 20px;
-        background: var(--primary-color);
-        border-radius: 50%;
-        cursor: grab;
-        border: 3px solid var(--white);
-        box-shadow: var(--shadow-md);
-        position: relative;
-        z-index: 3;
-        transition: var(--transition-base);
-      }
-
-      .range-slider-container input[type="range"]::-webkit-slider-thumb:hover {
-        transform: scale(1.15);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .range-slider-container input[type="range"]::-moz-range-thumb {
-        pointer-events: auto;
-        width: 16px;
-        height: 16px;
-        background: var(--primary-color);
-        border-radius: 50%;
-        cursor: grab;
-        border: 3px solid var(--white);
-        box-shadow: var(--shadow-md);
-        z-index: 3;
-      }
-
-      .range-slider-container::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 6px;
-        background: var(--gray-light);
-        top: 50%;
-        transform: translateY(-50%);
-        border-radius: var(--border-radius-sm);
-        z-index: 1;
-      }
-
-      #archive-news-date-display,
-      #archive-news-extra-text {
-        font-size: var(--font-size-xs);
-        color: var(--text-muted);
-        margin-top: var(--spacing-xs);
-        font-style: italic;
-      }
-
-      .news-item {
-        background: var(--white);
-        border-radius: var(--border-radius-lg);
-        padding: var(--spacing-lg);
-        margin-bottom: var(--spacing-lg);
-        box-shadow: var(--shadow-sm);
-        border-left: 4px solid var(--primary-color);
-        transition: var(--transition-base);
-      }
-
-      .news-item:hover {
-        box-shadow: var(--shadow-md);
-        transform: translateX(5px);
-      }
-
-      .news-item h3 {
-        font-size: var(--font-size-lg);
-        font-weight: 700;
-        color: var(--text-dark);
+      .download-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
         margin-bottom: var(--spacing-sm);
+      }
+
+      .download-title {
+        font-size: var(--font-size-md);
+        font-weight: 700;
+        margin-bottom: var(--spacing-xs);
         font-family: var(--font-family-accent);
       }
 
-      .news-item p {
-        color: var(--text-muted);
-        line-height: 1.8;
-        margin-bottom: var(--spacing-sm);
+      .download-description {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: var(--font-size-sm);
+        line-height: 1.7;
+        flex: 1;
       }
 
-      .news-item a {
-        color: var(--primary-color);
-        font-weight: 600;
-        text-decoration: underline;
-        transition: var(--transition-base);
+      .download-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: var(--font-size-xs);
+        color: rgba(255, 255, 255, 0.5);
+        padding-top: var(--spacing-sm);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
       }
 
-      .news-item a:hover {
-        color: var(--primary-hover);
+      .download-actions {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        margin-top: var(--spacing-sm);
+        width: 100%;
       }
 
-      .leading_separator {
-        display: block;
-        height: 1px;
-        background: var(--gray-light);
-        margin: var(--spacing-lg) 0;
+      .download-btn {
+        width: 100%;
+        justify-content: center;
       }
 
       /* ========================================
@@ -1541,15 +1269,6 @@
           flex-direction: column;
           text-align: center;
         }
-
-        .course-header {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        #archive-news-toggle-btn {
-          font-size: var(--font-size-xl);
-        }
       }
 
       @media (max-width: 768px) {
@@ -1558,15 +1277,6 @@
           --spacing-2xl: 40px;
           --font-size-4xl: 2.5rem;
           --font-size-3xl: 2rem;
-        }
-
-        .news-filters {
-          flex-direction: column;
-          align-items: stretch;
-        }
-
-        .news-filter-group {
-          min-width: 100%;
         }
       }
 
@@ -1602,7 +1312,6 @@
         }
       }
 
-      /* ACCESSIBILITY IMPROVEMENTS */
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
@@ -1613,7 +1322,6 @@
         }
       }
 
-      /* Focus styles for accessibility */
       button:focus-visible,
       a:focus-visible,
       input:focus-visible,
@@ -1622,7 +1330,6 @@
         outline-offset: 2px;
       }
 
-      /* Skip to main content */
       .skip-link {
         position: absolute;
         top: -40px;
@@ -1640,6 +1347,15 @@
     </style>
   </head>
   <body>
+
+    <!-- PDF MODAL -->
+    <div id="pdfModal" class="pdf-modal">
+      <div class="pdf-modal-content">
+        <span class="close-pdf">&times;</span>
+        <iframe id="pdfFrame" src="" width="100%" height="100%" style="border: none;"></iframe>
+      </div>
+    </div>
+
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
     <header>
@@ -1678,7 +1394,7 @@
         </div>
       </section>
 
-      <section class="section">
+      <section id="schnuppern" class="section">
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">Schnupperkurs Eiskunstlaufen</h2>
@@ -1786,12 +1502,10 @@
               </p>
             </div>
           </div>
-
-
         </div>
       </section>
 
-      <section class="section" style="background-color: var(--white);">
+      <section id="mitgliedschaft" class="section" style="background-color: var(--white);">
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">Wie werde ich Mitglied?</h2>
@@ -1898,7 +1612,7 @@
         </div>
       </section>
 
-      <section class="section">
+      <section id="erwachsene" class="section">
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">Erwachsenenkunstlauf</h2>
@@ -1936,64 +1650,170 @@
         </div>
       </section>
 
-      <section class="news-section">
+      <!-- ========================================
+           TERMINE & INFOS DOWNLOADS SECTION
+           ======================================== -->
+      <section id="termine-infos" class="section downloads">
         <div class="container">
           <div class="section-header">
-            <h2 id="archive-news-toggle-btn">
-              Blogbeiträge<span id="archive-news-toggle-icon">▼</span>
-            </h2>
+            <h2 class="section-title">Termine &amp; Infos</h2>
           </div>
-          <div id="archive-news-wrapper" class="news-collapsed">
-            <div class="news-filters">
-              <div class="news-filter-group">
-                <label for="archive-news-search">Suchbegriff:</label>
-                <input
-                  type="text"
-                  id="archive-news-search"
-                  placeholder="Suche nach Stichwörtern..."
-                  oninput="handleArchiveNewsFilters()"
-                  value="#begrenzt"
-                />
-              </div>
+          <div class="download-grid">
 
-              <div class="news-filter-group">
-                <label for="date-slider">Zeitraum filtern (Wochen):</label>
-                <div class="range-slider-container">
-                  <input
-                    type="range"
-                    id="archive-news-date-slider-min"
-                    min="0"
-                    value="0"
-                    oninput="handleArchiveNewsFilters()"
-                  />
-                  <input
-                    type="range"
-                    id="archive-news-date-slider-max"
-                    min="0"
-                    value="100"
-                    oninput="handleArchiveNewsFilters()"
-                  />
-                </div>
-                <div id="archive-news-date-display">Ganze Zeitspanne</div>
-                <div id="archive-news-extra-text"></div>
+            <!-- 1: Regelung des Trainingsbetriebes -->
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
               </div>
+              <h3 class="download-title">Regelung des Trainingsbetriebes</h3>
+              <p class="download-description">
+                Regelung des Trainingsbetriebes der Kunstlaufabteilung des MERC.
+              </p>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Kunstlaufabteilung</span>
+              </div>
+              <div class="download-actions">
+                <a href="javascript:void(0)" onclick="openPdf('dokumente/kunstlauf/regelung-trainingsbetrieb.pdf')" class="btn btn-primary download-btn">
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </a>
+              </div>
+            </div>
 
-              <button
-                id="archive-news-reset-filters"
-                onclick="resetArchiveNewsFilters()"
-              >
-                Filter zurücksetzen
-              </button>
+            <!-- 2: Termine 2025/2026 und wichtige Infos -->
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-calendar-check"></i>
+              </div>
+              <h3 class="download-title">Termine 2025/2026 und wichtige Infos!</h3>
+              <p class="download-description">
+                Alle Termine der Saison 2025/2026 sowie wichtige Informationen auf einen Blick.
+              </p>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Saison 2025/2026</span>
+              </div>
+              <div class="download-actions">
+                <a href="javascript:void(0)" onclick="openPdf('dokumente/kunstlauf/termine-infos-2025-2026.pdf')" class="btn btn-primary download-btn">
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </a>
+              </div>
             </div>
-            <div class="content-section" id="archive-news-container">
-              <h3>Loading news...</h3>
+
+            <!-- 3: DEU- Lizenzgebühr (URL-Link) -->
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-link"></i>
+              </div>
+              <h3 class="download-title">DEU- Lizenzgebühr</h3>
+              <p class="download-description">
+                Aktuelle Informationen zur DEU-Lizenzgebühr auf der Website des Deutschen Eislauf-Verbandes.
+              </p>
+              <div class="download-meta">
+                <span>Externer Link</span>
+                <span>DEU</span>
+              </div>
+              <div class="download-actions">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary download-btn">
+                  <i class="fas fa-external-link-alt"></i>
+                  Zur Website
+                </a>
+              </div>
             </div>
+
+            <!-- 4: DEU- Sportpass (URL-Link) -->
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-id-card"></i>
+              </div>
+              <h3 class="download-title">DEU- Sportpass</h3>
+              <p class="download-description">
+                Informationen zum DEU-Sportpass auf der Website des Deutschen Eislauf-Verbandes.
+              </p>
+              <div class="download-meta">
+                <span>Externer Link</span>
+                <span>DEU</span>
+              </div>
+              <div class="download-actions">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary download-btn">
+                  <i class="fas fa-external-link-alt"></i>
+                  Zur Website
+                </a>
+              </div>
+            </div>
+
+            <!-- 5: Wettbewerbsstruktur -->
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Wettbewerbsstruktur</h3>
+              <p class="download-description">
+                Übersicht über die Wettbewerbsstruktur im Eiskunstlauf des MERC.
+              </p>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Wettbewerb</span>
+              </div>
+              <div class="download-actions">
+                <a href="javascript:void(0)" onclick="openPdf('dokumente/kunstlauf/wettbewerbsstruktur.pdf')" class="btn btn-primary download-btn">
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </a>
+              </div>
+            </div>
+
+            <!-- 6: Wettbewerbsinhalte -->
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Wettbewerbsinhalte</h3>
+              <p class="download-description">
+                Detaillierte Beschreibung der Inhalte und Anforderungen der Wettbewerbe.
+              </p>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Wettbewerb</span>
+              </div>
+              <div class="download-actions">
+                <a href="javascript:void(0)" onclick="openPdf('dokumente/kunstlauf/wettbewerbsinhalte.pdf')" class="btn btn-primary download-btn">
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </a>
+              </div>
+            </div>
+
+            <!-- 7: Durchführungsbestimmungen Novice -->
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Durchführungsbestimmungen Novice</h3>
+              <p class="download-description">
+                Bestimmungen zur Durchführung von Novice-Wettbewerben im Eiskunstlauf.
+              </p>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Novice</span>
+              </div>
+              <div class="download-actions">
+                <a href="javascript:void(0)" onclick="openPdf('dokumente/kunstlauf/durchfuehrungsbestimmungen-novice.pdf')" class="btn btn-primary download-btn">
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
+
     </main>
 
-  <footer>
+    <footer>
       <div class="container">
         <div class="footer-container">
           <div class="footer-about">
@@ -2043,8 +1863,37 @@
     </footer>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="EiskunstlaufBlogArchive/Kurzmeldungen-archive.js"></script>
     <script>
+      /* ========================================
+         PDF MODAL LOGIK
+         ======================================== */
+      const pdfModal = document.getElementById("pdfModal");
+      const pdfFrame = document.getElementById("pdfFrame");
+      const closePdf = document.querySelector(".close-pdf");
+
+      function openPdf(pdfUrl) {
+        pdfFrame.src = pdfUrl + "#toolbar=0";
+        pdfModal.style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
+
+      closePdf.onclick = () => {
+        pdfModal.style.display = "none";
+        pdfFrame.src = "";
+        document.body.style.overflow = "auto";
+      };
+
+      window.onclick = (event) => {
+        if (event.target == pdfModal) {
+          pdfModal.style.display = "none";
+          pdfFrame.src = "";
+          document.body.style.overflow = "auto";
+        }
+      };
+
+      /* ========================================
+         NAVIGATION
+         ======================================== */
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileMenu = document.querySelector(".mobile-menu");
       const overlay = document.querySelector(".overlay");
@@ -2077,20 +1926,21 @@
 
       mobileLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
-          if (link.getAttribute("href").startsWith("#")) {
+          if (link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
             closeMenu();
           }
         });
       });
 
-      // Close menu on Escape key
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
           closeMenu();
         }
       });
 
-      // Read More Toggle
+      /* ========================================
+         READ MORE TOGGLE
+         ======================================== */
       function toggleReadMore(contentId, btn) {
         const content = document.getElementById(contentId);
         const isExpanded = content.classList.contains("expanded");
@@ -2106,6 +1956,9 @@
         }
       }
 
+      /* ========================================
+         NAVIGATION TEMPLATES
+         ======================================== */
       function insertNavigationElements() {
         const template = document.getElementById("navigation-template1");
         const contactBtn = document.getElementById("contactBtn");
@@ -2114,34 +1967,25 @@
         const memberStandard = document.getElementById("memberStandard");
         const mobileCTAButtons = document.getElementById("mobileCTAButtons");
 
-        // Desktop Navigation
         const desktopNav = document.getElementById("pageElementsDesktop");
         if (template && desktopNav) {
           const clone = template.content.cloneNode(true);
           desktopNav.prepend(clone);
           const ul = desktopNav.querySelector("ul");
           if (ul) {
-            if (memberBtn) {
-              ul.append(memberBtn.content.cloneNode(true));
-            }
-            if (contactBtn) {
-              ul.append(contactBtn.content.cloneNode(true));
-            }
+            if (memberBtn) ul.append(memberBtn.content.cloneNode(true));
+            if (contactBtn) ul.append(contactBtn.content.cloneNode(true));
           }
         }
 
-        // Mobile Navigation
         if (template && mobileMenu) {
           const clone = template.content.cloneNode(true);
           mobileMenu.prepend(clone);
-          
-          // Add CTA buttons at the end
           if (mobileCTAButtons) {
             mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
           }
         }
 
-        // Footer Navigation
         const footerLinks = document.getElementById("footerLinksWithMenuElements");
         if (template && footerLinks) {
           const clone = template.content.cloneNode(true);
@@ -2161,7 +2005,6 @@
             const li = this.closest(".has-submenu");
             const isOpen = li.classList.contains("open");
             
-            // Close other open submenus
             mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
               if (item !== li) item.classList.remove("open");
             });
@@ -2172,19 +2015,17 @@
         });
       }
 
+      /* ========================================
+         SCROLL & FADE
+         ======================================== */
       const header = document.querySelector("header");
-      let lastScroll = 0;
 
       window.addEventListener("scroll", () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 100) {
+        if (window.pageYOffset > 100) {
           header.classList.add("scrolled");
         } else {
           header.classList.remove("scrolled");
         }
-        
-        lastScroll = currentScroll;
       });
 
       const fadeElements = document.querySelectorAll(".fade-in");
@@ -2206,195 +2047,12 @@
         observer.observe(element);
       });
 
-      // ========================================
-      // ARCHIVED NEWS LOGIC
-      // ========================================
-
-      let archiveNewsMinDate, archiveNewsMaxDate;
-
-      function initArchiveNewsFilters() {
-        // Expecting ARCHIVE_NEWS_LIST from external JS file
-        if (typeof ARCHIVE_NEWS_LIST === 'undefined') return;
-
-        const dates = ARCHIVE_NEWS_LIST.map((item) => parseDate(item.date))
-          .filter((d) => d !== null)
-          .sort((a, b) => a - b);
-
-        if (dates.length > 0) {
-          archiveNewsMinDate = dates[0];
-          archiveNewsMaxDate = dates[dates.length - 1];
-
-          const diffWeeks = Math.ceil(
-            (archiveNewsMaxDate - archiveNewsMinDate) /
-              (1000 * 60 * 60 * 24 * 7)
-          );
-
-          const sliderMin = document.getElementById(
-            "archive-news-date-slider-min"
-          );
-          const sliderMax = document.getElementById(
-            "archive-news-date-slider-max"
-          );
-
-          sliderMin.max = diffWeeks;
-          sliderMax.max = diffWeeks;
-          sliderMax.value = diffWeeks;
-        }
-      }
-
-      function parseDate(dateStr) {
-        if (!dateStr || dateStr === "N/A" || typeof dateStr !== "string")
-          return null;
-
-        const germanMatch = dateStr.match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/);
-        if (germanMatch) {
-          return new Date(
-            Number.parseInt(germanMatch[3]),
-            Number.parseInt(germanMatch[2]) - 1,
-            Number.parseInt(germanMatch[1])
-          );
-        }
-
-        const monthMap = {
-          januar: 0, january: 0, februar: 1, february: 1, märz: 2, march: 2,
-          april: 3, mai: 4, may: 4, juni: 5, june: 5, juli: 6, july: 6,
-          august: 7, september: 8, oktober: 9, october: 9, november: 10,
-          dezember: 11, december: 11,
-        };
-
-        const words = dateStr.toLowerCase().split(/[\s-]+/);
-        let year = words.find((w) => w.match(/^\d{4}$/));
-        let month = words.find((w) => monthMap.hasOwnProperty(w));
-
-        if (year && month !== undefined) {
-          return new Date(Number.parseInt(year), monthMap[month], 1);
-        }
-
-        return null;
-      }
-
-      function handleArchiveNewsFilters() {
-        if (typeof ARCHIVE_NEWS_LIST === 'undefined') return;
-
-        const sliderMin = document.getElementById("archive-news-date-slider-min");
-        const sliderMax = document.getElementById("archive-news-date-slider-max");
-        let searchTerm = document.getElementById("archive-news-search").value.toLowerCase();
-        const dateDisplay = document.getElementById("archive-news-date-display");
-
-        if (searchTerm === "#begrenzt") {
-          const validItems = ARCHIVE_NEWS_LIST.filter(
-            (item) => item.date && item.date !== "N/A"
-          );
-          const limitedList = validItems.slice(0, 3);
-          dateDisplay.textContent = "Nur aktuellste Beiträge";
-          document.getElementById("archive-news-extra-text").textContent =
-            "Im Suchfeld clicken um Beitragsfilter zu aktivieren";
-          renderArchiveNews(limitedList);
-          return;
-        }
-
-        document.getElementById("archive-news-extra-text").textContent = "";
-        let valMin = Number.parseInt(sliderMin.value);
-        let valMax = Number.parseInt(sliderMax.value);
-
-        if (valMin >= valMax) {
-          valMin = valMax - 1;
-          sliderMin.value = valMin;
-        }
-
-        const startDate = new Date(archiveNewsMinDate);
-        startDate.setDate(startDate.getDate() + valMin * 7);
-
-        const endDate = new Date(archiveNewsMinDate);
-        endDate.setDate(endDate.getDate() + valMax * 7);
-
-        dateDisplay.textContent = `${startDate.toLocaleDateString(
-          "de-DE"
-        )} bis ${endDate.toLocaleDateString("de-DE")}`;
-
-        let filteredNews = ARCHIVE_NEWS_LIST.filter((item) => {
-          const itemDate = parseDate(item.date);
-
-          const matchesSearch =
-            item.title.toLowerCase().includes(searchTerm) ||
-            item.text.toLowerCase().includes(searchTerm);
-
-          let matchesDate = false;
-          if (itemDate) {
-            matchesDate = itemDate >= startDate && itemDate <= endDate;
-          }
-
-          return matchesSearch && matchesDate;
-        });
-        renderArchiveNews(filteredNews);
-      }
-
-      function resetArchiveNewsFilters() {
-        const searchInput = document.getElementById("archive-news-search");
-        searchInput.value = "#begrenzt";
-        const sliderMin = document.getElementById("archive-news-date-slider-min");
-        const sliderMax = document.getElementById("archive-news-date-slider-max");
-        sliderMin.value = 0;
-        sliderMax.value = sliderMax.max;
-        handleArchiveNewsFilters();
-      }
-
-      function renderArchiveNews(list) {
-        const container = document.getElementById("archive-news-container");
-        container.innerHTML = "";
-
-        if (list.length === 0) {
-          container.innerHTML = "<p>Keine Berichte gefunden.</p>";
-          return;
-        }
-
-        list.forEach((item) => {
-          if (item.date != "N/A") {
-            const articleHtml = `
-            <div class="news-item fade-in visible">
-                <h3>${item.title}</h3>
-                <p><strong>${item.date}</strong></p>
-                <p>${item.text}</p>
-                <p><a href="${item.url}">Weiterlesen...</a></p>
-            </div>`;
-            container.insertAdjacentHTML("beforeend", articleHtml);
-          }
-        });
-      }
-
-      function toggleArchiveNewsVisibility() {
-        const toggleButton = document.getElementById("archive-news-toggle-btn");
-        const wrapper = document.getElementById("archive-news-wrapper");
-
-        if (!toggleButton || !wrapper) return;
-
-        initArchiveNewsFilters();
-
-        toggleButton.addEventListener("click", function () {
-          const isExpanding = wrapper.classList.contains("news-collapsed");
-          wrapper.classList.toggle("news-collapsed");
-          toggleButton.classList.toggle("active");
-
-          if (isExpanding) {
-            handleArchiveNewsFilters();
-            setTimeout(() => {
-              wrapper.classList.add("visible");
-            }, 10);
-          }
-        });
-      }
-
-      document.getElementById("archive-news-search").addEventListener("focus", function () {
-        if (this.value === "#begrenzt") {
-          this.value = "";
-        }
-      });
-
+      /* ========================================
+         INIT
+         ======================================== */
       document.addEventListener("DOMContentLoaded", function () {
-        // Initialize navigation
         insertNavigationElements();
         setupMobileSubmenus();
-        toggleArchiveNewsVisibility();
       });
 
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
