@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
   <template id="navigation-template1">
     <ul>
@@ -33,8 +33,21 @@
         </a>
         <ul class="submenu">
           <li><a href="eisschnelllauf.html#info">Informationen</a></li>
-          <li><a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a></li>
-          <li><a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a></li>
+          <li>
+            <a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#calendar-section">Kalendar</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#geschichte">Geschichte</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#berichte">Berichte</a>
+          </li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -48,11 +61,25 @@
           <li><a href="synchron.html#mitgliedschaft">Mitgliedschaft</a></li>
         </ul>
       </li>
+      <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+          Schnellzugriff
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
+        <ul class="submenu">
+          <li>
+            <a href="about.html?openBelegungsplan=true">Belegungspläne</a>
+          </li>
+          <li><a href="mitglieder.html#publicAnnouncements">Meldungen</a></li>
+        </ul>
+      </li>
     </ul>
   </template>
   <template id="memberBtn">
     <ul>
-      <li><a href="mitglieder.html" class="btn-header">Mitgliederbereich</a></li>
+      <li>
+        <a href="mitglieder.html" class="btn-header">Mitgliederbereich</a>
+      </li>
     </ul>
   </template>
   <template id="contactBtn">
@@ -108,7 +135,7 @@
         --gray-light: #e0e0e0;
         --gray-medium: #999999;
         --white: #ffffff;
-        
+
         /* Spacing System */
         --spacing-xs: 8px;
         --spacing-sm: 16px;
@@ -117,9 +144,10 @@
         --spacing-xl: 60px;
         --spacing-2xl: 80px;
         --spacing-3xl: 120px;
-        
+
         /* Typography */
-        --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --font-family:
+          "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         --font-family-accent: "Space Grotesk", monospace;
         --font-size-xs: 0.875rem;
         --font-size-sm: 1rem;
@@ -129,19 +157,19 @@
         --font-size-2xl: 2.5rem;
         --font-size-3xl: 3rem;
         --font-size-4xl: 4rem;
-        
+
         /* Layout */
         --border-radius-sm: 4px;
         --border-radius-md: 8px;
         --border-radius-lg: 12px;
         --max-width: 1300px;
         --header-height: 80px;
-        
+
         /* Transitions */
         --transition-fast: 0.15s ease;
         --transition-base: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         --transition-slow: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        
+
         /* Shadows */
         --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
         --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -258,7 +286,9 @@
       .fade-in {
         opacity: 0;
         transform: translateY(30px);
-        transition: opacity var(--transition-slow), transform var(--transition-slow);
+        transition:
+          opacity var(--transition-slow),
+          transform var(--transition-slow);
       }
 
       .fade-in.visible {
@@ -454,9 +484,9 @@
         padding: var(--spacing-xs) 0;
         z-index: 1002;
       }
-      
+
       .nav-desktop .has-submenu::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 100%;
         left: -10px;
@@ -680,7 +710,11 @@
          PAGE HERO
          ======================================== */
       .page-hero {
-        background: linear-gradient(135deg, var(--primary-color) 0%, #004dbf 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #004dbf 100%
+        );
         padding: 140px 0 var(--spacing-2xl);
         color: var(--white);
         text-align: center;
@@ -695,9 +729,17 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: 
-          radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-          radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        background-image:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          );
         pointer-events: none;
       }
 
@@ -1170,16 +1212,33 @@
         flex-shrink: 0;
       }
 
-      .place-1 { background: #FFD700; color: #5a4000; }
-      .place-2 { background: #C0C0C0; color: #3a3a3a; }
-      .place-3 { background: #CD7F32; color: #fff; }
-      .place-other { background: var(--light-bg); color: var(--text-dark); border: 1px solid var(--gray-light); }
+      .place-1 {
+        background: #ffd700;
+        color: #5a4000;
+      }
+      .place-2 {
+        background: #c0c0c0;
+        color: #3a3a3a;
+      }
+      .place-3 {
+        background: #cd7f32;
+        color: #fff;
+      }
+      .place-other {
+        background: var(--light-bg);
+        color: var(--text-dark);
+        border: 1px solid var(--gray-light);
+      }
 
       /* ========================================
          CONTACT CARD
          ======================================== */
       .contact-team-card {
-        background: linear-gradient(135deg, var(--primary-color) 0%, #004dbf 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #004dbf 100%
+        );
         border-radius: var(--border-radius-lg);
         padding: var(--spacing-xl);
         color: var(--white);
@@ -1208,8 +1267,8 @@
       }
 
       .contact-person-tag {
-        background: rgba(255,255,255,0.15);
-        border: 1px solid rgba(255,255,255,0.3);
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 20px;
         padding: 8px 16px;
         font-weight: 600;
@@ -1283,15 +1342,19 @@
     <header>
       <div class="container header-container">
         <a href="index.html" class="logo">
-          <img
-            src="images/Logo_MERC.gif"
-            alt="Mannheimer ERC Logo"
-          />
+          <img src="images/Logo_MERC.gif" alt="Mannheimer ERC Logo" />
           <span class="logo-text">Mannheimer ERC</span>
         </a>
-        <nav id="pageElementsDesktop" class="nav-desktop" aria-label="Hauptnavigation">
-        </nav>
-        <button class="mobile-toggle" aria-label="Menü öffnen" aria-expanded="false">
+        <nav
+          id="pageElementsDesktop"
+          class="nav-desktop"
+          aria-label="Hauptnavigation"
+        ></nav>
+        <button
+          class="mobile-toggle"
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -1325,8 +1388,16 @@
           <div class="section-header">
             <h2 class="section-title">Team New Horizons</h2>
             <p class="section-subtitle">
-              Das Synchronlaufen ist seit 2008 Teil des Mannheimer ERC und gehört organisatorisch zur Abteilung Eiskunstlauf. Mit dem Team New Horizons ist der MERC seit vielen Jahren im deutschen Synchroneiskunstlauf aktiv und startet regelmäßig bei nationalen und internationalen Wettbewerben.
-              Das Synchronlaufen beim MERC verbindet Leistungssport mit starkem Teamzusammenhalt und bietet engagierten Läuferinnen und Läufern die Möglichkeit, Teil eines motivierten und erfahrenen Teams zu werden. Im Mittelpunkt stehen Teamarbeit, Präzision und der gemeinsame sportliche Anspruch. Das Team-Motto lautet: „Vertrauen, Mut und Entschlossenheit".
+              Das Synchronlaufen ist seit 2008 Teil des Mannheimer ERC und
+              gehört organisatorisch zur Abteilung Eiskunstlauf. Mit dem Team
+              New Horizons ist der MERC seit vielen Jahren im deutschen
+              Synchroneiskunstlauf aktiv und startet regelmäßig bei nationalen
+              und internationalen Wettbewerben. Das Synchronlaufen beim MERC
+              verbindet Leistungssport mit starkem Teamzusammenhalt und bietet
+              engagierten Läuferinnen und Läufern die Möglichkeit, Teil eines
+              motivierten und erfahrenen Teams zu werden. Im Mittelpunkt stehen
+              Teamarbeit, Präzision und der gemeinsame sportliche Anspruch. Das
+              Team-Motto lautet: „Vertrauen, Mut und Entschlossenheit".
             </p>
           </div>
 
@@ -1340,8 +1411,9 @@
               </div>
               <div class="info-card-content">
                 <p>
-                  Team New Horizons läuft in der Kategorie <strong>Mixed Age</strong>. 
-                  Im Team trainieren Läuferinnen und Läufer im Alter von 
+                  Team New Horizons läuft in der Kategorie
+                  <strong>Mixed Age</strong>. Im Team trainieren Läuferinnen und
+                  Läufer im Alter von
                   <strong>12 bis 28 Jahren</strong> gemeinsam auf dem Eis.
                 </p>
               </div>
@@ -1356,13 +1428,15 @@
               </div>
               <div class="info-card-content">
                 <p>
-                  Das Training von Team New Horizons findet <strong>zweimal pro Woche</strong> 
-                  auf dem Eis statt, jeweils <strong>montags und sonntags</strong>. 
-                  Ergänzend dazu gehören Athletik-, Tanz- und Off-Ice-Einheiten fest zum 
+                  Das Training von Team New Horizons findet
+                  <strong>zweimal pro Woche</strong> auf dem Eis statt, jeweils
+                  <strong>montags und sonntags</strong>. Ergänzend dazu gehören
+                  Athletik-, Tanz- und Off-Ice-Einheiten fest zum
                   Trainingskonzept.
                 </p>
                 <p>
-                  (Die aktuellen Trainingszeiten sind dem jeweiligen Trainingsplan zu entnehmen)
+                  (Die aktuellen Trainingszeiten sind dem jeweiligen
+                  Trainingsplan zu entnehmen)
                 </p>
               </div>
             </div>
@@ -1376,8 +1450,9 @@
               </div>
               <div class="info-card-content">
                 <p>
-                  Zur Ausrüstung gehören <strong>Eiskunstlauf-Schlittschuhe</strong> und 
-                  <strong>Trainingsoutfits</strong> sowie für Wettkämpfe 
+                  Zur Ausrüstung gehören
+                  <strong>Eiskunstlauf-Schlittschuhe</strong> und
+                  <strong>Trainingsoutfits</strong> sowie für Wettkämpfe
                   <strong>einheitliche Teamkostüme</strong>.
                 </p>
               </div>
@@ -1387,7 +1462,7 @@
       </section>
 
       <!-- Mitgliedschaft Section -->
-      <section class="section" style="background-color: var(--white);">
+      <section class="section" style="background-color: var(--white)">
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">Wie werde ich Mitglied?</h2>
@@ -1396,10 +1471,20 @@
           <div class="content-section fade-in">
             <h3>Jetzt Teil von Team New Horizons werden!</h3>
             <p>
-              Du möchtest Teil von Team New Horizons werden? Klasse! Neue Läuferinnen und Läufer sind jederzeit willkommen. Voraussetzung für die Teilnahme sind grundlegende Eislauf- oder Eiskunstlaufkenntnisse sowie ein Mindestniveau der Kürklasse 8. Darüber hinaus legen wir Wert auf Teamfähigkeit, Verlässlichkeit und eine gute sportliche Grundfitness, da das Synchronlaufen vom gemeinsamen Arbeiten und gegenseitigem Vertrauen lebt.
+              Du möchtest Teil von Team New Horizons werden? Klasse! Neue
+              Läuferinnen und Läufer sind jederzeit willkommen. Voraussetzung
+              für die Teilnahme sind grundlegende Eislauf- oder
+              Eiskunstlaufkenntnisse sowie ein Mindestniveau der Kürklasse 8.
+              Darüber hinaus legen wir Wert auf Teamfähigkeit, Verlässlichkeit
+              und eine gute sportliche Grundfitness, da das Synchronlaufen vom
+              gemeinsamen Arbeiten und gegenseitigem Vertrauen lebt.
             </p>
             <p>
-              Der Einstieg ins Team erfolgt in mehreren Schritten. Nach der Kontaktaufnahme vereinbaren wir zunächst ein Probetraining, bei dem sich beide Seiten kennenlernen können. Im Anschluss findet eine gemeinsame Sichtung statt. Bei gegenseitigem Interesse erfolgt anschließend die Aufnahme in das Team New Horizons.
+              Der Einstieg ins Team erfolgt in mehreren Schritten. Nach der
+              Kontaktaufnahme vereinbaren wir zunächst ein Probetraining, bei
+              dem sich beide Seiten kennenlernen können. Im Anschluss findet
+              eine gemeinsame Sichtung statt. Bei gegenseitigem Interesse
+              erfolgt anschließend die Aufnahme in das Team New Horizons.
             </p>
           </div>
 
@@ -1413,7 +1498,11 @@
               </div>
               <div class="info-card-content">
                 <p>
-                  Die Saison gliedert sich in eine Choreografie- und Aufbauphase, die anschließende Wettkampfvorbereitung sowie die Teilnahme an nationalen und internationalen Wettbewerben. In der Off-Season liegt der Fokus auf Regeneration und gezielter Weiterentwicklung.
+                  Die Saison gliedert sich in eine Choreografie- und
+                  Aufbauphase, die anschließende Wettkampfvorbereitung sowie die
+                  Teilnahme an nationalen und internationalen Wettbewerben. In
+                  der Off-Season liegt der Fokus auf Regeneration und gezielter
+                  Weiterentwicklung.
                 </p>
               </div>
             </div>
@@ -1427,7 +1516,11 @@
               </div>
               <div class="info-card-content">
                 <p>
-                  Für die Teilnahme am Training von Team New Horizons ist eine Mitgliedschaft im Mannheimer ERC erforderlich. Zusätzlich fällt ein monatlicher Trainingsbeitrag an. Darüber hinaus können weitere Kosten entstehen, beispielsweise für Wettbewerbe, Wettkampfkleidung oder die Choreografie.
+                  Für die Teilnahme am Training von Team New Horizons ist eine
+                  Mitgliedschaft im Mannheimer ERC erforderlich. Zusätzlich
+                  fällt ein monatlicher Trainingsbeitrag an. Darüber hinaus
+                  können weitere Kosten entstehen, beispielsweise für
+                  Wettbewerbe, Wettkampfkleidung oder die Choreografie.
                 </p>
               </div>
             </div>
@@ -1435,43 +1528,69 @@
 
           <div class="alert-box alert-info fade-in">
             <p>
-              <strong>Zahlung der Beiträge:</strong> Die Mitgliedsbeiträge sind gem. aktueller 
-              Gebührenordnung jeweils zu Beginn eines neuen Jahres bis spätestens 31.03. zu leisten.
+              <strong>Zahlung der Beiträge:</strong> Die Mitgliedsbeiträge sind
+              gem. aktueller Gebührenordnung jeweils zu Beginn eines neuen
+              Jahres bis spätestens 31.03. zu leisten.
             </p>
           </div>
 
-          <div class="content-section fade-in" style="margin-top: var(--spacing-lg);">
+          <div
+            class="content-section fade-in"
+            style="margin-top: var(--spacing-lg)"
+          >
             <h3>Bankverbindung & Formulare</h3>
             <p>
-              Ein Lastschrift-Formular erhalten Sie in unserer Geschäftsstelle im 
-              Eissportzentrum Herzogenried oder hier:
+              Ein Lastschrift-Formular erhalten Sie in unserer Geschäftsstelle
+              im Eissportzentrum Herzogenried oder hier:
             </p>
-            <p style="color: var(--text-muted); margin-bottom: var(--spacing-sm);">
+            <p
+              style="color: var(--text-muted); margin-bottom: var(--spacing-sm)"
+            >
               <strong>Comerzbank Mannheim</strong>
             </p>
-            <p style="color: var(--text-muted); margin-bottom: var(--spacing-sm);">
+            <p
+              style="color: var(--text-muted); margin-bottom: var(--spacing-sm)"
+            >
               BIC: COBADEFFXXX
             </p>
-            <p style="color: var(--text-muted); margin-bottom: var(--spacing-sm);">
+            <p
+              style="color: var(--text-muted); margin-bottom: var(--spacing-sm)"
+            >
               Kunstlauf IBAN: DE51 6704 0031 0341 0958 00
             </p>
-            <p style="color: var(--text-muted);">
+            <p style="color: var(--text-muted)">
               Schnelllauf IBAN: DE24 6704 0031 0341 0958 01
             </p>
           </div>
 
           <div class="contact-team-card fade-in">
-            <h3><i class="fas fa-envelope" style="margin-right: 10px;"></i>Kontakt & Probetraining</h3>
+            <h3>
+              <i class="fas fa-envelope" style="margin-right: 10px"></i>Kontakt
+              & Probetraining
+            </h3>
             <p>
-              Melde dich gerne bei uns – wir vereinbaren ein unverbindliches Probetraining und freuen uns, dich kennenzulernen.
+              Melde dich gerne bei uns – wir vereinbaren ein unverbindliches
+              Probetraining und freuen uns, dich kennenzulernen.
             </p>
-            <p><strong style="opacity:1;">Ansprechpartnerinnen:</strong></p>
+            <p><strong style="opacity: 1">Ansprechpartnerinnen:</strong></p>
             <div class="contact-persons">
-              <span class="contact-person-tag"><i class="fas fa-user" style="margin-right:6px;"></i>Nicole Endress</span>
-              <span class="contact-person-tag"><i class="fas fa-user" style="margin-right:6px;"></i>Anja Pohlmann</span>
-              <span class="contact-person-tag"><i class="fas fa-user" style="margin-right:6px;"></i>Patricia Redinger</span>
+              <span class="contact-person-tag"
+                ><i class="fas fa-user" style="margin-right: 6px"></i>Nicole
+                Endress</span
+              >
+              <span class="contact-person-tag"
+                ><i class="fas fa-user" style="margin-right: 6px"></i>Anja
+                Pohlmann</span
+              >
+              <span class="contact-person-tag"
+                ><i class="fas fa-user" style="margin-right: 6px"></i>Patricia
+                Redinger</span
+              >
             </div>
-            <a href="mailto:teamnewhorizons@merc-online.de" class="contact-email-link">
+            <a
+              href="mailto:teamnewhorizons@merc-online.de"
+              class="contact-email-link"
+            >
               <i class="fas fa-envelope"></i>
               teamnewhorizons@merc-online.de
             </a>
@@ -1489,77 +1608,137 @@
           </div>
 
           <div id="erfolge-container" class="erfolge-collapsed">
-
             <div class="season-block fade-in visible">
               <div class="season-title">Saison 2024/2025</div>
               <div class="season-theme">„Girls Power"</div>
-              <div class="result-item"><span class="place place-other">5.</span> Dresden Cup 2025 (GER)</div>
-              <div class="result-item"><span class="place place-other">10.</span> Budapest Cup 2025 (HUN)</div>
+              <div class="result-item">
+                <span class="place place-other">5.</span> Dresden Cup 2025 (GER)
+              </div>
+              <div class="result-item">
+                <span class="place place-other">10.</span> Budapest Cup 2025
+                (HUN)
+              </div>
             </div>
 
             <div class="season-block fade-in visible">
               <div class="season-title">Saison 2023/2024</div>
               <div class="season-theme">„Game of Thrones"</div>
-              <div class="result-item"><span class="place place-other">11.</span> Dresden Cup 2024 (GER)</div>
-              <div class="result-item"><span class="place place-other">10.</span> Bavaria Cup 2024, Nürnberg (GER)</div>
+              <div class="result-item">
+                <span class="place place-other">11.</span> Dresden Cup 2024
+                (GER)
+              </div>
+              <div class="result-item">
+                <span class="place place-other">10.</span> Bavaria Cup 2024,
+                Nürnberg (GER)
+              </div>
             </div>
 
             <div class="season-block fade-in visible">
               <div class="season-title">Saison 2022/2023</div>
               <div class="season-theme">„Burlesque"</div>
-              <div class="result-item"><span class="place place-other">4.</span> Bavaria Cup 2023, Nürnberg (GER)</div>
+              <div class="result-item">
+                <span class="place place-other">4.</span> Bavaria Cup 2023,
+                Nürnberg (GER)
+              </div>
             </div>
 
             <div class="season-block fade-in visible">
               <div class="season-title">Saison 2021/2022</div>
-              <div class="season-theme">„Hansel &amp; Gretel: Witch Hunters"</div>
-              <div class="result-item"><span class="place place-3">3.</span> Cup of Neuss 2022 (GER)</div>
-              <div class="result-item"><span class="place place-3">3.</span> Deutsche Meisterschaft 2022 (GER)</div>
+              <div class="season-theme">
+                „Hansel &amp; Gretel: Witch Hunters"
+              </div>
+              <div class="result-item">
+                <span class="place place-3">3.</span> Cup of Neuss 2022 (GER)
+              </div>
+              <div class="result-item">
+                <span class="place place-3">3.</span> Deutsche Meisterschaft
+                2022 (GER)
+              </div>
             </div>
 
             <div class="season-block fade-in visible">
               <div class="season-title">Saison 2018/2019</div>
               <div class="season-theme">„Bird Set Free"</div>
-              <div class="result-item"><span class="place place-other">4.</span> Deutsche Meisterschaft 2019, Berlin (GER)</div>
-              <div class="result-item"><span class="place place-other">6.</span> Mozart Cup 2019, Salzburg (AUT)</div>
-              <div class="result-item"><span class="place place-2">2.</span> Dresden Cup 2019 (GER)</div>
-              <div class="result-item"><span class="place place-other">4.</span> Budapest Cup 2019 (HUN)</div>
+              <div class="result-item">
+                <span class="place place-other">4.</span> Deutsche Meisterschaft
+                2019, Berlin (GER)
+              </div>
+              <div class="result-item">
+                <span class="place place-other">6.</span> Mozart Cup 2019,
+                Salzburg (AUT)
+              </div>
+              <div class="result-item">
+                <span class="place place-2">2.</span> Dresden Cup 2019 (GER)
+              </div>
+              <div class="result-item">
+                <span class="place place-other">4.</span> Budapest Cup 2019
+                (HUN)
+              </div>
             </div>
 
             <div class="season-block fade-in visible">
               <div class="season-title">Saison 2017/2018</div>
-              <div class="result-item"><span class="place place-other">5.</span> Mozart Cup 2018, Salzburg (AUT)</div>
-              <div class="result-item"><span class="place place-1">1.</span> Hevelius Cup 2018, Danzig (POL)</div>
-              <div class="result-item"><span class="place place-3">3.</span> Lumière Cup 2018, Eindhoven (NED)</div>
-              <div class="result-item"><span class="place place-2">2.</span> NRW-Trophy 2018, Neuss (GER)</div>
+              <div class="result-item">
+                <span class="place place-other">5.</span> Mozart Cup 2018,
+                Salzburg (AUT)
+              </div>
+              <div class="result-item">
+                <span class="place place-1">1.</span> Hevelius Cup 2018, Danzig
+                (POL)
+              </div>
+              <div class="result-item">
+                <span class="place place-3">3.</span> Lumière Cup 2018,
+                Eindhoven (NED)
+              </div>
+              <div class="result-item">
+                <span class="place place-2">2.</span> NRW-Trophy 2018, Neuss
+                (GER)
+              </div>
             </div>
 
             <div class="season-block fade-in visible">
               <div class="season-title">Saison 2016/2017</div>
               <div class="season-theme">„Alice in Wonderland"</div>
-              <div class="result-item"><span class="place place-2">2.</span> Cup of Berlin 2017 (GER)</div>
-              <div class="result-item"><span class="place place-other">4.</span> NRW-Trophy 2017, Neuss (GER)</div>
-              <div class="result-item"><span class="place place-2">2.</span> Lumière Cup 2017, Eindhoven (NED)</div>
-              <div class="result-item"><span class="place place-other">4.</span> Budapest Cup 2017 (HUN)</div>
+              <div class="result-item">
+                <span class="place place-2">2.</span> Cup of Berlin 2017 (GER)
+              </div>
+              <div class="result-item">
+                <span class="place place-other">4.</span> NRW-Trophy 2017, Neuss
+                (GER)
+              </div>
+              <div class="result-item">
+                <span class="place place-2">2.</span> Lumière Cup 2017,
+                Eindhoven (NED)
+              </div>
+              <div class="result-item">
+                <span class="place place-other">4.</span> Budapest Cup 2017
+                (HUN)
+              </div>
             </div>
 
             <div class="season-block fade-in visible">
               <div class="season-title">Saison 2015/2016</div>
               <div class="season-theme">„The Great Gatsby"</div>
-              <div class="result-item"><span class="place place-1">1.</span> Baden-Württembergische Meisterschaften 2015 (GER)</div>
-              <div class="result-item"><span class="place place-1">1.</span> NRW-Trophy 2015 (GER)</div>
+              <div class="result-item">
+                <span class="place place-1">1.</span> Baden-Württembergische
+                Meisterschaften 2015 (GER)
+              </div>
+              <div class="result-item">
+                <span class="place place-1">1.</span> NRW-Trophy 2015 (GER)
+              </div>
             </div>
 
             <div class="season-block fade-in visible">
               <div class="season-title">Saison 2014/2015</div>
               <div class="season-theme">„James Bond"</div>
-              <div class="result-item"><span class="place place-other">4.</span> Swiss Cup 2014, Widnau (SUI)</div>
+              <div class="result-item">
+                <span class="place place-other">4.</span> Swiss Cup 2014, Widnau
+                (SUI)
+              </div>
             </div>
-
           </div>
         </div>
       </section>
-
     </main>
 
     <!-- Footer -->
@@ -1568,10 +1747,7 @@
         <div class="footer-container">
           <div class="footer-about">
             <div class="footer-logo">
-              <img
-                src="images/Logo_MERC.gif"
-                alt="Mannheimer ERC Logo"
-              />
+              <img src="images/Logo_MERC.gif" alt="Mannheimer ERC Logo" />
             </div>
             <p>
               Der Mannheimer ERC ist seit Jahrzehnten ein Begriff im Eissport
@@ -1579,7 +1755,11 @@
               Sportler jeden Alters.
             </p>
             <div class="footer-social">
-              <a href="https://www.instagram.com/merc_eiskunstlauf/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a
+                href="https://www.instagram.com/merc_eiskunstlauf/"
+                aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
             </div>
           </div>
 
@@ -1587,12 +1767,20 @@
             <h3 class="footer-title">Kontakt</h3>
             <ul>
               <li>
-                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-map-marker-alt"></i
+                ></span>
                 <span>Käthe-Kollwitz-Straße 23<br />D-68169 Mannheim</span>
               </li>
               <li>
-                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                <span><a href="mailto:office@merc-online.de">office@merc-online.de</a></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-envelope"></i
+                ></span>
+                <span
+                  ><a href="mailto:office@merc-online.de"
+                    >office@merc-online.de</a
+                  ></span
+                >
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-clock"></i></span>
@@ -1606,7 +1794,7 @@
           <p>&copy; 2026 Mannheimer ERC. Alle Rechte vorbehalten.</p>
           <p>
             <a href="impressum.html">Impressum</a>
-            <a href="datenschutz.html" style="margin-left: 20px;">Datenschutz</a>
+            <a href="datenschutz.html" style="margin-left: 20px">Datenschutz</a>
           </p>
         </div>
       </div>
@@ -1686,7 +1874,7 @@
         if (template && mobileMenu) {
           const clone = template.content.cloneNode(true);
           mobileMenu.prepend(clone);
-          
+
           // Add CTA buttons at the end
           if (mobileCTAButtons) {
             mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
@@ -1694,7 +1882,9 @@
         }
 
         // Footer Navigation
-        const footerLinks = document.getElementById("footerLinksWithMenuElements");
+        const footerLinks = document.getElementById(
+          "footerLinksWithMenuElements",
+        );
         if (template && footerLinks) {
           const clone = template.content.cloneNode(true);
           footerLinks.append(clone);
@@ -1706,18 +1896,20 @@
       }
 
       function setupMobileSubmenus() {
-        const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
+        const submenuParents = mobileMenu.querySelectorAll(
+          ".has-submenu > .submenu-toggle",
+        );
         submenuParents.forEach((toggle) => {
           toggle.addEventListener("click", function (e) {
             e.preventDefault();
             const li = this.closest(".has-submenu");
             const isOpen = li.classList.contains("open");
-            
+
             // Close other open submenus
             mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
               if (item !== li) item.classList.remove("open");
             });
-            
+
             li.classList.toggle("open");
             this.setAttribute("aria-expanded", String(!isOpen));
           });
@@ -1729,21 +1921,21 @@
 
       window.addEventListener("scroll", () => {
         const currentScroll = window.pageYOffset;
-        
+
         if (currentScroll > 100) {
           header.classList.add("scrolled");
         } else {
           header.classList.remove("scrolled");
         }
-        
+
         lastScroll = currentScroll;
       });
 
       const fadeElements = document.querySelectorAll(".fade-in");
-      
+
       const observerOptions = {
         threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
+        rootMargin: "0px 0px -50px 0px",
       };
 
       const observer = new IntersectionObserver((entries) => {
@@ -1774,7 +1966,7 @@
         }
       });
 
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           const href = this.getAttribute("href");
           if (href !== "#" && href !== "") {
@@ -1785,7 +1977,7 @@
               const targetPosition = target.offsetTop - headerHeight;
               window.scrollTo({
                 top: targetPosition,
-                behavior: "smooth"
+                behavior: "smooth",
               });
             }
           }

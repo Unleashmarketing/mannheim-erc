@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
   <template id="navigation-template1">
     <ul>
@@ -34,8 +34,21 @@
         </a>
         <ul class="submenu">
           <li><a href="eisschnelllauf.html#info">Informationen</a></li>
-          <li><a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a></li>
-          <li><a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a></li>
+          <li>
+            <a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#calendar-section">Kalendar</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#geschichte">Geschichte</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#berichte">Berichte</a>
+          </li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -49,11 +62,25 @@
           <li><a href="synchron.html#mitgliedschaft">Mitgliedschaft</a></li>
         </ul>
       </li>
+      <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+          Schnellzugriff
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
+        <ul class="submenu">
+          <li>
+            <a href="about.html?openBelegungsplan=true">Belegungspläne</a>
+          </li>
+          <li><a href="mitglieder.html#publicAnnouncements">Meldungen</a></li>
+        </ul>
+      </li>
     </ul>
   </template>
   <template id="memberBtn">
     <ul>
-      <li><a href="mitglieder.html" class="btn-header">Mitgliederbereich</a></li>
+      <li>
+        <a href="mitglieder.html" class="btn-header">Mitgliederbereich</a>
+      </li>
     </ul>
   </template>
   <template id="contactBtn">
@@ -109,7 +136,7 @@
         --gray-light: #e0e0e0;
         --gray-medium: #999999;
         --white: #ffffff;
-        
+
         /* Spacing System */
         --spacing-xs: 8px;
         --spacing-sm: 16px;
@@ -118,9 +145,10 @@
         --spacing-xl: 60px;
         --spacing-2xl: 80px;
         --spacing-3xl: 120px;
-        
+
         /* Typography */
-        --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --font-family:
+          "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         --font-family-accent: "Space Grotesk", monospace;
         --font-size-xs: 0.875rem;
         --font-size-sm: 1rem;
@@ -130,19 +158,19 @@
         --font-size-2xl: 2.5rem;
         --font-size-3xl: 3rem;
         --font-size-4xl: 4rem;
-        
+
         /* Layout */
         --border-radius-sm: 4px;
         --border-radius-md: 8px;
         --border-radius-lg: 12px;
         --max-width: 1300px;
         --header-height: 80px;
-        
+
         /* Transitions */
         --transition-fast: 0.15s ease;
         --transition-base: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         --transition-slow: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        
+
         /* Shadows */
         --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
         --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -259,7 +287,9 @@
       .fade-in {
         opacity: 0;
         transform: translateY(30px);
-        transition: opacity var(--transition-slow), transform var(--transition-slow);
+        transition:
+          opacity var(--transition-slow),
+          transform var(--transition-slow);
       }
 
       .fade-in.visible {
@@ -455,9 +485,9 @@
         padding: var(--spacing-xs) 0;
         z-index: 1002;
       }
-      
+
       .nav-desktop .has-submenu::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 100%;
         left: -10px;
@@ -688,7 +718,7 @@
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0,0,0,0.8);
+        background-color: rgba(0, 0, 0, 0.8);
         backdrop-filter: blur(5px);
       }
 
@@ -723,7 +753,11 @@
          PAGE HERO
          ======================================== */
       .page-hero {
-        background: linear-gradient(135deg, var(--primary-color) 0%, #004dbf 100%);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #004dbf 100%
+        );
         padding: 140px 0 var(--spacing-2xl);
         color: var(--white);
         text-align: center;
@@ -738,9 +772,17 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: 
-          radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-          radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        background-image:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          );
         pointer-events: none;
       }
 
@@ -1339,12 +1381,17 @@
     </style>
   </head>
   <body>
-
     <!-- PDF MODAL -->
     <div id="pdfModal" class="pdf-modal">
       <div class="pdf-modal-content">
         <span class="close-pdf">&times;</span>
-        <iframe id="pdfFrame" src="" width="100%" height="100%" style="border: none;"></iframe>
+        <iframe
+          id="pdfFrame"
+          src=""
+          width="100%"
+          height="100%"
+          style="border: none"
+        ></iframe>
       </div>
     </div>
 
@@ -1353,15 +1400,19 @@
     <header>
       <div class="container header-container">
         <a href="index.html" class="logo">
-          <img
-            src="images/Logo_MERC.gif"
-            alt="Mannheimer ERC Logo"
-          />
+          <img src="images/Logo_MERC.gif" alt="Mannheimer ERC Logo" />
           <span class="logo-text">Mannheimer ERC</span>
         </a>
-        <nav id="pageElementsDesktop" class="nav-desktop" aria-label="Hauptnavigation">
-        </nav>
-        <button class="mobile-toggle" aria-label="Menü öffnen" aria-expanded="false">
+        <nav
+          id="pageElementsDesktop"
+          class="nav-desktop"
+          aria-label="Hauptnavigation"
+        ></nav>
+        <button
+          class="mobile-toggle"
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -1394,13 +1445,14 @@
 
           <div class="alert-box alert-danger fade-in">
             <p>
-              <strong>Wichtig:</strong> Wenn Ihr Kind einfach nur Eislaufen lernen möchte, 
-              dann ist dieser Kurs nicht der Richtige. Wir suchen bewegungstalentierte Kinder 
-              im Alter von 3 bis 7 Jahren, die die Sportart <strong>Eiskunstlaufen</strong> 
+              <strong>Wichtig:</strong> Wenn Ihr Kind einfach nur Eislaufen
+              lernen möchte, dann ist dieser Kurs nicht der Richtige. Wir suchen
+              bewegungstalentierte Kinder im Alter von 3 bis 7 Jahren, die die
+              Sportart <strong>Eiskunstlaufen</strong>
               ausprobieren möchten ohne Vereinsmitglied zu sein.
             </p>
           </div>
-          
+
           <div class="info-grid">
             <div class="info-card fade-in">
               <div class="info-card-header">
@@ -1411,37 +1463,69 @@
               </div>
               <div class="info-card-content">
                 <p>
-                  Unser Schnupperkurs richtet sich an bewegungsfreudige und sportlich interessierte Kinder im Alter von 3 bis 7 Jahren, die neugierig auf die faszinierende Welt des Eiskunstlaufens sind und diese besondere Sportart unverbindlich kennenlernen möchten – ganz ohne sofortige Vereinsmitgliedschaft.
+                  Unser Schnupperkurs richtet sich an bewegungsfreudige und
+                  sportlich interessierte Kinder im Alter von 3 bis 7 Jahren,
+                  die neugierig auf die faszinierende Welt des Eiskunstlaufens
+                  sind und diese besondere Sportart unverbindlich kennenlernen
+                  möchten – ganz ohne sofortige Vereinsmitgliedschaft.
                 </p>
                 <div class="read-more-content" id="alter-read-more">
                   <p>
-                    Angesprochen werden insbesondere Kinder mit Freude an Bewegung, Rhythmusgefühl und Koordination, die Spaß daran haben, Neues auszuprobieren und sich spielerisch auf dem Eis weiterzuentwickeln. Der Kurs ist bewusst als Einstieg in den Eiskunstlauf konzipiert und nicht als reiner Eislauf-Lernkurs.
+                    Angesprochen werden insbesondere Kinder mit Freude an
+                    Bewegung, Rhythmusgefühl und Koordination, die Spaß daran
+                    haben, Neues auszuprobieren und sich spielerisch auf dem Eis
+                    weiterzuentwickeln. Der Kurs ist bewusst als Einstieg in den
+                    Eiskunstlauf konzipiert und nicht als reiner
+                    Eislauf-Lernkurs.
                   </p>
                   <p>
-                    Unser Ziel ist es, frühzeitig Talente zu entdecken und den Kindern einen ersten Zugang zu einer Sportart zu ermöglichen, die Körpergefühl, Konzentration und Selbstvertrauen gleichermaßen fördert.
+                    Unser Ziel ist es, frühzeitig Talente zu entdecken und den
+                    Kindern einen ersten Zugang zu einer Sportart zu
+                    ermöglichen, die Körpergefühl, Konzentration und
+                    Selbstvertrauen gleichermaßen fördert.
                   </p>
                 </div>
-                <button class="read-more-toggle" onclick="toggleReadMore('alter-read-more', this)" aria-expanded="false">
+                <button
+                  class="read-more-toggle"
+                  onclick="toggleReadMore('alter-read-more', this)"
+                  aria-expanded="false"
+                >
                   Mehr lesen <i class="fas fa-chevron-down"></i>
                 </button>
               </div>
-            </div> 
+            </div>
           </div>
 
-          <div class="alert-box alert-info fade-in" style="margin-top: var(--spacing-lg);">
+          <div
+            class="alert-box alert-info fade-in"
+            style="margin-top: var(--spacing-lg)"
+          >
             <p>
-              <strong>Bewerbung:</strong> Sollte Ihre Kinder Interesse am Eiskunstlaufen haben, 
-              dann können Sie sich für Ihre Kinder bewerben. Das Formular senden Sie bitte 
-              ausgefüllt an folgende E-Mail Adresse: 
-              <a href="/cdn-cgi/l/email-protection#82ede4e4ebe1e7c2efe7f0e1afedeceeebece7ace6e7" style="color: var(--primary-color); font-weight: 600;"><span class="__cf_email__" data-cfemail="0e616868676d6b4e636b7c6d2361606267606b206a6b">[email&#160;protected]</span></a>
+              <strong>Bewerbung:</strong> Sollte Ihre Kinder Interesse am
+              Eiskunstlaufen haben, dann können Sie sich für Ihre Kinder
+              bewerben. Das Formular senden Sie bitte ausgefüllt an folgende
+              E-Mail Adresse:
+              <a
+                href="/cdn-cgi/l/email-protection#82ede4e4ebe1e7c2efe7f0e1afedeceeebece7ace6e7"
+                style="color: var(--primary-color); font-weight: 600"
+                ><span
+                  class="__cf_email__"
+                  data-cfemail="0e616868676d6b4e636b7c6d2361606267606b206a6b"
+                  >[email&#160;protected]</span
+                ></a
+              >
             </p>
-            <p style="margin-top: var(--spacing-md); margin-bottom: 0;">
-              <strong>Hinweis:</strong> Bitte beachten Sie, dass wir keine E-Mails beantworten können. 
-              Sie bekommen eine Nachricht, wenn Ihr Kind für den Schnupperkurs angenommen wurde.
+            <p style="margin-top: var(--spacing-md); margin-bottom: 0">
+              <strong>Hinweis:</strong> Bitte beachten Sie, dass wir keine
+              E-Mails beantworten können. Sie bekommen eine Nachricht, wenn Ihr
+              Kind für den Schnupperkurs angenommen wurde.
             </p>
           </div>
 
-          <div class="info-grid info-grid-two" style="margin-top: var(--spacing-lg);">
+          <div
+            class="info-grid info-grid-two"
+            style="margin-top: var(--spacing-lg)"
+          >
             <div class="info-card fade-in">
               <div class="info-card-header">
                 <div class="info-card-icon">
@@ -1469,41 +1553,58 @@
               <div class="info-card-content">
                 <ul>
                   <li>Erforderlich: Eiskunstlaufschlittschuhe</li>
-                  <li>Leihschlittschuhe über den vereinseigenen Schlittschuhverleih möglich</li>
-                  <li>Gebühren gemäß aktueller Gebührenordnung des Mannheimer ERC</li>
+                  <li>
+                    Leihschlittschuhe über den vereinseigenen
+                    Schlittschuhverleih möglich
+                  </li>
+                  <li>
+                    Gebühren gemäß aktueller Gebührenordnung des Mannheimer ERC
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <div class="content-section fade-in" style="margin-top: var(--spacing-lg);">
+          <div
+            class="content-section fade-in"
+            style="margin-top: var(--spacing-lg)"
+          >
             <h3>Schnupperkurse – Saison 2026/2027</h3>
-            <p style="color: var(--primary-color); font-weight: 600; margin-bottom: var(--spacing-lg);">
-              Die Trainingszeiten der Schnupperkurse sind immer mittwochs und samstags während 
-              des MERC-Anfängertrainings.
+            <p
+              style="
+                color: var(--primary-color);
+                font-weight: 600;
+                margin-bottom: var(--spacing-lg);
+              "
+            >
+              Die Trainingszeiten der Schnupperkurse sind immer mittwochs und
+              samstags während des MERC-Anfängertrainings.
             </p>
-            <p style="font-style: italic; margin-bottom: var(--spacing-lg);">
+            <p style="font-style: italic; margin-bottom: var(--spacing-lg)">
               Bitte beachten Sie auch immer die aktuellen Belegungspläne.
             </p>
-            
+
             <div class="alert-box alert-danger">
               <p>
-                <strong>Ausgebucht:</strong> Leider sind für die aktuelle Saison 2026/2027 bereits 
-                alle Schnupperkurse vollständig belegt. Wir informieren Sie, sobald neue Plätze 
-                verfügbar sind oder die Termine für die nächste Saison feststehen.
+                <strong>Ausgebucht:</strong> Leider sind für die aktuelle Saison
+                2026/2027 bereits alle Schnupperkurse vollständig belegt. Wir
+                informieren Sie, sobald neue Plätze verfügbar sind oder die
+                Termine für die nächste Saison feststehen.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="mitgliedschaft" class="section" style="background-color: var(--white);">
+      <section
+        id="mitgliedschaft"
+        class="section"
+        style="background-color: var(--white)"
+      >
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">Wie werde ich Mitglied?</h2>
-            <p class="section-subtitle">
-              Breitensport/ Leistungssport
-            </p>
+            <p class="section-subtitle">Breitensport/ Leistungssport</p>
           </div>
           <div class="info-grid">
             <div class="info-card fade-in">
@@ -1515,10 +1616,12 @@
               </div>
               <div class="info-card-content">
                 <p>
-                  Aufnahmeanträge sind während der Geschäftszeiten in der Geschäftsstelle 
-                  des MERC erhältlich.
+                  Aufnahmeanträge sind während der Geschäftszeiten in der
+                  Geschäftsstelle des MERC erhältlich.
                 </p>
-                <p><strong>Eine einmalige Aufnahmegebühr wird fällig.</strong></p>
+                <p>
+                  <strong>Eine einmalige Aufnahmegebühr wird fällig.</strong>
+                </p>
               </div>
             </div>
 
@@ -1531,11 +1634,14 @@
               </div>
               <div class="info-card-content">
                 <p>
-                  Auch ist bei Eintritt in den Verein die Mitgliedsgebühr für das erste Jahr 
-                  sofort fällig und per EC-Karte zu bezahlen.
+                  Auch ist bei Eintritt in den Verein die Mitgliedsgebühr für
+                  das erste Jahr sofort fällig und per EC-Karte zu bezahlen.
                 </p>
                 <p>
-                  <strong>Die Höhe der Mitgliedsbeiträge finden Sie in der aktuellen Gebührenordnung.</strong>
+                  <strong
+                    >Die Höhe der Mitgliedsbeiträge finden Sie in der aktuellen
+                    Gebührenordnung.</strong
+                  >
                 </p>
               </div>
             </div>
@@ -1549,12 +1655,13 @@
               </div>
               <div class="info-card-content">
                 <p>
-                  <strong>Bei Aufnahme eines minderjährigen Kindes</strong> muss ein 
-                  Erziehungsberechtigter gleichzeitig Mitglied werden (passives Mitglied).
+                  <strong>Bei Aufnahme eines minderjährigen Kindes</strong> muss
+                  ein Erziehungsberechtigter gleichzeitig Mitglied werden
+                  (passives Mitglied).
                 </p>
                 <p>
-                  Die passive und Förder-Mitgliedschaft dient der Förderung des Eiskunstlaufens 
-                  und Eisschnelllaufens im Mannheimer ERC.
+                  Die passive und Förder-Mitgliedschaft dient der Förderung des
+                  Eiskunstlaufens und Eisschnelllaufens im Mannheimer ERC.
                 </p>
               </div>
             </div>
@@ -1563,41 +1670,52 @@
           <div class="content-section fade-in">
             <h3>Aktive Mitgliedschaft</h3>
             <p>
-              Die aktive Mitgliedschaft erlaubt gem. den aktuellen Abteilungsordnungen und/oder 
-              sonstigen Regelungen die Nutzung aller Trainings-Angebote des Vereins während der 
-              Hauptsaison, Stimmrecht bei Versammlungen (für volljährige Mitglieder), sowie alle 
-              übrigen Vereinsangebote.
+              Die aktive Mitgliedschaft erlaubt gem. den aktuellen
+              Abteilungsordnungen und/oder sonstigen Regelungen die Nutzung
+              aller Trainings-Angebote des Vereins während der Hauptsaison,
+              Stimmrecht bei Versammlungen (für volljährige Mitglieder), sowie
+              alle übrigen Vereinsangebote.
             </p>
-            <p style="margin-top: var(--spacing-md);">
-              Sie umfasst das Stimmrecht bei Versammlungen (für volljährige Mitglieder), sowie 
-              alle übrigen Vereinsangeboten, jedoch nicht die Nutzung von Trainingsangeboten 
-              auf dem Eis oder außerhalb.
+            <p style="margin-top: var(--spacing-md)">
+              Sie umfasst das Stimmrecht bei Versammlungen (für volljährige
+              Mitglieder), sowie alle übrigen Vereinsangeboten, jedoch nicht die
+              Nutzung von Trainingsangeboten auf dem Eis oder außerhalb.
             </p>
           </div>
 
           <div class="alert-box alert-info fade-in">
             <p>
-              <strong>Zahlung der Beiträge:</strong> Die Mitgliedsbeiträge sind gem. aktueller 
-              Gebührenordnung jeweils zu Beginn eines neuen Jahres bis spätestens 31.03. zu leisten.
+              <strong>Zahlung der Beiträge:</strong> Die Mitgliedsbeiträge sind
+              gem. aktueller Gebührenordnung jeweils zu Beginn eines neuen
+              Jahres bis spätestens 31.03. zu leisten.
             </p>
           </div>
 
-          <div class="content-section fade-in" style="margin-top: var(--spacing-lg);">
+          <div
+            class="content-section fade-in"
+            style="margin-top: var(--spacing-lg)"
+          >
             <h3>Bankverbindung & Formulare</h3>
-            <p style="margin-bottom: var(--spacing-md);">
-              Ein Lastschrift-Formular erhalten Sie in unserer Geschäftsstelle im 
-              Eissportzentrum Herzogenried oder hier:
+            <p style="margin-bottom: var(--spacing-md)">
+              Ein Lastschrift-Formular erhalten Sie in unserer Geschäftsstelle
+              im Eissportzentrum Herzogenried oder hier:
             </p>
-            <p style="color: var(--text-muted); margin-bottom: var(--spacing-sm);">
+            <p
+              style="color: var(--text-muted); margin-bottom: var(--spacing-sm)"
+            >
               <strong>Comerzbank Mannheim</strong>
             </p>
-            <p style="color: var(--text-muted); margin-bottom: var(--spacing-sm);">
+            <p
+              style="color: var(--text-muted); margin-bottom: var(--spacing-sm)"
+            >
               BIC: COBADEFFXXX
             </p>
-            <p style="color: var(--text-muted); margin-bottom: var(--spacing-sm);">
+            <p
+              style="color: var(--text-muted); margin-bottom: var(--spacing-sm)"
+            >
               Kunstlauf IBAN: DE51 6704 0031 0341 0958 00
             </p>
-            <p style="color: var(--text-muted);">
+            <p style="color: var(--text-muted)">
               Schnelllauf IBAN: DE24 6704 0031 0341 0958 01
             </p>
           </div>
@@ -1615,10 +1733,12 @@
 
           <div class="content-section fade-in">
             <p>
-              Der MERC bietet eislaufbegeisterten Erwachsenen in dieser Saison die Gelegenheit 
-              über das Eis zu gleiten. Im so genannten Erwachsenenlauf stehen sogar Trainerinnen 
-              und Trainer für Privatstunden bereit. Ob Sie gerne Sprünge und Pirouetten lernen 
-              möchten oder auf dem Eis das Tanzbein schwingen, schauen Sie doch einfach mal vorbei.
+              Der MERC bietet eislaufbegeisterten Erwachsenen in dieser Saison
+              die Gelegenheit über das Eis zu gleiten. Im so genannten
+              Erwachsenenlauf stehen sogar Trainerinnen und Trainer für
+              Privatstunden bereit. Ob Sie gerne Sprünge und Pirouetten lernen
+              möchten oder auf dem Eis das Tanzbein schwingen, schauen Sie doch
+              einfach mal vorbei.
             </p>
           </div>
 
@@ -1634,9 +1754,10 @@
             </div>
           </div>
 
-          <div class="alert-box fade-in" style="margin-top: var(--spacing-lg);">
+          <div class="alert-box fade-in" style="margin-top: var(--spacing-lg)">
             <p>
-              <strong>Wichtig:</strong> Bitte beachten Sie auch die Aushänge im Eislaufzentrum!
+              <strong>Wichtig:</strong> Bitte beachten Sie auch die Aushänge im
+              Eislaufzentrum!
             </p>
           </div>
         </div>
@@ -1651,7 +1772,6 @@
             <h2 class="section-title">Termine &amp; Infos</h2>
           </div>
           <div class="download-grid">
-
             <!-- 1: Regelung des Trainingsbetriebes -->
             <div class="download-card fade-in">
               <div class="download-icon">
@@ -1663,7 +1783,15 @@
                 <span>Kunstlaufabteilung</span>
               </div>
               <div class="download-actions">
-                <a href="javascript:void(0)" onclick="openPdf('dokumente/eiskunstlauf/regelung_trainingsbetrieb_112024.pdf')" class="btn btn-primary download-btn">
+                <a
+                  href="javascript:void(0)"
+                  onclick="
+                    openPdf(
+                      'dokumente/eiskunstlauf/regelung_trainingsbetrieb_112024.pdf',
+                    )
+                  "
+                  class="btn btn-primary download-btn"
+                >
                   <i class="fas fa-eye"></i>
                   Ansehen
                 </a>
@@ -1675,13 +1803,23 @@
               <div class="download-icon">
                 <i class="fas fa-calendar-check"></i>
               </div>
-              <h3 class="download-title">Termine 2025/2026 und wichtige Infos!</h3>
+              <h3 class="download-title">
+                Termine 2025/2026 und wichtige Infos!
+              </h3>
               <div class="download-meta">
                 <span>PDF</span>
                 <span>Saison 2025/2026</span>
               </div>
               <div class="download-actions">
-                <a href="javascript:void(0)" onclick="openPdf('dokumente/eiskunstlauf/20260214-termine_und_infos_2025_2026.pdf')" class="btn btn-primary download-btn">
+                <a
+                  href="javascript:void(0)"
+                  onclick="
+                    openPdf(
+                      'dokumente/eiskunstlauf/20260214-termine_und_infos_2025_2026.pdf',
+                    )
+                  "
+                  class="btn btn-primary download-btn"
+                >
                   <i class="fas fa-eye"></i>
                   Ansehen
                 </a>
@@ -1699,7 +1837,12 @@
                 <span>DEU</span>
               </div>
               <div class="download-actions">
-                <a href="https://eislauf-union.de/de/sportpaesse-lizenzen/535-läuferlizenz" target="_blank" rel="noopener noreferrer" class="btn btn-primary download-btn">
+                <a
+                  href="https://eislauf-union.de/de/sportpaesse-lizenzen/535-läuferlizenz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-primary download-btn"
+                >
                   <i class="fas fa-external-link-alt"></i>
                   Zur Website
                 </a>
@@ -1717,7 +1860,12 @@
                 <span>DEU</span>
               </div>
               <div class="download-actions">
-                <a href="https://eislauf-union.de/de/sportpaesse-lizenzen/484-sportpaesse?jsn_mobilize_preview=1/wp-content/plugins/cherry-plugin/admin/css/cherry-admin-plugin.css" target="_blank" rel="noopener noreferrer" class="btn btn-primary download-btn">
+                <a
+                  href="https://eislauf-union.de/de/sportpaesse-lizenzen/484-sportpaesse?jsn_mobilize_preview=1/wp-content/plugins/cherry-plugin/admin/css/cherry-admin-plugin.css"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-primary download-btn"
+                >
                   <i class="fas fa-external-link-alt"></i>
                   Zur Website
                 </a>
@@ -1735,7 +1883,15 @@
                 <span>Wettbewerb</span>
               </div>
               <div class="download-actions">
-                <a href="javascript:void(0)" onclick="openPdf('dokumente/eiskunstlauf/2025-26_ebw_wettbewerbsstruktur_250730.pdf')" class="btn btn-primary download-btn">
+                <a
+                  href="javascript:void(0)"
+                  onclick="
+                    openPdf(
+                      'dokumente/eiskunstlauf/2025-26_ebw_wettbewerbsstruktur_250730.pdf',
+                    )
+                  "
+                  class="btn btn-primary download-btn"
+                >
                   <i class="fas fa-eye"></i>
                   Ansehen
                 </a>
@@ -1753,7 +1909,15 @@
                 <span>Wettbewerb</span>
               </div>
               <div class="download-actions">
-                <a href="javascript:void(0)" onclick="openPdf('dokumente/eiskunstlauf/2025-26_ebw_wettbewerbsinhalte_250730.pdf')" class="btn btn-primary download-btn">
+                <a
+                  href="javascript:void(0)"
+                  onclick="
+                    openPdf(
+                      'dokumente/eiskunstlauf/2025-26_ebw_wettbewerbsinhalte_250730.pdf',
+                    )
+                  "
+                  class="btn btn-primary download-btn"
+                >
                   <i class="fas fa-eye"></i>
                   Ansehen
                 </a>
@@ -1771,17 +1935,23 @@
                 <span>Novice</span>
               </div>
               <div class="download-actions">
-                <a href="javascript:void(0)" onclick="openPdf('dokumente/eiskunstlauf/dfbest_dkbek_empfehlungen_novice_final.pdf')" class="btn btn-primary download-btn">
+                <a
+                  href="javascript:void(0)"
+                  onclick="
+                    openPdf(
+                      'dokumente/eiskunstlauf/dfbest_dkbek_empfehlungen_novice_final.pdf',
+                    )
+                  "
+                  class="btn btn-primary download-btn"
+                >
                   <i class="fas fa-eye"></i>
                   Ansehen
                 </a>
               </div>
             </div>
-
           </div>
         </div>
       </section>
-
     </main>
 
     <footer>
@@ -1789,10 +1959,7 @@
         <div class="footer-container">
           <div class="footer-about">
             <div class="footer-logo">
-              <img
-                src="images/Logo_MERC.gif"
-                alt="Mannheimer ERC Logo"
-              />
+              <img src="images/Logo_MERC.gif" alt="Mannheimer ERC Logo" />
             </div>
             <p>
               Der Mannheimer ERC ist seit Jahrzehnten ein Begriff im Eissport
@@ -1800,7 +1967,11 @@
               Sportler jeden Alters.
             </p>
             <div class="footer-social">
-              <a href="https://www.instagram.com/merc_eiskunstlauf/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a
+                href="https://www.instagram.com/merc_eiskunstlauf/"
+                aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
             </div>
           </div>
 
@@ -1808,16 +1979,21 @@
             <h3 class="footer-title">Kontakt</h3>
             <ul>
               <li>
-                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-map-marker-alt"></i
+                ></span>
                 <span>Käthe-Kollwitz-Straße 23<br />D-68169 Mannheim</span>
               </li>
               <li>
-                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-envelope"></i
+                ></span>
                 <span
                   ><a href="mailto:office@merc-online.de"
                     >office@merc-online.de</a
                   ></span
-                >              </li>
+                >
+              </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-clock"></i></span>
                 <span>Di: 16:00 - 18:00 Uhr<br />Sa: 10:00 - 12:00 Uhr</span>
@@ -1830,26 +2006,22 @@
           <p>© 2026 Mannheimer ERC. Alle Rechte vorbehalten.</p>
           <p>
             <a href="impressum.html">Impressum</a>
-            <a href="datenschutz.html" style="margin-left: 20px;">Datenschutz</a>
+            <a href="datenschutz.html" style="margin-left: 20px">Datenschutz</a>
           </p>
         </div>
       </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script src="functions/generalFunctions.js"></script>
     <script>
       /* ========================================
          PDF MODAL LOGIK
          ======================================== */
-      const pdfModal = document.getElementById("pdfModal");
-      const pdfFrame = document.getElementById("pdfFrame");
       const closePdf = document.querySelector(".close-pdf");
-
-      function openPdf(pdfUrl) {
-        pdfFrame.src = pdfUrl + "#toolbar=0";
-        pdfModal.style.display = "block";
-        document.body.style.overflow = "hidden";
-      }
 
       closePdf.onclick = () => {
         pdfModal.style.display = "none";
@@ -1900,7 +2072,10 @@
 
       mobileLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
-          if (link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+          if (
+            link.getAttribute("href") &&
+            link.getAttribute("href").startsWith("#")
+          ) {
             closeMenu();
           }
         });
@@ -1918,15 +2093,16 @@
       function toggleReadMore(contentId, btn) {
         const content = document.getElementById(contentId);
         const isExpanded = content.classList.contains("expanded");
-        
+
         content.classList.toggle("expanded");
         btn.classList.toggle("expanded");
         btn.setAttribute("aria-expanded", String(!isExpanded));
-        
+
         if (isExpanded) {
           btn.innerHTML = 'Mehr lesen <i class="fas fa-chevron-down"></i>';
         } else {
-          btn.innerHTML = 'Weniger anzeigen <i class="fas fa-chevron-down"></i>';
+          btn.innerHTML =
+            'Weniger anzeigen <i class="fas fa-chevron-down"></i>';
         }
       }
 
@@ -1960,7 +2136,9 @@
           }
         }
 
-        const footerLinks = document.getElementById("footerLinksWithMenuElements");
+        const footerLinks = document.getElementById(
+          "footerLinksWithMenuElements",
+        );
         if (template && footerLinks) {
           const clone = template.content.cloneNode(true);
           footerLinks.append(clone);
@@ -1972,17 +2150,19 @@
       }
 
       function setupMobileSubmenus() {
-        const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
+        const submenuParents = mobileMenu.querySelectorAll(
+          ".has-submenu > .submenu-toggle",
+        );
         submenuParents.forEach((toggle) => {
           toggle.addEventListener("click", function (e) {
             e.preventDefault();
             const li = this.closest(".has-submenu");
             const isOpen = li.classList.contains("open");
-            
+
             mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
               if (item !== li) item.classList.remove("open");
             });
-            
+
             li.classList.toggle("open");
             this.setAttribute("aria-expanded", String(!isOpen));
           });
@@ -2003,10 +2183,10 @@
       });
 
       const fadeElements = document.querySelectorAll(".fade-in");
-      
+
       const observerOptions = {
         threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
+        rootMargin: "0px 0px -50px 0px",
       };
 
       const observer = new IntersectionObserver((entries) => {
@@ -2029,7 +2209,7 @@
         setupMobileSubmenus();
       });
 
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           const href = this.getAttribute("href");
           if (href !== "#" && href !== "") {
@@ -2040,7 +2220,7 @@
               const targetPosition = target.offsetTop - headerHeight;
               window.scrollTo({
                 top: targetPosition,
-                behavior: "smooth"
+                behavior: "smooth",
               });
             }
           }
