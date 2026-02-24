@@ -251,3 +251,15 @@ function parseDate(dateStr) {
 
   return null;
 }
+
+function toggleGeschichteVisibility(geschichteToggleBtn, geschichteContainer) {
+  const toggleButton = document.getElementById(geschichteToggleBtn);
+  const content = document.getElementById(geschichteContainer);
+  if (!toggleButton || !content) {
+    return;
+  }
+  toggleButton.addEventListener("click", function () {
+    content.classList.toggle("geschichte-collapsed");
+    toggleButton.classList.toggle("active");
+  });
+}

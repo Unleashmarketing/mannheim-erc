@@ -25,6 +25,7 @@
           <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
           <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
           <li><a href="eiskunstlauf.html#termine-infos">Termine & Infos</a></li>
+          <li><a href="eiskunstlauf.html#geschichte">Geschichte</a></li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -1378,6 +1379,60 @@
       .skip-link:focus {
         top: 0;
       }
+
+      /* ========================================
+           GESCHICHTE SECTION
+           ======================================== */
+      .geschichte-section {
+        padding: var(--spacing-3xl) 0;
+        background-color: var(--white);
+      }
+
+      #geschichte-toggle-btn {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        color: var(--text-dark);
+        font-family: var(--font-family-accent);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        transition: var(--transition-base);
+        position: relative;
+      }
+
+      #geschichte-toggle-btn:hover {
+        color: var(--primary-color);
+      }
+
+      #geschichte-toggle-btn::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: var(--spacing-md) auto 0;
+        border-radius: var(--border-radius-sm);
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #geschichte-toggle-icon {
+        display: inline-block;
+        transition: transform 0.3s ease;
+        font-size: var(--font-size-lg);
+        color: var(--primary-color);
+      }
+
+      #geschichte-toggle-btn.active #geschichte-toggle-icon {
+        transform: rotate(-180deg);
+      }
+
+      .geschichte-collapsed {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -1759,6 +1814,279 @@
               <strong>Wichtig:</strong> Bitte beachten Sie auch die Aushänge im
               Eislaufzentrum!
             </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Eiskunstlauf in Mannheim -->
+      <section class="geschichte-section" id="geschichte">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="geschichte-toggle-btn">
+              Geschichte der Abteilung Eiskunstlauf<span
+                id="geschichte-toggle-icon"
+                >▼</span
+              >
+            </h2>
+          </div>
+          <div
+            class="content-section fade-in geschichte-collapsed"
+            id="geschichte-container"
+          >
+            <h3>Die Anfänge</h3>
+            <h4>1936-1945</h4>
+            <p>
+              Die Wurzeln des Mannheimer Eiskunstlaufs reichen bis ins Jahr 1936
+              zurück. Auf Initiative von Fräulein Hilde Schnitzler und Professor
+              Hugo Strauß (Olympiasieger im Rudern 1936) wurde zunächst eine
+              Rollschuhabteilung gegründet. Die Trainings fanden an wechselnden
+              Orten in Mannheim statt – unter anderem in der Roonstraße, die
+              zeitweise sogar polizeilich gesperrt werden musste.
+            </p>
+            <p>
+              Mit dem Training auf dem Hallentennisboden der Rhein-Neckar-Halle
+              wurde erstmals ein geregelter Sportbetrieb möglich. Die Vision
+              eines eigenen Eisstadions nahm Gestalt an, sodass am 19. Mai 1938
+              der Mannheimer Eis- und Rollsport-Club (MERC) offiziell gegründet
+              wurde. Der Bau des Eisstadions im Friedrichspark gelang dank
+              massiver Unterstützung der Mannheimer Wirtschaft. Die Pläne
+              stammten von Dr. Richard Pabst, dem Architekten der technischen
+              Anlagen des Olympiastadions in Garmisch-Partenkirchen.
+            </p>
+            <p>
+              Bereits 1938 richtete der MERC die ersten Badischen
+              Meisterschaften im Rollkunstlauf aus. Willi Wernz und Anna
+              Deissler prägten diese frühe Erfolgsphase maßgeblich. Der Verein
+              entwickelte sich rasch zu einer festen Größe im Mannheimer
+              Sportleben, bis 1943 ein Bombenangriff das Eisstadion zerstörte
+              und den Sportbetrieb vollständig zum Erliegen brachte.
+            </p>
+            <h3>Wiederaufbau und Aufschwung</h3>
+            <h4>1947-1960</h4>
+            <p>
+              Nach dem Zweiten Weltkrieg initiierte Josef Lenz 1947 die
+              Neugründung des MERC. 1948 wurde das zerstörte Eisstadion wieder
+              aufgebaut, und der Trainingsbetrieb konnte – unter schwierigen
+              Bedingungen – erneut aufgenommen werden.
+            </p>
+            <p>
+              In den folgenden Jahren etablierte sich der MERC wieder im
+              nationalen Wettbewerb. Namen wie Margot Spannagel, Eugen Romminger
+              und erneut Willi Wernz stehen für den sportlichen Neustart. Eugen
+              Romminger wurde 1952 Eiskunstlaufobmann und sollte dieses Amt
+              beeindruckende 37 Jahre innehaben.
+            </p>
+            <p>
+              Besondere sportliche Erfolge erzielten Maria Goeth und Willi
+              Wernz, die mehrfach Deutsche Vizemeister im Eistanzen wurden und
+              1955 erstmals bei einer Europameisterschaft starteten.
+            </p>
+            <h3>Nationale und internationale Erfolge</h3>
+            <h4>1960–1975</h4>
+            <p>
+              Die 1960er Jahre markieren eine sportliche Blütezeit. Hans-Dieter
+              Dahmen, Fritz Keszler und Uschi Keszler errangen nationale Titel
+              im Roll- und Eiskunstlauf. Uschi Keszler wurde 1965 die erste
+              Deutsche Meisterin des MERC im Eiskunstlauf und nahm als erste
+              MERC-Läuferin an einer Weltmeisterschaft teil.
+            </p>
+            <p>
+              Im Paarlauf erzielten Gudrun Hauß und Walter Häfner mit Platz 8
+              bei den Olympischen Spielen 1968 in Grenoble einen historischen
+              Erfolg. Weitere herausragende Namen dieser Zeit sind Brunhilde
+              Basler, Eberhard Rausch, Frigge Drzymalla, Michael Weingart,
+              Sigrid Müllenbach und Petra Ernert, die mehrfach Welt- und
+              Europameisterschaften im Rollkunstlauf gewannen.
+            </p>
+            <p>
+              Ende der 1960er Jahre wurde das Eisstadion überdacht. Dennoch
+              folgte bis Mitte der 1970er Jahre eine sportlich schwierigere
+              Phase.
+            </p>
+            <h3>Konsolidierung und neue Strukturen</h3>
+            <h4>1976–1995</h4>
+            <p>
+              Mit Trainer Günter Zöller kehrte der sportliche Erfolg zurück.
+              1976 trennten sich die Abteilungen Eishockey und Kunstlauf
+              organisatorisch. Eugen Romminger wurde Vorsitzender des neu
+              strukturierten Vereins.
+            </p>
+            <p>
+              Nach der Eröffnung des Eissportzentrums Herzogenried 1981
+              konzentrierte sich der MERC ausschließlich auf den Eiskunstlauf.
+              Unter optimalen Trainingsbedingungen entwickelten sich zahlreiche
+              Spitzenathletinnen und -athleten, darunter Manuela Ruben, Claudia
+              Leistner (Vizeweltmeisterin, Europameisterin, fünffache Deutsche
+              Meisterin) sowie Rudi Cerne, später bekannt als
+              ZDF-Sportmoderator.
+            </p>
+            <p>
+              Ein schwerer Rückschlag folgte 1988, als das Eissportzentrum
+              vollständig niederbrannte. Der Wiederaufbau gelang, und 1991
+              konnte der Trainingsbetrieb wieder aufgenommen werden. 1995 wurden
+              die Shooting Stars Mannheim Deutsche Meister.
+            </p>
+            <h3>Umbruch und Anerkennung</h3>
+            <h4>1996–2001</h4>
+            <p>
+              Nach dem Tod der Vereinslegenden Willi Wernz und Eugen Romminger
+              übernahmen neue Führungsteams Verantwortung. 1999 wurde Dr. Thomas
+              Bienert erneut Vorsitzender.
+            </p>
+            <p>
+              Im Jahr 2001 erfolgte die Umbenennung in Mannheimer ERC e.V. Der
+              Verein wurde mit dem „Grünen Band“ für vorbildliche
+              Nachwuchsarbeit ausgezeichnet. Katharina Häcker wurde 2002
+              Deutsche Meisterin, die Shooting Stars Vizemeister.
+            </p>
+            <h3>Nachwuchsexzellenz und nationale Präsenz</h3>
+            <h4>2002–2008</h4>
+            <p>
+              In den Jahren 2002 bis 2008 prägte eine außergewöhnlich starke
+              Nachwuchs- und Juniorenarbeit die Eiskunstlauf-Abteilung des
+              Mannheimer ERC. Der Verein zählte in dieser Phase bundesweit zu
+              den führenden Ausbildungsstandorten und war regelmäßig mit
+              Athletinnen und Athleten in den Spitzenfeldern nationaler
+              Meisterschaften vertreten.
+            </p>
+            <p>
+              Im Damenbereich setzte Katharina Häcker früh Maßstäbe: Nach ihrem
+              Deutschen Meistertitel 2002 gewann sie 2003 das Europäische
+              Olympische Jugendfestival und erzielte damit einen der
+              bedeutendsten internationalen Nachwuchserfolge des deutschen
+              Eiskunstlaufs dieser Zeit. Ergänzt wurde diese Leistungsdichte
+              durch Denise Zimmermann und Christiane Berger, die mit nationalen
+              Medaillen sowie Teilnahmen an Junioren-Welt- und
+              Europameisterschaften die Breite und Qualität des Mannheimer
+              Kaders unterstrichen.
+            </p>
+            <p>
+              Auch im Nachwuchs- und Juniorenbereich war der MERC konstant
+              präsent. Larissa Vetter gehörte über mehrere Jahre zu den
+              erfolgreichsten deutschen Nachwuchsläuferinnen und errang mehrfach
+              nationale Titel in ihren Altersklassen. Im Herrenbereich vertraten
+              Adrian Schager und Norman Keck den Verein auf nationaler Ebene;
+              Keck sammelte zudem internationale Erfahrung bei ISU-Wettbewerben
+              und sicherte dem MERC Sichtbarkeit im Herren-Einzellauf.
+            </p>
+            <p>
+              Diese Jahre stehen für eine geschlossene, nachhaltige
+              Entwicklungsphase, in der der Mannheimer ERC durch kontinuierliche
+              Nachwuchserfolge, internationale Juniorenstarts und eine hohe
+              Leistungsdichte den Grundstein für die späteren Erfolge ab 2008
+              legte.
+            </p>
+            <h3>Neue Erfolgsgeneration</h3>
+            <h4>ab 2008</h4>
+            <p>
+              Mit Sarah Hecken begann 2008 eine neue Erfolgsära. Sie wurde im
+              Alter von 14 Jahren erstmals Deutsche Meisterin und gewann einen
+              Junior Grand Prix.
+            </p>
+            <p>
+              2010 fanden die Deutschen Meisterschaften in Mannheim statt –
+              ausverkauft an allen Wettkampftagen. Der MERC belegte bei den
+              Damen Gold, Silber und Bronze. Sarah Hecken qualifizierte sich für
+              die Olympischen Spiele in Vancouver und erreichte Platz 18.
+            </p>
+            <p>
+              In den folgenden Jahren prägten Sarah Hecken und Nathalie
+              Weinzierl das nationale Geschehen. 2012 gelang ein Doppelsieg bei
+              den Deutschen Meisterschaften. Gleichzeitig stellte die
+              mehrjährige Hallendachsanierung den Verein vor massive
+              strukturelle Herausforderungen und führte zu einem spürbaren
+              Einbruch in der Nachwuchsarbeit.
+            </p>
+            <h3>Erfolge, Rückschläge und Neuanfang</h3>
+            <h4>2014–heute</h4>
+            <p>
+              Nathalie Weinzierl wurde 2014 und 2015 Deutsche Meisterin und nahm
+              an den Olympischen Spielen in Sotschi teil. Die Nachwuchsarbeit
+              unter Trainer Peter Sczypa blieb über Jahre hinweg erfolgreich.
+            </p>
+            <p>
+              Strukturelle Eingriffe des Verbandes und die Corona-Pandemie
+              führten jedoch 2022 zum Verlust des Bundesstützpunktstatus. Der
+              Verein entschloss sich daraufhin zu einem konsequenten Neuanfang.
+            </p>
+            <p>
+              Trotz Kürzungen der Trainingszeiten und steigender Energiekosten
+              gelang es dem MERC, erneut Talente aufzubauen. Kristina Isaev
+              wurde 2024 und 2025 Deutsche Meisterin. Bereits kurze Zeit später
+              stellte der Mannheimer ERC wieder die meisten Athletinnen und
+              Athleten im Landeskader Baden-Württemberg.
+            </p>
+            <h3>Hall-of-Fame des Mannheimer ERC</h3>
+            <h4>Gründer & Wegbereiter</h4>
+            <p>
+              Fräulein Hilde Schnitzler – Initiatorin der ersten
+              Rollschuhabteilung (1936)
+            </p>
+            <p>
+              Professor Hugo Strauß – Mitgründer des MERC (1938), Olympiasieger
+              Rudern 1936
+            </p>
+            <p>
+              Josef Lenz – Treibende Kraft beim Wiederaufbau nach dem Zweiten
+              Weltkrieg
+            </p>
+            <h4>Vereinsführung & Organisation</h4>
+            <p>
+              Eugen Romminger – 37 Jahre Eiskunstlaufobmann, später
+              Vorsitzender, zentrale Figur des Vereinsaufbaus
+            </p>
+            <p>
+              Hans-Dieter Dahmen – Vorsitzender in der Wiederaufbauphase nach
+              dem Brand des Eissportzentrums
+            </p>
+            <p>
+              Dr. Thomas Bienert – Vorsitzender, prägte die strukturelle
+              Neuausrichtung ab den 1990er Jahren
+            </p>
+            <h3>Nationale & internationale Erfolgsträger</h3>
+            <h4>Einzellauf / Eistanz / Paarlauf</h4>
+            <p>Willi Wernz – Mehrfacher Badischer Meister, Vereinslegende</p>
+            <p>
+              Anna Deissler (geb. Reinshagen) – Badische Meisterin im Paarlauf
+            </p>
+            <p>
+              Goeth & Willi Wernz – Deutsche Vizemeister im Eistanzen,
+              EM-Teilnahme
+            </p>
+            <p>
+              Uschi Keszler – Erste Deutsche Meisterin des MERC, WM-Teilnehmerin
+            </p>
+            <p>Hans-Dieter Dahmen – Weltmeister im Rollkunstlauf</p>
+            <p>Fritz Keszler – Deutscher Juniorensieger Eiskunstlauf</p>
+            <p>
+              Gudrun Hauß & Walter Häfner – Olympische Spiele 1968 (Platz 8),
+              Deutsche Meister
+            </p>
+            <p>
+              Brunhilde Basler & Eberhard Rausch – Europameister Rollkunstlauf,
+              Deutsche Meister Eiskunstlauf
+            </p>
+            <p>
+              Sigrid Müllenbach & Petra Ernert – Mehrfache Weltmeisterinnen im
+              Rollkunstlauf
+            </p>
+            <h3>Moderne Spitzensportlerinnen</h3>
+            <p>
+              Claudia Leistner – Europameisterin, Vizeweltmeisterin, fünffache
+              Deutsche Meisterin
+            </p>
+            <p>
+              Rudi Cerne – Olympiateilnehmer 1984, später ZDF-Sportmoderator
+            </p>
+            <p>
+              Sarah Hecken – Vierfache Deutsche Meisterin, Olympiateilnehmerin
+              2010
+            </p>
+            <p>
+              Nathalie Weinzierl – Zweifache Deutsche Meisterin,
+              Olympiateilnehmerin 2014
+            </p>
+            <p>Kristina Isaev – Deutsche Meisterin 2024 & 2025</p>
           </div>
         </div>
       </section>
@@ -2207,6 +2535,10 @@
       document.addEventListener("DOMContentLoaded", function () {
         insertNavigationElements();
         setupMobileSubmenus();
+        toggleGeschichteVisibility(
+          "geschichte-toggle-btn",
+          "geschichte-container",
+        );
       });
 
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

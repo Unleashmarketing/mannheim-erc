@@ -24,6 +24,7 @@
           <li><a href="eiskunstlauf.html#schnuppern">Schnupperkurs</a></li>
           <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
           <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
+          <li><a href="eiskunstlauf.html#geschichte">Geschichte</a></li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -2473,25 +2474,16 @@
         renderCalendar(desiredYear, desiredMonth);
       }
 
-      function toggleGeschichteVisibility() {
-        const toggleButton = document.getElementById("geschichte-toggle-btn");
-        const content = document.getElementById("geschichte-container");
-        if (!toggleButton || !content) {
-          return;
-        }
-        toggleButton.addEventListener("click", function () {
-          content.classList.toggle("geschichte-collapsed");
-          toggleButton.classList.toggle("active");
-        });
-      }
-
       // ========================================
       // INITIALIZE
       // ========================================
       document.addEventListener("DOMContentLoaded", function () {
         insertNavigationElements();
         toggleCalendarVisibility();
-        toggleGeschichteVisibility();
+        toggleGeschichteVisibility(
+          "geschichte-toggle-btn",
+          "geschichte-container",
+        );
         toggleArchiveNewsVisibility(
           "archive-news-toggle-btn",
           "archive-news-wrapper",
