@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="de">
   <template id="navigation-template1">
     <ul>
@@ -24,6 +24,7 @@
           <li><a href="eiskunstlauf.html#schnuppern">Schnupperkurs</a></li>
           <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
           <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
+          <li><a href="eiskunstlauf.html#geschichte">Geschichte</a></li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -33,8 +34,21 @@
         </a>
         <ul class="submenu">
           <li><a href="eisschnelllauf.html#info">Informationen</a></li>
-          <li><a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a></li>
-          <li><a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a></li>
+          <li>
+            <a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#calendar-section">Kalendar</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#geschichte">Geschichte</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#berichte">Berichte</a>
+          </li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -48,11 +62,25 @@
           <li><a href="synchron.html#mitgliedschaft">Mitgliedschaft</a></li>
         </ul>
       </li>
+      <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+          Schnellzugriff
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
+        <ul class="submenu">
+          <li>
+            <a href="about.html?openBelegungsplan=true">Belegungspläne</a>
+          </li>
+          <li><a href="#publicAnnouncements">Meldungen</a></li>
+        </ul>
+      </li>
     </ul>
   </template>
   <template id="memberBtn">
     <ul>
-      <li><a href="mitglieder.html" class="btn-header">Mitgliederbereich</a></li>
+      <li>
+        <a href="mitglieder.html" class="btn-header">Mitgliederbereich</a>
+      </li>
     </ul>
   </template>
   <template id="contactBtn">
@@ -73,6 +101,7 @@
   </template>
 
   <head>
+    <script src="oeffentlicheMeldungen.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mitgliederbereich - Mannheimer ERC</title>
@@ -103,7 +132,7 @@
         --gray-light: #e0e0e0;
         --gray-medium: #999999;
         --white: #ffffff;
-        
+
         --spacing-xs: 8px;
         --spacing-sm: 16px;
         --spacing-md: 24px;
@@ -111,10 +140,11 @@
         --spacing-xl: 60px;
         --spacing-2xl: 80px;
         --spacing-3xl: 120px;
-        
-        --font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+        --font-family:
+          "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         --font-family-accent: "Space Grotesk", monospace;
-        
+
         --font-size-xs: 0.875rem;
         --font-size-sm: 1rem;
         --font-size-md: 1.125rem;
@@ -123,17 +153,17 @@
         --font-size-2xl: 2.5rem;
         --font-size-3xl: 3rem;
         --font-size-4xl: 4rem;
-        
+
         --border-radius-sm: 4px;
         --border-radius-md: 8px;
         --border-radius-lg: 12px;
         --max-width: 1300px;
         --header-height: 80px;
-        
+
         --transition-fast: 0.15s ease;
         --transition-base: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         --transition-slow: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        
+
         --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
         --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
         --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
@@ -141,8 +171,15 @@
       }
 
       /* RESET & BASE STYLES */
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      html { scroll-behavior: smooth; font-size: 16px; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
       body {
         font-family: var(--font-family);
         background-color: var(--light-bg);
@@ -150,88 +187,239 @@
         line-height: 1.6;
         overflow-x: hidden;
       }
-      .logo-text, .section-title, .page-title, .btn {
+      .logo-text,
+      .section-title,
+      .page-title,
+      .btn {
         font-family: var(--font-family-accent);
         letter-spacing: -0.02em;
       }
-      a { text-decoration: none; color: inherit; transition: var(--transition-base); }
-      ul { list-style: none; }
-      img { max-width: 100%; height: auto; display: block; }
-      button { font-family: inherit; cursor: pointer; border: none; background: none; }
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition-base);
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background: none;
+      }
 
       /* UTILITY CLASSES */
-      .container { width: 90%; max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-md); }
-      .section { padding: var(--spacing-3xl) 0; position: relative; }
-      .section-header { text-align: center; margin-bottom: var(--spacing-2xl); }
-      .fade-in {
-        opacity: 0; transform: translateY(30px);
-        transition: opacity var(--transition-slow), transform var(--transition-slow);
+      .container {
+        width: 90%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
       }
-      .fade-in.visible { opacity: 1; transform: translateY(0); }
+      .section {
+        padding: var(--spacing-3xl) 0;
+        position: relative;
+      }
+      .section-header {
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity var(--transition-slow),
+          transform var(--transition-slow);
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
       /* HEADER & NAV */
       header {
-        position: fixed; top: 0; left: 0; width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
         background-color: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
         box-shadow: var(--shadow-sm);
-        z-index: 1000; transition: var(--transition-base);
+        z-index: 1000;
+        transition: var(--transition-base);
       }
-      header.scrolled { box-shadow: var(--shadow-md); }
+      header.scrolled {
+        box-shadow: var(--shadow-md);
+      }
       .header-container {
-        display: flex; justify-content: space-between; align-items: center;
-        padding: var(--spacing-sm) 0; min-height: var(--header-height);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--spacing-sm) 0;
+        min-height: var(--header-height);
       }
-      .logo { display: flex; align-items: center; gap: var(--spacing-sm); }
-      .logo img { width: 60px; height: 60px; object-fit: contain; }
-      .logo-text { font-size: var(--font-size-lg); font-weight: 800; color: var(--text-dark); letter-spacing: -0.5px; }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+      .logo img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+      }
+      .logo-text {
+        font-size: var(--font-size-lg);
+        font-weight: 800;
+        color: var(--text-dark);
+        letter-spacing: -0.5px;
+      }
 
-      .nav-desktop { display: flex; align-items: center; gap: var(--spacing-lg); }
-      .nav-desktop ul { display: flex; align-items: center; gap: var(--spacing-lg); }
-      .nav-desktop a { 
-        font-weight: 500; 
-        color: var(--text-dark); 
-        padding: var(--spacing-xs) 0; 
-        position: relative; 
+      .nav-desktop {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
       }
-      .nav-desktop a:hover { color: var(--primary-color); }
-      .nav-desktop .has-submenu { position: relative; }
+      .nav-desktop ul {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+      }
+      .nav-desktop a {
+        font-weight: 500;
+        color: var(--text-dark);
+        padding: var(--spacing-xs) 0;
+        position: relative;
+      }
+      .nav-desktop a:hover {
+        color: var(--primary-color);
+      }
+      .nav-desktop .has-submenu {
+        position: relative;
+      }
       .nav-desktop .submenu {
-        display: none; position: absolute; top: calc(100% + 8px); left: 0;
-        min-width: 220px; background: var(--white);
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        min-width: 220px;
+        background: var(--white);
         border: 1px solid rgba(0, 0, 0, 0.08);
-        box-shadow: var(--shadow-lg); border-radius: var(--border-radius-md);
-        padding: var(--spacing-xs) 0; z-index: 1002;
+        box-shadow: var(--shadow-lg);
+        border-radius: var(--border-radius-md);
+        padding: var(--spacing-xs) 0;
+        z-index: 1002;
       }
-      .nav-desktop .has-submenu::before { content: ''; position: absolute; top: 100%; left: -10px; right: -10px; height: 20px; z-index: 1001; }
-      .nav-desktop .has-submenu:hover > .submenu, .nav-desktop .has-submenu:hover::before { display: block; }
-      .nav-desktop .submenu a { display: block; padding: 12px 20px; font-size: var(--font-size-sm); }
-      .nav-desktop .submenu a:hover { background-color: rgba(0, 98, 255, 0.05); }
+      .nav-desktop .has-submenu::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: -10px;
+        right: -10px;
+        height: 20px;
+        z-index: 1001;
+      }
+      .nav-desktop .has-submenu:hover > .submenu,
+      .nav-desktop .has-submenu:hover::before {
+        display: block;
+      }
+      .nav-desktop .submenu a {
+        display: block;
+        padding: 12px 20px;
+        font-size: var(--font-size-sm);
+      }
+      .nav-desktop .submenu a:hover {
+        background-color: rgba(0, 98, 255, 0.05);
+      }
       .btn-header {
-        padding: 12px 24px !important; background-color: var(--primary-color);
-        color: var(--white) !important; border-radius: var(--border-radius-md);
-        font-weight: 600; box-shadow: var(--shadow-sm);
+        padding: 12px 24px !important;
+        background-color: var(--primary-color);
+        color: var(--white) !important;
+        border-radius: var(--border-radius-md);
+        font-weight: 600;
+        box-shadow: var(--shadow-sm);
       }
-      
+
       /* Mobile Menu Styles */
-      .mobile-toggle { display: none; flex-direction: column; gap: 5px; width: 44px; z-index: 1001; }
-      .mobile-toggle span { width: 26px; height: 3px; background: var(--text-dark); transition: 0.3s; }
-      .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-      .mobile-toggle.active span:nth-child(2) { opacity: 0; }
-      .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-      .mobile-menu {
-        position: fixed; top: 0; right: -100%; width: 85%; max-width: 400px; height: 100vh;
-        background: var(--white); box-shadow: var(--shadow-xl);
-        padding: 120px var(--spacing-lg) var(--spacing-lg);
-        transition: right 0.4s; z-index: 999; overflow-y: auto;
+      .mobile-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        width: 44px;
+        z-index: 1001;
       }
-      .mobile-menu.active { right: 0; }
-      .mobile-menu-close { position: absolute; top: 20px; right: 20px; font-size: 28px; }
-      .mobile-menu a { display: block; padding: 10px 0; font-weight: 600; color: var(--text-dark); }
-      .mobile-menu .submenu { display: none; padding-left: 20px; }
-      .mobile-menu .has-submenu.open > .submenu { display: block; }
-      .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); opacity: 0; visibility: hidden; transition: 0.3s; z-index: 998; }
-      .overlay.active { opacity: 1; visibility: visible; }
+      .mobile-toggle span {
+        width: 26px;
+        height: 3px;
+        background: var(--text-dark);
+        transition: 0.3s;
+      }
+      .mobile-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+      .mobile-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .mobile-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 85%;
+        max-width: 400px;
+        height: 100vh;
+        background: var(--white);
+        box-shadow: var(--shadow-xl);
+        padding: 120px var(--spacing-lg) var(--spacing-lg);
+        transition: right 0.4s;
+        z-index: 999;
+        overflow-y: auto;
+      }
+      .mobile-menu.active {
+        right: 0;
+      }
+      .mobile-menu-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 28px;
+      }
+      .mobile-menu a {
+        display: block;
+        padding: 10px 0;
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+      .mobile-menu .submenu {
+        display: none;
+        padding-left: 20px;
+      }
+      .mobile-menu .has-submenu.open > .submenu {
+        display: block;
+      }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+        z-index: 998;
+      }
+      .overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
 
       /* ========================================
          LOGIN FORM
@@ -327,7 +515,7 @@
         cursor: pointer;
         transition: var(--transition-base);
       }
-      
+
       .btn-login:hover {
         background-color: var(--primary-hover);
       }
@@ -502,24 +690,324 @@
       }
 
       /* FOOTER Styles (Identisch) */
-      footer { background-color: var(--dark-bg); color: var(--text-light); padding: var(--spacing-2xl) 0 var(--spacing-lg); }
-      .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl); }
-      .footer-logo img { height: 60px; margin-bottom: var(--spacing-md); }
-      .footer-title { font-size: var(--font-size-lg); font-weight: 700; margin-bottom: var(--spacing-md); font-family: var(--font-family-accent); border-bottom: 3px solid var(--primary-color); display: inline-block; padding-bottom: 5px; }
-      .footer-links a, .footer-contact li, .footer-bottom { color: rgba(255, 255, 255, 0.7); }
-      .footer-links a:hover { color: var(--white); padding-left: 8px; }
-      .footer-social { display: flex; gap: var(--spacing-sm); }
-      .footer-social a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-      .footer-social a:hover { background: var(--primary-color); transform: translateY(-3px); }
-      .contact-icon { color: var(--primary-color); margin-right: 10px; }
-      .footer-bottom { margin-top: var(--spacing-xl); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; }
-      
+      footer {
+        background-color: var(--dark-bg);
+        color: var(--text-light);
+        padding: var(--spacing-2xl) 0 var(--spacing-lg);
+      }
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-xl);
+      }
+      .footer-logo img {
+        height: 60px;
+        margin-bottom: var(--spacing-md);
+      }
+      .footer-title {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        margin-bottom: var(--spacing-md);
+        font-family: var(--font-family-accent);
+        border-bottom: 3px solid var(--primary-color);
+        display: inline-block;
+        padding-bottom: 5px;
+      }
+      .footer-links a,
+      .footer-contact li,
+      .footer-bottom {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .footer-links a:hover {
+        color: var(--white);
+        padding-left: 8px;
+      }
+      .footer-social {
+        display: flex;
+        gap: var(--spacing-sm);
+      }
+      .footer-social a {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+      }
+      .footer-social a:hover {
+        background: var(--primary-color);
+        transform: translateY(-3px);
+      }
+      .contact-icon {
+        color: var(--primary-color);
+        margin-right: 10px;
+      }
+      .footer-bottom {
+        margin-top: var(--spacing-xl);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
       /* RESPONSIVE */
-      @media (max-width: 1200px) { .nav-desktop { display: none; } .mobile-toggle { display: flex; } }
+      @media (max-width: 1200px) {
+        .nav-desktop {
+          display: none;
+        }
+        .mobile-toggle {
+          display: flex;
+        }
+      }
       @media (max-width: 640px) {
-        .file-item { flex-direction: column; align-items: flex-start; }
-        .btn-download { width: 100%; justify-content: center; }
-        .file-info { width: 100%; }
+        .file-item {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .btn-download {
+          width: 100%;
+          justify-content: center;
+        }
+        .file-info {
+          width: 100%;
+        }
+      }
+
+      /* ========================================
+      NEWS SECTION
+      ======================================== */
+      .news-section {
+        padding: var(--spacing-3xl) 0;
+        background-color: var(--light-bg);
+      }
+
+      #public-news-toggle-btn {
+        font-size: var(--font-size-3xl);
+        font-weight: 800;
+        color: var(--text-dark);
+        font-family: var(--font-family-accent);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        transition: var(--transition-base);
+        position: relative;
+      }
+
+      #public-news-toggle-btn:hover {
+        color: var(--primary-color);
+      }
+
+      #public-news-toggle-btn::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background-color: var(--primary-color);
+        margin: var(--spacing-md) auto 0;
+        border-radius: var(--border-radius-sm);
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #public-news-toggle-icon {
+        display: inline-block;
+        transition: transform 0.3s ease;
+        font-size: var(--font-size-lg);
+        color: var(--primary-color);
+      }
+
+      #public-news-toggle-btn.active #public-news-toggle-icon {
+        transform: rotate(-180deg);
+      }
+
+      .news-collapsed {
+        display: none;
+      }
+
+      .news-filters {
+        background: var(--white);
+        padding: var(--spacing-lg);
+        margin: var(--spacing-xl) 0 var(--spacing-lg);
+        border-radius: var(--border-radius-lg);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-lg);
+        align-items: flex-end;
+        box-shadow: var(--shadow-sm);
+        border: 2px solid var(--gray-light);
+      }
+
+      .news-filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .news-filter-group label {
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        color: var(--text-dark);
+      }
+
+      #public-news-search {
+        padding: var(--spacing-sm);
+        border: 2px solid var(--gray-light);
+        border-radius: var(--border-radius-md);
+        font-size: var(--font-size-sm);
+        font-family: var(--font-family);
+        width: 100%;
+        transition: var(--transition-base);
+      }
+
+      #public-news-search:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 98, 255, 0.1);
+      }
+
+      #public-news-reset-filters {
+        padding: var(--spacing-sm) var(--spacing-md);
+        background-color: var(--primary-color);
+        color: var(--white);
+        border: none;
+        border-radius: var(--border-radius-md);
+        cursor: pointer;
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        transition: var(--transition-base);
+        box-shadow: var(--shadow-sm);
+      }
+
+      #public-news-reset-filters:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .range-slider-container {
+        position: relative;
+        width: 100%;
+        height: var(--spacing-lg);
+        margin-top: var(--spacing-sm);
+      }
+
+      .range-slider-container input[type="range"] {
+        position: absolute;
+        width: 100%;
+        pointer-events: none;
+        appearance: none;
+        -webkit-appearance: none;
+        background: none;
+        margin: 0;
+        z-index: 2;
+      }
+
+      .range-slider-container input[type="range"]::-webkit-slider-thumb {
+        appearance: none;
+        -webkit-appearance: none;
+        pointer-events: auto;
+        width: 20px;
+        height: 20px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        cursor: grab;
+        border: 3px solid var(--white);
+        box-shadow: var(--shadow-md);
+        position: relative;
+        z-index: 3;
+        transition: var(--transition-base);
+      }
+
+      .range-slider-container input[type="range"]::-webkit-slider-thumb:hover {
+        transform: scale(1.15);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .range-slider-container input[type="range"]::-moz-range-thumb {
+        pointer-events: auto;
+        width: 16px;
+        height: 16px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        cursor: grab;
+        border: 3px solid var(--white);
+        box-shadow: var(--shadow-md);
+        z-index: 3;
+      }
+
+      .range-slider-container::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 6px;
+        background: var(--gray-light);
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: var(--border-radius-sm);
+        z-index: 1;
+      }
+
+      #public-news-date-display,
+      #public-news-extra-text {
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+        margin-top: var(--spacing-xs);
+        font-style: italic;
+      }
+
+      .news-item {
+        background: var(--white);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+        box-shadow: var(--shadow-sm);
+        border-left: 4px solid var(--primary-color);
+        transition: var(--transition-base);
+      }
+
+      .news-item:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateX(5px);
+      }
+
+      .news-item h3 {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: var(--spacing-sm);
+        font-family: var(--font-family-accent);
+      }
+
+      .news-item p {
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .news-item a {
+        color: var(--primary-color);
+        font-weight: 600;
+        text-decoration: underline;
+        transition: var(--transition-base);
+      }
+
+      .news-item a:hover {
+        color: var(--primary-hover);
+      }
+
+      .leading_separator {
+        display: block;
+        height: 1px;
+        background: var(--gray-light);
+        margin: var(--spacing-lg) 0;
       }
     </style>
   </head>
@@ -529,14 +1017,19 @@
     <header>
       <div class="container header-container">
         <a href="index.html" class="logo">
-          <img
-            src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
-            alt="Mannheimer ERC Logo"
-          />
+          <img src="images/Logo_MERC.gif" alt="Mannheimer ERC Logo" />
           <span class="logo-text">Mannheimer ERC</span>
         </a>
-        <nav id="pageElementsDesktop" class="nav-desktop" aria-label="Hauptnavigation"></nav>
-        <button class="mobile-toggle" aria-label="Menü öffnen" aria-expanded="false">
+        <nav
+          id="pageElementsDesktop"
+          class="nav-desktop"
+          aria-label="Hauptnavigation"
+        ></nav>
+        <button
+          class="mobile-toggle"
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -552,6 +1045,107 @@
     <div class="overlay" aria-hidden="true"></div>
 
     <main id="main-content">
+      <!-- News -->
+      <section id="publicAnnouncements" class="news-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="public-news-toggle-btn">
+              Öffentliche Meldungen<span id="public-news-toggle-icon">▼</span>
+            </h2>
+          </div>
+          <div id="public-news-wrapper" class="news-collapsed">
+            <div class="news-filters">
+              <div class="news-filter-group">
+                <label for="public-news-search-input">Suchbegriff:</label>
+                <input
+                  type="text"
+                  id="public-news-search"
+                  placeholder="Suche nach Stichwörtern..."
+                  oninput="
+                    handleArchiveNewsFilters(
+                      'public-news-date-slider-min',
+                      'public-news-date-slider-max',
+                      this,
+                      'public-news-date-display',
+                      'public-news-extra-text',
+                      'public-news-container',
+                      OEFFENTLICHE_MELDUNGEN_MIN_DATE,
+                      OEFFENTLICHE_MELDUNGEN,
+                    )
+                  "
+                  value="#begrenzt"
+                  name="public-news-search-input"
+                />
+              </div>
+
+              <div class="news-filter-group">
+                <p>Zeitraum filtern (Wochen):</p>
+                <div class="range-slider-container">
+                  <input
+                    type="range"
+                    id="public-news-date-slider-min"
+                    min="0"
+                    value="0"
+                    oninput="
+                      handleArchiveNewsFilters(
+                        this,
+                        'public-news-date-slider-max',
+                        'public-news-search',
+                        'public-news-date-display',
+                        'public-news-extra-text',
+                        'public-news-container',
+                        OEFFENTLICHE_MELDUNGEN_MIN_DATE,
+                        OEFFENTLICHE_MELDUNGEN,
+                      )
+                    "
+                  />
+                  <input
+                    type="range"
+                    id="public-news-date-slider-max"
+                    min="0"
+                    value="100"
+                    oninput="
+                      handleArchiveNewsFilters(
+                        'public-news-date-slider-min',
+                        this,
+                        'public-news-search',
+                        'public-news-date-display',
+                        'public-news-extra-text',
+                        'public-news-container',
+                        OEFFENTLICHE_MELDUNGEN_MIN_DATE,
+                        OEFFENTLICHE_MELDUNGEN,
+                      )
+                    "
+                  />
+                </div>
+                <div id="public-news-date-display">Ganze Zeitspanne</div>
+                <div id="public-news-extra-text"></div>
+              </div>
+
+              <button
+                id="public-news-reset-filters"
+                onclick="
+                  resetArchiveNewsFilters(
+                    'public-news-search',
+                    'public-news-date-slider-min',
+                    'public-news-date-slider-max',
+                    'public-news-date-display',
+                    'public-news-extra-text',
+                    'public-news-container',
+                    OEFFENTLICHE_MELDUNGEN,
+                  )
+                "
+              >
+                Filter zurücksetzen
+              </button>
+            </div>
+            <div class="content-section" id="public-news-container">
+              <h3>Loading news...</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="login-section" class="section">
         <div class="container">
           <div class="login-container">
@@ -611,7 +1205,6 @@
           </div>
 
           <div class="file-categories">
-            
             <div class="file-category fade-in">
               <div class="category-header">
                 <div class="category-icon">
@@ -628,12 +1221,16 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/Trainingsplan-Schnelllauf-2026.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/Trainingsplan-Schnelllauf-2026.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
 
-                 <div class="file-item">
+                <div class="file-item">
                   <div class="file-info">
                     <div class="file-icon"><i class="fas fa-file-pdf"></i></div>
                     <div class="file-details">
@@ -641,11 +1238,15 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/verein/Hallenbelegung.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/verein/Hallenbelegung.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
-                
+
                 <div class="file-item">
                   <div class="file-info">
                     <div class="file-icon"><i class="fas fa-file-pdf"></i></div>
@@ -654,7 +1255,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/regelung_trainingsbetrieb.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/regelung_trainingsbetrieb.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -667,7 +1272,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/regelung_trainingsbetrieb_sap-arena.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/regelung_trainingsbetrieb_sap-arena.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -690,7 +1299,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/2020-06-14_satzung_merc.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/2020-06-14_satzung_merc.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -703,7 +1316,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/ehrenordnung_20240525.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/ehrenordnung_20240525.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -716,7 +1333,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/geschaeftsordnung_20240525.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/geschaeftsordnung_20240525.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -729,7 +1350,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/jugendordnung_20240525.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/jugendordnung_20240525.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -742,7 +1367,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/reisekostenordnung_20240525.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/reisekostenordnung_20240525.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -755,7 +1384,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/benutzungsordnung_merc_20250526.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/benutzungsordnung_merc_20250526.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -768,7 +1401,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/abteilungsordnung_eiskunstlauf_20250107.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/abteilungsordnung_eiskunstlauf_20250107.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -781,7 +1418,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/abteilungsordnung_eisschnelllauf.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/abteilungsordnung_eisschnelllauf.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -804,7 +1445,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/Aufnahmeantrag_Formular_2019_2020.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/Aufnahmeantrag_Formular_2019_2020.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -817,7 +1462,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/desg_lizenzantrag20220722_1.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/desg_lizenzantrag20220722_1.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -830,7 +1479,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/einwilligungserklaerung_internet_2015.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/einwilligungserklaerung_internet_2015.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -843,7 +1496,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/datenschutzordnung_mannheimer_erc_extern.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/datenschutzordnung_mannheimer_erc_extern.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -856,7 +1513,11 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/merkblatt_informationspflichten_art_13_14_dsgvo.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/merkblatt_informationspflichten_art_13_14_dsgvo.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
@@ -869,13 +1530,16 @@
                       <p class="file-meta">PDF</p>
                     </div>
                   </div>
-                  <a href="dokumente/mitglied/mietbestimmungen_2019_2020.pdf" target="_blank" class="btn-download">
+                  <a
+                    href="dokumente/mitglied/mietbestimmungen_2019_2020.pdf"
+                    target="_blank"
+                    class="btn-download"
+                  >
                     <i class="fas fa-download"></i> Download
                   </a>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -886,10 +1550,7 @@
         <div class="footer-container">
           <div class="footer-about">
             <div class="footer-logo">
-              <img
-                src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
-                alt="Mannheimer ERC Logo"
-              />
+              <img src="images/Logo_MERC.gif" alt="Mannheimer ERC Logo" />
             </div>
             <p>
               Der Mannheimer ERC ist seit Jahrzehnten ein Begriff im Eissport
@@ -897,9 +1558,15 @@
               Sportler jeden Alters.
             </p>
             <div class="footer-social">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
             </div>
           </div>
 
@@ -907,12 +1574,20 @@
             <h3 class="footer-title">Kontakt</h3>
             <ul>
               <li>
-                <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-map-marker-alt"></i
+                ></span>
                 <span>Käthe-Kollwitz-Straße 23<br />D-68169 Mannheim</span>
               </li>
               <li>
-                <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                <span><a href="mailto:info@merc-online.de">info@merc-online.de</a></span>
+                <span class="contact-icon"
+                  ><i class="fas fa-envelope"></i
+                ></span>
+                <span
+                  ><a href="mailto:info@merc-online.de"
+                    >info@merc-online.de</a
+                  ></span
+                >
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-clock"></i></span>
@@ -926,17 +1601,17 @@
           <p>© 2026 Mannheimer ERC. Alle Rechte vorbehalten.</p>
           <p>
             <a href="impressum.html">Impressum</a>
-            <a href="datenschutz.html" style="margin-left: 20px;">Datenschutz</a>
+            <a href="datenschutz.html" style="margin-left: 20px">Datenschutz</a>
           </p>
         </div>
       </div>
     </footer>
-
+    <script src="functions/generalFunctions.js"></script>
     <script>
       // ========================================
       // STANDARD NAVIGATION LOGIK (Aus CI übernommen)
       // ========================================
-      
+
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileMenu = document.querySelector(".mobile-menu");
       const overlay = document.querySelector(".overlay");
@@ -959,19 +1634,19 @@
         mobileToggle.setAttribute("aria-expanded", "false");
       }
 
-      if(mobileToggle) mobileToggle.addEventListener("click", () => {
-        const isOpen = mobileMenu.classList.contains("active");
-        isOpen ? closeMenu() : openMenu();
-      });
+      if (mobileToggle)
+        mobileToggle.addEventListener("click", () => {
+          const isOpen = mobileMenu.classList.contains("active");
+          isOpen ? closeMenu() : openMenu();
+        });
 
-      if(mobileClose) mobileClose.addEventListener("click", closeMenu);
-      if(overlay) overlay.addEventListener("click", closeMenu);
+      if (mobileClose) mobileClose.addEventListener("click", closeMenu);
+      if (overlay) overlay.addEventListener("click", closeMenu);
 
       function insertNavigationElements() {
         const template = document.getElementById("navigation-template1");
         const contactBtn = document.getElementById("contactBtn");
         const memberBtn = document.getElementById("memberBtn");
-        const contactStandard = document.getElementById("contactStandard");
         const mobileCTAButtons = document.getElementById("mobileCTAButtons");
 
         // Desktop Navigation
@@ -990,13 +1665,16 @@
         if (template && mobileMenu) {
           const clone = template.content.cloneNode(true);
           mobileMenu.prepend(clone);
-          if (mobileCTAButtons) mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
+          if (mobileCTAButtons)
+            mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
           setupMobileSubmenus();
         }
       }
 
       function setupMobileSubmenus() {
-        const submenuParents = mobileMenu.querySelectorAll(".has-submenu > .submenu-toggle");
+        const submenuParents = mobileMenu.querySelectorAll(
+          ".has-submenu > .submenu-toggle",
+        );
         submenuParents.forEach((toggle) => {
           toggle.addEventListener("click", function (e) {
             e.preventDefault();
@@ -1024,7 +1702,10 @@
       // Animation Observer
       function observeFadeElements() {
         const fadeElements = document.querySelectorAll(".fade-in");
-        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -1057,7 +1738,7 @@
         logoutBtn.addEventListener("click", () => {
           memberArea.classList.remove("active");
           loginSection.style.display = "block";
-          if(loginForm) loginForm.reset();
+          if (loginForm) loginForm.reset();
           window.scrollTo({ top: 0, behavior: "smooth" });
         });
       }
@@ -1066,7 +1747,25 @@
       document.addEventListener("DOMContentLoaded", function () {
         insertNavigationElements();
         observeFadeElements();
+        toggleArchiveNewsVisibility(
+          "public-news-toggle-btn",
+          "public-news-wrapper",
+          "public-news-date-slider-min",
+          "public-news-date-slider-max",
+          "public-news-search",
+          "public-news-date-display",
+          "public-news-extra-text",
+          "public-news-container",
+          OEFFENTLICHE_MELDUNGEN,
+        );
       });
+      document
+        .getElementById("public-news-search")
+        .addEventListener("focus", function () {
+          if (this.value === "#begrenzt") {
+            this.value = "";
+          }
+        });
     </script>
   </body>
 </html>

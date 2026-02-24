@@ -24,6 +24,7 @@
           <li><a href="eiskunstlauf.html#schnuppern">Schnupperkurs</a></li>
           <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
           <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
+          <li><a href="eiskunstlauf.html#geschichte">Geschichte</a></li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -39,6 +40,15 @@
           <li>
             <a href="eisschnelllauf.html#mitgliedschaft">Mitgliedschaft</a>
           </li>
+          <li>
+            <a href="eisschnelllauf.html#calendar-section">Kalendar</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#geschichte">Geschichte</a>
+          </li>
+          <li>
+            <a href="eisschnelllauf.html#berichte">Berichte</a>
+          </li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -50,6 +60,18 @@
           <li><a href="synchron.html#info">Informationen</a></li>
           <li><a href="synchron.html#schnuppern">Schnuppertraining</a></li>
           <li><a href="synchron.html#mitgliedschaft">Mitgliedschaft</a></li>
+        </ul>
+      </li>
+      <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+          Schnellzugriff
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
+        <ul class="submenu">
+          <li>
+            <a href="about.html?openBelegungsplan=true">Belegungspläne</a>
+          </li>
+          <li><a href="mitglieder.html#publicAnnouncements">Meldungen</a></li>
         </ul>
       </li>
     </ul>
@@ -83,6 +105,7 @@
     </div>
   </template>
   <head>
+    <script src="EisschnelllaufBlogArchive/Kurzmeldungen-archive.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Eisschnelllauf - Mannheimer ERC</title>
@@ -1635,10 +1658,7 @@
     <header>
       <div class="container header-container">
         <a href="index.html" class="logo">
-          <img
-            src="images/Logo_MERC.gif"
-            alt="Mannheimer ERC Logo"
-          />
+          <img src="images/Logo_MERC.gif" alt="Mannheimer ERC Logo" />
           <span class="logo-text">Mannheimer ERC</span>
         </a>
 
@@ -1881,7 +1901,7 @@
       </section>
 
       <!-- Schnelllauf in Mannheim -->
-      <section class="geschichte-section">
+      <section class="geschichte-section" id="geschichte">
         <div class="container">
           <div class="section-header">
             <h2 id="geschichte-toggle-btn">
@@ -2054,7 +2074,7 @@
       </section>
 
       <!-- News -->
-      <section class="news-section">
+      <section class="news-section" id="berichte">
         <div class="container">
           <div class="section-header">
             <h2 id="archive-news-toggle-btn">
@@ -2064,32 +2084,66 @@
           <div id="archive-news-wrapper" class="news-collapsed">
             <div class="news-filters">
               <div class="news-filter-group">
-                <label for="archive-news-search">Suchbegriff:</label>
+                <label for="archive-news-search-input">Suchbegriff:</label>
                 <input
                   type="text"
                   id="archive-news-search"
                   placeholder="Suche nach Stichwörtern..."
-                  oninput="handleArchiveNewsFilters()"
+                  oninput="
+                    handleArchiveNewsFilters(
+                      'archive-news-date-slider-min',
+                      'archive-news-date-slider-max',
+                      this,
+                      'archive-news-date-display',
+                      'archive-news-extra-text',
+                      'archive-news-container',
+                      ARCHIVE_NEWS_LIST_MIN_DATE,
+                      ARCHIVE_NEWS_LIST,
+                    )
+                  "
                   value="#begrenzt"
+                  name="archive-news-search-input"
                 />
               </div>
 
               <div class="news-filter-group">
-                <label for="date-slider">Zeitraum filtern (Wochen):</label>
+                <p>Zeitraum filtern (Wochen):</p>
                 <div class="range-slider-container">
                   <input
                     type="range"
                     id="archive-news-date-slider-min"
                     min="0"
                     value="0"
-                    oninput="handleArchiveNewsFilters()"
+                    oninput="
+                      handleArchiveNewsFilters(
+                        this,
+                        'archive-news-date-slider-max',
+                        'archive-news-search',
+                        'archive-news-date-display',
+                        'archive-news-extra-text',
+                        'archive-news-container',
+                        ARCHIVE_NEWS_LIST_MIN_DATE,
+                        ARCHIVE_NEWS_LIST,
+                      )
+                    "
                   />
                   <input
                     type="range"
                     id="archive-news-date-slider-max"
                     min="0"
                     value="100"
-                    oninput="handleArchiveNewsFilters()"
+                    oninput="
+                      handleArchiveNewsFilters(
+                        'archive-news-date-slider-min',
+                        this,
+                        'archive-news-search',
+                        'archive-news-date-display',
+                        'archive-news-extra-text',
+                        'archive-news-container',
+                        ARCHIVE_NEWS_LIST_MIN_DATE,
+                        ARCHIVE_NEWS_LIST,
+                      )
+                    "
                   />
                 </div>
                 <div id="archive-news-date-display">Ganze Zeitspanne</div>
@@ -2098,7 +2152,17 @@
 
               <button
                 id="archive-news-reset-filters"
-                onclick="resetArchiveNewsFilters()"
+                onclick="
+                  resetArchiveNewsFilters(
+                    'archive-news-search',
+                    'archive-news-date-slider-min',
+                    'archive-news-date-slider-max',
+                    'archive-news-date-display',
+                    'archive-news-extra-text',
+                    'archive-news-container',
+                    ARCHIVE_NEWS_LIST,
+                  )
+                "
               >
                 Filter zurücksetzen
               </button>
@@ -2117,10 +2181,7 @@
         <div class="footer-container">
           <div class="footer-about">
             <div class="footer-logo">
-              <img
-                src="images/Logo_MERC.gif"
-                alt="Mannheimer ERC Logo"
-              />
+              <img src="images/Logo_MERC.gif" alt="Mannheimer ERC Logo" />
             </div>
             <p>
               Der Mannheimer ERC ist seit Jahrzehnten ein Begriff im Eissport
@@ -2128,7 +2189,9 @@
               Sportler jeden Alters.
             </p>
             <div class="footer-social">
-              <a href="https://www.instagram.com/merc_eiskunstlauf/" aria-label="Instagram"
+              <a
+                href="https://www.instagram.com/merc_eiskunstlauf/"
+                aria-label="Instagram"
                 ><i class="fab fa-instagram"></i
               ></a>
             </div>
@@ -2171,7 +2234,7 @@
       </div>
     </footer>
     <script src="eisschnelllauf-events.js"></script>
-    <script src="EisschnelllaufBlogArchive/Kurzmeldungen-archive.js"></script>
+    <script src="functions/generalFunctions.js"></script>
     <script>
       // ========================================
       // MOBILE MENU
@@ -2411,224 +2474,27 @@
         renderCalendar(desiredYear, desiredMonth);
       }
 
-      let archiveNewsMinDate, archiveNewsMaxDate;
-
-      function initArchiveNewsFilters() {
-        const dates = ARCHIVE_NEWS_LIST.map((item) => parseDate(item.date))
-          .filter((d) => d !== null)
-          .sort((a, b) => a - b);
-
-        if (dates.length > 0) {
-          archiveNewsMinDate = dates[0];
-          archiveNewsMaxDate = dates[dates.length - 1];
-
-          const diffWeeks = Math.ceil(
-            (archiveNewsMaxDate - archiveNewsMinDate) /
-              (1000 * 60 * 60 * 24 * 7),
-          );
-
-          const sliderMin = document.getElementById(
-            "archive-news-date-slider-min",
-          );
-          const sliderMax = document.getElementById(
-            "archive-news-date-slider-max",
-          );
-
-          sliderMin.max = diffWeeks;
-          sliderMax.max = diffWeeks;
-          sliderMax.value = diffWeeks;
-        }
-      }
-
-      function parseDate(dateStr) {
-        if (!dateStr || dateStr === "N/A" || typeof dateStr !== "string")
-          return null;
-
-        const germanMatch = dateStr.match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/);
-        if (germanMatch) {
-          return new Date(
-            Number.parseInt(germanMatch[3]),
-            Number.parseInt(germanMatch[2]) - 1,
-            Number.parseInt(germanMatch[1]),
-          );
-        }
-
-        const monthMap = {
-          januar: 0,
-          january: 0,
-          februar: 1,
-          february: 1,
-          märz: 2,
-          march: 2,
-          april: 3,
-          mai: 4,
-          may: 4,
-          juni: 5,
-          june: 5,
-          juli: 6,
-          july: 6,
-          august: 7,
-          september: 8,
-          oktober: 9,
-          october: 9,
-          november: 10,
-          dezember: 11,
-          december: 11,
-        };
-
-        const words = dateStr.toLowerCase().split(/[\s-]+/);
-        let year = words.find((w) => w.match(/^\d{4}$/));
-        let month = words.find((w) => monthMap.hasOwnProperty(w));
-
-        if (year && month !== undefined) {
-          return new Date(Number.parseInt(year), monthMap[month], 1);
-        }
-
-        return null;
-      }
-
-      function handleArchiveNewsFilters() {
-        const sliderMin = document.getElementById(
-          "archive-news-date-slider-min",
-        );
-        const sliderMax = document.getElementById(
-          "archive-news-date-slider-max",
-        );
-        let searchTerm = document
-          .getElementById("archive-news-search")
-          .value.toLowerCase();
-        const dateDisplay = document.getElementById(
-          "archive-news-date-display",
-        );
-
-        if (searchTerm === "#begrenzt") {
-          const validItems = ARCHIVE_NEWS_LIST.filter(
-            (item) => item.date && item.date !== "N/A",
-          );
-          const limitedList = validItems.slice(0, 3);
-          dateDisplay.textContent = "Nur aktuellste Beiträge";
-          document.getElementById("archive-news-extra-text").textContent =
-            "Im Suchfeld clicken um Beitragsfilter zu aktivieren";
-          renderArchiveNews(limitedList);
-          return;
-        }
-
-        document.getElementById("archive-news-extra-text").textContent = "";
-        let valMin = Number.parseInt(sliderMin.value);
-        let valMax = Number.parseInt(sliderMax.value);
-
-        if (valMin >= valMax) {
-          valMin = valMax - 1;
-          sliderMin.value = valMin;
-        }
-
-        const startDate = new Date(archiveNewsMinDate);
-        startDate.setDate(startDate.getDate() + valMin * 7);
-
-        const endDate = new Date(archiveNewsMinDate);
-        endDate.setDate(endDate.getDate() + valMax * 7);
-
-        dateDisplay.textContent = `${startDate.toLocaleDateString(
-          "de-DE",
-        )} bis ${endDate.toLocaleDateString("de-DE")}`;
-
-        let filteredNews = ARCHIVE_NEWS_LIST.filter((item) => {
-          const itemDate = parseDate(item.date);
-
-          const matchesSearch =
-            item.title.toLowerCase().includes(searchTerm) ||
-            item.text.toLowerCase().includes(searchTerm);
-
-          let matchesDate = false;
-          if (itemDate) {
-            matchesDate = itemDate >= startDate && itemDate <= endDate;
-          }
-
-          return matchesSearch && matchesDate;
-        });
-        renderArchiveNews(filteredNews);
-      }
-
-      function resetArchiveNewsFilters() {
-        const searchInput = document.getElementById("archive-news-search");
-        searchInput.value = "#begrenzt";
-        const sliderMin = document.getElementById(
-          "archive-news-date-slider-min",
-        );
-        const sliderMax = document.getElementById(
-          "archive-news-date-slider-max",
-        );
-        sliderMin.value = 0;
-        sliderMax.value = sliderMax.max;
-        handleArchiveNewsFilters();
-      }
-
-      function renderArchiveNews(list) {
-        const container = document.getElementById("archive-news-container");
-        container.innerHTML = "";
-
-        if (list.length === 0) {
-          container.innerHTML = "<p>Keine Berichte gefunden.</p>";
-          return;
-        }
-
-        list.forEach((item) => {
-          if (item.date != "N/A") {
-            const articleHtml = `
-            <div class="news-item fade-in visible">
-                <h3>${item.title}</h3>
-                <p><strong>${item.date}</strong></p>
-                <p>${item.text}</p>
-                <p><a href="${item.url}">Weiterlesen...</a></p>
-            </div>`;
-            container.insertAdjacentHTML("beforeend", articleHtml);
-          }
-        });
-      }
-
-      function toggleArchiveNewsVisibility() {
-        const toggleButton = document.getElementById("archive-news-toggle-btn");
-        const wrapper = document.getElementById("archive-news-wrapper");
-
-        if (!toggleButton || !wrapper) return;
-
-        initArchiveNewsFilters();
-
-        toggleButton.addEventListener("click", function () {
-          const isExpanding = wrapper.classList.contains("news-collapsed");
-          wrapper.classList.toggle("news-collapsed");
-          toggleButton.classList.toggle("active");
-
-          if (isExpanding) {
-            handleArchiveNewsFilters();
-
-            setTimeout(() => {
-              wrapper.classList.add("visible");
-            }, 10);
-          }
-        });
-      }
-
-      function toggleGeschichteVisibility() {
-        const toggleButton = document.getElementById("geschichte-toggle-btn");
-        const content = document.getElementById("geschichte-container");
-        if (!toggleButton || !content) {
-          return;
-        }
-        toggleButton.addEventListener("click", function () {
-          content.classList.toggle("geschichte-collapsed");
-          toggleButton.classList.toggle("active");
-        });
-      }
-
       // ========================================
       // INITIALIZE
       // ========================================
       document.addEventListener("DOMContentLoaded", function () {
         insertNavigationElements();
         toggleCalendarVisibility();
-        toggleGeschichteVisibility();
-        toggleArchiveNewsVisibility();
+        toggleGeschichteVisibility(
+          "geschichte-toggle-btn",
+          "geschichte-container",
+        );
+        toggleArchiveNewsVisibility(
+          "archive-news-toggle-btn",
+          "archive-news-wrapper",
+          "archive-news-date-slider-min",
+          "archive-news-date-slider-max",
+          "archive-news-search",
+          "archive-news-date-display",
+          "archive-news-extra-text",
+          "archive-news-container",
+          ARCHIVE_NEWS_LIST,
+        );
       });
 
       document
