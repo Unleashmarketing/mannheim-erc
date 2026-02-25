@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de">
   <template id="navigation-template1">
     <ul>
@@ -24,8 +24,8 @@
           <li><a href="eiskunstlauf.html#schnuppern">Schnupperkurs</a></li>
           <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
           <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
-          <li><a href="eiskunstlauf.html#termine-infos">Termine & Infos</a></li>
           <li><a href="eiskunstlauf.html#geschichte">Geschichte</a></li>
+          <li><a href="eiskunstlauf.html#termine-infos">Termine & Infos</a></li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -1446,6 +1446,7 @@
           width="100%"
           height="100%"
           style="border: none"
+          title="pdf viewer"
         ></iframe>
       </div>
     </div>
@@ -2111,8 +2112,7 @@
                 <span>Kunstlaufabteilung</span>
               </div>
               <div class="download-actions">
-                <a
-                  href="javascript:void(0)"
+                <button
                   onclick="
                     openPdf(
                       'dokumente/eiskunstlauf/regelung_trainingsbetrieb_112024.pdf',
@@ -2122,7 +2122,7 @@
                 >
                   <i class="fas fa-eye"></i>
                   Ansehen
-                </a>
+                </button>
               </div>
             </div>
 
@@ -2139,8 +2139,7 @@
                 <span>Saison 2025/2026</span>
               </div>
               <div class="download-actions">
-                <a
-                  href="javascript:void(0)"
+                <button
                   onclick="
                     openPdf(
                       'dokumente/eiskunstlauf/20260214-termine_und_infos_2025_2026.pdf',
@@ -2150,7 +2149,7 @@
                 >
                   <i class="fas fa-eye"></i>
                   Ansehen
-                </a>
+                </button>
               </div>
             </div>
 
@@ -2211,8 +2210,7 @@
                 <span>Wettbewerb</span>
               </div>
               <div class="download-actions">
-                <a
-                  href="javascript:void(0)"
+                <button
                   onclick="
                     openPdf(
                       'dokumente/eiskunstlauf/2025-26_ebw_wettbewerbsstruktur_250730.pdf',
@@ -2222,7 +2220,7 @@
                 >
                   <i class="fas fa-eye"></i>
                   Ansehen
-                </a>
+                </button>
               </div>
             </div>
 
@@ -2237,8 +2235,7 @@
                 <span>Wettbewerb</span>
               </div>
               <div class="download-actions">
-                <a
-                  href="javascript:void(0)"
+                <button
                   onclick="
                     openPdf(
                       'dokumente/eiskunstlauf/2025-26_ebw_wettbewerbsinhalte_250730.pdf',
@@ -2248,7 +2245,7 @@
                 >
                   <i class="fas fa-eye"></i>
                   Ansehen
-                </a>
+                </button>
               </div>
             </div>
 
@@ -2263,8 +2260,7 @@
                 <span>Novice</span>
               </div>
               <div class="download-actions">
-                <a
-                  href="javascript:void(0)"
+                <button
                   onclick="
                     openPdf(
                       'dokumente/eiskunstlauf/dfbest_dkbek_empfehlungen_novice_final.pdf',
@@ -2274,7 +2270,7 @@
                 >
                   <i class="fas fa-eye"></i>
                   Ansehen
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -2357,7 +2353,7 @@
         document.body.style.overflow = "auto";
       };
 
-      window.onclick = (event) => {
+      globalThis.onclick = (event) => {
         if (event.target == pdfModal) {
           pdfModal.style.display = "none";
           pdfFrame.src = "";

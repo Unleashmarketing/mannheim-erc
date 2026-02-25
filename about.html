@@ -1236,6 +1236,7 @@
           width="100%"
           height="100%"
           style="border: none"
+          title="pdf viewer"
         ></iframe>
       </div>
     </div>
@@ -1279,6 +1280,9 @@
                 </li>
                 <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
                 <li><a href="eiskunstlauf.html#geschichte">Geschichte</a></li>
+                <li>
+                  <a href="eiskunstlauf.html#termine-infos">Termine & Infos</a>
+                </li>
               </ul>
             </li>
             <li class="has-submenu">
@@ -1385,6 +1389,9 @@
             </li>
             <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
             <li><a href="eiskunstlauf.html#geschichte">Geschichte</a></li>
+            <li>
+              <a href="eiskunstlauf.html#termine-infos">Termine & Infos</a>
+            </li>
           </ul>
         </li>
         <li class="has-submenu">
@@ -2796,8 +2803,7 @@
                 <span>Kunstlauf / Synchron</span>
               </div>
               <div class="download-actions">
-                <a
-                  href="javascript:void(0)"
+                <button
                   onclick="
                     openPdf('dokumente/verein/einzugsermaechtigung_kl_2023.pdf')
                   "
@@ -2805,7 +2811,7 @@
                 >
                   <i class="fas fa-eye"></i>
                   Ansehen
-                </a>
+                </button>
               </div>
             </div>
 
@@ -2823,8 +2829,7 @@
                 <span>Schnelllauf / Shorttrack</span>
               </div>
               <div class="download-actions">
-                <a
-                  href="javascript:void(0)"
+                <button
                   onclick="
                     openPdf('dokumente/verein/einzugsermaechtigung_sl_2023.pdf')
                   "
@@ -2832,7 +2837,7 @@
                 >
                   <i class="fas fa-eye"></i>
                   Ansehen
-                </a>
+                </button>
               </div>
             </div>
 
@@ -2850,8 +2855,7 @@
                 <span>Gültig ab 01.07.2025</span>
               </div>
               <div class="download-actions">
-                <a
-                  href="javascript:void(0)"
+                <button
                   onclick="
                     openPdf('dokumente/verein/gebuehrenordnung_ab_01072025.pdf')
                   "
@@ -2859,7 +2863,7 @@
                 >
                   <i class="fas fa-eye"></i>
                   Ansehen
-                </a>
+                </button>
               </div>
             </div>
 
@@ -2877,15 +2881,39 @@
                 <span>Trainingszeiten</span>
               </div>
               <div class="download-actions">
-                <a
+                <button
                   id="belegungsplan-button-id"
-                  href="javascript:void(0)"
                   onclick="openPdf('dokumente/verein/Hallenbelegung.pdf')"
                   class="btn btn-primary download-btn"
                 >
                   <i class="fas fa-eye"></i>
                   Ansehen
-                </a>
+                </button>
+              </div>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Einwilligungserklärung (Internet)</h3>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Kunstlauf / Schnelllauf</span>
+              </div>
+              <div class="download-actions">
+                <button
+                  id="einwilligungserklaerung-button-id"
+                  onclick="
+                    openPdf(
+                      'dokumente/mitglied/einwilligungserklaerung_internet_2015.pdf',
+                    )
+                  "
+                  class="btn btn-primary download-btn"
+                >
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </button>
               </div>
             </div>
           </div>

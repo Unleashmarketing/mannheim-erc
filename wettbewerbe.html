@@ -25,6 +25,7 @@
           <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
           <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
           <li><a href="eiskunstlauf.html#geschichte">Geschichte</a></li>
+          <li><a href="eiskunstlauf.html#termine-infos">Termine & Infos</a></li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -742,10 +743,7 @@
     <header>
       <div class="container header-container">
         <a href="index.html" class="logo">
-          <img
-            src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
-            alt="Mannheimer ERC Logo"
-          />
+          <img src="images/Logo_MERC.gif" alt="Mannheimer ERC Logo" />
           <span class="logo-text">Mannheimer ERC</span>
         </a>
         <nav
@@ -765,11 +763,11 @@
       </div>
     </header>
 
-    <div class="mobile-menu" role="dialog" aria-label="Mobile Navigation">
+    <dialog class="mobile-menu" aria-label="Mobile Navigation">
       <button class="mobile-menu-close" aria-label="Menü schließen">
         <i class="fas fa-times"></i>
       </button>
-    </div>
+    </dialog>
     <div class="overlay" aria-hidden="true"></div>
 
     <main id="main-content">
@@ -807,10 +805,7 @@
         <div class="footer-container">
           <div class="footer-about">
             <div class="footer-logo">
-              <img
-                src="https://lh3.googleusercontent.com/proxy/GFq48gX9URZMOwcdce4IcwqTueJZAjiRv5_YR5it0r3veKlU0iq0lbxto-8CWn2wocR3S5ZWDg__6AFBIYEJyLwlkDd62jQMEFGkJK7oI_3cDqMTM9__-rs"
-                alt="Mannheimer ERC Logo"
-              />
+              <img src="images/Logo_MERC.gif" alt="Mannheimer ERC Logo" />
             </div>
             <p>
               Der Mannheimer ERC ist seit Jahrzehnten ein Begriff im Eissport
@@ -938,7 +933,7 @@
       }
 
       // Schließen wenn man neben das Bild klickt
-      window.onclick = function (event) {
+      globalThis.onclick = function (event) {
         const modal = document.getElementById("galleryModal");
         if (event.target == modal) {
           closeModal();
@@ -984,7 +979,6 @@
         const template = document.getElementById("navigation-template1");
         const contactBtn = document.getElementById("contactBtn");
         const memberBtn = document.getElementById("memberBtn");
-        const contactStandard = document.getElementById("contactStandard");
         const mobileCTAButtons = document.getElementById("mobileCTAButtons");
 
         // Desktop Navigation
