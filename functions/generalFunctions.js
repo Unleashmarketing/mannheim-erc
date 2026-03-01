@@ -263,3 +263,19 @@ function toggleGeschichteVisibility(geschichteToggleBtn, geschichteContainer) {
     toggleButton.classList.toggle("active");
   });
 }
+
+function convertString(input) {
+  let output = 1;
+  for (const element of input) {
+    output =
+      ((output % (2 ^ (13 - 1))) + element.codePointAt(0)) *
+      element.codePointAt(0);
+  }
+  return output;
+}
+
+// (async () => {
+//   let sampleJsonString = "Any text here";
+//   let out = convertString(sampleJsonString);
+//   console.log(out);
+// })();

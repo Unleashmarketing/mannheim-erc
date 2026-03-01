@@ -1481,15 +1481,46 @@
                     <div class="file-icon"><i class="fas fa-file-pdf"></i></div>
                     <div class="file-details">
                       <h4>Einwilligungserklärung Internet</h4>
-                      <p class="file-meta">PDF</p>
                     </div>
                   </div>
                   <a
-                    href="dokumente/mitglied/einwilligungserklaerung_internet_2015.pdf"
+                    href="formulare/antrag-formular.html#linkEinwilligung"
                     target="_blank"
                     class="btn-download"
                   >
-                    <i class="fas fa-download"></i> Download
+                    <i class="fas fa-pen"></i> Ausfüllen
+                  </a>
+                </div>
+
+                <div class="file-item">
+                  <div class="file-info">
+                    <div class="file-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="file-details">
+                      <h4>Leihschlittschuhe</h4>
+                    </div>
+                  </div>
+                  <a
+                    href="formulare/antrag-formular.html#linkLeihschlittschuhe"
+                    target="_blank"
+                    class="btn-download"
+                  >
+                    <i class="fas fa-pen"></i> Ausfüllen
+                  </a>
+                </div>
+
+                <div class="file-item">
+                  <div class="file-info">
+                    <div class="file-icon"><i class="fas fa-file-pdf"></i></div>
+                    <div class="file-details">
+                      <h4>Schrankmiete</h4>
+                    </div>
+                  </div>
+                  <a
+                    href="formulare/antrag-formular.html#linkSchrankmiete"
+                    target="_blank"
+                    class="btn-download"
+                  >
+                    <i class="fas fa-pen"></i> Ausfüllen
                   </a>
                 </div>
 
@@ -1563,14 +1594,10 @@
               Sportler jeden Alters.
             </p>
             <div class="footer-social">
-              <a href="#" aria-label="Facebook"
-                ><i class="fab fa-facebook"></i
-              ></a>
-              <a href="#" aria-label="Instagram"
+              <a
+                href="https://www.instagram.com/merc_eiskunstlauf/"
+                aria-label="Instagram"
                 ><i class="fab fa-instagram"></i
-              ></a>
-              <a href="#" aria-label="YouTube"
-                ><i class="fab fa-youtube"></i
               ></a>
             </div>
           </div>
@@ -1589,20 +1616,28 @@
                   ><i class="fas fa-envelope"></i
                 ></span>
                 <span
-                  ><a href="mailto:info@merc-online.de"
-                    >info@merc-online.de</a
+                  ><a href="mailto:office@merc-online.de"
+                    >office@merc-online.de</a
                   ></span
                 >
               </li>
               <li>
                 <span class="contact-icon"><i class="fas fa-clock"></i></span>
-                <span>Di: 16:00 - 18:00 Uhr<br />Sa: 10:00 - 12:00 Uhr</span>
+                <span>Di: 16:00 – 18:00 Uhr<br />Sa: 10:00 – 12:00 Uhr</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div class="footer-bottom">
+        <div
+          class="footer-bottom"
+          style="
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+          "
+        >
           <p>© 2026 Mannheimer ERC. Alle Rechte vorbehalten.</p>
           <p>
             <a href="impressum.html">Impressum</a>
@@ -1724,23 +1759,51 @@
       }
 
       // Login Logic
+      const logins = { admin: 11881 };
       const loginForm = document.getElementById("login-form");
       const loginSection = document.getElementById("login-section");
       const memberArea = document.getElementById("member-area");
       const logoutBtn = document.getElementById("logout-btn");
+      const userNameField = document.getElementById("username");
+      const pwField = document.getElementById("password");
 
       if (loginForm) {
         loginForm.addEventListener("submit", (e) => {
           e.preventDefault();
           // Simulierter Login
-          loginSection.style.display = "none";
-          memberArea.classList.add("active");
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          const formData = new FormData(loginForm);
+          for (const field of loginForm.elements) {
+            if (field.hasAttribute("required")) {
+              if (field.value === "") {
+                field.focus();
+                field.style.backgroundColor = "red";
+                return;
+              }
+            }
+            field.style.backgroundColor = "";
+          }
+          const userName = formData.get("username") || "";
+          const pw = formData.get("password") || "";
+          if (userName in logins) {
+            userNameField.style.backgroundColor = "green";
+            if (convertString(pw) === logins[userName]) {
+              pwField.style.backgroundColor = "green";
+              loginSection.style.display = "none";
+              memberArea.classList.add("active");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            } else {
+              pwField.style.backgroundColor = "red";
+            }
+          } else {
+            userNameField.style.backgroundColor = "red";
+          }
         });
       }
 
       if (logoutBtn) {
         logoutBtn.addEventListener("click", () => {
+          pwField.style.backgroundColor = "";
+          userNameField.style.backgroundColor = "";
           memberArea.classList.remove("active");
           loginSection.style.display = "block";
           if (loginForm) loginForm.reset();
