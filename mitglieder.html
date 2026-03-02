@@ -126,7 +126,8 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
+    <!-- <style>
+
       /* ========================================
          CSS VARIABLES (Identisch zu den anderen Seiten)
          ======================================== */
@@ -522,7 +523,7 @@
          LOGIN FORM
          ======================================== */
       /* Anpassung: Abstand oben, da der Page Hero entfernt wurde */
-      #login-section {
+      .login-section-class {
         padding-top: 140px; /* Header Höhe + Abstand */
       }
 
@@ -1189,7 +1190,8 @@
       .skip-link:focus {
         top: 0;
       }
-    </style>
+    </style> -->
+    <link rel="stylesheet" href="main.css" crossorigin="anonymous" />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
@@ -1229,7 +1231,7 @@
       <section id="publicAnnouncements" class="news-section">
         <div class="container">
           <div class="section-header">
-            <h2 id="public-news-toggle-btn">
+            <h2 id="public-news-toggle-btn" class="archive-news-toggle-button">
               Öffentliche Meldungen<span id="public-news-toggle-icon">▼</span>
             </h2>
           </div>
@@ -1239,7 +1241,8 @@
                 <label for="public-news-search-input">Suchbegriff:</label>
                 <input
                   type="text"
-                  id="public-news-search"
+                  class="archive-news-search"
+                  id="public-news-src"
                   placeholder="Suche nach Stichwörtern..."
                   oninput="
                     handleArchiveNewsFilters(
@@ -1270,7 +1273,7 @@
                       handleArchiveNewsFilters(
                         this,
                         'public-news-date-slider-max',
-                        'public-news-search',
+                        'public-news-src',
                         'public-news-date-display',
                         'public-news-extra-text',
                         'public-news-container',
@@ -1288,7 +1291,7 @@
                       handleArchiveNewsFilters(
                         'public-news-date-slider-min',
                         this,
-                        'public-news-search',
+                        'public-news-src',
                         'public-news-date-display',
                         'public-news-extra-text',
                         'public-news-container',
@@ -1298,15 +1301,23 @@
                     "
                   />
                 </div>
-                <div id="public-news-date-display">Ganze Zeitspanne</div>
-                <div id="public-news-extra-text"></div>
+                <div
+                  id="public-news-date-display"
+                  class="archive-news-date-display"
+                >
+                  Ganze Zeitspanne
+                </div>
+                <div
+                  id="public-news-extra-text"
+                  class="archive-news-extra-text"
+                ></div>
               </div>
 
               <button
-                id="public-news-reset-filters"
+                class="archive-news-reset-filters"
                 onclick="
                   resetArchiveNewsFilters(
-                    'public-news-search',
+                    'public-news-src',
                     'public-news-date-slider-min',
                     'public-news-date-slider-max',
                     'public-news-date-display',
@@ -1326,7 +1337,7 @@
         </div>
       </section>
 
-      <section id="login-section" class="section">
+      <section id="login-section" class="section login-section-class">
         <div class="container">
           <div class="login-container">
             <div class="login-box fade-in">
@@ -1998,7 +2009,7 @@
           "public-news-wrapper",
           "public-news-date-slider-min",
           "public-news-date-slider-max",
-          "public-news-search",
+          "public-news-src",
           "public-news-date-display",
           "public-news-extra-text",
           "public-news-container",
@@ -2006,37 +2017,12 @@
         );
       });
       document
-        .getElementById("public-news-search")
+        .getElementById("public-news-src")
         .addEventListener("focus", function () {
           if (this.value === "#begrenzt") {
             this.value = "";
           }
         });
-      const makeBrowserPedantic = () => {
-        const styles = Array.from(document.styleSheets)
-          .filter((sheet) => !sheet.href)
-          .flatMap((sheet) => Array.from(sheet.cssRules))
-          .map((rule) => rule.selectorText)
-          .join(" ");
-
-        document.querySelectorAll("[class]").forEach((el) => {
-          const missingClasses = Array.from(el.classList).filter(
-            (cls) => !styles.includes(`.${cls}`),
-          );
-
-          if (missingClasses.length > 0) {
-            el.style.outline = "5px solid red";
-            const label = document.createElement("div");
-            label.innerText = `Undefined: ${missingClasses.join(", ")}`;
-            label.style.cssText =
-              "position:absolute; background:red; color:white; font-size:10px; padding:2px; z-index:10000; top:0;";
-            if (getComputedStyle(el).position === "static")
-              el.style.position = "relative";
-            el.appendChild(label);
-          }
-        });
-      };
-      // globalThis.onload = makeBrowserPedantic;
     </script>
   </body>
 </html>

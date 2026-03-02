@@ -117,7 +117,7 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
+    <!-- <style>
       :root {
         --primary-color: #0062ff;
         --primary-hover: #0052d9;
@@ -1138,7 +1138,8 @@
         outline: 3px solid var(--primary-color);
         outline-offset: 2px;
       }
-    </style>
+    </style> -->
+    <link rel="stylesheet" href="../main.css" crossorigin="anonymous" />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
@@ -1249,7 +1250,10 @@
                 class="conditions-body"
               ></div>
               <div id="antrag-eislaufschule-wrapper" class="form-body">
-                <div id="generalAlertEislaufSchule" class="alert-box"></div>
+                <div
+                  id="generalAlertEislaufSchule"
+                  class="alert-box-antrag-formular"
+                ></div>
                 <form id="antragFormEislaufschule" novalidate>
                   <div class="form-section">
                     <h3>Persönliche Daten Teilnehmer</h3>
@@ -1512,7 +1516,10 @@
                 class="conditions-body"
               ></div>
               <div id="aufnahmeantrag-wrapper" class="form-body">
-                <div id="generalAlertAufnahmeAntrag" class="alert-box"></div>
+                <div
+                  id="generalAlertAufnahmeAntrag"
+                  class="alert-box-antrag-formular"
+                ></div>
                 <form id="antragFormAufnahmeantrag" novalidate>
                   <div class="form-section">
                     <h3>Persönliche Daten</h3>
@@ -1874,7 +1881,10 @@
                 class="conditions-body"
               ></div>
               <div id="antrag-schnupperkurs-wrapper" class="form-body">
-                <div id="generalAlertSchnupperkurs" class="alert-box"></div>
+                <div
+                  id="generalAlertSchnupperkurs"
+                  class="alert-box-antrag-formular"
+                ></div>
                 <form id="antragFormSchnupperkurs" novalidate>
                   <div class="form-section">
                     <h3>Erziehungsberechtigte</h3>
@@ -2086,7 +2096,10 @@
                 class="conditions-body"
               ></div>
               <div id="antrag-schrank-wrapper" class="form-body">
-                <div id="generalAlertSchrank" class="alert-box"></div>
+                <div
+                  id="generalAlertSchrank"
+                  class="alert-box-antrag-formular"
+                ></div>
                 <form id="antragFormSchrank" novalidate>
                   <div class="form-section">
                     <h3>Mieterdaten</h3>
@@ -2338,7 +2351,10 @@
                 class="conditions-body"
               ></div>
               <div id="antrag-leihschlittschuhe-wrapper" class="form-body">
-                <div id="generalAlertLeihschlittschuhe" class="alert-box"></div>
+                <div
+                  id="generalAlertLeihschlittschuhe"
+                  class="alert-box-antrag-formular"
+                ></div>
                 <form id="antragFormLeihschlittschuhe" novalidate>
                   <div class="form-section">
                     <h3>Mieterdaten</h3>
@@ -2543,7 +2559,7 @@
               >
                 <div
                   id="generalAlertEinwilligungserklaerung"
-                  class="alert-box"
+                  class="alert-box-antrag-formular"
                 ></div>
                 <form id="antragFormEinwilligungserklaerung" novalidate>
                   <div class="form-section">
@@ -2676,7 +2692,7 @@
               <div id="einzugsermaechtigungkl-wrapper" class="form-body">
                 <div
                   id="generalAlertEinzugsermaechtigungkl"
-                  class="alert-box"
+                  class="alert-box-antrag-formular"
                 ></div>
                 <form id="antragFormEinzugsermaechtigungkl" novalidate>
                   <div class="form-section">
@@ -2985,7 +3001,7 @@
               <div id="einzugsermaechtigungsl-wrapper" class="form-body">
                 <div
                   id="generalAlertEinzugsermaechtigungsl"
-                  class="alert-box"
+                  class="alert-box-antrag-formular"
                 ></div>
                 <form id="antragFormEinzugsermaechtigungsl" novalidate>
                   <div class="form-section">
@@ -3415,7 +3431,7 @@
         const alertBox = document.getElementById(generalAlertId);
         if (alertBox) {
           alertBox.style.display = "none";
-          alertBox.className = "alert-box";
+          alertBox.className = "alert-box-antrag-formular";
         }
       }
 
@@ -3547,7 +3563,7 @@
               generatePDF(data, integerDocType, tanField.value);
               const alertBox = document.getElementById(generalAlertId);
               alertBox.style.display = "block";
-              alertBox.className = "alert-box success";
+              alertBox.className = "alert-box-antrag-formular success";
               alertBox.textContent =
                 "Antrag erfolgreich übermittelt! PDF wird heruntergeladen.";
               alertBox.scrollIntoView({ behavior: "smooth" });
@@ -3563,7 +3579,7 @@
               console.error(error);
               const alertBox = document.getElementById(generalAlertId);
               alertBox.style.display = "block";
-              alertBox.className = "alert-box error";
+              alertBox.className = "alert-box-antrag-formular error";
               alertBox.textContent =
                 "Fehler beim Senden. Bitte prüfen Sie Ihre Verbindung.";
               submitBtn.disabled = false;
@@ -4283,31 +4299,6 @@
           "checkbox-error-bestimmungen-einzugsermaechtigungsl",
         );
       });
-      const makeBrowserPedantic = () => {
-        const styles = Array.from(document.styleSheets)
-          .filter((sheet) => !sheet.href)
-          .flatMap((sheet) => Array.from(sheet.cssRules))
-          .map((rule) => rule.selectorText)
-          .join(" ");
-
-        document.querySelectorAll("[class]").forEach((el) => {
-          const missingClasses = Array.from(el.classList).filter(
-            (cls) => !styles.includes(`.${cls}`),
-          );
-
-          if (missingClasses.length > 0) {
-            el.style.outline = "5px solid red";
-            const label = document.createElement("div");
-            label.innerText = `Undefined: ${missingClasses.join(", ")}`;
-            label.style.cssText =
-              "position:absolute; background:red; color:white; font-size:10px; padding:2px; z-index:10000; top:0;";
-            if (getComputedStyle(el).position === "static")
-              el.style.position = "relative";
-            el.appendChild(label);
-          }
-        });
-      };
-      // globalThis.onload = makeBrowserPedantic;
     </script>
   </body>
 </html>

@@ -124,7 +124,7 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
+    <!-- <style>
       /* ========================================
          CSS VARIABLES - Zentrale Steuerung
          ======================================== */
@@ -1121,7 +1121,7 @@
         background-color: var(--light-bg);
       }
 
-      #erfolge-toggle-btn {
+      .erfolge-toggle-button {
         font-size: var(--font-size-3xl);
         font-weight: 800;
         color: var(--text-dark);
@@ -1137,11 +1137,11 @@
         padding: 0;
       }
 
-      #erfolge-toggle-btn:hover {
+      .erfolge-toggle-button:hover {
         color: var(--primary-color);
       }
 
-      #erfolge-toggle-btn::after {
+      .erfolge-toggle-button::after {
         content: "";
         display: block;
         width: 60px;
@@ -1154,14 +1154,14 @@
         transform: translateX(-50%);
       }
 
-      #erfolge-toggle-icon {
+      .erfolge-toggle-icon {
         display: inline-block;
         transition: transform 0.3s ease;
         font-size: var(--font-size-lg);
         color: var(--primary-color);
       }
 
-      #erfolge-toggle-btn.active #erfolge-toggle-icon {
+      .erfolge-toggle-button.active .erfolge-toggle-icon {
         transform: rotate(-180deg);
       }
 
@@ -1343,7 +1343,8 @@
       .skip-link:focus {
         top: 0;
       }
-    </style>
+    </style> -->
+    <link rel="stylesheet" href="main.css" crossorigin="anonymous" />
   </head>
   <body>
     <!-- Skip Link for Accessibility -->
@@ -1613,8 +1614,9 @@
       <section class="toggle-section">
         <div class="container">
           <div class="section-header">
-            <button id="erfolge-toggle-btn">
-              Erfolge &amp; Wettbewerbe <span id="erfolge-toggle-icon">▼</span>
+            <button id="erfolge-toggle-btn" class="erfolge-toggle-button">
+              Erfolge &amp; Wettbewerbe
+              <span class="erfolge-toggle-icon">▼</span>
             </button>
           </div>
 
@@ -1997,31 +1999,6 @@
           }
         });
       });
-      const makeBrowserPedantic = () => {
-        const styles = Array.from(document.styleSheets)
-          .filter((sheet) => !sheet.href)
-          .flatMap((sheet) => Array.from(sheet.cssRules))
-          .map((rule) => rule.selectorText)
-          .join(" ");
-
-        document.querySelectorAll("[class]").forEach((el) => {
-          const missingClasses = Array.from(el.classList).filter(
-            (cls) => !styles.includes(`.${cls}`),
-          );
-
-          if (missingClasses.length > 0) {
-            el.style.outline = "5px solid red";
-            const label = document.createElement("div");
-            label.innerText = `Undefined: ${missingClasses.join(", ")}`;
-            label.style.cssText =
-              "position:absolute; background:red; color:white; font-size:10px; padding:2px; z-index:10000; top:0;";
-            if (getComputedStyle(el).position === "static")
-              el.style.position = "relative";
-            el.appendChild(label);
-          }
-        });
-      };
-      // globalThis.onload = makeBrowserPedantic;
     </script>
   </body>
 </html>

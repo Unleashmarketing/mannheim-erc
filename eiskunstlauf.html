@@ -124,7 +124,7 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
+    <!-- <style>
       /* ========================================
          CSS VARIABLES - Zentrale Steuerung
          ======================================== */
@@ -1396,7 +1396,7 @@
         background-color: var(--white);
       }
 
-      #geschichte-toggle-btn {
+      .geschichte-toggle-button {
         font-size: var(--font-size-3xl);
         font-weight: 800;
         color: var(--text-dark);
@@ -1409,11 +1409,11 @@
         position: relative;
       }
 
-      #geschichte-toggle-btn:hover {
+      .geschichte-toggle-button:hover {
         color: var(--primary-color);
       }
 
-      #geschichte-toggle-btn::after {
+      .geschichte-toggle-button::after {
         content: "";
         display: block;
         width: 60px;
@@ -1427,21 +1427,22 @@
         transform: translateX(-50%);
       }
 
-      #geschichte-toggle-icon {
+      .geschichte-toggle-icon {
         display: inline-block;
         transition: transform 0.3s ease;
         font-size: var(--font-size-lg);
         color: var(--primary-color);
       }
 
-      #geschichte-toggle-btn.active #geschichte-toggle-icon {
+      .geschichte-toggle-button.active .geschichte-toggle-icon {
         transform: rotate(-180deg);
       }
 
       .geschichte-collapsed {
         display: none;
       }
-    </style>
+    </style> -->
+    <link rel="stylesheet" href="main.css" crossorigin="anonymous" />
   </head>
   <body>
     <!-- PDF MODAL -->
@@ -1820,9 +1821,9 @@
       <section class="geschichte-section" id="geschichte">
         <div class="container">
           <div class="section-header">
-            <h2 id="geschichte-toggle-btn">
+            <h2 id="geschichte-toggle-btn" class="geschichte-toggle-button">
               Geschichte der Abteilung Eiskunstlauf<span
-                id="geschichte-toggle-icon"
+                class="geschichte-toggle-icon"
                 >▼</span
               >
             </h2>
@@ -2554,31 +2555,6 @@
           }
         });
       });
-      const makeBrowserPedantic = () => {
-        const styles = Array.from(document.styleSheets)
-          .filter((sheet) => !sheet.href)
-          .flatMap((sheet) => Array.from(sheet.cssRules))
-          .map((rule) => rule.selectorText)
-          .join(" ");
-
-        document.querySelectorAll("[class]").forEach((el) => {
-          const missingClasses = Array.from(el.classList).filter(
-            (cls) => !styles.includes(`.${cls}`),
-          );
-
-          if (missingClasses.length > 0) {
-            el.style.outline = "5px solid red";
-            const label = document.createElement("div");
-            label.innerText = `Undefined: ${missingClasses.join(", ")}`;
-            label.style.cssText =
-              "position:absolute; background:red; color:white; font-size:10px; padding:2px; z-index:10000; top:0;";
-            if (getComputedStyle(el).position === "static")
-              el.style.position = "relative";
-            el.appendChild(label);
-          }
-        });
-      };
-      // globalThis.onload = makeBrowserPedantic;
     </script>
   </body>
 </html>

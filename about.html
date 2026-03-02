@@ -114,7 +114,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Über Uns - Mannheimer ERC</title>
-    <style>
+    <!-- <style>
       /* ========================================
           CSS VARIABLES - Zentrale Steuerung
           ======================================== */
@@ -1335,7 +1335,7 @@
       .skip-link:focus {
         top: 0;
       }
-    </style>
+    </style> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -1346,6 +1346,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="main.css" crossorigin="anonymous" />
   </head>
   <body>
     <div id="pdfModal" class="pdf-modal">
@@ -2705,7 +2706,9 @@
             >
               Ehrenvorsitzende
             </h3>
-            <p class="section-subtitle">Eugen Romminger† & Karl Hager†</p>
+            <p class="section-subtitle" style="text-align: center">
+              Eugen Romminger† & Karl Hager†
+            </p>
           </div>
           <div style="margin-bottom: 60px">
             <h3
@@ -2719,7 +2722,7 @@
             >
               Ehrenmitglieder (alphabetisch)
             </h3>
-            <p class="section-subtitle">
+            <p class="section-subtitle" style="text-align: center">
               Petra Ernert, Gudrun Häfner, Walter Häfner, Claudia
               Leistner-Pfrengle, Lotte Lenz, Sigrid Müllenbach-Wendel†, Gundi
               Pawasserat, Rudi Pawasserat, Gerhard Rausch, Anna Reinshagen†,
@@ -3251,30 +3254,30 @@
         });
       }
 
-      const makeBrowserPedantic = () => {
-        const styles = Array.from(document.styleSheets)
-          .filter((sheet) => !sheet.href)
-          .flatMap((sheet) => Array.from(sheet.cssRules))
-          .map((rule) => rule.selectorText)
-          .join(" ");
+      // const makeBrowserPedantic = () => {
+      //   const styles = Array.from(document.styleSheets)
+      //     .filter((sheet) => !sheet.href)
+      //     .flatMap((sheet) => Array.from(sheet.cssRules))
+      //     .map((rule) => rule.selectorText)
+      //     .join(" ");
 
-        document.querySelectorAll("[class]").forEach((el) => {
-          const missingClasses = Array.from(el.classList).filter(
-            (cls) => !styles.includes(`.${cls}`),
-          );
+      //   document.querySelectorAll("[class]").forEach((el) => {
+      //     const missingClasses = Array.from(el.classList).filter(
+      //       (cls) => !styles.includes(`.${cls}`),
+      //     );
 
-          if (missingClasses.length > 0) {
-            el.style.outline = "5px solid red";
-            const label = document.createElement("div");
-            label.innerText = `Undefined: ${missingClasses.join(", ")}`;
-            label.style.cssText =
-              "position:absolute; background:red; color:white; font-size:10px; padding:2px; z-index:10000; top:0;";
-            if (getComputedStyle(el).position === "static")
-              el.style.position = "relative";
-            el.appendChild(label);
-          }
-        });
-      };
+      //     if (missingClasses.length > 0) {
+      //       el.style.outline = "5px solid red";
+      //       const label = document.createElement("div");
+      //       label.innerText = `Undefined: ${missingClasses.join(", ")}`;
+      //       label.style.cssText =
+      //         "position:absolute; background:red; color:white; font-size:10px; padding:2px; z-index:10000; top:0;";
+      //       if (getComputedStyle(el).position === "static")
+      //         el.style.position = "relative";
+      //       el.appendChild(label);
+      //     }
+      //   });
+      // };
       // globalThis.onload = makeBrowserPedantic;
       document.addEventListener("DOMContentLoaded", function () {
         insertNavigationElements();
