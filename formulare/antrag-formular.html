@@ -69,6 +69,11 @@
           <li>
             <a href="../mitglieder.html#publicAnnouncements">Meldungen</a>
           </li>
+          <li>
+            <a href="https://www.indoortrends.de/vereinsheim/mannheimer-erc"
+              >Vereinsshop</a
+            >
+          </li>
         </ul>
       </li>
     </ul>
@@ -85,12 +90,12 @@
       <li><a href="../index.html#contact" class="btn-header">Kontakt</a></li>
     </ul></template
   >
-  <template id="memberStandard"
+  <template
     ><ul>
       <li><a href="../mitglieder.html">Mitgliederbereich</a></li>
     </ul></template
   >
-  <template id="contactStandard"
+  <template
     ><ul>
       <li><a href="../index.html#contact">Kontakt</a></li>
     </ul></template
@@ -3302,84 +3307,51 @@
       data-cfasync="false"
       src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
     ></script>
+    <script src="../functions/generalFunctions.js"></script>
     <script>
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileMenu = document.querySelector(".mobile-menu");
       const overlay = document.querySelector(".overlay");
       const mobileClose = document.querySelector(".mobile-menu-close");
-      function openMenu() {
-        mobileMenu.showModal();
-        mobileMenu.classList.add("active");
-        overlay.classList.add("active");
-        document.body.style.overflow = "hidden";
-        mobileToggle.classList.add("active");
-        mobileToggle.setAttribute("aria-expanded", "true");
-      }
-      function closeMenu() {
-        mobileMenu.close();
-        requestAnimationFrame(() => {
-          mobileMenu.classList.remove("active");
-        });
-        overlay.classList.remove("active");
-        document.body.style.overflow = "";
-        mobileToggle.classList.remove("active");
-        mobileToggle.setAttribute("aria-expanded", "false");
-      }
       mobileToggle.addEventListener("click", () =>
-        mobileMenu.classList.contains("active") ? closeMenu() : openMenu(),
+        mobileMenu.classList.contains("active")
+          ? closeMenu(mobileMenu, overlay, mobileToggle)
+          : openMenu(mobileMenu, overlay, mobileToggle),
       );
-      mobileClose.addEventListener("click", closeMenu);
-      overlay.addEventListener("click", closeMenu);
+      mobileClose.addEventListener("click", () =>
+        closeMenu(mobileMenu, overlay, mobileToggle),
+      );
+      overlay.addEventListener("click", () =>
+        closeMenu(mobileMenu, overlay, mobileToggle),
+      );
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && mobileMenu.classList.contains("active"))
-          closeMenu();
+          closeMenu(mobileMenu, overlay, mobileToggle);
       });
-      function insertNavigationElements() {
-        const template = document.getElementById("navigation-template1");
-        const memberBtn = document.getElementById("memberBtn");
-        const contactBtn = document.getElementById("contactBtn");
-        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
-        const desktopNav = document.getElementById("pageElementsDesktop");
-        if (template && desktopNav) {
-          desktopNav.prepend(template.content.cloneNode(true));
-          const ul = desktopNav.querySelector("ul");
-          if (ul) {
-            if (memberBtn) ul.append(memberBtn.content.cloneNode(true));
-            if (contactBtn) ul.append(contactBtn.content.cloneNode(true));
-          }
-        }
-        if (template && mobileMenu) {
-          mobileMenu.prepend(template.content.cloneNode(true));
-          if (mobileCTAButtons)
-            mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
-        }
-      }
-      function setupMobileSubmenus() {
-        mobileMenu
-          .querySelectorAll(".has-submenu > .submenu-toggle")
-          .forEach((toggle) => {
-            toggle.addEventListener("click", function (e) {
-              e.preventDefault();
-              const li = this.closest(".has-submenu");
-              mobileMenu
-                .querySelectorAll(".has-submenu.open")
-                .forEach((item) => {
-                  if (item !== li) item.classList.remove("open");
-                });
-              li.classList.toggle("open");
-            });
-          });
-      }
       const header = document.querySelector("header");
       window.addEventListener("scroll", () => {
         header.classList.toggle("scrolled", window.pageYOffset > 100);
       });
       document.addEventListener("DOMContentLoaded", function () {
-        insertNavigationElements();
-        setupMobileSubmenus();
+        const template = document.getElementById("navigation-template1");
+        const memberBtn = document.getElementById("memberBtn");
+        const contactBtn = document.getElementById("contactBtn");
+        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
+        const desktopNav = document.getElementById("pageElementsDesktop");
+        insertNavigationElements(
+          template,
+          contactBtn,
+          memberBtn,
+          null,
+          mobileCTAButtons,
+          desktopNav,
+          null,
+        );
+        setupMobileSubmenus(mobileMenu);
       });
     </script>
     <script src="formularBedingungen.js"></script>
+
     <script>
       const { jsPDF } = globalThis.jspdf;
 

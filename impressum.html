@@ -94,6 +94,11 @@
       <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
     </ul>
   </template>
+  <template>
+    <ul>
+      <li><a href="mitglieder.html">Mitgliederbereich</a></li>
+    </ul>
+  </template>
   <template id="contactStandard">
     <ul>
       <li><a href="index.html#contact">Kontakt</a></li>
@@ -988,6 +993,7 @@
       </div>
     </footer>
 
+    <script src="functions/generalFunctions.js"></script>
     <script>
       // ========================================
       // STANDARD NAVIGATION LOGIK (Aus CI übernommen)
@@ -999,83 +1005,22 @@
       const mobileClose = document.querySelector(".mobile-menu-close");
       const mobileLinks = document.querySelectorAll(".mobile-menu a");
 
-      function openMenu() {
-        mobileMenu.showModal();
-        mobileMenu.classList.add("active");
-        overlay.classList.add("active");
-        document.body.style.overflow = "hidden";
-        mobileToggle.classList.add("active");
-        mobileToggle.setAttribute("aria-expanded", "true");
-      }
-
-      function closeMenu() {
-        mobileMenu.close();
-        requestAnimationFrame(() => {
-          mobileMenu.classList.remove("active");
-        });
-        overlay.classList.remove("active");
-        document.body.style.overflow = "";
-        mobileToggle.classList.remove("active");
-        mobileToggle.setAttribute("aria-expanded", "false");
-      }
-
       if (mobileToggle)
         mobileToggle.addEventListener("click", () => {
           const isOpen = mobileMenu.classList.contains("active");
-          isOpen ? closeMenu() : openMenu();
+          isOpen
+            ? closeMenu(mobileMenu, overlay, mobileToggle)
+            : openMenu(mobileMenu, overlay, mobileToggle);
         });
 
-      if (mobileClose) mobileClose.addEventListener("click", closeMenu);
-      if (overlay) overlay.addEventListener("click", closeMenu);
-
-      function insertNavigationElements() {
-        const template = document.getElementById("navigation-template1");
-        const contactBtn = document.getElementById("contactBtn");
-        const memberBtn = document.getElementById("memberBtn");
-        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
-
-        // Desktop Navigation
-        const desktopNav = document.getElementById("pageElementsDesktop");
-        if (template && desktopNav) {
-          const clone = template.content.cloneNode(true);
-          desktopNav.prepend(clone);
-          const ul = desktopNav.querySelector("ul");
-          if (ul) {
-            if (memberBtn) ul.append(memberBtn.content.cloneNode(true));
-            if (contactBtn) ul.append(contactBtn.content.cloneNode(true));
-          }
-        }
-
-        // Mobile Navigation
-        if (template && mobileMenu) {
-          const clone = template.content.cloneNode(true);
-          mobileMenu.prepend(clone);
-          if (mobileCTAButtons)
-            mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
-          setupMobileSubmenus();
-        }
-
-        // Footer Navigation ist nicht mehr nötig (Schnellzugriff entfernt),
-        // aber Funktion bleibt für Stabilität
-      }
-
-      function setupMobileSubmenus() {
-        const submenuParents = mobileMenu.querySelectorAll(
-          ".has-submenu > .submenu-toggle",
+      if (mobileClose)
+        mobileClose.addEventListener("click", () =>
+          closeMenu(mobileMenu, overlay, mobileToggle),
         );
-        submenuParents.forEach((toggle) => {
-          toggle.addEventListener("click", function (e) {
-            e.preventDefault();
-            const li = this.closest(".has-submenu");
-            const isOpen = li.classList.contains("open");
-            mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
-              if (item !== li) item.classList.remove("open");
-            });
-            li.classList.toggle("open");
-            this.setAttribute("aria-expanded", String(!isOpen));
-          });
-        });
-      }
+      if (overlay)
+        overlay.addEventListener("click", () =>
+          closeMenu(mobileMenu, overlay, mobileToggle),
+        );
 
       // Scroll Header
       const header = document.querySelector("header");
@@ -1087,28 +1032,23 @@
         }
       });
 
-      // Animation Observer
-      function observeFadeElements() {
-        const fadeElements = document.querySelectorAll(".fade-in");
-        const observerOptions = {
-          threshold: 0.1,
-          rootMargin: "0px 0px -50px 0px",
-        };
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
-        }, observerOptions);
-        fadeElements.forEach((element) => {
-          observer.observe(element);
-        });
-      }
-
       // Init
       document.addEventListener("DOMContentLoaded", function () {
-        insertNavigationElements();
+        const template = document.getElementById("navigation-template1");
+        const contactBtn = document.getElementById("contactBtn");
+        const memberBtn = document.getElementById("memberBtn");
+        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
+        const desktopNav = document.getElementById("pageElementsDesktop");
+        insertNavigationElements(
+          template,
+          contactBtn,
+          memberBtn,
+          null,
+          mobileCTAButtons,
+          desktopNav,
+          null,
+        );
+        setupMobileSubmenus(mobileMenu);
         observeFadeElements();
       });
     </script>

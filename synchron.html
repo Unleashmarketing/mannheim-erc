@@ -91,7 +91,7 @@
   </template>
   <template id="contactBtn">
     <ul>
-      <li><a href="#contact" class="btn-header">Kontakt</a></li>
+      <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
     </ul>
   </template>
   <template>
@@ -101,13 +101,13 @@
   </template>
   <template id="contactStandard">
     <ul>
-      <li><a href="#contact">Kontakt</a></li>
+      <li><a href="index.html#contact">Kontakt</a></li>
     </ul>
   </template>
   <template id="mobileCTAButtons">
     <div class="mobile-cta-buttons">
       <a href="mitglieder.html">Mitgliederbereich</a>
-      <a href="#contact">Kontakt</a>
+      <a href="index.html#contact">Kontakt</a>
     </div>
   </template>
   <head>
@@ -1812,7 +1812,7 @@
         </div>
       </div>
     </footer>
-
+    <script src="functions/generalFunctions.js"></script>
     <script>
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileMenu = document.querySelector(".mobile-menu");
@@ -1820,38 +1820,24 @@
       const mobileClose = document.querySelector(".mobile-menu-close");
       const mobileLinks = document.querySelectorAll(".mobile-menu a");
 
-      function openMenu() {
-        mobileMenu.showModal();
-        mobileMenu.classList.add("active");
-        overlay.classList.add("active");
-        document.body.style.overflow = "hidden";
-        mobileToggle.classList.add("active");
-        mobileToggle.setAttribute("aria-expanded", "true");
-      }
-
-      function closeMenu() {
-        mobileMenu.close();
-        requestAnimationFrame(() => {
-          mobileMenu.classList.remove("active");
-        });
-        overlay.classList.remove("active");
-        document.body.style.overflow = "";
-        mobileToggle.classList.remove("active");
-        mobileToggle.setAttribute("aria-expanded", "false");
-      }
-
       mobileToggle.addEventListener("click", () => {
         const isOpen = mobileMenu.classList.contains("active");
-        isOpen ? closeMenu() : openMenu();
+        isOpen
+          ? closeMenu(mobileMenu, overlay, mobileToggle)
+          : openMenu(mobileMenu, overlay, mobileToggle);
       });
 
-      mobileClose.addEventListener("click", closeMenu);
-      overlay.addEventListener("click", closeMenu);
+      mobileClose.addEventListener("click", () =>
+        closeMenu(mobileMenu, overlay, mobileToggle),
+      );
+      overlay.addEventListener("click", () =>
+        closeMenu(mobileMenu, overlay, mobileToggle),
+      );
 
       mobileLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
           if (link.getAttribute("href").startsWith("#")) {
-            closeMenu();
+            closeMenu(mobileMenu, overlay, mobileToggle);
           }
         });
       });
@@ -1859,79 +1845,9 @@
       // Close menu on Escape key
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
-          closeMenu();
+          closeMenu(mobileMenu, overlay, mobileToggle);
         }
       });
-
-      function insertNavigationElements() {
-        const template = document.getElementById("navigation-template1");
-        const contactBtn = document.getElementById("contactBtn");
-        const memberBtn = document.getElementById("memberBtn");
-        const contactStandard = document.getElementById("contactStandard");
-        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
-
-        // Desktop Navigation
-        const desktopNav = document.getElementById("pageElementsDesktop");
-        if (template && desktopNav) {
-          const clone = template.content.cloneNode(true);
-          desktopNav.prepend(clone);
-          const ul = desktopNav.querySelector("ul");
-          if (ul) {
-            if (memberBtn) {
-              ul.append(memberBtn.content.cloneNode(true));
-            }
-            if (contactBtn) {
-              ul.append(contactBtn.content.cloneNode(true));
-            }
-          }
-        }
-
-        // Mobile Navigation
-        if (template && mobileMenu) {
-          const clone = template.content.cloneNode(true);
-          mobileMenu.prepend(clone);
-
-          // Add CTA buttons at the end
-          if (mobileCTAButtons) {
-            mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
-          }
-        }
-
-        // Footer Navigation
-        const footerLinks = document.getElementById(
-          "footerLinksWithMenuElements",
-        );
-        if (template && footerLinks) {
-          const clone = template.content.cloneNode(true);
-          footerLinks.append(clone);
-          const ul = footerLinks.querySelector("ul");
-          if (ul && contactStandard) {
-            ul.append(contactStandard.content.cloneNode(true));
-          }
-        }
-      }
-
-      function setupMobileSubmenus() {
-        const submenuParents = mobileMenu.querySelectorAll(
-          ".has-submenu > .submenu-toggle",
-        );
-        submenuParents.forEach((toggle) => {
-          toggle.addEventListener("click", function (e) {
-            e.preventDefault();
-            const li = this.closest(".has-submenu");
-            const isOpen = li.classList.contains("open");
-
-            // Close other open submenus
-            mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
-              if (item !== li) item.classList.remove("open");
-            });
-
-            li.classList.toggle("open");
-            this.setAttribute("aria-expanded", String(!isOpen));
-          });
-        });
-      }
-
       const header = document.querySelector("header");
       let lastScroll = 0;
 
@@ -1968,8 +1884,25 @@
 
       document.addEventListener("DOMContentLoaded", function () {
         // Initialize navigation
-        insertNavigationElements();
-        setupMobileSubmenus();
+        const template = document.getElementById("navigation-template1");
+        const contactBtn = document.getElementById("contactBtn");
+        const memberBtn = document.getElementById("memberBtn");
+        const contactStandard = document.getElementById("contactStandard");
+        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
+        const desktopNav = document.getElementById("pageElementsDesktop");
+        const footerLinks = document.getElementById(
+          "footerLinksWithMenuElements",
+        );
+        insertNavigationElements(
+          template,
+          contactBtn,
+          memberBtn,
+          contactStandard,
+          mobileCTAButtons,
+          desktopNav,
+          footerLinks,
+        );
+        setupMobileSubmenus(mobileMenu);
 
         // Erfolge toggle
         const erfolgeBtn = document.getElementById("erfolge-toggle-btn");
