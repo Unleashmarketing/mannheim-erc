@@ -94,7 +94,7 @@
       <li><a href="#contact" class="btn-header">Kontakt</a></li>
     </ul>
   </template>
-  <template id="memberStandard">
+  <template>
     <ul>
       <li><a href="mitglieder.html">Mitgliederbereich</a></li>
     </ul>
@@ -581,6 +581,9 @@
         transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         z-index: 999;
         overflow-y: auto;
+        left: auto;
+        margin: 0;
+        border: none;
       }
 
       .mobile-menu.active {
@@ -1169,7 +1172,7 @@
 
       .footer-about p {
         color: rgba(255, 255, 255, 0.7);
-        line-height: 1.8;
+        line-height: 1.7;
         margin-bottom: var(--spacing-md);
       }
 
@@ -1480,12 +1483,11 @@
         </button>
       </div>
     </header>
-
-    <div class="mobile-menu" role="dialog" aria-label="Mobile Navigation">
+    <dialog class="mobile-menu" aria-label="Mobile Navigation">
       <button class="mobile-menu-close" aria-label="Menü schließen">
         <i class="fas fa-times"></i>
       </button>
-    </div>
+    </dialog>
     <div class="overlay" aria-hidden="true"></div>
 
     <main id="main-content">
@@ -2366,6 +2368,7 @@
       const mobileLinks = document.querySelectorAll(".mobile-menu a");
 
       function openMenu() {
+        mobileMenu.showModal();
         mobileMenu.classList.add("active");
         overlay.classList.add("active");
         document.body.style.overflow = "hidden";
@@ -2374,7 +2377,10 @@
       }
 
       function closeMenu() {
-        mobileMenu.classList.remove("active");
+        mobileMenu.close();
+        requestAnimationFrame(() => {
+          mobileMenu.classList.remove("active");
+        });
         overlay.classList.remove("active");
         document.body.style.overflow = "";
         mobileToggle.classList.remove("active");
@@ -2433,7 +2439,6 @@
         const contactBtn = document.getElementById("contactBtn");
         const memberBtn = document.getElementById("memberBtn");
         const contactStandard = document.getElementById("contactStandard");
-        const memberStandard = document.getElementById("memberStandard");
         const mobileCTAButtons = document.getElementById("mobileCTAButtons");
 
         const desktopNav = document.getElementById("pageElementsDesktop");
@@ -2549,6 +2554,31 @@
           }
         });
       });
+      const makeBrowserPedantic = () => {
+        const styles = Array.from(document.styleSheets)
+          .filter((sheet) => !sheet.href)
+          .flatMap((sheet) => Array.from(sheet.cssRules))
+          .map((rule) => rule.selectorText)
+          .join(" ");
+
+        document.querySelectorAll("[class]").forEach((el) => {
+          const missingClasses = Array.from(el.classList).filter(
+            (cls) => !styles.includes(`.${cls}`),
+          );
+
+          if (missingClasses.length > 0) {
+            el.style.outline = "5px solid red";
+            const label = document.createElement("div");
+            label.innerText = `Undefined: ${missingClasses.join(", ")}`;
+            label.style.cssText =
+              "position:absolute; background:red; color:white; font-size:10px; padding:2px; z-index:10000; top:0;";
+            if (getComputedStyle(el).position === "static")
+              el.style.position = "relative";
+            el.appendChild(label);
+          }
+        });
+      };
+      // globalThis.onload = makeBrowserPedantic;
     </script>
   </body>
 </html>

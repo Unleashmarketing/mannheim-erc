@@ -94,7 +94,7 @@
       <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
     </ul>
   </template>
-  <template id="memberStandard">
+  <template>
     <ul>
       <li><a href="mitglieder.html">Mitgliederbereich</a></li>
     </ul>
@@ -453,6 +453,7 @@
         color: var(--text-dark);
         padding: var(--spacing-xs) 0;
         position: relative;
+        background: transparent;
       }
 
       .nav-desktop a::after {
@@ -607,6 +608,9 @@
         transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         z-index: 999;
         overflow-y: auto;
+        left: auto;
+        margin: 0;
+        border: none;
       }
 
       .mobile-menu.active {
@@ -1563,7 +1567,16 @@
         }
       }
 
-      @media (max-width: 1135px) {
+      @media (max-width: 1200px) {
+        :root {
+          --spacing-3xl: 80px;
+          --spacing-2xl: 60px;
+          --spacing-xl: 40px;
+          --font-size-4xl: 3rem;
+          --font-size-3xl: 2.2rem;
+          --font-size-2xl: 1.8rem;
+        }
+
         .nav-desktop {
           display: none;
         }
@@ -1687,14 +1700,14 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu">
+    <dialog class="mobile-menu" aria-label="Mobile Navigation">
       <button class="mobile-menu-close" aria-label="Menü schließen">
         <i class="fas fa-times"></i>
       </button>
-    </div>
+    </dialog>
 
     <!-- Overlay -->
-    <div class="overlay"></div>
+    <div class="overlay" aria-hidden="true"></div>
 
     <!-- Main Content -->
     <main>
@@ -2259,6 +2272,7 @@
       const mobileLinks = document.querySelectorAll(".mobile-menu a");
 
       function openMenu() {
+        mobileMenu.showModal();
         mobileMenu.classList.add("active");
         overlay.classList.add("active");
         document.body.style.overflow = "hidden";
@@ -2267,7 +2281,10 @@
       }
 
       function closeMenu() {
-        mobileMenu.classList.remove("active");
+        mobileMenu.close();
+        requestAnimationFrame(() => {
+          mobileMenu.classList.remove("active");
+        });
         overlay.classList.remove("active");
         document.body.style.overflow = "";
         mobileToggle.classList.remove("active");
@@ -2541,6 +2558,31 @@
       document
         .getElementById("prev-month")
         .addEventListener("click", prevMonth);
+      const makeBrowserPedantic = () => {
+        const styles = Array.from(document.styleSheets)
+          .filter((sheet) => !sheet.href)
+          .flatMap((sheet) => Array.from(sheet.cssRules))
+          .map((rule) => rule.selectorText)
+          .join(" ");
+
+        document.querySelectorAll("[class]").forEach((el) => {
+          const missingClasses = Array.from(el.classList).filter(
+            (cls) => !styles.includes(`.${cls}`),
+          );
+
+          if (missingClasses.length > 0) {
+            el.style.outline = "5px solid red";
+            const label = document.createElement("div");
+            label.innerText = `Undefined: ${missingClasses.join(", ")}`;
+            label.style.cssText =
+              "position:absolute; background:red; color:white; font-size:10px; padding:2px; z-index:10000; top:0;";
+            if (getComputedStyle(el).position === "static")
+              el.style.position = "relative";
+            el.appendChild(label);
+          }
+        });
+      };
+      // globalThis.onload = makeBrowserPedantic;
     </script>
   </body>
 </html>

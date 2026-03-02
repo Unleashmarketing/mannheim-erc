@@ -400,6 +400,9 @@
         transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         z-index: 999;
         overflow-y: auto;
+        left: auto;
+        margin: 0;
+        border: none;
       }
       .mobile-menu.active {
         right: 0;
@@ -1070,16 +1073,19 @@
         }
       }
       @media (max-width: 1200px) {
+        :root {
+          --spacing-3xl: 80px;
+          --spacing-2xl: 60px;
+          --spacing-xl: 40px;
+          --font-size-4xl: 3rem;
+          --font-size-3xl: 2.2rem;
+          --font-size-2xl: 1.8rem;
+        }
         .nav-desktop {
           display: none;
         }
         .mobile-toggle {
           display: flex;
-        }
-        :root {
-          --spacing-3xl: 80px;
-          --spacing-2xl: 60px;
-          --font-size-4xl: 3rem;
         }
       }
       @media (max-width: 768px) {
@@ -1249,46 +1255,56 @@
                     <h3>Persönliche Daten Teilnehmer</h3>
                     <div class="form-row">
                       <div class="form-group">
-                        <label>Name <span class="req">*</span></label>
-                        <input type="text" name="NameTeilnehmer1" required />
+                        <label
+                          >Name <span class="req">*</span
+                          ><input type="text" name="NameTeilnehmer1" required
+                        /></label>
                       </div>
                       <div class="form-group">
-                        <label>Vorname <span class="req">*</span></label>
-                        <input type="text" name="VornameTeilnehmer1" required />
-                      </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="form-group full-width">
-                        <label>Geburtsdatum <span class="req">*</span></label>
-                        <input
-                          type="date"
-                          name="GeburtsdatumTeilnehmer1"
-                          required
-                        />
+                        <label
+                          >Vorname <span class="req">*</span
+                          ><input
+                            type="text"
+                            name="VornameTeilnehmer1"
+                            required
+                        /></label>
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group full-width">
                         <label
-                          >Straße und Hausnummer
-                          <span class="req">*</span></label
-                        >
-                        <input type="text" name="Strasse" required />
+                          >Geburtsdatum <span class="req">*</span
+                          ><input
+                            type="date"
+                            name="GeburtsdatumTeilnehmer1"
+                            required
+                        /></label>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group full-width">
+                        <label
+                          >Straße und Hausnummer <span class="req">*</span
+                          ><input type="text" name="Strasse" required
+                        /></label>
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group">
-                        <label>Postleitzahl <span class="req">*</span></label>
-                        <input
-                          type="text"
-                          name="PLZ"
-                          placeholder="z.B. 68159"
-                          required
-                        />
+                        <label
+                          >Postleitzahl <span class="req">*</span
+                          ><input
+                            type="text"
+                            name="PLZ"
+                            placeholder="z.B. 68159"
+                            required
+                        /></label>
                       </div>
                       <div class="form-group">
-                        <label>Wohnort <span class="req">*</span></label>
-                        <input type="text" name="Wohnort" required />
+                        <label
+                          >Wohnort <span class="req">*</span
+                          ><input type="text" name="Wohnort" required
+                        /></label>
                       </div>
                     </div>
                   </div>
@@ -1297,24 +1313,28 @@
                     <h3>Erziehungsberechtigte (optional)</h3>
                     <div class="form-row">
                       <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="NameErziehungsberechtigte" />
+                        <label
+                          >Name
+                          <input type="text" name="NameErziehungsberechtigte"
+                        /></label>
                       </div>
                       <div class="form-group">
-                        <label>Vorname</label>
-                        <input
-                          type="text"
-                          name="VornameErziehungsberechtigte"
-                        />
+                        <label
+                          >Vorname
+                          <input
+                            type="text"
+                            name="VornameErziehungsberechtigte"
+                        /></label>
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group full-width">
-                        <label>Geburtsdatum</label>
-                        <input
-                          type="date"
-                          name="GeburtsdatumErziehungsberechtigte"
-                        />
+                        <label
+                          >Geburtsdatum
+                          <input
+                            type="date"
+                            name="GeburtsdatumErziehungsberechtigte"
+                        /></label>
                       </div>
                     </div>
                   </div>
@@ -1323,40 +1343,50 @@
                     <h3>Zusatzteilnehmer (optional)</h3>
                     <div class="form-row">
                       <div class="form-group">
-                        <label>Name Zusatz 1</label
-                        ><input type="text" name="NameZusatzteilnehmer1" />
+                        <label
+                          >Name Zusatz 1
+                          <input type="text" name="NameZusatzteilnehmer1"
+                        /></label>
                       </div>
                       <div class="form-group">
-                        <label>Vorname Zusatz 1</label
-                        ><input type="text" name="VornameZusatzteilnehmer1" />
+                        <label
+                          >Vorname Zusatz 1
+                          <input type="text" name="VornameZusatzteilnehmer1"
+                        /></label>
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group full-width">
-                        <label>Geburtsdatum Zusatz 1</label
-                        ><input
-                          type="date"
-                          name="GeburtsdatumZusatzteilnehmer1"
-                        />
+                        <label
+                          >Geburtsdatum Zusatz 1
+                          <input
+                            type="date"
+                            name="GeburtsdatumZusatzteilnehmer1"
+                        /></label>
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group">
-                        <label>Name Zusatz 2</label
-                        ><input type="text" name="NameZusatzteilnehmer2" />
+                        <label
+                          >Name Zusatz 2
+                          <input type="text" name="NameZusatzteilnehmer2"
+                        /></label>
                       </div>
                       <div class="form-group">
-                        <label>Vorname Zusatz 2</label
-                        ><input type="text" name="VornameZusatzteilnehmer2" />
+                        <label
+                          >Vorname Zusatz 2
+                          <input type="text" name="VornameZusatzteilnehmer2"
+                        /></label>
                       </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group full-width">
-                        <label>Geburtsdatum Zusatz 2</label
-                        ><input
-                          type="date"
-                          name="GeburtsdatumZusatzteilnehmer2"
-                        />
+                        <label
+                          >Geburtsdatum Zusatz 2
+                          <input
+                            type="date"
+                            name="GeburtsdatumZusatzteilnehmer2"
+                        /></label>
                       </div>
                     </div>
                   </div>
@@ -3262,6 +3292,7 @@
       const overlay = document.querySelector(".overlay");
       const mobileClose = document.querySelector(".mobile-menu-close");
       function openMenu() {
+        mobileMenu.showModal();
         mobileMenu.classList.add("active");
         overlay.classList.add("active");
         document.body.style.overflow = "hidden";
@@ -3269,7 +3300,10 @@
         mobileToggle.setAttribute("aria-expanded", "true");
       }
       function closeMenu() {
-        mobileMenu.classList.remove("active");
+        mobileMenu.close();
+        requestAnimationFrame(() => {
+          mobileMenu.classList.remove("active");
+        });
         overlay.classList.remove("active");
         document.body.style.overflow = "";
         mobileToggle.classList.remove("active");
@@ -4249,6 +4283,31 @@
           "checkbox-error-bestimmungen-einzugsermaechtigungsl",
         );
       });
+      const makeBrowserPedantic = () => {
+        const styles = Array.from(document.styleSheets)
+          .filter((sheet) => !sheet.href)
+          .flatMap((sheet) => Array.from(sheet.cssRules))
+          .map((rule) => rule.selectorText)
+          .join(" ");
+
+        document.querySelectorAll("[class]").forEach((el) => {
+          const missingClasses = Array.from(el.classList).filter(
+            (cls) => !styles.includes(`.${cls}`),
+          );
+
+          if (missingClasses.length > 0) {
+            el.style.outline = "5px solid red";
+            const label = document.createElement("div");
+            label.innerText = `Undefined: ${missingClasses.join(", ")}`;
+            label.style.cssText =
+              "position:absolute; background:red; color:white; font-size:10px; padding:2px; z-index:10000; top:0;";
+            if (getComputedStyle(el).position === "static")
+              el.style.position = "relative";
+            el.appendChild(label);
+          }
+        });
+      };
+      // globalThis.onload = makeBrowserPedantic;
     </script>
   </body>
 </html>
