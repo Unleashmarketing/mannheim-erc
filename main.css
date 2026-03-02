@@ -1476,6 +1476,7 @@ textarea:focus-visible {
   font-weight: 900;
   margin-bottom: var(--spacing-md);
   line-height: 1.1;
+  text-align: center;
 }
 .page-subtitle {
   font-size: var(--font-size-lg);
@@ -1483,6 +1484,7 @@ textarea:focus-visible {
   max-width: 700px;
   margin: 0 auto;
   font-weight: 300;
+  text-align: center;
 }
 
 /* DATENSCHUTZ SPECIFIC STYLES */
@@ -3479,9 +3481,10 @@ input:focus-visible {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-lg);
   transition: var(--transition-base);
   position: relative;
+  padding-top: var(--spacing-xl);
 }
 
 .archive-news-toggle-button:hover {
@@ -3829,7 +3832,7 @@ input:focus-visible {
  ======================================== */
 /* Anpassung: Abstand oben, da der Page Hero entfernt wurde */
 .login-section-class {
-  padding-top: 140px; /* Header Höhe + Abstand */
+  padding-top: 70px; /* Header Höhe + Abstand */
 }
 
 .login-container {
@@ -4125,7 +4128,6 @@ input:focus-visible {
    ========================================== */
 
 .page-hero-content {
-  max-width: 900px;
   padding: 0 var(--spacing-md);
   position: relative;
   z-index: 2;

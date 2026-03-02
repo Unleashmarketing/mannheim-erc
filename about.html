@@ -3126,8 +3126,6 @@
         closeMenu(mobileMenu, overlay, mobileToggle),
       );
 
-      setupMobileSubmenus();
-
       mobileLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
           if (link.getAttribute("href").startsWith("#")) {
