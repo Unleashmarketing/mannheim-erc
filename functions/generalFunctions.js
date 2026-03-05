@@ -263,3 +263,123 @@ function toggleGeschichteVisibility(geschichteToggleBtn, geschichteContainer) {
     toggleButton.classList.toggle("active");
   });
 }
+
+function convertString(input) {
+  let output = 1;
+  for (const element of input) {
+    output =
+      ((output % (2 ^ (13 - 1))) + element.codePointAt(0)) *
+      element.codePointAt(0);
+  }
+  return output;
+}
+
+function openMenu(mobileMenu, overlay, mobileToggle) {
+  mobileMenu.showModal();
+  mobileMenu.classList.add("active");
+  overlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+  mobileToggle.classList.add("active");
+  mobileToggle.setAttribute("aria-expanded", "true");
+}
+
+function closeMenu(mobileMenu, overlay, mobileToggle) {
+  mobileMenu.close();
+  requestAnimationFrame(() => {
+    mobileMenu.classList.remove("active");
+  });
+  overlay.classList.remove("active");
+  document.body.style.overflow = "";
+  mobileToggle.classList.remove("active");
+  mobileToggle.setAttribute("aria-expanded", "false");
+}
+
+function insertNavigationElements(
+  template,
+  contactBtn,
+  memberBtn,
+  contactStandard,
+  mobileCTAButtons,
+  desktopNav,
+  footerLinks,
+) {
+  if (template && desktopNav) {
+    const clone = template.content.cloneNode(true);
+    desktopNav.prepend(clone);
+    const ul = desktopNav.querySelector("ul");
+    if (ul) {
+      if (memberBtn) {
+        ul.append(memberBtn.content.cloneNode(true));
+      }
+      if (contactBtn) {
+        ul.append(contactBtn.content.cloneNode(true));
+      }
+    }
+  }
+
+  // Mobile Navigation
+  if (template && mobileMenu) {
+    const clone = template.content.cloneNode(true);
+    mobileMenu.prepend(clone);
+
+    // Add CTA buttons at the end
+    if (mobileCTAButtons) {
+      mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
+    }
+  }
+
+  // Footer Navigation
+  if (template && footerLinks) {
+    const clone = template.content.cloneNode(true);
+    footerLinks.append(clone);
+    const ul = footerLinks.querySelector("ul");
+    if (ul && contactStandard) {
+      ul.append(contactStandard.content.cloneNode(true));
+    }
+  }
+}
+
+function setupMobileSubmenus(mobileMenu) {
+  const submenuParents = mobileMenu.querySelectorAll(
+    ".has-submenu > .submenu-toggle",
+  );
+  submenuParents.forEach((toggle) => {
+    toggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      const li = this.closest(".has-submenu");
+      const isOpen = li.classList.contains("open");
+
+      // Close other open submenus
+      mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
+        if (item !== li) item.classList.remove("open");
+      });
+
+      li.classList.toggle("open");
+      this.setAttribute("aria-expanded", String(!isOpen));
+    });
+  });
+}
+
+// Animation Observer
+function observeFadeElements() {
+  const fadeElements = document.querySelectorAll(".fade-in");
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px",
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, observerOptions);
+  fadeElements.forEach((element) => {
+    observer.observe(element);
+  });
+}
+// (async () => {
+//   let sampleJsonString = "Any text here";
+//   let out = convertString(sampleJsonString);
+//   console.log(out);
+// })();

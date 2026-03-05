@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de">
   <template id="navigation-template1">
     <ul>
@@ -25,6 +25,7 @@
           <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
           <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
           <li><a href="eiskunstlauf.html#geschichte">Geschichte</a></li>
+          <li><a href="eiskunstlauf.html#termine-infos">Termine & Infos</a></li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -72,6 +73,11 @@
             <a href="about.html?openBelegungsplan=true">Belegungspläne</a>
           </li>
           <li><a href="mitglieder.html#publicAnnouncements">Meldungen</a></li>
+          <li>
+            <a href="https://www.indoortrends.de/vereinsheim/mannheimer-erc"
+              >Vereinsshop</a
+            >
+          </li>
         </ul>
       </li>
     </ul>
@@ -88,7 +94,7 @@
       <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
     </ul>
   </template>
-  <template id="memberStandard">
+  <template>
     <ul>
       <li><a href="mitglieder.html">Mitgliederbereich</a></li>
     </ul>
@@ -119,7 +125,7 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
+    <!-- <style>
       /* ========================================
            CSS VARIABLES - Zentrale Steuerung
            ======================================== */
@@ -447,6 +453,7 @@
         color: var(--text-dark);
         padding: var(--spacing-xs) 0;
         position: relative;
+        background: transparent;
       }
 
       .nav-desktop a::after {
@@ -601,6 +608,9 @@
         transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         z-index: 999;
         overflow-y: auto;
+        left: auto;
+        margin: 0;
+        border: none;
       }
 
       .mobile-menu.active {
@@ -953,23 +963,23 @@
       /* ========================================
            CALENDAR SECTION
            ======================================== */
-      #calendar-section {
+      .calendar-section-class {
         padding: var(--spacing-3xl) 0;
         background-color: var(--light-bg);
       }
 
-      #calendar-section .container {
+      .calendar-section-class .container {
         width: 90%;
         max-width: var(--max-width);
         margin: 0 auto;
       }
 
-      #calendar-section .section-header {
+      .calendar-section-class .section-header {
         text-align: center;
         margin-bottom: var(--spacing-2xl);
       }
 
-      #calendar-toggle-btn {
+      .calendar-toggle-button {
         font-size: var(--font-size-3xl);
         font-weight: 800;
         color: var(--text-dark);
@@ -982,11 +992,11 @@
         position: relative;
       }
 
-      #calendar-toggle-btn:hover {
+      .calendar-toggle-button:hover {
         color: var(--primary-color);
       }
 
-      #calendar-toggle-btn::after {
+      .calendar-toggle-button::after {
         content: "";
         display: block;
         width: 60px;
@@ -1000,18 +1010,18 @@
         transform: translateX(-50%);
       }
 
-      #calendar-toggle-icon {
+      .calendar-toggle-icon {
         display: inline-block;
         transition: transform 0.3s ease;
         font-size: var(--font-size-lg);
         color: var(--primary-color);
       }
 
-      #calendar-toggle-btn.active #calendar-toggle-icon {
+      .calendar-toggle-button.active .calendar-toggle-icon {
         transform: rotate(-180deg);
       }
 
-      #calendar-container {
+      .calendar-container {
         background: var(--white);
         border-radius: var(--border-radius-lg);
         padding: var(--spacing-xl);
@@ -1019,7 +1029,7 @@
         margin-top: var(--spacing-xl);
       }
 
-      #calendar-header {
+      .calendar-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -1030,7 +1040,7 @@
         color: var(--white);
       }
 
-      #current-month-year {
+      .current-month-year-class {
         font-size: var(--font-size-xl);
         font-weight: 700;
         font-family: var(--font-family-accent);
@@ -1038,7 +1048,7 @@
         flex: 1;
       }
 
-      #calendar-header button {
+      .calendar-header button {
         background-color: rgba(255, 255, 255, 0.2);
         color: var(--white);
         border: 2px solid rgba(255, 255, 255, 0.3);
@@ -1051,13 +1061,13 @@
         font-family: var(--font-family);
       }
 
-      #calendar-header button:hover {
+      .calendar-header button:hover {
         background-color: rgba(255, 255, 255, 0.3);
         border-color: var(--white);
         transform: translateY(-2px);
       }
 
-      #day-labels {
+      .day-labels {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         gap: var(--spacing-xs);
@@ -1066,7 +1076,7 @@
         border-bottom: 2px solid var(--gray-light);
       }
 
-      #day-labels span {
+      .day-labels span {
         text-align: center;
         font-weight: 600;
         font-size: var(--font-size-sm);
@@ -1074,7 +1084,7 @@
         padding: var(--spacing-xs);
       }
 
-      #calendar-grid {
+      .calendar-grid {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         gap: var(--spacing-xs);
@@ -1159,7 +1169,7 @@
         background-color: var(--white);
       }
 
-      #geschichte-toggle-btn {
+      .geschichte-toggle-button {
         font-size: var(--font-size-3xl);
         font-weight: 800;
         color: var(--text-dark);
@@ -1172,11 +1182,11 @@
         position: relative;
       }
 
-      #geschichte-toggle-btn:hover {
+      .geschichte-toggle-button:hover {
         color: var(--primary-color);
       }
 
-      #geschichte-toggle-btn::after {
+      .geschichte-toggle-button::after {
         content: "";
         display: block;
         width: 60px;
@@ -1190,14 +1200,14 @@
         transform: translateX(-50%);
       }
 
-      #geschichte-toggle-icon {
+      .geschichte-toggle-icon {
         display: inline-block;
         transition: transform 0.3s ease;
         font-size: var(--font-size-lg);
         color: var(--primary-color);
       }
 
-      #geschichte-toggle-btn.active #geschichte-toggle-icon {
+      .geschichte-toggle-button.active .geschichte-toggle-icon {
         transform: rotate(-180deg);
       }
 
@@ -1213,7 +1223,7 @@
         background-color: var(--light-bg);
       }
 
-      #archive-news-toggle-btn {
+      .archive-news-toggle-button {
         font-size: var(--font-size-3xl);
         font-weight: 800;
         color: var(--text-dark);
@@ -1226,11 +1236,11 @@
         position: relative;
       }
 
-      #archive-news-toggle-btn:hover {
+      .archive-news-toggle-button:hover {
         color: var(--primary-color);
       }
 
-      #archive-news-toggle-btn::after {
+      .archive-news-toggle-button::after {
         content: "";
         display: block;
         width: 60px;
@@ -1244,14 +1254,14 @@
         transform: translateX(-50%);
       }
 
-      #archive-news-toggle-icon {
+      .archive-news-toggle-icon {
         display: inline-block;
         transition: transform 0.3s ease;
         font-size: var(--font-size-lg);
         color: var(--primary-color);
       }
 
-      #archive-news-toggle-btn.active #archive-news-toggle-icon {
+      .archive-news-toggle-button.active .archive-news-toggle-icon {
         transform: rotate(-180deg);
       }
 
@@ -1286,7 +1296,7 @@
         color: var(--text-dark);
       }
 
-      #archive-news-search {
+      .archive-news-search {
         padding: var(--spacing-sm);
         border: 2px solid var(--gray-light);
         border-radius: var(--border-radius-md);
@@ -1296,13 +1306,13 @@
         transition: var(--transition-base);
       }
 
-      #archive-news-search:focus {
+      .archive-news-search:focus {
         outline: none;
         border-color: var(--primary-color);
         box-shadow: 0 0 0 3px rgba(0, 98, 255, 0.1);
       }
 
-      #archive-news-reset-filters {
+      .archive-news-reset-filters {
         padding: var(--spacing-sm) var(--spacing-md);
         background-color: var(--primary-color);
         color: var(--white);
@@ -1315,7 +1325,7 @@
         box-shadow: var(--shadow-sm);
       }
 
-      #archive-news-reset-filters:hover {
+      .archive-news-reset-filters:hover {
         background-color: var(--primary-hover);
         transform: translateY(-2px);
         box-shadow: var(--shadow-md);
@@ -1384,8 +1394,8 @@
         z-index: 1;
       }
 
-      #archive-news-date-display,
-      #archive-news-extra-text {
+      .archive-news-date-display,
+      .archive-news-extra-text {
         font-size: var(--font-size-xs);
         color: var(--text-muted);
         margin-top: var(--spacing-xs);
@@ -1557,7 +1567,16 @@
         }
       }
 
-      @media (max-width: 1135px) {
+      @media (max-width: 1200px) {
+        :root {
+          --spacing-3xl: 80px;
+          --spacing-2xl: 60px;
+          --spacing-xl: 40px;
+          --font-size-4xl: 3rem;
+          --font-size-3xl: 2.2rem;
+          --font-size-2xl: 1.8rem;
+        }
+
         .nav-desktop {
           display: none;
         }
@@ -1574,9 +1593,14 @@
           font-size: var(--font-size-xl);
         }
 
-        #calendar-toggle-btn,
-        #geschichte-toggle-btn,
-        #archive-news-toggle-btn {
+        .geschichte-toggle-button {
+          font-size: var(--font-size-xl);
+        }
+        .archive-news-toggle-button {
+          font-size: var(--font-size-xl);
+        }
+
+        .calendar-toggle-button {
           font-size: var(--font-size-xl);
         }
 
@@ -1604,7 +1628,7 @@
           min-width: 100%;
         }
 
-        #calendar-grid {
+        .calendar-grid {
           gap: 4px;
         }
 
@@ -1615,7 +1639,7 @@
           font-size: var(--font-size-xs);
         }
 
-        #day-labels span {
+        .day-labels span {
           font-size: var(--font-size-xs);
         }
       }
@@ -1638,20 +1662,21 @@
           padding: var(--spacing-md);
         }
 
-        #calendar-container {
+        .calendar-container {
           padding: var(--spacing-md);
         }
 
-        #calendar-header {
+        .calendar-header {
           flex-direction: column;
           gap: var(--spacing-sm);
         }
 
-        #current-month-year {
+        .current-month-year-class {
           font-size: var(--font-size-lg);
         }
       }
-    </style>
+    </style> -->
+    <link rel="stylesheet" href="main.css" crossorigin="anonymous" />
   </head>
   <body>
     <!-- Header -->
@@ -1681,14 +1706,14 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu">
+    <dialog class="mobile-menu" aria-label="Mobile Navigation">
       <button class="mobile-menu-close" aria-label="Menü schließen">
         <i class="fas fa-times"></i>
       </button>
-    </div>
+    </dialog>
 
     <!-- Overlay -->
-    <div class="overlay"></div>
+    <div class="overlay" aria-hidden="true"></div>
 
     <!-- Main Content -->
     <main>
@@ -1759,8 +1784,13 @@
               >
             </p>
             <p>
-              Anmeldungen werden gerne über unser Kontaktformular oder vor Ort
-              entgegengenommen.
+              Anmeldungen können Sie gern
+              <a
+                href="formulare/antrag-formular.html#linkEislaufschule"
+                style="color: var(--primary-color); font-weight: 600"
+                >über unser Onlineformular</a
+              >
+              absenden
             </p>
             <p>
               Bitte - wenn vorhanden - eigene Schlittschuhe und Schutzausrüstung
@@ -1848,9 +1878,10 @@
               </p>
               <p>
                 Mehr Informationen hierzu unter unserer Rubrik
-                <strong>Training > Eislaufschule</strong> oder
+                <strong>Training / Eislaufschule</strong> oder zum
+                Onlineformular
                 <a
-                  href="#eislaufschule"
+                  href="formulare/antrag-formular.html#linkEislaufschule"
                   style="color: var(--primary-color); font-weight: 600"
                   >hier</a
                 >.
@@ -1871,21 +1902,26 @@
       </section>
 
       <!-- Event Calendar -->
-      <section id="calendar-section">
+      <section id="calendar-section" class="calendar-section-class">
         <div class="container">
           <div class="section-header">
-            <h2 id="calendar-toggle-btn">
-              Kalender <span id="calendar-toggle-icon">▼</span>
+            <h2 id="calendar-toggle-btn" class="calendar-toggle-button">
+              Kalender <span class="calendar-toggle-icon">▼</span>
             </h2>
           </div>
-          <div id="calendar-container" class="calendar-collapsed">
-            <div id="calendar-header">
+          <div
+            id="calendar-contnr"
+            class="calendar-collapsed calendar-container"
+          >
+            <div class="calendar-header">
               <button id="prev-month">← Zurück</button>
-              <h3 id="current-month-year">Month Year</h3>
+              <h3 id="current-month-year" class="current-month-year-class">
+                Month Year
+              </h3>
               <button id="next-month">Weiter →</button>
             </div>
 
-            <div id="day-labels">
+            <div class="day-labels">
               <span>Mo</span>
               <span>Di</span>
               <span>Mi</span>
@@ -1895,7 +1931,7 @@
               <span>So</span>
             </div>
 
-            <div id="calendar-grid"></div>
+            <div id="calendar-grd" class="calendar-grid"></div>
           </div>
         </div>
       </section>
@@ -1904,8 +1940,10 @@
       <section class="geschichte-section" id="geschichte">
         <div class="container">
           <div class="section-header">
-            <h2 id="geschichte-toggle-btn">
-              Schnelllauf in Mannheim<span id="geschichte-toggle-icon">▼</span>
+            <h2 id="geschichte-toggle-btn" class="geschichte-toggle-button">
+              Schnelllauf in Mannheim<span class="geschichte-toggle-icon"
+                >▼</span
+              >
             </h2>
           </div>
           <div
@@ -2077,8 +2115,8 @@
       <section class="news-section" id="berichte">
         <div class="container">
           <div class="section-header">
-            <h2 id="archive-news-toggle-btn">
-              Berichte<span id="archive-news-toggle-icon">▼</span>
+            <h2 id="archive-news-toggle-btn" class="archive-news-toggle-button">
+              Berichte<span class="archive-news-toggle-icon">▼</span>
             </h2>
           </div>
           <div id="archive-news-wrapper" class="news-collapsed">
@@ -2087,15 +2125,16 @@
                 <label for="archive-news-search-input">Suchbegriff:</label>
                 <input
                   type="text"
-                  id="archive-news-search"
+                  class="archive-news-search"
+                  id="archive-news-src"
                   placeholder="Suche nach Stichwörtern..."
                   oninput="
                     handleArchiveNewsFilters(
                       'archive-news-date-slider-min',
                       'archive-news-date-slider-max',
                       this,
-                      'archive-news-date-display',
-                      'archive-news-extra-text',
+                      'archive-news-date-disp',
+                      'archive-news-extra-txt',
                       'archive-news-container',
                       ARCHIVE_NEWS_LIST_MIN_DATE,
                       ARCHIVE_NEWS_LIST,
@@ -2118,9 +2157,9 @@
                       handleArchiveNewsFilters(
                         this,
                         'archive-news-date-slider-max',
-                        'archive-news-search',
-                        'archive-news-date-display',
-                        'archive-news-extra-text',
+                        'archive-news-src',
+                        'archive-news-date-disp',
+                        'archive-news-extra-txt',
                         'archive-news-container',
                         ARCHIVE_NEWS_LIST_MIN_DATE,
                         ARCHIVE_NEWS_LIST,
@@ -2136,9 +2175,9 @@
                       handleArchiveNewsFilters(
                         'archive-news-date-slider-min',
                         this,
-                        'archive-news-search',
-                        'archive-news-date-display',
-                        'archive-news-extra-text',
+                        'archive-news-src',
+                        'archive-news-date-disp',
+                        'archive-news-extra-txt',
                         'archive-news-container',
                         ARCHIVE_NEWS_LIST_MIN_DATE,
                         ARCHIVE_NEWS_LIST,
@@ -2146,19 +2185,27 @@
                     "
                   />
                 </div>
-                <div id="archive-news-date-display">Ganze Zeitspanne</div>
-                <div id="archive-news-extra-text"></div>
+                <div
+                  id="archive-news-date-disp"
+                  class="archive-news-date-display"
+                >
+                  Ganze Zeitspanne
+                </div>
+                <div
+                  id="archive-news-extra-txt"
+                  class="archive-news-extra-text"
+                ></div>
               </div>
 
               <button
-                id="archive-news-reset-filters"
+                class="archive-news-reset-filters"
                 onclick="
                   resetArchiveNewsFilters(
-                    'archive-news-search',
+                    'archive-news-src',
                     'archive-news-date-slider-min',
                     'archive-news-date-slider-max',
-                    'archive-news-date-display',
-                    'archive-news-extra-text',
+                    'archive-news-date-disp',
+                    'archive-news-extra-txt',
                     'archive-news-container',
                     ARCHIVE_NEWS_LIST,
                   )
@@ -2246,103 +2293,26 @@
       const mobileClose = document.querySelector(".mobile-menu-close");
       const mobileLinks = document.querySelectorAll(".mobile-menu a");
 
-      function openMenu() {
-        mobileMenu.classList.add("active");
-        overlay.classList.add("active");
-        document.body.style.overflow = "hidden";
-        mobileToggle.classList.add("active");
-        mobileToggle.setAttribute("aria-expanded", "true");
-      }
-
-      function closeMenu() {
-        mobileMenu.classList.remove("active");
-        overlay.classList.remove("active");
-        document.body.style.overflow = "";
-        mobileToggle.classList.remove("active");
-        mobileToggle.setAttribute("aria-expanded", "false");
-      }
-
       mobileToggle.addEventListener("click", () => {
         const isOpen = mobileMenu.classList.contains("active");
-        isOpen ? closeMenu() : openMenu();
+        isOpen
+          ? closeMenu(mobileMenu, overlay, mobileToggle)
+          : openMenu(mobileMenu, overlay, mobileToggle);
       });
 
-      mobileClose.addEventListener("click", closeMenu);
-      overlay.addEventListener("click", closeMenu);
+      mobileClose.addEventListener("click", () =>
+        closeMenu(mobileMenu, overlay, mobileToggle),
+      );
+      overlay.addEventListener("click", () =>
+        closeMenu(mobileMenu, overlay, mobileToggle),
+      );
 
       // Close menu on Escape key
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
-          closeMenu();
+          closeMenu(mobileMenu, overlay, mobileToggle);
         }
       });
-
-      // Mobile submenu toggle
-      function setupMobileSubmenus() {
-        const mobileSubmenus = document.querySelectorAll(
-          ".mobile-menu .has-submenu",
-        );
-        mobileSubmenus.forEach((item) => {
-          const toggle = item.querySelector(".submenu-toggle");
-          if (toggle) {
-            toggle.addEventListener("click", (e) => {
-              e.preventDefault();
-              item.classList.toggle("open");
-            });
-          }
-        });
-      }
-
-      function insertNavigationElements() {
-        const template = document.getElementById("navigation-template1");
-        const contactBtn = document.getElementById("contactBtn");
-        const memberBtn = document.getElementById("memberBtn");
-        const contactStandard = document.getElementById("contactStandard");
-        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
-
-        // Desktop Navigation
-        const desktopNav = document.getElementById("pageElementsDesktop");
-        if (template && desktopNav) {
-          const clone = template.content.cloneNode(true);
-          desktopNav.prepend(clone);
-          const ul = desktopNav.querySelector("ul");
-          if (ul) {
-            if (memberBtn) {
-              ul.append(memberBtn.content.cloneNode(true));
-            }
-            if (contactBtn) {
-              ul.append(contactBtn.content.cloneNode(true));
-            }
-          }
-        }
-
-        // Mobile Navigation
-        if (template && mobileMenu) {
-          const clone = template.content.cloneNode(true);
-          mobileMenu.prepend(clone);
-
-          // Add CTA buttons at the end
-          if (mobileCTAButtons) {
-            mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
-          }
-
-          // Setup submenu toggles for mobile
-          setupMobileSubmenus();
-        }
-
-        // Footer Navigation
-        const footerLinks = document.getElementById(
-          "footerLinksWithMenuElements",
-        );
-        if (template && footerLinks) {
-          const clone = template.content.cloneNode(true);
-          footerLinks.append(clone);
-          const ul = footerLinks.querySelector("ul");
-          if (ul && contactStandard) {
-            ul.append(contactStandard.content.cloneNode(true));
-          }
-        }
-      }
 
       // ========================================
       // STICKY HEADER
@@ -2409,7 +2379,7 @@
       function renderCalendar(year, month) {
         const monthDisplay = document.getElementById("current-month-year");
         monthDisplay.textContent = `${monthNames[month - 1]} ${year}`;
-        const grid = document.getElementById("calendar-grid");
+        const grid = document.getElementById("calendar-grd");
         grid.innerHTML = "";
         const firstDayOfMonth = new Date(year, month - 1, 1).getDay();
         const adjustedFirstDay =
@@ -2463,7 +2433,7 @@
 
       function toggleCalendarVisibility() {
         const toggleButton = document.getElementById("calendar-toggle-btn");
-        const content = document.getElementById("calendar-container");
+        const content = document.getElementById("calendar-contnr");
         if (!toggleButton || !content) {
           return;
         }
@@ -2478,7 +2448,25 @@
       // INITIALIZE
       // ========================================
       document.addEventListener("DOMContentLoaded", function () {
-        insertNavigationElements();
+        const template = document.getElementById("navigation-template1");
+        const contactBtn = document.getElementById("contactBtn");
+        const memberBtn = document.getElementById("memberBtn");
+        const contactStandard = document.getElementById("contactStandard");
+        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
+        const desktopNav = document.getElementById("pageElementsDesktop");
+        const footerLinks = document.getElementById(
+          "footerLinksWithMenuElements",
+        );
+        insertNavigationElements(
+          template,
+          contactBtn,
+          memberBtn,
+          contactStandard,
+          mobileCTAButtons,
+          desktopNav,
+          footerLinks,
+        );
+        setupMobileSubmenus(mobileMenu);
         toggleCalendarVisibility();
         toggleGeschichteVisibility(
           "geschichte-toggle-btn",
@@ -2489,16 +2477,16 @@
           "archive-news-wrapper",
           "archive-news-date-slider-min",
           "archive-news-date-slider-max",
-          "archive-news-search",
-          "archive-news-date-display",
-          "archive-news-extra-text",
+          "archive-news-src",
+          "archive-news-date-disp",
+          "archive-news-extra-txt",
           "archive-news-container",
           ARCHIVE_NEWS_LIST,
         );
       });
 
       document
-        .getElementById("archive-news-search")
+        .getElementById("archive-news-src")
         .addEventListener("focus", function () {
           if (this.value === "#begrenzt") {
             this.value = "";

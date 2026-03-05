@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="de">
   <template id="navigation-template1">
     <ul>
@@ -25,6 +25,7 @@
           <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
           <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
           <li><a href="eiskunstlauf.html#geschichte">Geschichte</a></li>
+          <li><a href="eiskunstlauf.html#termine-infos">Termine & Infos</a></li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -72,6 +73,11 @@
             <a href="about.html?openBelegungsplan=true">Belegungspläne</a>
           </li>
           <li><a href="mitglieder.html#publicAnnouncements">Meldungen</a></li>
+          <li>
+            <a href="https://www.indoortrends.de/vereinsheim/mannheimer-erc"
+              >Vereinsshop</a
+            >
+          </li>
         </ul>
       </li>
     </ul>
@@ -85,23 +91,23 @@
   </template>
   <template id="contactBtn">
     <ul>
-      <li><a href="#contact" class="btn-header">Kontakt</a></li>
+      <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
     </ul>
   </template>
-  <template id="memberStandard">
+  <template>
     <ul>
       <li><a href="mitglieder.html">Mitgliederbereich</a></li>
     </ul>
   </template>
   <template id="contactStandard">
     <ul>
-      <li><a href="#contact">Kontakt</a></li>
+      <li><a href="index.html#contact">Kontakt</a></li>
     </ul>
   </template>
   <template id="mobileCTAButtons">
     <div class="mobile-cta-buttons">
       <a href="mitglieder.html">Mitgliederbereich</a>
-      <a href="#contact">Kontakt</a>
+      <a href="index.html#contact">Kontakt</a>
     </div>
   </template>
   <head>
@@ -118,7 +124,7 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
+    <!-- <style>
       /* ========================================
          CSS VARIABLES - Zentrale Steuerung
          ======================================== */
@@ -427,6 +433,7 @@
         color: var(--text-dark);
         padding: var(--spacing-xs) 0;
         position: relative;
+        background: transparent;
       }
 
       .nav-desktop a::after {
@@ -575,6 +582,9 @@
         transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         z-index: 999;
         overflow-y: auto;
+        left: auto;
+        margin: 0;
+        border: none;
       }
 
       .mobile-menu.active {
@@ -1111,7 +1121,7 @@
         background-color: var(--light-bg);
       }
 
-      #erfolge-toggle-btn {
+      .erfolge-toggle-button {
         font-size: var(--font-size-3xl);
         font-weight: 800;
         color: var(--text-dark);
@@ -1127,11 +1137,11 @@
         padding: 0;
       }
 
-      #erfolge-toggle-btn:hover {
+      .erfolge-toggle-button:hover {
         color: var(--primary-color);
       }
 
-      #erfolge-toggle-btn::after {
+      .erfolge-toggle-button::after {
         content: "";
         display: block;
         width: 60px;
@@ -1144,14 +1154,14 @@
         transform: translateX(-50%);
       }
 
-      #erfolge-toggle-icon {
+      .erfolge-toggle-icon {
         display: inline-block;
         transition: transform 0.3s ease;
         font-size: var(--font-size-lg);
         color: var(--primary-color);
       }
 
-      #erfolge-toggle-btn.active #erfolge-toggle-icon {
+      .erfolge-toggle-button.active .erfolge-toggle-icon {
         transform: rotate(-180deg);
       }
 
@@ -1333,7 +1343,8 @@
       .skip-link:focus {
         top: 0;
       }
-    </style>
+    </style> -->
+    <link rel="stylesheet" href="main.css" crossorigin="anonymous" />
   </head>
   <body>
     <!-- Skip Link for Accessibility -->
@@ -1364,11 +1375,11 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" role="dialog" aria-label="Mobile Navigation">
+    <dialog class="mobile-menu" aria-label="Mobile Navigation">
       <button class="mobile-menu-close" aria-label="Menü schließen">
         <i class="fas fa-times"></i>
       </button>
-    </div>
+    </dialog>
     <div class="overlay" aria-hidden="true"></div>
 
     <!-- Main Content -->
@@ -1603,8 +1614,9 @@
       <section class="toggle-section">
         <div class="container">
           <div class="section-header">
-            <button id="erfolge-toggle-btn">
-              Erfolge &amp; Wettbewerbe <span id="erfolge-toggle-icon">▼</span>
+            <button id="erfolge-toggle-btn" class="erfolge-toggle-button">
+              Erfolge &amp; Wettbewerbe
+              <span class="erfolge-toggle-icon">▼</span>
             </button>
           </div>
 
@@ -1800,7 +1812,7 @@
         </div>
       </div>
     </footer>
-
+    <script src="functions/generalFunctions.js"></script>
     <script>
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileMenu = document.querySelector(".mobile-menu");
@@ -1808,34 +1820,24 @@
       const mobileClose = document.querySelector(".mobile-menu-close");
       const mobileLinks = document.querySelectorAll(".mobile-menu a");
 
-      function openMenu() {
-        mobileMenu.classList.add("active");
-        overlay.classList.add("active");
-        document.body.style.overflow = "hidden";
-        mobileToggle.classList.add("active");
-        mobileToggle.setAttribute("aria-expanded", "true");
-      }
-
-      function closeMenu() {
-        mobileMenu.classList.remove("active");
-        overlay.classList.remove("active");
-        document.body.style.overflow = "";
-        mobileToggle.classList.remove("active");
-        mobileToggle.setAttribute("aria-expanded", "false");
-      }
-
       mobileToggle.addEventListener("click", () => {
         const isOpen = mobileMenu.classList.contains("active");
-        isOpen ? closeMenu() : openMenu();
+        isOpen
+          ? closeMenu(mobileMenu, overlay, mobileToggle)
+          : openMenu(mobileMenu, overlay, mobileToggle);
       });
 
-      mobileClose.addEventListener("click", closeMenu);
-      overlay.addEventListener("click", closeMenu);
+      mobileClose.addEventListener("click", () =>
+        closeMenu(mobileMenu, overlay, mobileToggle),
+      );
+      overlay.addEventListener("click", () =>
+        closeMenu(mobileMenu, overlay, mobileToggle),
+      );
 
       mobileLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
           if (link.getAttribute("href").startsWith("#")) {
-            closeMenu();
+            closeMenu(mobileMenu, overlay, mobileToggle);
           }
         });
       });
@@ -1843,80 +1845,9 @@
       // Close menu on Escape key
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
-          closeMenu();
+          closeMenu(mobileMenu, overlay, mobileToggle);
         }
       });
-
-      function insertNavigationElements() {
-        const template = document.getElementById("navigation-template1");
-        const contactBtn = document.getElementById("contactBtn");
-        const memberBtn = document.getElementById("memberBtn");
-        const contactStandard = document.getElementById("contactStandard");
-        const memberStandard = document.getElementById("memberStandard");
-        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
-
-        // Desktop Navigation
-        const desktopNav = document.getElementById("pageElementsDesktop");
-        if (template && desktopNav) {
-          const clone = template.content.cloneNode(true);
-          desktopNav.prepend(clone);
-          const ul = desktopNav.querySelector("ul");
-          if (ul) {
-            if (memberBtn) {
-              ul.append(memberBtn.content.cloneNode(true));
-            }
-            if (contactBtn) {
-              ul.append(contactBtn.content.cloneNode(true));
-            }
-          }
-        }
-
-        // Mobile Navigation
-        if (template && mobileMenu) {
-          const clone = template.content.cloneNode(true);
-          mobileMenu.prepend(clone);
-
-          // Add CTA buttons at the end
-          if (mobileCTAButtons) {
-            mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
-          }
-        }
-
-        // Footer Navigation
-        const footerLinks = document.getElementById(
-          "footerLinksWithMenuElements",
-        );
-        if (template && footerLinks) {
-          const clone = template.content.cloneNode(true);
-          footerLinks.append(clone);
-          const ul = footerLinks.querySelector("ul");
-          if (ul && contactStandard) {
-            ul.append(contactStandard.content.cloneNode(true));
-          }
-        }
-      }
-
-      function setupMobileSubmenus() {
-        const submenuParents = mobileMenu.querySelectorAll(
-          ".has-submenu > .submenu-toggle",
-        );
-        submenuParents.forEach((toggle) => {
-          toggle.addEventListener("click", function (e) {
-            e.preventDefault();
-            const li = this.closest(".has-submenu");
-            const isOpen = li.classList.contains("open");
-
-            // Close other open submenus
-            mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
-              if (item !== li) item.classList.remove("open");
-            });
-
-            li.classList.toggle("open");
-            this.setAttribute("aria-expanded", String(!isOpen));
-          });
-        });
-      }
-
       const header = document.querySelector("header");
       let lastScroll = 0;
 
@@ -1953,8 +1884,25 @@
 
       document.addEventListener("DOMContentLoaded", function () {
         // Initialize navigation
-        insertNavigationElements();
-        setupMobileSubmenus();
+        const template = document.getElementById("navigation-template1");
+        const contactBtn = document.getElementById("contactBtn");
+        const memberBtn = document.getElementById("memberBtn");
+        const contactStandard = document.getElementById("contactStandard");
+        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
+        const desktopNav = document.getElementById("pageElementsDesktop");
+        const footerLinks = document.getElementById(
+          "footerLinksWithMenuElements",
+        );
+        insertNavigationElements(
+          template,
+          contactBtn,
+          memberBtn,
+          contactStandard,
+          mobileCTAButtons,
+          desktopNav,
+          footerLinks,
+        );
+        setupMobileSubmenus(mobileMenu);
 
         // Erfolge toggle
         const erfolgeBtn = document.getElementById("erfolge-toggle-btn");

@@ -25,6 +25,7 @@
           <li><a href="eiskunstlauf.html#mitgliedschaft">Mitgliedschaft</a></li>
           <li><a href="eiskunstlauf.html#erwachsene">Erwachsene</a></li>
           <li><a href="eiskunstlauf.html#geschichte">Geschichte</a></li>
+          <li><a href="eiskunstlauf.html#termine-infos">Termine & Infos</a></li>
         </ul>
       </li>
       <li class="has-submenu">
@@ -72,6 +73,11 @@
             <a href="about.html?openBelegungsplan=true">Belegungspläne</a>
           </li>
           <li><a href="mitglieder.html#publicAnnouncements">Meldungen</a></li>
+          <li>
+            <a href="https://www.indoortrends.de/vereinsheim/mannheimer-erc"
+              >Vereinsshop</a
+            >
+          </li>
         </ul>
       </li>
     </ul>
@@ -85,30 +91,30 @@
   </template>
   <template id="contactBtn">
     <ul>
-      <li><a href="#contact" class="btn-header">Kontakt</a></li>
+      <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
     </ul>
   </template>
-  <template id="memberStandard">
+  <template>
     <ul>
       <li><a href="mitglieder.html">Mitgliederbereich</a></li>
     </ul>
   </template>
   <template id="contactStandard">
     <ul>
-      <li><a href="#contact">Kontakt</a></li>
+      <li><a href="index.html#contact">Kontakt</a></li>
     </ul>
   </template>
   <template id="mobileCTAButtons">
     <div class="mobile-cta-buttons">
       <a href="mitglieder.html">Mitgliederbereich</a>
-      <a href="#contact">Kontakt</a>
+      <a href="index.html#contact">Kontakt</a>
     </div>
   </template>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mannheimer ERC - Eiskunstlauf auf höchstem Niveau</title>
-    <style>
+    <!-- <style>
       /* ========================================
          CSS VARIABLES - Zentrale Steuerung
          ======================================== */
@@ -580,6 +586,9 @@
         transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         z-index: 999;
         overflow-y: auto;
+        left: auto;
+        margin: 0;
+        border: none;
       }
 
       .mobile-menu.active {
@@ -1405,10 +1414,6 @@
         color: var(--white);
       }
 
-      /* .footer-links .submenu {
-        display: none !important;
-      } */
-
       /* ANIMATIONS */
       @keyframes fadeInUp {
         from {
@@ -1538,7 +1543,7 @@
       .skip-link:focus {
         top: 0;
       }
-    </style>
+    </style> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -1549,6 +1554,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="main.css" crossorigin="anonymous" />
   </head>
   <body>
     <!-- Skip Link for Accessibility -->
@@ -1579,11 +1585,11 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" role="dialog" aria-label="Mobile Navigation">
+    <dialog class="mobile-menu" aria-label="Mobile Navigation">
       <button class="mobile-menu-close" aria-label="Menü schließen">
         <i class="fas fa-times"></i>
       </button>
-    </div>
+    </dialog>
     <div class="overlay" aria-hidden="true"></div>
 
     <!-- Main Content -->
@@ -1651,7 +1657,7 @@
       </section>
 
       <!-- Sports Section -->
-      <section id="sports" class="section sports">
+      <section id="sports" class="section">
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">Entdecke deine Sportart</h2>
@@ -1983,6 +1989,7 @@
       data-cfasync="false"
       src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
     ></script>
+    <script src="functions/generalFunctions.js"></script>
     <script>
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileMenu = document.querySelector(".mobile-menu");
@@ -1990,34 +1997,24 @@
       const mobileClose = document.querySelector(".mobile-menu-close");
       const mobileLinks = document.querySelectorAll(".mobile-menu a");
 
-      function openMenu() {
-        mobileMenu.classList.add("active");
-        overlay.classList.add("active");
-        document.body.style.overflow = "hidden";
-        mobileToggle.classList.add("active");
-        mobileToggle.setAttribute("aria-expanded", "true");
-      }
-
-      function closeMenu() {
-        mobileMenu.classList.remove("active");
-        overlay.classList.remove("active");
-        document.body.style.overflow = "";
-        mobileToggle.classList.remove("active");
-        mobileToggle.setAttribute("aria-expanded", "false");
-      }
-
       mobileToggle.addEventListener("click", () => {
         const isOpen = mobileMenu.classList.contains("active");
-        isOpen ? closeMenu() : openMenu();
+        isOpen
+          ? closeMenu(mobileMenu, overlay, mobileToggle)
+          : openMenu(mobileMenu, overlay, mobileToggle);
       });
 
-      mobileClose.addEventListener("click", closeMenu);
-      overlay.addEventListener("click", closeMenu);
+      mobileClose.addEventListener("click", () =>
+        closeMenu(mobileMenu, overlay, mobileToggle),
+      );
+      overlay.addEventListener("click", () =>
+        closeMenu(mobileMenu, overlay, mobileToggle),
+      );
 
       mobileLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
           if (link.getAttribute("href").startsWith("#")) {
-            closeMenu();
+            closeMenu(mobileMenu, overlay, mobileToggle);
           }
         });
       });
@@ -2025,78 +2022,9 @@
       // Close menu on Escape key
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && mobileMenu.classList.contains("active")) {
-          closeMenu();
+          closeMenu(mobileMenu, overlay, mobileToggle);
         }
       });
-
-      function insertNavigationElements() {
-        const template = document.getElementById("navigation-template1");
-        const contactBtn = document.getElementById("contactBtn");
-        const memberBtn = document.getElementById("memberBtn");
-        const contactStandard = document.getElementById("contactStandard");
-        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
-
-        // Desktop Navigation
-        const desktopNav = document.getElementById("pageElementsDesktop");
-        if (template && desktopNav) {
-          const clone = template.content.cloneNode(true);
-          desktopNav.prepend(clone);
-          const ul = desktopNav.querySelector("ul");
-          if (ul) {
-            if (memberBtn) {
-              ul.append(memberBtn.content.cloneNode(true));
-            }
-            if (contactBtn) {
-              ul.append(contactBtn.content.cloneNode(true));
-            }
-          }
-        }
-
-        // Mobile Navigation
-        if (template && mobileMenu) {
-          const clone = template.content.cloneNode(true);
-          mobileMenu.prepend(clone);
-
-          // Add CTA buttons at the end
-          if (mobileCTAButtons) {
-            mobileMenu.appendChild(mobileCTAButtons.content.cloneNode(true));
-          }
-        }
-
-        // Footer Navigation
-        const footerLinks = document.getElementById(
-          "footerLinksWithMenuElements",
-        );
-        if (template && footerLinks) {
-          const clone = template.content.cloneNode(true);
-          footerLinks.append(clone);
-          const ul = footerLinks.querySelector("ul");
-          if (ul && contactStandard) {
-            ul.append(contactStandard.content.cloneNode(true));
-          }
-        }
-      }
-
-      function setupMobileSubmenus() {
-        const submenuParents = mobileMenu.querySelectorAll(
-          ".has-submenu > .submenu-toggle",
-        );
-        submenuParents.forEach((toggle) => {
-          toggle.addEventListener("click", function (e) {
-            e.preventDefault();
-            const li = this.closest(".has-submenu");
-            const isOpen = li.classList.contains("open");
-
-            // Close other open submenus
-            mobileMenu.querySelectorAll(".has-submenu.open").forEach((item) => {
-              if (item !== li) item.classList.remove("open");
-            });
-
-            li.classList.toggle("open");
-            this.setAttribute("aria-expanded", String(!isOpen));
-          });
-        });
-      }
 
       const header = document.querySelector("header");
       let lastScroll = 0;
@@ -2152,9 +2080,26 @@
           });
         }
 
+        const template = document.getElementById("navigation-template1");
+        const contactBtn = document.getElementById("contactBtn");
+        const memberBtn = document.getElementById("memberBtn");
+        const contactStandard = document.getElementById("contactStandard");
+        const mobileCTAButtons = document.getElementById("mobileCTAButtons");
+        const desktopNav = document.getElementById("pageElementsDesktop");
+        const footerLinks = document.getElementById(
+          "footerLinksWithMenuElements",
+        );
         // Initialize navigation
-        insertNavigationElements();
-        setupMobileSubmenus();
+        insertNavigationElements(
+          template,
+          contactBtn,
+          memberBtn,
+          contactStandard,
+          mobileCTAButtons,
+          desktopNav,
+          footerLinks,
+        );
+        setupMobileSubmenus(mobileMenu);
       });
 
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

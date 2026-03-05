@@ -70,18 +70,21 @@ const formularBedingungen = {
       "Das Mitglied und der Zahlungspflichtige sind damit einverstanden , dass ihre Daten fur Vereinszwecke per EDV gespeichert werden. Die personenbezogenen Daten werden fur die Durchführung des Mitgliedschaftsverhältnisses verarbeitet (Z B. Einladung zu Versammlungen, Beitragseinzug, Organisation des Sportbetriebes) Ferner werden personenbezogene Daten zur Teinahme am Wettkampfbetrieb der Bundes- und Landesfachverbände an diese weitergeleitet. Daruber hinaus werden personenbezogene Daten im Zusammenhang mit sporlichen Ereignissen einschließlich der Berichterstattung hierüber auf der Internetseite des Vereins, in Aufritten des Vereins in Sozialen Medien sowie auf Seiten der Fachverbände veroffentlicht und an lokale, regionale und überregionale Printmedien übermittelt. Das Merkblatt zu Informationspflichten nach Artikel 13 und 14 DSGVO kann dem Vereinsordnung entnommen werden!",
   },
   5: {
+    //EINWILLIGUNGSERKLAERUNG
     Allgemeines:
       "Der Vereinsvorstand weist darauf hin, dass ausreichende technische Maßnahmen zur Gewährleistung des Datenschutzes getroffen wurden. Dennoch kann bei einer Veröffentlichung von personenbezogenen Mitgliederdaten im Internet ein umfassender Datenschutz nicht garantiert werden. Daher nimmt das Vereinsmitglied die Risiken für eine eventuelle Persönlichkeitsrechtsverletzung zur Kenntnis und ist sich bewusst, dass die personenbezogenen Daten auch in Staaten abrufbar sind, die keine der Bundesrepublik Deutschland vergleichbaren Datenschutzbestimmungen kennen & die Vertraulichkeit, die Integrität (Unverletzlichkeit), die Authentizität (Echtheit) und die Verfügbarkeit der personenbezogenen Daten nicht garantiert ist Das Vereinsmitglied trifft die Entscheidung zur Veröffentlichung seiner Daten im Internet freiwillig und kann seine Einwilligung jederzeit widerrufen",
     Erklärung:
       "Ich bestätige das Vorstehende zur Kenntnis genommen zu haben und willige ein, dass der Verein Mannheimer ERC folgende Daten zu meiner Person: Vorname, Zuname, Geburtsdatum, Kürklasse, Kaderzugehörigkeit, Wettkampfergebnisse, Anschrift, Telefonnummer, Faxnummer, E-Mail-Adresse wie angegeben in folgenden Internetseiten des Vereins www.merc-online.de & www.merc-ks veröffentlichen darf. Darüber hinaus gestatte ich dem Mannheimer ERC die honorarfreie, geographisch und zeitlich unbegrenzte Verwendung der von mir oder Dritten gefertigten Foto- und Filmaufnahmen meiner Person für interne und externe Zwecke, interne Kommunikation, Public Relations, Internet-Auftritte, Werbung, Öffentlichkeits- und Pressearbeit.",
   },
   6: {
+    //EINZUGSERMAECHTIGUNG KL
     Hinweis:
       "Wenn das o.g. Konto die erforderliche Deckung nicht aufweist, besteht seitens des kontoführenden Kreditinstitutes keine Verpflichtung zur Einlösung. Teileinlösungen werden im Lastschriftverfahren nicht vorgenommen!",
     Datenspeicherung:
       "Das Mitglied und der Zahlungspflichtige sind damit einverstanden, dass ihre Daten für Vereinszwecke per EDV gespeichert werden. Die personenbezogenen Daten werden für die Durchführung des Mitgliedschaftsverhältnisses verarbeitet (z.B. Einladung zu Versammlungen, Beitragseinzug, Organisation des Sportbetriebes). Ferner werden personenbezogene Daten zur Teilnahme am Wettkampfbetrieb der Bundes- und Landesfachverbände an diese weitergeleitet. Darüber hinaus werden personenbezogene Daten im Zusammenhang mit sportlichen Ereignissen einschließlich der Berichterstattung hierüber auf der Internetseite des Vereins, in Auftritten des Vereins in Sozialen Medien sowie auf Seiten der Fachverbände veröffentlicht und an lokale, regionale und überregionale Printmedien übermittelt. Das Merkblatt zu Informationspflichten nach Artikel 13 und 14 DSGVO kann dem Vereinsordnungen entnommen werden!",
   },
   7: {
+    //EINZUGSERMAECHTIGUNG SL
     Hinweis:
       "Wenn das o.g. Konto die erforderliche Deckung nicht aufweist, besteht seitens des kontoführenden Kreditinstitutes keine Verpflichtung zur Einlösung. Teileinlösungen werden im Lastschriftverfahren nicht vorgenommen!",
     Datenspeicherung:
