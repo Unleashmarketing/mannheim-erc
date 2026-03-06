@@ -100,6 +100,10 @@ h3 {
   font-size: clamp(var(--font-size-xs), 5vw, var(--font-size-xl));
   overflow-wrap: break-word;
 }
+h4 {
+  font-size: clamp(var(--font-size-xs), 5vw, var(--font-size-lg));
+  overflow-wrap: break-word;
+}
 /* Accent font for special elements */
 .logo-text,
 .section-title,
@@ -3881,7 +3885,6 @@ input:focus-visible {
 }
 
 .login-header h2 {
-  font-size: var(--font-size-xl);
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: var(--spacing-xs);
@@ -3961,7 +3964,6 @@ input:focus-visible {
 }
 
 .welcome-text h2 {
-  font-size: var(--font-size-xl);
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: var(--spacing-xs);
@@ -3999,7 +4001,10 @@ input:focus-visible {
 .file-category {
   background: var(--white);
   border-radius: var(--border-radius-lg);
-  padding: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
   box-shadow: var(--shadow-md);
 }
 
