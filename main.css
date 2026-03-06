@@ -88,6 +88,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  font-size: clamp(var(--font-size-xs), 5vw, var(--font-size-3xl));
+  overflow-wrap: break-word;
+}
+h2 {
+  font-size: clamp(var(--font-size-xs), 5vw, var(--font-size-2xl));
+  overflow-wrap: break-word;
+}
+h3 {
+  font-size: clamp(var(--font-size-xs), 5vw, var(--font-size-xl));
+  overflow-wrap: break-word;
+}
 /* Accent font for special elements */
 .logo-text,
 .section-title,
@@ -3167,7 +3179,7 @@ input:focus-visible {
    GESCHICHTE SECTION
    ======================================== */
 .geschichte-section {
-  padding: var(--spacing-3xl) 0;
+  padding-top: var(--spacing-3xl) 0;
   background-color: var(--white);
 }
 
