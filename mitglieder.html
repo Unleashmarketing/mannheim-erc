@@ -824,9 +824,7 @@
             if (result.success) {
               const newCookieContent = `${result.message.payload.expiry}|${result.message.payload.device}|${result.message.signature}`;
               const date = new Date(result.message.expiry * 1000);
-              console.error(newCookieContent);
               document.cookie = `member_area_login_token=${encodeURIComponent(newCookieContent)}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
-              console.error(document.cookie);
             } else {
               console.error("result not ok", result.toString());
             }
@@ -855,9 +853,6 @@
             ?.split("=")[1];
           const [expiry, device, signature] =
             decodeURIComponent(cookieValue).split("|");
-          console.error("expiry ", expiry);
-          console.error("device ", device);
-          console.error("signature ", signature);
           const params = new URLSearchParams({
             expiry: expiry,
             device: device,
