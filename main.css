@@ -3048,6 +3048,7 @@ input:focus-visible {
   gap: var(--spacing-sm);
   margin-top: var(--spacing-sm);
   width: 100%;
+  max-height: 57px;
 }
 
 .download-btn {
