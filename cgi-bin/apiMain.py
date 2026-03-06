@@ -21,6 +21,8 @@ try:
     tanDictIndexKey = "tanDictIndexKey"
     tanDictLargestIndexKey = "tanDictLargestIndex"
     tanDictFormEnumKey = "tanDictFormEnumKey"
+    cookieSigningKey = "private_key.pem"
+    cookieSigningKeyFullPath = os.path.join(os.path.dirname(__file__), cookieSigningKey)
     TAN_LIST_SIZE = 128
     TAN_LIST_RENEWAL_RETAIN_SIZE = 16
     app = Flask(__name__)
@@ -338,6 +340,85 @@ try:
             return jsonify({"success": num0+num1==int(answer), "message": "evaluated"}), 200
         except Exception as e:
             return jsonify({"success": False, "error": str(e)}), 500
+    
+    def generateEcKey():
+        from ecdsa import SigningKey
+        private_key = SigningKey.generate()
+        with open(cookieSigningKeyFullPath, "wb") as f:
+            f.write(private_key.to_pem(format="pkcs8"))
+    
+    def signSomething(message: bytes) -> str:
+        import base64
+        from ecdsa import SigningKey
+        signatureString = ""
+        if os.path.exists(cookieSigningKeyFullPath):
+            with open(cookieSigningKeyFullPath, "r") as f:
+                private_key = SigningKey.from_pem(f.read())
+                signature = private_key.sign(message)
+                signatureString = base64.urlsafe_b64encode(signature).decode()
+        return signatureString
+    
+    def verifySomething(signature: str, message: bytes):
+        from ecdsa import SigningKey
+        import base64
+        signatureBytes = base64.urlsafe_b64decode(signature.encode())
+        verified = False
+        if os.path.exists(cookieSigningKeyFullPath):
+            with open(cookieSigningKeyFullPath, "r") as f:
+                private_key = SigningKey.from_pem(f.read())
+                verified = private_key.verifying_key.verify(signatureBytes, message)
+        return verified
+
+    @app.route('/api/createAndSignMitgliederLoginCookie', methods=["GET"])
+    def createAndSignMitgliederLoginCookie(existingDevice: typing.Optional[str] = None) -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]], int]:
+        try:
+            if not os.path.exists(cookieSigningKeyFullPath):
+                generateEcKey()
+            import secrets
+            import datetime
+            devicePseudoId = existingDevice
+            if devicePseudoId is None:
+                devicePseudoId = secrets.token_hex(nbytes=8)
+            expiryTime = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=3)
+            expiryTimeInt = int(expiryTime.timestamp())
+            jsObj = {"device":devicePseudoId, "expiry":expiryTimeInt}
+            jString = json.dumps(jsObj).encode()
+            signature = signSomething(jString)
+            assert signature != "", "Signieren fehlgeschlagen"
+            return jsonify({"success":True, "message":{"payload":jsObj, "signature":signature}}), 200
+        except Exception as e:
+            return jsonify({"success":False, "error":str(e)}), 500
+    
+    @app.route('/api/verifyMitgliederCookiePayload', methods=["GET"])
+    def verifyMitgliederCookiePayload() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]], int]:
+        point = ''
+        try:
+            if not os.path.exists(cookieSigningKeyFullPath):
+                return jsonify({"success": False, "error": "Kein Schluessel vorhanden"}), 500
+            signature = request.args.get('signature')
+            if signature is None or not isinstance(signature, str):
+                return jsonify({"success": False, "error": "signature fehlt im Request"}), 400
+            point += '1'
+            device = request.args.get('device')
+            if device is None or not isinstance(device, str):
+                return jsonify({"success": False, "error": "device fehlt im Request"}), 400
+            point += '1'
+            expiry = request.args.get('expiry')
+            if expiry is None or not isinstance(expiry, str) or not expiry.isdigit():
+                return jsonify({"success": False, "error": "expiry fehlt im Request"}), 400
+            point += '1'
+            jString = json.dumps({"device":device, "expiry":int(expiry)}).encode()
+            verified = verifySomething(signature, jString)
+            if not verified:
+                return jsonify({"success": False, "error": "Verifizierung fehlgeschlagen"}), 400
+            point += '1'
+            import datetime
+            if datetime.datetime.now(datetime.timezone.utc).timestamp() > int(expiry):
+                return jsonify({"success": False, "error": "Verfalldatum ueberschritten"}), 400
+            point += '1'
+            return createAndSignMitgliederLoginCookie(device)
+        except Exception as e:
+            return jsonify({"success":False, "error":str(e)+" "+point}), 500
 
     if __name__ == '__main__':
         CGIHandler().run(app)
