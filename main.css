@@ -4006,7 +4006,11 @@ input:focus-visible {
   padding-right: var(--spacing-sm);
   padding-bottom: var(--spacing-sm);
   box-shadow: var(--shadow-md);
-  display: table;
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
 }
 
 .category-header {
