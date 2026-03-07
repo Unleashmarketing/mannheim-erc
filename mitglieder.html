@@ -932,6 +932,8 @@
 
       if (logoutBtn) {
         logoutBtn.addEventListener("click", () => {
+          document.cookie =
+            "member_area_login_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
           pwField.style.backgroundColor = "";
           userNameField.style.backgroundColor = "";
           memberArea.classList.remove("active");
