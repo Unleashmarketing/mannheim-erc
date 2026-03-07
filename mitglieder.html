@@ -172,7 +172,7 @@
 
     <main id="main-content">
       <!-- News -->
-      <section id="publicAnnouncements" class="news-section">
+      <section id="publicAnnouncements" class="news-section-mitgliederbereich">
         <div class="container">
           <div class="section-header">
             <h2 id="public-news-toggle-btn" class="archive-news-toggle-button">
@@ -823,7 +823,7 @@
             const result = await response.json();
             if (result.success) {
               const newCookieContent = `${result.message.payload.expiry}|${result.message.payload.device}|${result.message.signature}`;
-              const date = new Date(result.message.expiry * 1000);
+              const date = new Date(result.message.payload.expiry * 1000);
               document.cookie = `member_area_login_token=${encodeURIComponent(newCookieContent)}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
             } else {
               console.error("result not ok", result.toString());
@@ -867,7 +867,7 @@
             if (result.success) {
               const newCookieContent = `${result.message.payload.expiry}|${device}|${result.message.signature}`;
               // Set the browser's cookie expiration to match the internal timestamp
-              const date = new Date(result.message.expiry * 1000);
+              const date = new Date(result.message.payload.expiry * 1000);
               document.cookie = `member_area_login_token=${encodeURIComponent(newCookieContent)}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
               return 1;
             } else {

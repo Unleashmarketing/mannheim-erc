@@ -391,34 +391,28 @@ try:
     
     @app.route('/api/verifyMitgliederCookiePayload', methods=["GET"])
     def verifyMitgliederCookiePayload() -> typing.Tuple[typing.Dict[str, typing.Union[str, bool]], int]:
-        point = ''
         try:
             if not os.path.exists(cookieSigningKeyFullPath):
                 return jsonify({"success": False, "error": "Kein Schluessel vorhanden"}), 500
             signature = request.args.get('signature')
             if signature is None or not isinstance(signature, str):
                 return jsonify({"success": False, "error": "signature fehlt im Request"}), 400
-            point += '1'
             device = request.args.get('device')
             if device is None or not isinstance(device, str):
                 return jsonify({"success": False, "error": "device fehlt im Request"}), 400
-            point += '1'
             expiry = request.args.get('expiry')
             if expiry is None or not isinstance(expiry, str) or not expiry.isdigit():
                 return jsonify({"success": False, "error": "expiry fehlt im Request"}), 400
-            point += '1'
             jString = json.dumps({"device":device, "expiry":int(expiry)}).encode()
             verified = verifySomething(signature, jString)
             if not verified:
                 return jsonify({"success": False, "error": "Verifizierung fehlgeschlagen"}), 400
-            point += '1'
             import datetime
             if datetime.datetime.now(datetime.timezone.utc).timestamp() > int(expiry):
                 return jsonify({"success": False, "error": "Verfalldatum ueberschritten"}), 400
-            point += '1'
             return createAndSignMitgliederLoginCookie(device)
         except Exception as e:
-            return jsonify({"success":False, "error":str(e)+" "+point}), 500
+            return jsonify({"success":False, "error":str(e)}), 500
 
     if __name__ == '__main__':
         CGIHandler().run(app)
