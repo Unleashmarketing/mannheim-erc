@@ -141,7 +141,7 @@ button {
  UTILITY CLASSES
  ======================================== */
 .container {
-  width: 95%;
+  width: 97%;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--spacing-md);
