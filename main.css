@@ -3915,6 +3915,7 @@ input:focus-visible {
   font-size: var(--font-size-sm);
   transition: var(--transition-base);
   font-family: var(--font-family);
+  margin-bottom: 20px;
 }
 
 .form-group input:focus {
