@@ -112,6 +112,7 @@ h4 {
 .btn {
   font-family: var(--font-family-accent);
   letter-spacing: -0.02em;
+  gap: 15px;
 }
 
 a {
