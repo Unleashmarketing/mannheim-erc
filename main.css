@@ -1448,8 +1448,6 @@ textarea:focus-visible {
 .skip-link:focus {
   top: 0;
 }
-
-/*! ==========================================
    SOURCE: datenschutz_style.css
    ========================================== */
 .logo-text,
@@ -1577,6 +1575,9 @@ textarea:focus-visible {
 
 /* RESPONSIVE */
 @media (max-width: 1200px) {
+
+/* RESPONSIVE - datenschutz */
+@media (max-width: 1200px) {
   :root {
     --spacing-3xl: 80px;
     --spacing-2xl: 60px;
@@ -1591,9 +1592,36 @@ textarea:focus-visible {
   .mobile-toggle {
     display: flex;
   }
+  .page-title {
+    font-size: var(--font-size-2xl);
+  }
+  .page-subtitle {
+    font-size: var(--font-size-sm);
+  }
+  .content-section {
+    padding: var(--spacing-lg);
+  }
 }
-
-/*! ==========================================
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 120px 0 var(--spacing-lg);
+  }
+  .content-section {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+  }
+  .content-section h3 {
+    font-size: var(--font-size-lg);
+  }
+}
+@media (max-width: 576px) {
+  .page-title {
+    font-size: 1.75rem;
+  }
+  .page-hero {
+    padding: 100px 0 var(--spacing-md);
+  }
+}
    SOURCE: impressum_style.css
    ========================================== */
 /* ========================================
@@ -1639,6 +1667,9 @@ textarea:focus-visible {
 
 /* RESPONSIVE */
 @media (max-width: 1200px) {
+
+/* RESPONSIVE - impressum */
+@media (max-width: 1200px) {
   :root {
     --spacing-3xl: 80px;
     --spacing-2xl: 60px;
@@ -1653,6 +1684,12 @@ textarea:focus-visible {
   .mobile-toggle {
     display: flex;
   }
+  .page-title {
+    font-size: var(--font-size-2xl);
+  }
+  .content-section {
+    padding: var(--spacing-lg);
+  }
 }
 @media (max-width: 768px) {
   .legal-list strong {
@@ -1660,9 +1697,18 @@ textarea:focus-visible {
     width: 100%;
     margin-bottom: 2px;
   }
+  .page-hero {
+    padding: 120px 0 var(--spacing-lg);
+  }
+  .content-section {
+    padding: var(--spacing-md);
+  }
 }
-
-/*! ==========================================
+@media (max-width: 576px) {
+  .page-title {
+    font-size: 1.75rem;
+  }
+}
    SOURCE: antrag-formular_style.css
    ========================================== */
 
@@ -2109,6 +2155,9 @@ select.input-error {
 
 /* ---- RESPONSIVE ---- */
 @media (max-width: 1415px) {
+
+/* ---- RESPONSIVE - antrag-formular ---- */
+@media (max-width: 1415px) {
   .logo-text {
     display: none;
   }
@@ -2128,6 +2177,13 @@ select.input-error {
   .mobile-toggle {
     display: flex;
   }
+  .page-title {
+    font-size: var(--font-size-2xl);
+  }
+  .forms-container {
+    max-width: 100%;
+    padding: 0 var(--spacing-sm);
+  }
 }
 @media (max-width: 768px) {
   :root {
@@ -2135,6 +2191,9 @@ select.input-error {
   }
   .page-hero {
     padding: 120px 0 var(--spacing-xl);
+  }
+  .tan-email-field {
+    width: 100%;
   }
 }
 @media (max-width: 640px) {
@@ -2179,8 +2238,6 @@ input:focus-visible {
   outline: 3px solid var(--primary-color);
   outline-offset: 2px;
 }
-
-/*! ==========================================
    SOURCE: wettbewerbe_style.css
    ========================================== */
 
@@ -2376,6 +2433,9 @@ input:focus-visible {
 
 /* RESPONSIVE */
 @media (max-width: 1200px) {
+
+/* RESPONSIVE - wettbewerbe */
+@media (max-width: 1200px) {
   :root {
     --spacing-3xl: 80px;
     --spacing-2xl: 60px;
@@ -2390,14 +2450,37 @@ input:focus-visible {
   .mobile-toggle {
     display: flex;
   }
+  .page-title {
+    font-size: var(--font-size-2xl);
+  }
+  .wettbewerb-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .wettbewerb-grid {
+    grid-template-columns: 1fr;
+  }
+  .comp-image-wrapper {
+    height: 200px;
+  }
+  .page-hero {
+    padding: 120px 0 var(--spacing-lg);
+  }
 }
 @media (max-width: 600px) {
   .gallery-grid {
     grid-template-columns: 1fr;
   }
+  .modal-content-wrapper {
+    padding: 20px 12px;
+  }
 }
-
-/*! ==========================================
+@media (max-width: 480px) {
+  .comp-body {
+    padding: var(--spacing-md);
+  }
+}
    SOURCE: synchron_style.css
    ========================================== */
 
@@ -2539,6 +2622,11 @@ input:focus-visible {
  RESPONSIVE DESIGN
  ======================================== */
 @media (max-width: 1415px) {
+
+/* ========================================
+ RESPONSIVE DESIGN - synchron
+ ======================================== */
+@media (max-width: 1415px) {
   .logo-text {
     display: none;
   }
@@ -2560,6 +2648,26 @@ input:focus-visible {
 
   .mobile-toggle {
     display: flex;
+  }
+
+  .page-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .page-hero {
+    padding: 120px 0 var(--spacing-lg);
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .contact-team-card {
+    padding: var(--spacing-lg);
   }
 }
 
@@ -2589,6 +2697,22 @@ input:focus-visible {
     --font-size-4xl: 2.5rem;
     --font-size-3xl: 2rem;
   }
+
+  .page-hero {
+    padding: 110px 0 var(--spacing-md);
+  }
+
+  .contact-persons {
+    flex-direction: column;
+  }
+
+  .erfolge-toggle-button {
+    font-size: var(--font-size-2xl);
+  }
+
+  .season-block {
+    padding: var(--spacing-md);
+  }
 }
 
 @media (max-width: 640px) {
@@ -2598,7 +2722,7 @@ input:focus-visible {
   }
 
   .page-hero {
-    padding: 100px 0 var(--spacing-lg);
+    padding: 100px 0 var(--spacing-sm);
   }
 
   .section {
@@ -2606,6 +2730,15 @@ input:focus-visible {
   }
 
   .content-section {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+  }
+
+  .contact-team-card {
+    padding: var(--spacing-md);
+  }
+
+  .info-card {
     padding: var(--spacing-md);
   }
 }
@@ -2621,211 +2754,20 @@ input:focus-visible {
     padding: 12px 24px;
     font-size: var(--font-size-sm);
   }
-}
 
-/* ========================================
- COLLAPSIBLE SECTION (Erfolge)
- ======================================== */
-.toggle-section {
-  padding: var(--spacing-3xl) 0;
-  background-color: var(--light-bg);
-}
+  .page-title {
+    font-size: 1.75rem;
+  }
 
-.erfolge-toggle-button {
-  font-size: var(--font-size-3xl);
-  font-weight: 800;
-  color: var(--text-dark);
-  font-family: var(--font-family-accent);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  transition: var(--transition-base);
-  position: relative;
-  background: none;
-  border: none;
-  padding: 0;
-}
+  .result-item {
+    flex-wrap: wrap;
+  }
 
-.erfolge-toggle-button:hover {
-  color: var(--primary-color);
-}
-
-.erfolge-toggle-button::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  background-color: var(--primary-color);
-  border-radius: var(--border-radius-sm);
-  position: absolute;
-  bottom: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.erfolge-toggle-icon {
-  display: inline-block;
-  transition: transform 0.3s ease;
-  font-size: var(--font-size-lg);
-  color: var(--primary-color);
-}
-
-.erfolge-toggle-button.active .erfolge-toggle-icon {
-  transform: rotate(-180deg);
-}
-
-.erfolge-collapsed {
-  display: none;
-}
-
-.season-block {
-  background: var(--white);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  margin-bottom: var(--spacing-md);
-  box-shadow: var(--shadow-sm);
-  border-left: 4px solid var(--primary-color);
-  transition: var(--transition-base);
-}
-
-.season-block:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateX(5px);
-}
-
-.season-title {
-  font-size: var(--font-size-lg);
-  font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: var(--spacing-md);
-  font-family: var(--font-family-accent);
-  border-bottom: 2px solid var(--gray-light);
-  padding-bottom: var(--spacing-sm);
-}
-
-.season-theme {
-  font-size: var(--font-size-sm);
-  color: var(--primary-color);
-  font-weight: 600;
-  font-style: italic;
-  margin-bottom: var(--spacing-sm);
-}
-
-.result-item {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-xs) 0;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.result-item .place {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-weight: 700;
-  font-size: var(--font-size-xs);
-  flex-shrink: 0;
-}
-
-.place-1 {
-  background: #ffd700;
-  color: #5a4000;
-}
-.place-2 {
-  background: #c0c0c0;
-  color: #3a3a3a;
-}
-.place-3 {
-  background: #cd7f32;
-  color: #fff;
-}
-.place-other {
-  background: var(--light-bg);
-  color: var(--text-dark);
-  border: 1px solid var(--gray-light);
-}
-
-/* ========================================
- CONTACT CARD
- ======================================== */
-.contact-team-card {
-  background: linear-gradient(135deg, var(--primary-color) 0%, #004dbf 100%);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-xl);
-  color: var(--white);
-  margin-top: var(--spacing-2xl);
-  box-shadow: var(--shadow-lg);
-}
-
-.contact-team-card h3 {
-  font-size: var(--font-size-xl);
-  font-weight: 700;
-  margin-bottom: var(--spacing-md);
-  font-family: var(--font-family-accent);
-}
-
-.contact-team-card p {
-  opacity: 0.9;
-  line-height: 1.8;
-  margin-bottom: var(--spacing-md);
-}
-
-.contact-persons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-lg);
-}
-
-.contact-person-tag {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  padding: 8px 16px;
-  font-weight: 600;
-  font-size: var(--font-size-sm);
-  backdrop-filter: blur(4px);
-}
-
-.contact-email-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  background: var(--white);
-  color: var(--primary-color) !important;
-  padding: 12px 24px;
-  border-radius: var(--border-radius-md);
-  font-weight: 700;
-  font-size: var(--font-size-sm);
-  transition: var(--transition-base);
-  box-shadow: var(--shadow-sm);
-  margin-top: var(--spacing-sm);
-}
-
-.contact-email-link:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  color: var(--primary-hover) !important;
-}
-
-/* ACCESSIBILITY IMPROVEMENTS */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  .contact-email-link {
+    width: 100%;
+    justify-content: center;
   }
 }
-
-/*! ==========================================
    SOURCE: eiskunstlauf_style.css
    ========================================== */
 
@@ -3075,6 +3017,11 @@ input:focus-visible {
  RESPONSIVE DESIGN
  ======================================== */
 @media (max-width: 1415px) {
+
+/* ========================================
+ RESPONSIVE DESIGN - eiskunstlauf
+ ======================================== */
+@media (max-width: 1415px) {
   .logo-text {
     display: none;
   }
@@ -3096,6 +3043,30 @@ input:focus-visible {
 
   .mobile-toggle {
     display: flex;
+  }
+
+  .page-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .section-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .page-hero {
+    padding: 120px 0 var(--spacing-lg);
+  }
+
+  .info-grid-two {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .download-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .training-times {
+    padding: var(--spacing-lg);
   }
 }
 
@@ -3134,6 +3105,26 @@ input:focus-visible {
     --font-size-4xl: 2.5rem;
     --font-size-3xl: 2rem;
   }
+
+  .page-hero {
+    padding: 110px 0 var(--spacing-md);
+  }
+
+  .download-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .training-times {
+    padding: var(--spacing-md);
+  }
+
+  .training-times h3 {
+    font-size: var(--font-size-lg);
+  }
+
+  .geschichte-toggle-button {
+    font-size: var(--font-size-2xl);
+  }
 }
 
 @media (max-width: 640px) {
@@ -3143,7 +3134,7 @@ input:focus-visible {
   }
 
   .page-hero {
-    padding: 100px 0 var(--spacing-lg);
+    padding: 100px 0 var(--spacing-sm);
   }
 
   .section {
@@ -3151,6 +3142,19 @@ input:focus-visible {
   }
 
   .content-section {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+  }
+
+  .download-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .download-card {
+    padding: var(--spacing-md);
+  }
+
+  .info-card {
     padding: var(--spacing-md);
   }
 }
@@ -3166,6 +3170,14 @@ input:focus-visible {
     padding: 12px 24px;
     font-size: var(--font-size-sm);
   }
+
+  .page-title {
+    font-size: 1.75rem;
+  }
+
+  .download-actions {
+    max-height: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3177,62 +3189,6 @@ input:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
-
-/* ========================================
-   GESCHICHTE SECTION
-   ======================================== */
-.geschichte-section {
-  padding: var(--spacing-lg) 0;
-  background-color: var(--white);
-}
-
-.geschichte-toggle-button {
-  font-size: var(--font-size-3xl);
-  font-weight: 800;
-  color: var(--text-dark);
-  font-family: var(--font-family-accent);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  transition: var(--transition-base);
-  position: relative;
-}
-
-.geschichte-toggle-button:hover {
-  color: var(--primary-color);
-}
-
-.geschichte-toggle-button::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  background-color: var(--primary-color);
-  margin: var(--spacing-md) auto 0;
-  border-radius: var(--border-radius-sm);
-  position: absolute;
-  bottom: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.geschichte-toggle-icon {
-  display: inline-block;
-  transition: transform 0.3s ease;
-  font-size: var(--font-size-lg);
-  color: var(--primary-color);
-}
-
-.geschichte-toggle-button.active .geschichte-toggle-icon {
-  transform: rotate(-180deg);
-}
-
-.geschichte-collapsed {
-  display: none;
-}
-
-/*! ==========================================
    SOURCE: eisschnelllauf_style.css
    ========================================== */
 
@@ -3730,6 +3686,11 @@ input:focus-visible {
    RESPONSIVE DESIGN
    ======================================== */
 @media (max-width: 1360px) {
+
+/* ========================================
+   RESPONSIVE DESIGN - eisschnelllauf
+   ======================================== */
+@media (max-width: 1360px) {
   .logo-text {
     display: none;
   }
@@ -3761,6 +3722,10 @@ input:focus-visible {
     font-size: var(--font-size-xl);
   }
 
+  .page-hero {
+    padding: 120px 0 var(--spacing-lg);
+  }
+
   .geschichte-toggle-button {
     font-size: var(--font-size-xl);
   }
@@ -3777,6 +3742,10 @@ input:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .schnupper-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
   .footer-bottom {
     flex-direction: column;
     text-align: center;
@@ -3784,8 +3753,23 @@ input:focus-visible {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --spacing-3xl: 60px;
+    --spacing-2xl: 40px;
+    --font-size-4xl: 2.5rem;
+    --font-size-3xl: 2rem;
+  }
+
+  .page-hero {
+    padding: 110px 0 var(--spacing-md);
+  }
+
   .schnupper-grid {
     grid-template-columns: 1fr;
+  }
+
+  .schnupper-box {
+    padding: var(--spacing-lg);
   }
 
   .news-filters {
@@ -3811,6 +3795,15 @@ input:focus-visible {
   .day-labels span {
     font-size: var(--font-size-xs);
   }
+
+  .archive-news-toggle-button {
+    font-size: var(--font-size-xl);
+    gap: var(--spacing-md);
+  }
+
+  .news-item {
+    padding: var(--spacing-md);
+  }
 }
 
 @media (max-width: 640px) {
@@ -3820,7 +3813,7 @@ input:focus-visible {
   }
 
   .page-hero {
-    padding: 100px 0 var(--spacing-lg);
+    padding: 100px 0 var(--spacing-sm);
   }
 
   .section {
@@ -3829,6 +3822,7 @@ input:focus-visible {
 
   .content-section {
     padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
   }
 
   .calendar-container {
@@ -3843,9 +3837,32 @@ input:focus-visible {
   .current-month-year-class {
     font-size: var(--font-size-lg);
   }
+
+  .schnupper-box {
+    padding: var(--spacing-md);
+  }
 }
 
-/*! ==========================================
+@media (max-width: 576px) {
+  :root {
+    --font-size-4xl: 2rem;
+    --font-size-3xl: 1.75rem;
+    --font-size-2xl: 1.5rem;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: var(--font-size-sm);
+  }
+
+  .news-item h3 {
+    font-size: var(--font-size-md);
+  }
+}
    SOURCE: mitglieder_style.css
    ========================================== */
 /* ========================================
@@ -4121,6 +4138,9 @@ input:focus-visible {
 
 /* RESPONSIVE */
 @media (max-width: 1200px) {
+
+/* RESPONSIVE - mitglieder */
+@media (max-width: 1200px) {
   :root {
     --spacing-3xl: 80px;
     --spacing-2xl: 60px;
@@ -4133,25 +4153,66 @@ input:focus-visible {
   .nav-desktop {
     display: none;
   }
+
   .mobile-toggle {
     display: flex;
   }
+
+  .member-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .category-title {
+    font-size: var(--font-size-lg);
+  }
 }
+
+@media (max-width: 768px) {
+  .login-box {
+    padding: var(--spacing-lg);
+  }
+
+  .member-area {
+    padding-top: 100px;
+  }
+
+  .file-category {
+    padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-sm);
+  }
+
+  .category-icon {
+    width: 48px;
+    height: 48px;
+    font-size: var(--font-size-md);
+  }
+}
+
 @media (max-width: 640px) {
   .file-item {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .btn-download {
     width: 100%;
     justify-content: center;
   }
+
   .file-info {
     width: 100%;
   }
-}
 
-/*! ==========================================
+  .login-box {
+    padding: var(--spacing-md);
+  }
+
+  .login-icon {
+    width: 64px;
+    height: 64px;
+    font-size: var(--font-size-xl);
+  }
+}
    SOURCE: about_style.css
    ========================================== */
 
@@ -4315,6 +4376,11 @@ input:focus-visible {
   RESPONSIVE DESIGN
   ======================================== */
 @media (max-width: 1415px) {
+
+/* ========================================
+  RESPONSIVE DESIGN - about
+  ======================================== */
+@media (max-width: 1415px) {
   .logo-text {
     display: none;
   }
@@ -4336,6 +4402,23 @@ input:focus-visible {
 
   .mobile-toggle {
     display: flex;
+  }
+
+  .page-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .page-hero {
+    padding: 120px 0 var(--spacing-lg);
+  }
+
+  .vision-highlights {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  .grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 }
 
@@ -4359,6 +4442,19 @@ input:focus-visible {
 
   .page-hero {
     min-height: 50vh;
+    padding: 110px 0 var(--spacing-md);
+  }
+
+  .vision-text {
+    font-size: var(--font-size-md);
+  }
+
+  .highlight-item {
+    padding: var(--spacing-md);
+  }
+
+  .card-body {
+    padding: var(--spacing-md);
   }
 }
 
@@ -4367,6 +4463,19 @@ input:focus-visible {
     --font-size-4xl: 2rem;
     --font-size-3xl: 1.75rem;
     --font-size-2xl: 1.5rem;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
+  }
+
+  .page-hero {
+    padding: 100px 0 var(--spacing-sm);
+  }
+
+  .card-meta {
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
 }
 
