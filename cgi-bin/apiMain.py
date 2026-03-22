@@ -61,7 +61,7 @@ try:
         from email.message import EmailMessage
         msg = EmailMessage()
         msg['Subject'] = subject
-        msg['To'] = "rastapopoulis@hotmail.com"  # change this for deployment
+        msg['To'] = "office@merc-online.de"  # change this for deployment
         msg['From'] = "stv.schnelllauf@merc-online.de"
         if isinstance(from_field, str) and "@" in from_field and from_field.count("@") == 1 and from_field != msg['From'] and from_field != msg['To']:
             msg['cc'] = from_field
