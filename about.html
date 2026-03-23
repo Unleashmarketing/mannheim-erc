@@ -1982,12 +1982,12 @@
     ></script>
     <script src="functions/generalFunctions.js"></script>
     <script>
-      globalThis.onload = function () {
-        const urlParams = new URLSearchParams(globalThis.location.search);
-        if (urlParams.get("openBelegungsplan") === "true") {
-          openPdf("dokumente/verein/Hallenbelegung.pdf");
-        }
-      };
+      // globalThis.onload = function () {
+      //   const urlParams = new URLSearchParams(globalThis.location.search);
+      //   if (urlParams.get("openBelegungsplan") === "true") {
+      //     openPdf("dokumente/verein/Hallenbelegung.pdf");
+      //   }
+      // };
       /* ========================================
       PDF MODAL LOGIK (Lösung 2)
       ======================================== */
@@ -2099,6 +2099,10 @@
       // };
       // globalThis.onload = makeBrowserPedantic;
       document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(globalThis.location.search);
+        if (urlParams.get("openBelegungsplan") === "true") {
+          openPdf("dokumente/verein/Hallenbelegung.pdf");
+        }
         const template = document.getElementById("navigation-template1");
         const contactBtn = document.getElementById("contactBtn");
         const memberBtn = document.getElementById("memberBtn");
