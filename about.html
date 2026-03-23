@@ -2098,10 +2098,10 @@
       //   });
       // };
       // globalThis.onload = makeBrowserPedantic;
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", async () => {
         const urlParams = new URLSearchParams(globalThis.location.search);
         if (urlParams.get("openBelegungsplan") === "true") {
-          openPdf("dokumente/verein/Hallenbelegung.pdf");
+          await openPdfAsync("dokumente/verein/Hallenbelegung.pdf");
         }
         const template = document.getElementById("navigation-template1");
         const contactBtn = document.getElementById("contactBtn");

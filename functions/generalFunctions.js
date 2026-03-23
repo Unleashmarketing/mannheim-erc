@@ -7,6 +7,13 @@ function openPdf(pdfUrl) {
   document.body.style.overflow = "hidden"; // Scrollen der Hauptseite stoppen
 }
 
+function openPdfAsync(pdfUrl) {
+  return new Promise((resolve) => {
+    openPdf(pdfUrl);
+    resolve();
+  });
+}
+
 function renderArchiveNews(list, newsContainerId) {
   const container = document.getElementById(newsContainerId);
   container.innerHTML = "";
