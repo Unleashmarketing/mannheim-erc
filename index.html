@@ -136,7 +136,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="main.css" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="main.css?v=<?php echo filemtime('main.css'); ?"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <!-- Skip Link for Accessibility -->
@@ -567,7 +571,7 @@
       data-cfasync="false"
       src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
     ></script>
-    <script src="functions/generalFunctions.js"></script>
+    <script src="functions/generalFunctions.js?v=<php echo filemtime('functions/generalFunctions.js')>"></script>
     <script>
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileMenu = document.querySelector(".mobile-menu");

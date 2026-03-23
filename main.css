@@ -3803,8 +3803,8 @@ input:focus-visible {
 
   .day,
   .empty-day {
-    padding: var(--spacing-sm);
-    min-height: 50px;
+    padding: var(--spacing-xs);
+    min-height: 20px;
     font-size: var(--font-size-xs);
   }
 
