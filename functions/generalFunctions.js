@@ -383,6 +383,17 @@ function observeFadeElements() {
     observer.observe(element);
   });
 }
+
+function cacheBustHallenBelegung() {
+  const hallenBelegungPdfLink = document.querySelectorAll(
+    'a[href$="Hallenbelegung.pdf"]',
+  );
+  hallenBelegungPdfLink.forEach((link) => {
+    const url = new URL(link.href);
+    url.searchParams.set("v", Date.now());
+    link.href = url.toString();
+  });
+}
 // (async () => {
 //   let sampleJsonString = "Any text here";
 //   let out = convertString(sampleJsonString);
