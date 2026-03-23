@@ -174,15 +174,6 @@
           <span></span>
         </button>
       </div>
-      <script src="functions/generalFunctions.js"></script>
-      <script>
-        globalThis.onload = function () {
-          const urlParams = new URLSearchParams(globalThis.location.search);
-          if (urlParams.get("openBelegungsplan") === "true") {
-            openPdf("dokumente/verein/Hallenbelegung.pdf");
-          }
-        };
-      </script>
     </header>
     <dialog class="mobile-menu" aria-label="Mobile Navigation">
       <button class="mobile-menu-close" aria-label="Menü schließen">
@@ -1989,6 +1980,7 @@
       data-cfasync="false"
       src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
     ></script>
+    <script src="functions/generalFunctions.js"></script>
     <script>
       // globalThis.onload = function () {
       //   const urlParams = new URLSearchParams(globalThis.location.search);
@@ -2107,6 +2099,10 @@
       // };
       // globalThis.onload = makeBrowserPedantic;
       document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(globalThis.location.search);
+        if (urlParams.get("openBelegungsplan") === "true") {
+          openPdf("dokumente/verein/Hallenbelegung.pdf");
+        }
         const template = document.getElementById("navigation-template1");
         const contactBtn = document.getElementById("contactBtn");
         const memberBtn = document.getElementById("memberBtn");
