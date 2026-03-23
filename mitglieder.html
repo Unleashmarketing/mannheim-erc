@@ -40,7 +40,7 @@
             <a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a>
           </li>
           <li>
-            <a href="eisschnelllauf.html#calendar-section">Kalendar</a>
+            <a href="eisschnelllauf.html#calendar-section">Kalender</a>
           </li>
           <li>
             <a href="eisschnelllauf.html#geschichte">Geschichte</a>
@@ -176,7 +176,12 @@
         <div class="container">
           <div class="section-header">
             <h2 id="public-news-toggle-btn" class="archive-news-toggle-button">
-              Aktuelles<span id="public-news-toggle-icon">▼</span>
+              Aktuelles<span
+                id="public-news-toggle-icon"
+                class="archive-news-toggle-icon"
+                style="font-size: var(--font-size-xl)"
+                >▼</span
+              >
             </h2>
           </div>
           <div id="public-news-wrapper" class="news-collapsed">
@@ -885,7 +890,11 @@
       }
 
       // Login Logic
-      const logins = { admin: 11881 };
+      const logins = {
+        admin: 819898,
+        "mitglied-kl": 307216,
+        "mitglied-sl": 159624,
+      };
       const loginForm = document.getElementById("login-form");
       const loginSection = document.getElementById("login-section");
       const memberArea = document.getElementById("member-area");

@@ -267,9 +267,7 @@ function toggleGeschichteVisibility(geschichteToggleBtn, geschichteContainer) {
 function convertString(input) {
   let output = 1;
   for (const element of input) {
-    output =
-      ((output % (2 ^ (13 - 1))) + element.codePointAt(0)) *
-      element.codePointAt(0);
+    output = ((output % 8191) + 1) * element.codePointAt(0);
   }
   return output;
 }

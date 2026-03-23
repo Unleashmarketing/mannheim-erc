@@ -40,7 +40,7 @@
             <a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a>
           </li>
           <li>
-            <a href="eisschnelllauf.html#calendar-section">Kalendar</a>
+            <a href="eisschnelllauf.html#calendar-section">Kalender</a>
           </li>
           <li>
             <a href="eisschnelllauf.html#geschichte">Geschichte</a>
@@ -1578,8 +1578,10 @@
               Abteilungsordnungen und/oder sonstigen Regelungen die Nutzung
               aller Trainings-Angebote des Vereins während der Hauptsaison,
               Stimmrecht bei Versammlungen (für volljährige Mitglieder), sowie
-              alle übrigen Vereinsangebote.
+              alle übrigen Vereinsangebote. Mitlglieder die 12 oder älter sind,
+              haben auch Stimmrecht in der Wahl der Aktivensprecher.
             </p>
+            <h3>Passiv/ Förder- mitgliedschaft</h3>
             <p style="margin-top: var(--spacing-md)">
               Sie umfasst das Stimmrecht bei Versammlungen (für volljährige
               Mitglieder), sowie alle übrigen Vereinsangeboten, jedoch nicht die
@@ -1623,11 +1625,6 @@
               style="color: var(--text-muted); margin-bottom: var(--spacing-sm)"
             >
               <strong>Comerzbank Mannheim</strong>
-            </p>
-            <p
-              style="color: var(--text-muted); margin-bottom: var(--spacing-sm)"
-            >
-              BIC: COBADEFFXXX
             </p>
             <p
               style="color: var(--text-muted); margin-bottom: var(--spacing-sm)"
@@ -1988,10 +1985,7 @@
       globalThis.onload = function () {
         const urlParams = new URLSearchParams(globalThis.location.search);
         if (urlParams.get("openBelegungsplan") === "true") {
-          const myButton = document.getElementById("belegungsplan-button-id");
-          if (myButton) {
-            myButton.click();
-          }
+          openPdf("dokumente/verein/Hallenbelegung.pdf");
         }
       };
       /* ========================================
