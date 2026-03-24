@@ -1705,6 +1705,7 @@ textarea:focus-visible {
   border: 1px solid var(--gray-light);
   overflow: hidden;
   transition: box-shadow var(--transition-base);
+  scroll-margin-top: var(--spacing-2xl);
 }
 .form-card.is-open {
   box-shadow: var(--shadow-lg);
