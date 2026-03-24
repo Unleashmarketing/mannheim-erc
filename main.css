@@ -3184,6 +3184,7 @@ input:focus-visible {
 .geschichte-section {
   padding: var(--spacing-lg) 0;
   background-color: var(--white);
+  scroll-margin-top: var(--spacing-xl);
 }
 
 .geschichte-toggle-button {
@@ -3286,6 +3287,7 @@ input:focus-visible {
 .calendar-section-class {
   padding: var(--spacing-lg) 0;
   background-color: var(--light-bg);
+  scroll-margin-top: var(--spacing-xl);
 }
 
 .calendar-section-class .container {
@@ -3487,6 +3489,7 @@ input:focus-visible {
 .news-section {
   padding: var(--spacing-lg) 0;
   background-color: var(--light-bg);
+  scroll-margin-top: var(--spacing-xl);
 }
 
 .news-section-mitgliederbereich {
