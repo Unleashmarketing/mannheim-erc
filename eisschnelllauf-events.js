@@ -1,4 +1,6 @@
 const events = {
+  "2026-03-25": "Letzter Training der Saison 25/26",
+  "2026-05-04": "Sommertraining beginnt",
   "2026-05-29": "Trainingcamp 1 Luxemburg Tag 1",
   "2026-05-30": "Trainingcamp 1 Luxemburg Tag 2",
   "2026-05-31": "Trainingcamp 1 Luxemburg Tag 3",
