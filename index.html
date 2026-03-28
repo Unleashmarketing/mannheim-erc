@@ -40,7 +40,7 @@
             <a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a>
           </li>
           <li>
-            <a href="eisschnelllauf.html#calendar-section">Kalendar</a>
+            <a href="eisschnelllauf.html#calendar-section">Kalender</a>
           </li>
           <li>
             <a href="eisschnelllauf.html#geschichte">Geschichte</a>
@@ -57,7 +57,7 @@
         </a>
         <ul class="submenu">
           <li>
-            <a href="synchron.html#linkTeamNewHorizons">Team New Horizons</a>
+            <a href="synchron.html#linkTeamNewHorizons">Team New Horizons Mannheim</a>
           </li>
           <li>
             <a href="synchron.html#linkSynchroMitgliedschaft"
@@ -73,12 +73,14 @@
       </li>
       <li class="has-submenu">
         <a href="javascript:void(0)" class="submenu-toggle">
-          Schnellzugriff
+          Hallenbelegung/ wichtige Links
           <i class="fas fa-chevron-down submenu-icon"></i>
         </a>
         <ul class="submenu">
           <li>
-            <a href="about.html?openBelegungsplan=true">Belegungspläne</a>
+            <a href="dokumente/verein/Hallenbelegung.pdf" target="_blank"
+              >Belegungspläne</a
+            >
           </li>
           <li><a href="mitglieder.html#publicAnnouncements">Aktuelles</a></li>
           <li>
@@ -134,7 +136,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="main.css" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="main.css?v=<?php echo filemtime('main.css'); ?>"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <!-- Skip Link for Accessibility -->
@@ -477,14 +483,14 @@
                   ></textarea>
                 </div>
                 <div>
-                  <label for="capcha"
+                  <label for="capchaInputField"
                     >Sicherheitsfrage
                     <p id="capchaQuestion">4+5=?</p></label
                   >
                   <input
                     type="number"
                     id="capchaInputField"
-                    name="capcha"
+                    name="capchaInputField"
                     required
                   />
                 </div>
@@ -565,7 +571,7 @@
       data-cfasync="false"
       src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
     ></script>
-    <script src="functions/generalFunctions.js"></script>
+    <script src="functions/generalFunctions.js?v=<php echo filemtime('functions/generalFunctions.js')>"></script>
     <script>
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileMenu = document.querySelector(".mobile-menu");
@@ -839,6 +845,7 @@
 
       document.addEventListener("DOMContentLoaded", function () {
         getCapchaQuestion();
+        cacheBustHallenBelegung();
       });
     </script>
   </body>

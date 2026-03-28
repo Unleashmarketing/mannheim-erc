@@ -40,7 +40,7 @@
             <a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a>
           </li>
           <li>
-            <a href="eisschnelllauf.html#calendar-section">Kalendar</a>
+            <a href="eisschnelllauf.html#calendar-section">Kalender</a>
           </li>
           <li>
             <a href="eisschnelllauf.html#geschichte">Geschichte</a>
@@ -57,7 +57,7 @@
         </a>
         <ul class="submenu">
           <li>
-            <a href="synchron.html#linkTeamNewHorizons">Team New Horizons</a>
+            <a href="synchron.html#linkTeamNewHorizons">Team New Horizons Mannheim</a>
           </li>
           <li>
             <a href="synchron.html#linkSynchroMitgliedschaft"
@@ -73,12 +73,14 @@
       </li>
       <li class="has-submenu">
         <a href="javascript:void(0)" class="submenu-toggle">
-          Schnellzugriff
+          Hallenbelegung/ wichtige Links
           <i class="fas fa-chevron-down submenu-icon"></i>
         </a>
         <ul class="submenu">
           <li>
-            <a href="about.html?openBelegungsplan=true">Belegungspläne</a>
+            <a href="dokumente/verein/Hallenbelegung.pdf" target="_blank"
+              >Belegungspläne</a
+            >
           </li>
           <li><a href="mitglieder.html#publicAnnouncements">Aktuelles</a></li>
           <li>
@@ -134,7 +136,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="main.css" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="main.css?v=<?php echo filemtime('main.css'); ?>"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <div id="pdfModal" class="pdf-modal">
@@ -277,7 +283,7 @@
               Die Menschen, die unseren Verein leiten und voranbringen
             </p>
           </div>
-          <div class="grid grid-3">
+          <div class="grid grid-3" style="margin-bottom: 60px">
             <div class="card fade-in">
               <div class="card-image">
                 <img
@@ -324,9 +330,8 @@
             <div class="card fade-in">
               <div class="card-image">
                 <img
-                  src="images/Logo_MERC.gif"
+                  src="images/weitere funktionen/Anke Bluhm.jpg"
                   alt="Anke Bluhm"
-                  style="width: 60%; height: 60%; margin: 55px"
                 />
               </div>
               <div class="card-body">
@@ -381,8 +386,80 @@
                 />
               </div>
               <div class="card-body">
-                <h3 class="card-title">Sean Mc Connell</h3>
+                <h3 class="card-title">Sean McConnell</h3>
                 <p class="card-subtitle">Stellv. Fachwart Schnelllauf</p>
+              </div>
+            </div>
+          </div>
+          <div style="margin-bottom: 60px">
+            <h3
+              style="
+                font-size: var(--font-size-xl);
+                font-weight: 700;
+                margin-bottom: var(--spacing-lg);
+                color: var(--text-dark);
+                text-align: center;
+              "
+            >
+              Mitarbeiter
+            </h3>
+            <div class="grid grid-4">
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/eiskunstlauf/Adrian Schager.jpeg"
+                    alt="Adrian Schager"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Adrian Schager</h3>
+                  <p class="card-subtitle">Hauptamtlicher Trainer</p>
+                  <div class="card-socials">
+                    <a
+                      href="mailto:adrian.schager@merc-online.de"
+                      aria-label="E-Mail"
+                      ><i class="fas fa-envelope"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    style="width: 60%; height: 60%; margin: 55px"
+                    src="images/Logo_MERC.gif"
+                    alt="Monika Müller"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Monika Müller</h3>
+                  <p class="card-subtitle">Geschäftsstelle</p>
+                  <div class="card-socials">
+                    <a href="mailto:office@merc-online.de" aria-label="E-Mail"
+                      ><i class="fas fa-envelope"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    style="width: 60%; height: 60%; margin: 55px"
+                    src="images/Logo_MERC.gif"
+                    alt="Ursula Wittich"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Ursula Wittich</h3>
+                  <p class="card-subtitle">Schlittschuhverleih</p>
+                  <div class="card-socials">
+                    <a href="mailto:office@merc-online.de" aria-label="E-Mail"
+                      ><i class="fas fa-envelope"></i
+                    ></a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -409,6 +486,17 @@
             >
               Eiskunstlauf / Synchron Eiskunstlauf
             </h3>
+            <h3
+              style="
+                font-size: var(--font-size-xl);
+                font-weight: 700;
+                margin-bottom: var(--spacing-lg);
+                color: var(--text-dark);
+                text-align: center;
+              "
+            >
+              Leistungssporttrainer
+            </h3>
             <div class="grid grid-3" style="margin-bottom: 60px">
               <div class="card trainer-card fade-in">
                 <div class="card-image">
@@ -419,9 +507,7 @@
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Stefan Lindemann</h3>
-                  <p class="card-subtitle">
-                    Trainer Kunstlauf (Leistungssport)
-                  </p>
+                  <p class="card-subtitle">Trainer Kunstlauf</p>
                   <div class="card-meta">
                     <span class="card-meta-item"
                       ><i class="fas fa-star"></i>Diplomtrainer</span
@@ -434,6 +520,7 @@
                     <a
                       href="https://www.instagram.com/sl_eis/"
                       aria-label="Instagram"
+                      target="_blank"
                       ><i class="fab fa-instagram"></i
                     ></a>
                   </div>
@@ -449,9 +536,7 @@
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Adrian Schager</h3>
-                  <p class="card-subtitle">
-                    Trainer Kunstlauf (Leistungssport)
-                  </p>
+                  <p class="card-subtitle">Trainer Kunstlauf</p>
                   <div class="card-meta">
                     <span class="card-meta-item"
                       ><i class="fas fa-star"></i>A-Trainer</span
@@ -464,32 +549,8 @@
                     <a
                       href="https://www.instagram.com/adrianschager/"
                       aria-label="Instagram"
+                      target="_blank"
                       ><i class="fab fa-instagram"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img
-                    src="images/eiskunstlauf/Teresa Simon.jpeg"
-                    alt="Teresa Simon"
-                  />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Teresa Simon</h3>
-                  <p class="card-subtitle">
-                    Trainerin Kunstlauf (Leistungssport)
-                  </p>
-                  <div class="card-meta">
-                    <span class="card-meta-item"
-                      ><i class="fas fa-star"></i>A-Trainer</span
-                    >
-                  </div>
-                  <div class="card-socials">
-                    <a href="mailto:teresa.simon@merc-online.de"
-                      ><i class="fas fa-envelope"></i
                     ></a>
                   </div>
                 </div>
@@ -504,9 +565,7 @@
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Svetlana Knorr</h3>
-                  <p class="card-subtitle">
-                    Trainerin Kunstlauf (Leistungssport)
-                  </p>
+                  <p class="card-subtitle">Trainerin Kunstlauf</p>
                   <div class="card-meta">
                     <span class="card-meta-item"
                       ><i class="fas fa-star"></i>B-Trainer</span
@@ -519,6 +578,7 @@
                     <a
                       href="https://www.instagram.com/svet_ana71/"
                       aria-label="Instagram"
+                      target="_blank"
                       ><i class="fab fa-instagram"></i
                     ></a>
                   </div>
@@ -528,27 +588,26 @@
               <div class="card trainer-card fade-in">
                 <div class="card-image">
                   <img
-                    src="images/eiskunstlauf/Gloria Drebes.jpeg"
-                    alt="Gloria Drebes"
+                    src="images/eiskunstlauf/Denise Mueller.jpg"
+                    alt="Denise Müller"
                   />
                 </div>
                 <div class="card-body">
-                  <h3 class="card-title">Gloria Drebes</h3>
-                  <p class="card-subtitle">
-                    Trainerin Kunstlauf (Leistungssport)
-                  </p>
+                  <h3 class="card-title">Denise Müller</h3>
+                  <p class="card-subtitle">Trainerin Kunstlauf</p>
                   <div class="card-meta">
                     <span class="card-meta-item"
-                      ><i class="fas fa-star"></i>B-Trainer</span
+                      ><i class="fas fa-star"></i>C-Trainer-Leistungssport</span
                     >
                   </div>
                   <div class="card-socials">
-                    <a href="mailto:gloria.drebes@merc-online.de"
+                    <a href="mailto:denise.mueller@merc-online.de"
                       ><i class="fas fa-envelope"></i
                     ></a>
                     <a
-                      href="https://www.instagram.com/love2skate__/"
+                      href="https://www.instagram.com/dcoached/"
                       aria-label="Instagram"
+                      target="_blank"
                       ><i class="fab fa-instagram"></i
                     ></a>
                   </div>
@@ -565,7 +624,7 @@
                 <div class="card-body">
                   <h3 class="card-title">Nathalie Weinzierl</h3>
                   <p class="card-subtitle">
-                    Trainerin Kunstlauf (Leistungssport) / Choreographie
+                    Trainerin Kunstlauf / Choreographie
                   </p>
                   <div class="card-meta">
                     <span class="card-meta-item"
@@ -583,36 +642,6 @@
               <div class="card trainer-card fade-in">
                 <div class="card-image">
                   <img
-                    src="images/eiskunstlauf/Denise Mueller.jpg"
-                    alt="Denise Müller"
-                  />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Denise Müller</h3>
-                  <p class="card-subtitle">
-                    Trainerin Kunstlauf (Leistungssport)
-                  </p>
-                  <div class="card-meta">
-                    <span class="card-meta-item"
-                      ><i class="fas fa-star"></i>C-Trainer-Leistungssport</span
-                    >
-                  </div>
-                  <div class="card-socials">
-                    <a href="mailto:denise.mueller@merc-online.de"
-                      ><i class="fas fa-envelope"></i
-                    ></a>
-                    <a
-                      href="https://www.instagram.com/dcoached/"
-                      aria-label="Instagram"
-                      ><i class="fab fa-instagram"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img
                     src="images/eiskunstlauf/Larissa Vetter.jpeg"
                     alt="Larissa Vetter"
                   />
@@ -620,7 +649,7 @@
                 <div class="card-body">
                   <h3 class="card-title">Larissa Vetter</h3>
                   <p class="card-subtitle">
-                    Trainerin Kunstlauf (Leistungssport) / Choreographie
+                    Trainerin Kunstlauf / Choreographie
                   </p>
                   <div class="card-meta">
                     <span class="card-meta-item"
@@ -634,6 +663,150 @@
                     <a
                       href="https://www.instagram.com/lari.choreodoc/"
                       aria-label="Instagram"
+                      target="_blank"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/eiskunstlauf/Teresa Simon.jpeg"
+                    alt="Teresa Simon"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Teresa Simon</h3>
+                  <p class="card-subtitle">Trainerin Kunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item"
+                      ><i class="fas fa-star"></i>A-Trainer</span
+                    >
+                  </div>
+                  <div class="card-socials">
+                    <a href="mailto:teresa.simon@merc-online.de"
+                      ><i class="fas fa-envelope"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/weitere funktionen/Eugenie Platt.jpeg"
+                    alt="Eugenie Platt"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Eugenie Platt</h3>
+                  <p class="card-subtitle">Ballett & Tanz</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      Tanzpädagogin
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a
+                      href="mailto:eugenieplatt@merc-online.de"
+                      aria-label="E-Mail"
+                      ><i class="fas fa-envelope"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/weitere funktionen/Dirk Mueller.jpeg"
+                    alt="Dirk Müller"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Dirk Müller</h3>
+                  <p class="card-subtitle">Athletik & Prävention</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      B-Trainer
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a
+                      href="mailto:dirkmueller@merc-online.de"
+                      aria-label="E-Mail"
+                      ><i class="fas fa-envelope"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/weitere funktionen/Ognjen Vulic.jpeg"
+                    alt="Ognjen Vulic"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Ognjen Vulic</h3>
+                  <p class="card-subtitle">Physiotherapie</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item">
+                      <i class="fas fa-star"></i>
+                      Staatlich geprüfter Physiotherapeut
+                    </span>
+                  </div>
+                  <div class="card-socials">
+                    <a
+                      href="mailto:ognjenvulic@merc-online.de"
+                      aria-label="E-Mail"
+                      ><i class="fas fa-envelope"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3
+              style="
+                font-size: var(--font-size-xl);
+                font-weight: 700;
+                margin-bottom: var(--spacing-lg);
+                color: var(--text-dark);
+                text-align: center;
+              "
+            >
+              Breitensporttrainer
+            </h3>
+            <div class="grid grid-3" style="margin-bottom: 60px">
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    src="images/eiskunstlauf/Gloria Drebes.jpeg"
+                    alt="Gloria Drebes"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Gloria Drebes</h3>
+                  <p class="card-subtitle">Trainerin Kunstlauf</p>
+                  <div class="card-meta">
+                    <span class="card-meta-item"
+                      ><i class="fas fa-star"></i>B-Trainer</span
+                    >
+                  </div>
+                  <div class="card-socials">
+                    <a href="mailto:gloria.drebes@merc-online.de"
+                      ><i class="fas fa-envelope"></i
+                    ></a>
+                    <a
+                      href="https://www.instagram.com/love2skate__/"
+                      aria-label="Instagram"
+                      target="_blank"
                       ><i class="fab fa-instagram"></i
                     ></a>
                   </div>
@@ -649,9 +822,7 @@
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Simone Unvericht-Bienert</h3>
-                  <p class="card-subtitle">
-                    Trainerin Kunstlauf (Breitensport)
-                  </p>
+                  <p class="card-subtitle">Trainerin Kunstlauf</p>
                   <div class="card-meta">
                     <span class="card-meta-item"
                       ><i class="fas fa-star"></i>B-Trainer</span
@@ -674,7 +845,7 @@
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Günter Zöller</h3>
-                  <p class="card-subtitle">Trainer Kunstlauf (Breitensport)</p>
+                  <p class="card-subtitle">Trainer Kunstlauf</p>
                   <div class="card-meta">
                     <span class="card-meta-item"
                       ><i class="fas fa-star"></i>B-Trainer</span
@@ -698,9 +869,7 @@
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Carolin Morlock</h3>
-                  <p class="card-subtitle">
-                    Trainerin Kunstlauf (Breitensport)
-                  </p>
+                  <p class="card-subtitle">Trainerin Kunstlauf</p>
                   <div class="card-meta">
                     <span class="card-meta-item"
                       ><i class="fas fa-star"></i>B-Trainer</span
@@ -723,9 +892,7 @@
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Dora Vulic</h3>
-                  <p class="card-subtitle">
-                    Trainerin Kunstlauf (Breitensport)
-                  </p>
+                  <p class="card-subtitle">Trainerin Kunstlauf</p>
                   <div class="card-meta">
                     <span class="card-meta-item"
                       ><i class="fas fa-star"></i>C-Trainer-Breitensport</span
@@ -738,6 +905,7 @@
                     <a
                       href="https://www.instagram.com/dora.hus/"
                       aria-label="Instagram"
+                      target="_blank"
                       ><i class="fab fa-instagram"></i
                     ></a>
                   </div>
@@ -754,7 +922,7 @@
                 <div class="card-body">
                   <h3 class="card-title">Anja Pohlmann</h3>
                   <p class="card-subtitle">
-                    Trainerin Kunstlauf/ Synchroneiskunstlauf (Breitensport)
+                    Trainerin Kunstlauf/ Synchroneiskunstlauf
                   </p>
                   <div class="card-meta">
                     <span class="card-meta-item"
@@ -779,7 +947,7 @@
                 <div class="card-body">
                   <h3 class="card-title">Patricia Redinger</h3>
                   <p class="card-subtitle">
-                    Trainerin Kunstlauf/ Synchroneiskunstlauf (Breitensport)
+                    Trainerin Kunstlauf/ Synchroneiskunstlauf
                   </p>
                   <div class="card-meta">
                     <span class="card-meta-item"
@@ -804,8 +972,7 @@
                 <div class="card-body">
                   <h3 class="card-title">Simone Lang</h3>
                   <p class="card-subtitle">
-                    Trainerin Kunstlauf (Breitensport) / Mentaltrainerin
-                    C-Lizenz
+                    Trainerin Kunstlauf / Mentaltrainerin C-Lizenz
                   </p>
                   <div class="card-meta">
                     <span class="card-meta-item"
@@ -829,9 +996,7 @@
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Natali Herzog</h3>
-                  <p class="card-subtitle">
-                    Trainerin Kunstlauf (Breitensport)
-                  </p>
+                  <p class="card-subtitle">Trainerin Kunstlauf</p>
                   <div class="card-meta">
                     <span class="card-meta-item"
                       ><i class="fas fa-star"></i>C-Trainer-Breitensport</span
@@ -854,12 +1019,13 @@
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Marie-Christine Hube</h3>
-                  <p class="card-subtitle">
-                    Trainerin Kunstlauf (Breitensport)
-                  </p>
+                  <p class="card-subtitle">Trainerin Kunstlauf</p>
                   <div class="card-meta">
                     <span class="card-meta-item"
                       ><i class="fas fa-star"></i>C-Trainer-Breitensport</span
+                    >
+                    <span class="card-meta-item"
+                      ><i class="fas fa-star"></i>Fitnesstrainer B-Lizenz</span
                     >
                   </div>
                   <div class="card-socials">
@@ -869,6 +1035,7 @@
                     <a
                       href="https://www.instagram.com/mariehube/"
                       aria-label="Instagram"
+                      target="_blank"
                       ><i class="fab fa-instagram"></i
                     ></a>
                   </div>
@@ -884,9 +1051,7 @@
                 </div>
                 <div class="card-body">
                   <h3 class="card-title">Nicole Lampe</h3>
-                  <p class="card-subtitle">
-                    Trainerin Kunstlauf (Breitensport)
-                  </p>
+                  <p class="card-subtitle">Trainerin Kunstlauf</p>
                   <div class="card-socials">
                     <a href="mailto:nicole.lampe@merc-online.de"
                       ><i class="fas fa-envelope"></i
@@ -1000,84 +1165,6 @@
                   </div>
                 </div>
               </div>
-
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img
-                    src="images/weitere funktionen/Dirk Mueller.jpeg"
-                    alt="Dirk Müller"
-                  />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Dirk Müller</h3>
-                  <p class="card-subtitle">Athletik & Prävention</p>
-                  <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      B-Trainer
-                    </span>
-                  </div>
-                  <div class="card-socials">
-                    <a
-                      href="mailto:dirkmueller@merc-online.de"
-                      aria-label="E-Mail"
-                      ><i class="fas fa-envelope"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img
-                    src="images/weitere funktionen/Eugenie Platt.jpeg"
-                    alt="Eugenie Platt"
-                  />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Eugenie Platt</h3>
-                  <p class="card-subtitle">Ballett & Tanz</p>
-                  <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      Tanzpädagogin
-                    </span>
-                  </div>
-                  <div class="card-socials">
-                    <a
-                      href="mailto:eugenieplatt@merc-online.de"
-                      aria-label="E-Mail"
-                      ><i class="fas fa-envelope"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img
-                    src="images/weitere funktionen/Ognjen Vulic.jpeg"
-                    alt="Ognjen Vulic"
-                  />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Ognjen Vulic</h3>
-                  <p class="card-subtitle">Physiotherapie</p>
-                  <div class="card-meta">
-                    <span class="card-meta-item">
-                      <i class="fas fa-star"></i>
-                      Staatlich geprüfter Physiotherapeut
-                    </span>
-                  </div>
-                  <div class="card-socials">
-                    <a
-                      href="mailto:ognjenvulic@merc-online.de"
-                      aria-label="E-Mail"
-                      ><i class="fas fa-envelope"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -1109,6 +1196,12 @@
                       href="mailto:stv.schnelllauf@merc-online.de"
                       aria-label="E-Mail"
                       ><i class="fas fa-envelope"></i
+                    ></a>
+                    <a
+                      href="https://www.instagram.com/chr_arlt_82/"
+                      aria-label="Instagram"
+                      target="_blank"
+                      ><i class="fab fa-instagram"></i
                     ></a>
                   </div>
                 </div>
@@ -1212,6 +1305,45 @@
               <div class="card trainer-card fade-in">
                 <div class="card-image">
                   <img
+                    src="images/weitere funktionen/Tomo Ogawa.jpeg"
+                    alt="Tomo Ogawa"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Tomo Ogawa</h3>
+                  <p class="card-subtitle">
+                    Marketing & Kommunikation Kunstlauf
+                  </p>
+                  <div class="card-socials">
+                    <a href="mailto:office@merc-online.de" aria-label="E-Mail"
+                      ><i class="fas fa-envelope"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
+                    style="width: 60%; height: 60%; margin: 55px"
+                    src="images/Logo_MERC.gif"
+                    alt="Desiree Pawasserat"
+                  />
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">Desiree Pawasserat</h3>
+                  <p class="card-subtitle">Jugendleiterin</p>
+                  <div class="card-socials">
+                    <a href="mailto:office@merc-online.de" aria-label="E-Mail"
+                      ><i class="fas fa-envelope"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card trainer-card fade-in">
+                <div class="card-image">
+                  <img
                     src="images/weitere funktionen/Mariya Trofymova.jpeg"
                     alt="Mariya Trofymova"
                   />
@@ -1230,36 +1362,14 @@
               <div class="card trainer-card fade-in">
                 <div class="card-image">
                   <img
-                    src="images/weitere funktionen/Tomo Ogawa.jpeg"
-                    alt="Tomo Ogawa"
-                  />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Tomo Ogawa</h3>
-                  <p class="card-subtitle">
-                    Marketing & Kommunikation Kunstlauf
-                  </p>
-                  <div class="card-socials">
-                    <a
-                      href="mailto:stv.schnelllauf@merc-online.de"
-                      aria-label="E-Mail"
-                      ><i class="fas fa-envelope"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img
                     style="width: 60%; height: 60%; margin: 55px"
                     src="images/Logo_MERC.gif"
-                    alt="Frank Nickolaus"
+                    alt="Jessica Gött"
                   />
                 </div>
                 <div class="card-body">
-                  <h3 class="card-title">Frank Nickolaus</h3>
-                  <p class="card-subtitle">Kassenprüfer</p>
+                  <h3 class="card-title">Jessica Gött</h3>
+                  <p class="card-subtitle">Jugendwartin Schnelllauf</p>
                   <div class="card-socials">
                     <a href="mailto:office@merc-online.de" aria-label="E-Mail"
                       ><i class="fas fa-envelope"></i
@@ -1273,12 +1383,14 @@
                   <img
                     style="width: 60%; height: 60%; margin: 55px"
                     src="images/Logo_MERC.gif"
-                    alt="Vakant"
+                    alt="Agnes Keller"
                   />
                 </div>
                 <div class="card-body">
-                  <h3 class="card-title">Vakant</h3>
-                  <p class="card-subtitle">Kassenprüfer</p>
+                  <h3 class="card-title">Agnes Keller</h3>
+                  <p class="card-subtitle">
+                    Sprecherin Erwachsenenlauf (Kunstlauf)
+                  </p>
                   <div class="card-socials">
                     <a href="mailto:office@merc-online.de" aria-label="E-Mail"
                       ><i class="fas fa-envelope"></i
@@ -1330,14 +1442,12 @@
                   <img
                     style="width: 60%; height: 60%; margin: 55px"
                     src="images/Logo_MERC.gif"
-                    alt="Agnes Keller"
+                    alt="Frank Nickolaus"
                   />
                 </div>
                 <div class="card-body">
-                  <h3 class="card-title">Agnes Keller</h3>
-                  <p class="card-subtitle">
-                    Sprecherin Erwachsenenlauf (Kunstlauf)
-                  </p>
+                  <h3 class="card-title">Frank Nickolaus</h3>
+                  <p class="card-subtitle">Kassenprüfer</p>
                   <div class="card-socials">
                     <a href="mailto:office@merc-online.de" aria-label="E-Mail"
                       ><i class="fas fa-envelope"></i
@@ -1345,35 +1455,18 @@
                   </div>
                 </div>
               </div>
+
               <div class="card trainer-card fade-in">
                 <div class="card-image">
                   <img
                     style="width: 60%; height: 60%; margin: 55px"
                     src="images/Logo_MERC.gif"
-                    alt="Desiree Pawasserat"
+                    alt="Vakant"
                   />
                 </div>
                 <div class="card-body">
-                  <h3 class="card-title">Desiree Pawasserat</h3>
-                  <p class="card-subtitle">Jugendleiterin</p>
-                  <div class="card-socials">
-                    <a href="mailto:office@merc-online.de" aria-label="E-Mail"
-                      ><i class="fas fa-envelope"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card trainer-card fade-in">
-                <div class="card-image">
-                  <img
-                    style="width: 60%; height: 60%; margin: 55px"
-                    src="images/Logo_MERC.gif"
-                    alt="Jessica Gött"
-                  />
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Jessica Gött</h3>
-                  <p class="card-subtitle">Jugendwartin Schnelllauf</p>
+                  <h3 class="card-title">Vakant</h3>
+                  <p class="card-subtitle">Kassenprüfer</p>
                   <div class="card-socials">
                     <a href="mailto:office@merc-online.de" aria-label="E-Mail"
                       ><i class="fas fa-envelope"></i
@@ -1508,8 +1601,10 @@
               Abteilungsordnungen und/oder sonstigen Regelungen die Nutzung
               aller Trainings-Angebote des Vereins während der Hauptsaison,
               Stimmrecht bei Versammlungen (für volljährige Mitglieder), sowie
-              alle übrigen Vereinsangebote.
+              alle übrigen Vereinsangebote. Mitlglieder die 12 oder älter sind,
+              haben auch Stimmrecht in der Wahl der Aktivensprecher.
             </p>
+            <h3>Passiv/ Förder- mitgliedschaft</h3>
             <p style="margin-top: var(--spacing-md)">
               Sie umfasst das Stimmrecht bei Versammlungen (für volljährige
               Mitglieder), sowie alle übrigen Vereinsangeboten, jedoch nicht die
@@ -1553,11 +1648,6 @@
               style="color: var(--text-muted); margin-bottom: var(--spacing-sm)"
             >
               <strong>Comerzbank Mannheim</strong>
-            </p>
-            <p
-              style="color: var(--text-muted); margin-bottom: var(--spacing-sm)"
-            >
-              BIC: COBADEFFXXX
             </p>
             <p
               style="color: var(--text-muted); margin-bottom: var(--spacing-sm)"
@@ -1802,7 +1892,7 @@
               </div>
             </div>
 
-            <div class="download-card fade-in">
+            <div class="download-card fade-in" id="Belegungsplaene">
               <div class="download-icon">
                 <i class="fas fa-file-pdf"></i>
               </div>
@@ -1867,6 +1957,7 @@
               <a
                 href="https://www.instagram.com/merc_eiskunstlauf/"
                 aria-label="Instagram"
+                target="_blank"
                 ><i class="fab fa-instagram"></i
               ></a>
             </div>
@@ -1913,17 +2004,14 @@
       data-cfasync="false"
       src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
     ></script>
-    <script src="functions/generalFunctions.js"></script>
+    <script src="functions/generalFunctions.js?v=<php echo filemtime('functions/generalFunctions.js')>"></script>
     <script>
-      globalThis.onload = function () {
-        const urlParams = new URLSearchParams(globalThis.location.search);
-        if (urlParams.get("openBelegungsplan") === "true") {
-          const myButton = document.getElementById("belegungsplan-button-id");
-          if (myButton) {
-            myButton.click();
-          }
-        }
-      };
+      // globalThis.onload = function () {
+      //   const urlParams = new URLSearchParams(globalThis.location.search);
+      //   if (urlParams.get("openBelegungsplan") === "true") {
+      //     openPdf("dokumente/verein/Hallenbelegung.pdf");
+      //   }
+      // };
       /* ========================================
       PDF MODAL LOGIK (Lösung 2)
       ======================================== */
@@ -2034,7 +2122,11 @@
       //   });
       // };
       // globalThis.onload = makeBrowserPedantic;
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", async () => {
+        const urlParams = new URLSearchParams(globalThis.location.search);
+        if (urlParams.get("openBelegungsplan") === "true") {
+          await openPdfAsync("dokumente/verein/Hallenbelegung.pdf");
+        }
         const template = document.getElementById("navigation-template1");
         const contactBtn = document.getElementById("contactBtn");
         const memberBtn = document.getElementById("memberBtn");
@@ -2054,6 +2146,7 @@
           footerLinks,
         );
         setupMobileSubmenus(mobileMenu);
+        cacheBustHallenBelegung();
       });
     </script>
   </body>

@@ -40,7 +40,7 @@
             <a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a>
           </li>
           <li>
-            <a href="eisschnelllauf.html#calendar-section">Kalendar</a>
+            <a href="eisschnelllauf.html#calendar-section">Kalender</a>
           </li>
           <li>
             <a href="eisschnelllauf.html#geschichte">Geschichte</a>
@@ -57,7 +57,7 @@
         </a>
         <ul class="submenu">
           <li>
-            <a href="synchron.html#linkTeamNewHorizons">Team New Horizons</a>
+            <a href="synchron.html#linkTeamNewHorizons">Team New Horizons Mannheim</a>
           </li>
           <li>
             <a href="synchron.html#linkSynchroMitgliedschaft"
@@ -73,12 +73,14 @@
       </li>
       <li class="has-submenu">
         <a href="javascript:void(0)" class="submenu-toggle">
-          Schnellzugriff
+          Hallenbelegung/ wichtige Links
           <i class="fas fa-chevron-down submenu-icon"></i>
         </a>
         <ul class="submenu">
           <li>
-            <a href="about.html?openBelegungsplan=true">Belegungspläne</a>
+            <a href="dokumente/verein/Hallenbelegung.pdf" target="_blank"
+              >Belegungspläne</a
+            >
           </li>
           <li><a href="mitglieder.html#publicAnnouncements">Aktuelles</a></li>
           <li>
@@ -135,7 +137,11 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="main.css" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="main.css?v=<?php echo filemtime('main.css'); ?>"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
@@ -455,7 +461,7 @@
       </div>
     </footer>
 
-    <script src="functions/generalFunctions.js"></script>
+    <script src="functions/generalFunctions.js?v=<php echo filemtime('functions/generalFunctions.js')>"></script>
     <script>
       // ========================================
       // STANDARD NAVIGATION LOGIK (Aus CI übernommen)
@@ -512,6 +518,7 @@
         );
         setupMobileSubmenus(mobileMenu);
         observeFadeElements();
+        cacheBustHallenBelegung();
       });
     </script>
   </body>
