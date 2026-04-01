@@ -3,7 +3,7 @@ const OEFFENTLICHE_MELDUNGEN = [
     title: "Sommerpause!",
     date: "01.04.2026",
     url: "",
-    text: `<p><strong>Das EZH und demzufolge auch die Geschäftsstelle bleiben bis zum Beginn der Saison 2026-2027 geschlossen!.</strong></p>`,
+    text: `<p><strong>Das EZH und demzufolge auch die Geschäftsstelle bleiben bis zum Beginn der Saison 2026-2027 geschlossen!</strong></p>`,
   },
   {
     title: "Deutschlandpokal 2026",
