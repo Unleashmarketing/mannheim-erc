@@ -3,9 +3,9 @@ const OEFFENTLICHE_MELDUNGEN = [
     title: "Saisonende 2025/2026",
     date: "12.03.2026",
     url: "",
-    text: `<p>Die Saison endet mit der Kürklassenprüfung am 29.03.2026.</p><p>
-      Das letzte Training findet am 27.03.2026 statt und das letzte Anfängertraining der Saison am 24.03.2026.</p><p>
-      Bitte vergessen Sie nicht die Leihschlittschuhe abzugeben.</p>`,
+    text: `<p><strong>Die EZH bleibt bis zum Saisonanfang 26/27 zu, die Geschäftsstelle bleibt dementsprechend auch zu.</strong></p>
+      <p>Die Saison endet mit der Kürklassenprüfung am 29.03.2026.</p><p>
+      Das letzte Training findet am 27.03.2026 statt und das letzte Anfängertraining der Saison am 24.03.2026.</p>`,
   },
   {
     title: "Deutschlandpokal 2026",
