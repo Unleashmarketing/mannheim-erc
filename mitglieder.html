@@ -40,7 +40,7 @@
             <a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a>
           </li>
           <li>
-            <a href="eisschnelllauf.html#calendar-section">Kalendar</a>
+            <a href="eisschnelllauf.html#calendar-section">Kalender</a>
           </li>
           <li>
             <a href="eisschnelllauf.html#geschichte">Geschichte</a>
@@ -57,7 +57,9 @@
         </a>
         <ul class="submenu">
           <li>
-            <a href="synchron.html#linkTeamNewHorizons">Team New Horizons</a>
+            <a href="synchron.html#linkTeamNewHorizons"
+              >Team New Horizons Mannheim</a
+            >
           </li>
           <li>
             <a href="synchron.html#linkSynchroMitgliedschaft"
@@ -73,12 +75,14 @@
       </li>
       <li class="has-submenu">
         <a href="javascript:void(0)" class="submenu-toggle">
-          Schnellzugriff
+          Hallenbelegung/ wichtige Links
           <i class="fas fa-chevron-down submenu-icon"></i>
         </a>
         <ul class="submenu">
           <li>
-            <a href="about.html?openBelegungsplan=true">Belegungspläne</a>
+            <a href="dokumente/verein/Hallenbelegung.pdf" target="_blank"
+              >Belegungspläne</a
+            >
           </li>
           <li><a href="mitglieder.html#publicAnnouncements">Aktuelles</a></li>
           <li>
@@ -121,7 +125,7 @@
     </div>
   </template>
   <head>
-    <script src="oeffentlicheMeldungen.js"></script>
+    <script src="oeffentlicheMeldungen.js?v=<php echo filemtime('oeffentlicheMeldungen.js')>"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mitgliederbereich - Mannheimer ERC</title>
@@ -135,7 +139,11 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="main.css" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="main.css?v=<?php echo filemtime('main.css'); ?>"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
@@ -176,13 +184,18 @@
         <div class="container">
           <div class="section-header">
             <h2 id="public-news-toggle-btn" class="archive-news-toggle-button">
-              Aktuelles<span id="public-news-toggle-icon">▼</span>
+              Aktuelles<span
+                id="public-news-toggle-icon"
+                class="archive-news-toggle-icon"
+                style="font-size: var(--font-size-xl)"
+                >▼</span
+              >
             </h2>
           </div>
           <div id="public-news-wrapper" class="news-collapsed">
             <div class="news-filters">
               <div class="news-filter-group">
-                <label for="public-news-search-input">Suchbegriff:</label>
+                <label for="public-news-src">Suchbegriff:</label>
                 <input
                   type="text"
                   class="archive-news-search"
@@ -201,7 +214,7 @@
                     )
                   "
                   value="#begrenzt"
-                  name="public-news-search-input"
+                  name="public-news-src"
                 />
               </div>
 
@@ -775,7 +788,7 @@
         </div>
       </div>
     </footer>
-    <script src="functions/generalFunctions.js"></script>
+    <script src="functions/generalFunctions.js?v=<php echo filemtime('functions/generalFunctions.js')>"></script>
     <script>
       // ========================================
       // STANDARD NAVIGATION LOGIK (Aus CI übernommen)
@@ -885,7 +898,11 @@
       }
 
       // Login Logic
-      const logins = { admin: 11881 };
+      const logins = {
+        admin: 819898,
+        "mitglied-kl": 307216,
+        "mitglied-sl": 159624,
+      };
       const loginForm = document.getElementById("login-form");
       const loginSection = document.getElementById("login-section");
       const memberArea = document.getElementById("member-area");
@@ -978,6 +995,8 @@
           loginSection.style.display = "none";
           memberArea.classList.add("active");
         }
+        cacheBustHallenBelegung();
+        document.getElementById("public-news-toggle-btn").click();
       });
       document
         .getElementById("public-news-src")

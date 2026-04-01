@@ -1705,6 +1705,7 @@ textarea:focus-visible {
   border: 1px solid var(--gray-light);
   overflow: hidden;
   transition: box-shadow var(--transition-base);
+  scroll-margin-top: var(--spacing-2xl);
 }
 .form-card.is-open {
   box-shadow: var(--shadow-lg);
@@ -3184,6 +3185,7 @@ input:focus-visible {
 .geschichte-section {
   padding: var(--spacing-lg) 0;
   background-color: var(--white);
+  scroll-margin-top: var(--spacing-xl);
 }
 
 .geschichte-toggle-button {
@@ -3286,6 +3288,7 @@ input:focus-visible {
 .calendar-section-class {
   padding: var(--spacing-lg) 0;
   background-color: var(--light-bg);
+  scroll-margin-top: var(--spacing-xl);
 }
 
 .calendar-section-class .container {
@@ -3487,6 +3490,7 @@ input:focus-visible {
 .news-section {
   padding: var(--spacing-lg) 0;
   background-color: var(--light-bg);
+  scroll-margin-top: var(--spacing-xl);
 }
 
 .news-section-mitgliederbereich {
@@ -3803,8 +3807,8 @@ input:focus-visible {
 
   .day,
   .empty-day {
-    padding: var(--spacing-sm);
-    min-height: 50px;
+    padding: var(--spacing-xs);
+    min-height: 20px;
     font-size: var(--font-size-xs);
   }
 

@@ -7,6 +7,13 @@ function openPdf(pdfUrl) {
   document.body.style.overflow = "hidden"; // Scrollen der Hauptseite stoppen
 }
 
+function openPdfAsync(pdfUrl) {
+  return new Promise((resolve) => {
+    openPdf(pdfUrl);
+    resolve();
+  });
+}
+
 function renderArchiveNews(list, newsContainerId) {
   const container = document.getElementById(newsContainerId);
   container.innerHTML = "";
@@ -267,9 +274,7 @@ function toggleGeschichteVisibility(geschichteToggleBtn, geschichteContainer) {
 function convertString(input) {
   let output = 1;
   for (const element of input) {
-    output =
-      ((output % (2 ^ (13 - 1))) + element.codePointAt(0)) *
-      element.codePointAt(0);
+    output = ((output % 8191) + 1) * element.codePointAt(0);
   }
   return output;
 }
@@ -376,6 +381,17 @@ function observeFadeElements() {
   }, observerOptions);
   fadeElements.forEach((element) => {
     observer.observe(element);
+  });
+}
+
+function cacheBustHallenBelegung() {
+  const hallenBelegungPdfLink = document.querySelectorAll(
+    'a[href$="Hallenbelegung.pdf"]',
+  );
+  hallenBelegungPdfLink.forEach((link) => {
+    const url = new URL(link.href);
+    url.searchParams.set("v", Date.now());
+    link.href = url.toString();
   });
 }
 // (async () => {
