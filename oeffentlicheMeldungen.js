@@ -1,11 +1,9 @@
 const OEFFENTLICHE_MELDUNGEN = [
   {
-    title: "Saisonende 2025/2026",
-    date: "12.03.2026",
+    title: "Sommerpause!",
+    date: "01.04.2026",
     url: "",
-    text: `<p><strong>Die EZH bleibt bis zum Saisonanfang 26/27 zu, die Geschäftsstelle bleibt dementsprechend auch zu.</strong></p>
-      <p>Die Saison endet mit der Kürklassenprüfung am 29.03.2026.</p><p>
-      Das letzte Training findet am 27.03.2026 statt und das letzte Anfängertraining der Saison am 24.03.2026.</p>`,
+    text: `<p><strong>Das EZH und demzufolge auch die Geschäftsstelle bleiben bis zum Beginn der Saison 2026-2027 geschlossen!.</strong></p>`,
   },
   {
     title: "Deutschlandpokal 2026",
@@ -19,13 +17,6 @@ const OEFFENTLICHE_MELDUNGEN = [
 <p><a href="https://eislauf-union.de/de/media1/pressemitteilungen/1300-fast-150-eiskunstlauf-talente-beim-deutschlandpokal-2026-in-mannheim">Pressebericht der Deutschen Eislauf-Union</a></p>
 <p><a href="https://www.wochenblatt-reporter.de/mannheim/c-community/dreimal-gold-und-fuenf-podestplaetze-erfolgreicher-deutschlandpokal-fuer-den-mannheimer-erc_a727027">Bericht Wochenblatt</a></p>
 <p><a onclick="window.open(this.href); return false;" href="https://www.merc-online.de/files/deutschland-pokal-_titel_f__r_mannheimer_erc_und_d_260311_132838.pdf">Bericht der Rheinpfalz</a></p>`,
-  },
-  {
-    title: "Abteilungsversammlung",
-    date: "03.03.2026",
-    url: "",
-    text: `<p>Die Abteilungsversammlung der Abteilung Kunstlauf findet am Mittwoch, 18.03.2026 statt.</p>
-      <p><a onclick="window.open(this.href); return false;" href="https://www.merc-online.de/files/einladung_avs_2026.pdf">Die Einladung finden Sie hier</a></p>`,
   },
   {
     title: "Nachruf Karl Hager",
