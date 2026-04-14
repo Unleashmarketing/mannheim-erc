@@ -57,7 +57,9 @@
         </a>
         <ul class="submenu">
           <li>
-            <a href="synchron.html#linkTeamNewHorizons">Team New Horizons Mannheim</a>
+            <a href="synchron.html#linkTeamNewHorizons"
+              >Team New Horizons Mannheim</a
+            >
           </li>
           <li>
             <a href="synchron.html#linkSynchroMitgliedschaft"
@@ -148,6 +150,18 @@
 
     <!-- Header -->
     <header>
+      <div id="dringendeMeldungen" class="dringende-meldungen">
+        <span>
+          <strong
+            >Das EZH und die Geschäftsstelle bleiben bis zum Saisonbeginn 26/27
+            zu!
+            <!--Wir suchen eine/n neue/n Trainer/In im Kunstlauf,
+            <a href="mitglieder.html#publicAnnouncements" style="color: blue"
+              >schaut hier vorbei!</a
+            > -->
+          </strong>
+        </span>
+      </div>
       <div class="container header-container">
         <div class="logo">
           <img src="images/Logo_MERC.gif" alt="Mannheimer ERC Logo" />
@@ -822,7 +836,15 @@
           getCapchaQuestion();
         }
       });
-
+      const dringendeMeldungen = document.getElementById("dringendeMeldungen");
+      const home = document.getElementById("home");
+      if (
+        dringendeMeldungen &&
+        getComputedStyle(dringendeMeldungen).display !== "none"
+      ) {
+        const offsetHeight = dringendeMeldungen.offsetHeight;
+        home.style.marginTop = `${offsetHeight}px`;
+      }
       document.addEventListener("DOMContentLoaded", function () {
         getCapchaQuestion();
         cacheBustHallenBelegung();

@@ -141,6 +141,16 @@ button {
 /* ========================================
  UTILITY CLASSES
  ======================================== */
+.dringende-meldungen {
+  background-color: #ff4757;
+  color: white;
+  text-align: center;
+  position: sticky; /* Keeps it at the top as you scroll */
+  top: 0;
+  z-index: 1000;
+  font-family: inherit;
+}
+
 .container {
   width: 97%;
   max-width: var(--max-width);
