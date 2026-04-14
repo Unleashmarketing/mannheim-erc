@@ -123,6 +123,7 @@
     </div>
   </template>
   <head>
+    <script src="wettbewerbe-data.js?v=<?php echo filemtime('wettbewerbe-data.js'); ?>"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wettbewerbe - Mannheimer ERC</title>
@@ -267,8 +268,7 @@
       </div>
     </footer>
 
-    <script src="wettbewerbe-data.js?v=<php echo filemtime('wettbewerbe-data.js')>"></script>
-    <script src="functions/generalFunctions.js?v=<php echo filemtime('functions/generalFunctions.js')>"></script>
+    <script src="functions/generalFunctions.js?v=<?php echo filemtime('functions/generalFunctions.js'); ?>"></script>
     <script>
       // ========================================
       // WETTBEWERBE LOGIK

@@ -2300,7 +2300,7 @@
       data-cfasync="false"
       src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
     ></script>
-    <script src="../functions/generalFunctions.js?v=<php echo filemtime('../functions/generalFunctions.js')>"></script>
+    <script src="../functions/generalFunctions.js?v=<?php echo filemtime('../functions/generalFunctions.js'); ?>"></script>
     <script>
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileMenu = document.querySelector(".mobile-menu");
@@ -2343,7 +2343,7 @@
         setupMobileSubmenus(mobileMenu);
       });
     </script>
-    <script src="formularBedingungen.js?v=<php echo filemtime('formularBedingungen.js')>"></script>
+    <script src="formularBedingungen.js?v=<?php echo filemtime('formularBedingungen.js'); ?>"></script>
 
     <script>
       const { jsPDF } = globalThis.jspdf;

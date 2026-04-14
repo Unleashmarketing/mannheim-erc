@@ -125,7 +125,7 @@
     </div>
   </template>
   <head>
-    <script src="oeffentlicheMeldungen.js?v=<php echo filemtime('oeffentlicheMeldungen.js')>"></script>
+    <script src="oeffentlicheMeldungen.js?v=<?php echo filemtime('oeffentlicheMeldungen.js'); ?>"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mitgliederbereich - Mannheimer ERC</title>
@@ -788,7 +788,7 @@
         </div>
       </div>
     </footer>
-    <script src="functions/generalFunctions.js?v=<php echo filemtime('functions/generalFunctions.js')>"></script>
+    <script src="functions/generalFunctions.js?v=<?php echo filemtime('functions/generalFunctions.js'); ?>"></script>
     <script>
       // ========================================
       // STANDARD NAVIGATION LOGIK (Aus CI übernommen)
