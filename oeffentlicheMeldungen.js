@@ -91,3 +91,14 @@ if (OEFFENTLICHE_MELDUNGEN_DATES.length > 0) {
   OEFFENTLICHE_MELDUNGEN_MAX_DATE =
     OEFFENTLICHE_MELDUNGEN_DATES[OEFFENTLICHE_MELDUNGEN_DATES.length - 1];
 }
+
+const OEFFENTLICHE_MELDUNGEN_DATES_SORTED = OEFFENTLICHE_MELDUNGEN.toSorted(
+  (a, b) => {
+    const dateA = parseDate(a.date);
+    const dateB = parseDate(b.date);
+    if (dateA === null && dateB === null) return 0;
+    if (dateA === null) return 1;
+    if (dateB === null) return -1;
+    return dateB - dateA;
+  },
+);

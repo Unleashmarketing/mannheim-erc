@@ -52,6 +52,11 @@ function handleArchiveNewsFilters(
   newsContainerId,
   archiveNewsMinDate,
   NEWS_LIST,
+  enum_renderType = 0,
+  galleryModalId = "galleryModal",
+  modalTitleId = "modalTitle",
+  modalDateId = "modalDate",
+  galleryGridId = "galleryGrid",
 ) {
   if (typeof sliderMin === "string") {
     sliderMin = document.getElementById(sliderMin);
@@ -75,7 +80,23 @@ function handleArchiveNewsFilters(
     dateDisplay.textContent = "Nur aktuellste Beiträge";
     document.getElementById(extraTextId).textContent =
       "Im Suchfeld clicken um Beitragsfilter zu aktivieren";
-    renderArchiveNews(limitedList, newsContainerId);
+    switch (enum_renderType) {
+      case 0:
+        renderArchiveNews(limitedList, newsContainerId);
+        break;
+      case 1:
+        renderCompetitions(
+          newsContainerId,
+          limitedList,
+          galleryModalId,
+          modalTitleId,
+          modalDateId,
+          galleryGridId,
+        );
+        break;
+      default:
+        renderArchiveNews(limitedList, newsContainerId);
+    }
     return;
   }
 
@@ -112,7 +133,23 @@ function handleArchiveNewsFilters(
 
     return matchesSearch && matchesDate;
   });
-  renderArchiveNews(filteredNews, newsContainerId);
+  switch (enum_renderType) {
+    case 0:
+      renderArchiveNews(filteredNews, newsContainerId);
+      break;
+    case 1:
+      renderCompetitions(
+        newsContainerId,
+        filteredNews,
+        galleryModalId,
+        modalTitleId,
+        modalDateId,
+        galleryGridId,
+      );
+      break;
+    default:
+      renderArchiveNews(filteredNews, newsContainerId);
+  }
 }
 
 function resetArchiveNewsFilters(
@@ -123,6 +160,11 @@ function resetArchiveNewsFilters(
   extraTextId,
   newsContainerId,
   NEWS_LIST,
+  enum_renderType = 0,
+  galleryModalId = "galleryModal",
+  modalTitleId = "modalTitle",
+  modalDateId = "modalDate",
+  galleryGridId = "galleryGrid",
 ) {
   const searchInput = document.getElementById(searchInputId);
   searchInput.value = "#begrenzt";
@@ -140,6 +182,11 @@ function resetArchiveNewsFilters(
     newsContainerId,
     minDate,
     NEWS_LIST,
+    enum_renderType,
+    galleryModalId,
+    modalTitleId,
+    modalDateId,
+    galleryGridId,
   );
 }
 
@@ -393,6 +440,85 @@ function cacheBustHallenBelegung() {
     url.searchParams.set("v", Date.now());
     link.href = url.toString();
   });
+}
+
+function openGallery(
+  id,
+  wettbewerbeData,
+  galleryModalId,
+  modalTitleId,
+  modalDateId,
+  galleryGridId,
+) {
+  const comp = wettbewerbeData.find((c) => c.id === id);
+  if (!comp) return;
+
+  const modal = document.getElementById(galleryModalId);
+  document.getElementById(modalTitleId).textContent = comp.title;
+  document.getElementById(modalDateId).textContent = comp.date;
+
+  const grid = document.getElementById(galleryGridId);
+  grid.innerHTML = "";
+
+  comp.gallery.forEach((imgSrc) => {
+    const item = document.createElement("div");
+    item.className = "gallery-item";
+    // Kein onclick Event mehr hier - Bild ist nicht klickbar
+    item.innerHTML = `<img src="${imgSrc}" alt="Galeriebild" loading="lazy">`;
+    grid.appendChild(item);
+  });
+
+  modal.style.display = "block";
+  document.body.style.overflow = "hidden"; // Scrollen der Seite verhindern
+}
+
+function renderCompetitions(
+  wettbewerbeContainerId,
+  wettbewerbeData,
+  galleryModalId,
+  modalTitleId,
+  modalDateId,
+  galleryGridId,
+) {
+  const container = document.getElementById(wettbewerbeContainerId);
+  if (!container || wettbewerbeData === undefined) return;
+
+  container.innerHTML = ""; // Loading Text entfernen
+
+  wettbewerbeData.forEach((comp) => {
+    const card = document.createElement("div");
+    card.className = "comp-card fade-in";
+    card.onclick = () =>
+      openGallery(
+        comp.id,
+        wettbewerbeData,
+        galleryModalId,
+        modalTitleId,
+        modalDateId,
+        galleryGridId,
+      );
+
+    card.innerHTML = `
+      <div class="comp-image-wrapper">
+        <img src="${comp.coverImage}" alt="${comp.title}">
+        <div class="comp-overlay">
+          <i class="fas fa-images"></i> Galerie ansehen
+        </div>
+      </div>
+      <div class="comp-body">
+        <span class="comp-date">${comp.date}</span>
+        <h3 class="comp-title">${comp.title}</h3>
+        <p class="comp-desc">${comp.description}</p>
+        <div class="comp-footer">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+
+  // Trigger animations for new elements
+  observeFadeElements();
 }
 // (async () => {
 //   let sampleJsonString = "Any text here";
