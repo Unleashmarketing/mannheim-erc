@@ -76,7 +76,8 @@ function handleArchiveNewsFilters(
     const validItems = NEWS_LIST.filter(
       (item) => item.date && item.date !== "N/A",
     );
-    const limitedList = validItems.slice(0, 3);
+    const limitedList =
+      enum_renderType < 1 ? validItems.slice(0, 3) : validItems.slice(0, 2);
     dateDisplay.textContent = "Nur aktuellste Beiträge";
     document.getElementById(extraTextId).textContent =
       "Im Suchfeld clicken um Beitragsfilter zu aktivieren";
