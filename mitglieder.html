@@ -719,6 +719,184 @@
               </div>
             </div>
           </div>
+
+          <div id="trainerTimes-wrapper" class="section" style="display: none">
+            <form id="trainerTimes-form" novalidate>
+              <div id="trainerTimes-container" class="container">
+                <div class="section-header">
+                  <h2>Trainerstunden Bericht manuell erstellen</h2>
+                  <div class="upload-section">
+                    <label for="import-json"
+                      >Vorhandene Daten laden (.json):</label
+                    >
+                    <input type="file" id="import-json" accept=".json" />
+                  </div>
+                </div>
+                <div class="trainerTimes-row">
+                  <div class="trainerTimes-input-group">
+                    <label>Name</label>
+                    <div class="trainerTimes-input-wrapper">
+                      <input type="text" name="name" required />
+                    </div>
+                  </div>
+                  <div class="trainerTimes-input-group">
+                    <label>Vorname</label>
+                    <div class="trainerTimes-input-wrapper">
+                      <input type="text" name="vorname" required />
+                    </div>
+                  </div>
+                </div>
+                <div class="trainerTimes-row">
+                  <div class="trainerTimes-input-group">
+                    <label>Adresse</label>
+                    <div class="trainerTimes-input-wrapper">
+                      <input type="text" name="adresse" required />
+                    </div>
+                  </div>
+                  <div class="trainerTimes-input-group">
+                    <label>Zeitraum</label>
+                    <div class="trainerTimes-input-wrapper">
+                      <input type="text" name="zeitraum" required />
+                    </div>
+                  </div>
+                </div>
+                <div class="trainerTimes-row-repeated">
+                  <div class="trainerTimes-input-group">
+                    <label>Datum</label>
+                    <div class="trainerTimes-input-wrapper">
+                      <input type="date" name="Datum[]" required />
+                      <i class="fas fa-calendar-alt"></i>
+                    </div>
+                  </div>
+
+                  <div class="trainerTimes-input-group">
+                    <label>Beginn</label>
+                    <div class="trainerTimes-input-wrapper">
+                      <input type="time" name="Beginn[]" required />
+                      <i class="fas fa-clock"></i>
+                    </div>
+                  </div>
+
+                  <div class="trainerTimes-input-group">
+                    <label>Ende</label>
+                    <div class="trainerTimes-input-wrapper">
+                      <input type="time" name="Ende[]" required />
+                      <i class="fas fa-clock"></i>
+                    </div>
+                  </div>
+
+                  <div class="trainerTimes-input-group">
+                    <label>Tätigkeit</label>
+                    <div class="trainerTimes-input-wrapper">
+                      <input type="text" name="Tätigkeit[]" required />
+                    </div>
+                  </div>
+                  <div
+                    id="trainerTimes-row-total-id-0"
+                    class="trainerTimes-row-total"
+                  >
+                    0 Min
+                  </div>
+                  <button type="button" class="remove-btn" title="Löschen">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </div>
+              </div>
+
+              <button type="button" id="trainerTimes-add-time">
+                <i class="fas fa-plus"></i> Weitere Zeile hinzufügen
+              </button>
+              <div
+                id="trainerTimes-total-id"
+                class="trainerTimes-total-summary"
+              >
+                <strong
+                  >Gesamtdauer:
+                  <span id="trainerTimes-grand-total">0</span> Stunden</strong
+                >
+              </div>
+
+              <div class="trainerTimes-row">
+                <div class="trainerTimes-input-group">
+                  <label>Stundensatz in €</label>
+                  <div class="trainerTimes-input-wrapper">
+                    <input
+                      type="number"
+                      name="stundensatz"
+                      value="10"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="trainerTimes-input-group">
+                  <label for="trainerTimes-ueberweisung-wanted"
+                    >Die Aufwandsentschädigung bitte auf bekanntes Konto
+                    überweisen</label
+                  >
+                  <div class="trainerTimes-input-wrapper">
+                    <select
+                      id="trainerTimes-ueberweisung-wanted"
+                      name="aufwand"
+                    >
+                      <option value="Nein">Nein</option>
+                      <option value="Ja">Ja</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="trainerTimes-row"
+                id="trainerTimes-account-details"
+                style="display: flex; padding: 15px"
+              >
+                <p>
+                  Diese Felder leer<br />lassen falls es<br />sich um eine<br />Spende
+                  handelt
+                </p>
+                <div class="trainerTimes-input-group">
+                  <label>Kreditinstitut</label>
+                  <div class="trainerTimes-input-wrapper">
+                    <input type="text" name="kreditinstitut" />
+                  </div>
+                </div>
+                <div class="trainerTimes-input-group">
+                  <label>IBAN</label>
+                  <div class="trainerTimes-input-wrapper">
+                    <input type="text" name="iban" />
+                  </div>
+                </div>
+                <div class="trainerTimes-input-group">
+                  <label>Kontoinhaber</label>
+                  <div class="trainerTimes-input-wrapper">
+                    <input type="text" name="kontoinhaber" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-footer">
+                <button
+                  type="submit"
+                  class="btn-submit"
+                  id="submitBtntrainerTimesPdf"
+                  value="pdf"
+                >
+                  <span id="btnTexttrainerTimes">PDF generieren</span>
+                </button>
+              </div>
+              <div class="form-footer">
+                <button
+                  type="submit"
+                  class="btn-submit"
+                  id="submitBtntrainerTimesJson"
+                  value="json"
+                >
+                  <span id="btnTexttrainerTimes"
+                    >JSON generieren zur späteren Bearbeitung</span
+                  >
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </section>
     </main>
@@ -788,8 +966,10 @@
         </div>
       </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="functions/generalFunctions.js?v=<?php echo filemtime('functions/generalFunctions.js'); ?>"></script>
     <script>
+      const { jsPDF } = globalThis.jspdf;
       // ========================================
       // STANDARD NAVIGATION LOGIK (Aus CI übernommen)
       // ========================================
@@ -827,7 +1007,7 @@
         }
       });
 
-      async function createLoginCookie() {
+      async function createLoginCookie(userName) {
         try {
           const response = await fetch(
             "https://merc-online.de/cgi-bin/apiMain.py/api/createAndSignMitgliederLoginCookie",
@@ -837,7 +1017,7 @@
             if (result.success) {
               const newCookieContent = `${result.message.payload.expiry}|${result.message.payload.device}|${result.message.signature}`;
               const date = new Date(result.message.payload.expiry * 1000);
-              document.cookie = `member_area_login_token=${encodeURIComponent(newCookieContent)}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
+              document.cookie = `member_area_login_token=${encodeURIComponent(newCookieContent)}; expires=${date.toUTCString()}; path=/; SameSite=Lax; user=${userName}`;
             } else {
               console.error("result not ok", result.toString());
             }
@@ -849,6 +1029,7 @@
         }
       }
 
+      const userNameField = document.getElementById("username");
       async function checkLoginCookie() {
         // 0: Fresh login
         // 1: Valid
@@ -859,6 +1040,15 @@
         try {
           if (!hasCookie) {
             return 0;
+          }
+          const cookieUser = document.cookie
+            .split("; ")
+            .find((row) => row.startsWith("user="))
+            ?.split("=")[1];
+          userNameField.value = cookieUser;
+          if (cookieUser === "admin") {
+            document.getElementById("trainerTimes-wrapper").style.display =
+              "block";
           }
           const cookieValue = document.cookie
             .split("; ")
@@ -881,7 +1071,7 @@
               const newCookieContent = `${result.message.payload.expiry}|${device}|${result.message.signature}`;
               // Set the browser's cookie expiration to match the internal timestamp
               const date = new Date(result.message.payload.expiry * 1000);
-              document.cookie = `member_area_login_token=${encodeURIComponent(newCookieContent)}; expires=${date.toUTCString()}; path=/; SameSite=Lax`;
+              document.cookie = `member_area_login_token=${encodeURIComponent(newCookieContent)}; expires=${date.toUTCString()}; path=/; SameSite=Lax; user=${cookieUser}`;
               return 1;
             } else {
               console.error("result not ok");
@@ -890,7 +1080,7 @@
             console.error("response not ok");
           }
           document.cookie =
-            "member_area_login_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            "member_area_login_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; user=";
         } catch (error) {
           console.error("Auth Error:", error);
         }
@@ -907,7 +1097,6 @@
       const loginSection = document.getElementById("login-section");
       const memberArea = document.getElementById("member-area");
       const logoutBtn = document.getElementById("logout-btn");
-      const userNameField = document.getElementById("username");
       const pwField = document.getElementById("password");
       let loginCookie = 0;
 
@@ -935,8 +1124,13 @@
                 pwField.style.backgroundColor = "green";
                 loginSection.style.display = "none";
                 memberArea.classList.add("active");
-                window.scrollTo({ top: 0, behavior: "smooth" });
-                createLoginCookie();
+                // window.scrollTo({ top: 0, behavior: "smooth" });
+                if (userName === "admin") {
+                  document.getElementById(
+                    "trainerTimes-wrapper",
+                  ).style.display = "block";
+                }
+                createLoginCookie(userName);
               } else {
                 pwField.style.backgroundColor = "red";
               }
@@ -950,7 +1144,7 @@
       if (logoutBtn) {
         logoutBtn.addEventListener("click", () => {
           document.cookie =
-            "member_area_login_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            "member_area_login_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; user=";
           pwField.style.backgroundColor = "";
           userNameField.style.backgroundColor = "";
           memberArea.classList.remove("active");
@@ -997,13 +1191,396 @@
         }
         cacheBustHallenBelegung();
         document.getElementById("public-news-toggle-btn").click();
+        document.getElementById("trainerTimes-ueberweisung-wanted").value =
+          "Nein";
       });
+
       document
         .getElementById("public-news-src")
         .addEventListener("focus", function () {
           if (this.value === "#begrenzt") {
             this.value = "";
           }
+        });
+      document
+        .getElementById("trainerTimes-add-time")
+        .addEventListener("click", function () {
+          const container = document.getElementById("trainerTimes-container");
+          const rows = container.getElementsByClassName(
+            "trainerTimes-row-repeated",
+          );
+          const newRow = rows[0].cloneNode(true);
+          const inputs = newRow.querySelectorAll("input");
+          inputs.forEach((input) =>
+            input.name === "Tätigkeit[]" ? input.value : (input.value = ""),
+          );
+          let rowTotal = newRow.querySelector(".trainerTimes-row-total");
+          if (rowTotal) rowTotal.textContent = "0 Min";
+          container.appendChild(newRow);
+        });
+      document
+        .getElementById("trainerTimes-container")
+        .addEventListener("click", function (e) {
+          if (
+            e.target.classList.contains("remove-btn") ||
+            e.target.parentElement.classList.contains("remove-btn")
+          ) {
+            const container = document.getElementById("trainerTimes-container");
+            const rows = container.getElementsByClassName(
+              "trainerTimes-row-repeated",
+            );
+            if (rows.length > 1) {
+              e.target.closest(".trainerTimes-row-repeated").remove();
+            } else {
+              alert("Mindestens eine Zeitangabe ist erforderlich.");
+            }
+          }
+        });
+      function calculateDurations() {
+        let totalMinutes = 0;
+        const rows = document.querySelectorAll(".trainerTimes-row-repeated");
+
+        rows.forEach((row) => {
+          const start = row.querySelector('input[name="Beginn[]"]');
+          const end = row.querySelector('input[name="Ende[]"]');
+          const display = row.querySelector(".trainerTimes-row-total");
+          if (display !== null) {
+            if (start !== null && end !== null) {
+              const [startH, startM] = start.value.split(":").map(Number);
+              const [endH, endM] = end.value.split(":").map(Number);
+              if (
+                Number.undefined !== startH &&
+                Number.undefined !== startM &&
+                Number.undefined !== endH &&
+                Number.undefined !== endM
+              ) {
+                const startTotal = startH * 60 + startM;
+                const endTotal = endH * 60 + endM;
+
+                let diff = Math.abs(endTotal - startTotal);
+                display.textContent = `${diff} Min`;
+                totalMinutes += diff;
+              }
+            } else {
+              display.textContent = `0 Min`;
+            }
+          }
+        });
+
+        const grandTotalHours = (totalMinutes / 60).toFixed(2);
+        document.getElementById("trainerTimes-grand-total").textContent =
+          grandTotalHours;
+      }
+      function clearValidationErrors() {
+        document
+          .querySelectorAll(".input-error")
+          .forEach((el) => el.classList.remove("input-error"));
+        document
+          .querySelectorAll(".error-message")
+          .forEach((el) => el.remove());
+      }
+      document
+        .getElementById("trainerTimes-container")
+        .addEventListener("input", calculateDurations);
+      document
+        .getElementById("trainerTimes-container")
+        .addEventListener("click", function (e) {
+          if (e.target.closest(".remove-btn")) {
+            setTimeout(calculateDurations, 10);
+          }
+        });
+      document
+        .getElementById("trainerTimes-ueberweisung-wanted")
+        .addEventListener("change", function () {
+          if (this.value === "Nein") {
+            document.getElementById(
+              "trainerTimes-account-details",
+            ).style.display = "flex";
+          } else {
+            document.getElementById(
+              "trainerTimes-account-details",
+            ).style.display = "none";
+          }
+        });
+      function generatePDF(formData) {
+        const doc = new jsPDF();
+        const pageHeight = doc.internal.pageSize.height;
+        const marginBottom = 20;
+        doc.setFontSize(18);
+        doc.setFont(undefined, "bold");
+        doc.text("Übungsleitertätigkeit Stundennachweis", 20, 20);
+        doc.setFontSize(11);
+        doc.setFont(undefined, "normal");
+        let yPos = 35;
+        const lh = 8,
+          lm = 20;
+        const printLine = (label, val, isBoldTitle = false) => {
+          let updatedYpos = lh + yPos + marginBottom;
+          if (isBoldTitle) updatedYpos += lm;
+          else updatedYpos += lh;
+          if (updatedYpos > pageHeight) {
+            doc.addPage();
+            yPos = 35;
+          }
+          if (isBoldTitle) {
+            doc.setFont(undefined, "bold");
+            doc.text(label, lm, yPos);
+            doc.setFont(undefined, "normal");
+          } else {
+            doc.text(`${label} ${val}`, lm + 5, yPos);
+          }
+          yPos += lh;
+        };
+        printLine("Name:", formData.vorname + " " + formData.name);
+        printLine("Anschrift:", formData.adresse);
+        printLine(
+          "",
+          "Die Tätigkeitsnachweise sind immer bis spätestens zum 5. Werktag",
+        );
+        printLine(
+          "",
+          "des Folgemonats einzureichen. Die Höhe der Aufwandsentschädigung",
+        );
+        printLine(
+          "",
+          "richtet sich gemäß Gebührenordnung des Mannheimer ERC nach",
+        );
+        printLine(
+          "",
+          "der aktuellen Trainerlizenzstufe des Übungsleiters/Trainers.",
+        );
+        printLine("Zeitraum:", formData.zeitraum);
+        yPos += 5;
+
+        let maxLengthPerKey = {};
+        formData["trainerTimes-rows-repeated"].forEach((row) => {
+          for (var key in row) {
+            if (!(key in maxLengthPerKey)) maxLengthPerKey[key] = key.length;
+            if (row[key].length > maxLengthPerKey[key])
+              maxLengthPerKey[key] = row[key].length;
+          }
+        });
+        let rowCount = 0;
+        let rowTitle = "";
+        const oldFont = doc.internal.getFont().fontName;
+        doc.setFont("courier", "normal");
+        formData["trainerTimes-rows-repeated"].forEach((row) => {
+          let rowString = "";
+          for (var key in row) {
+            if (rowCount === 0) {
+              rowTitle += key;
+              if (key.length < maxLengthPerKey[key]) {
+                rowTitle += " ".repeat(maxLengthPerKey[key] - key.length);
+              }
+              rowTitle += " |";
+            }
+            let tempVal = row[key];
+            if (tempVal.length < maxLengthPerKey[key]) {
+              tempVal += " ".repeat(maxLengthPerKey[key] - tempVal.length);
+            }
+            rowString += tempVal + " |";
+          }
+          if (rowCount === 0) {
+            printLine("  ", rowTitle);
+          }
+          rowCount++;
+          printLine("  ", rowString);
+        });
+        doc.setFont(oldFont, "normal");
+        printLine("Gesamtstunden:", formData.GesamtStunden);
+        yPos += 5;
+        printLine(
+          "Die Aufwandsentschädigung bitte auf bekanntes Konto überweisen: ",
+          formData.aufwand,
+        );
+        printLine("Die Bankverbindung hat sich wie folgt geändert:", "");
+        printLine("Bank:", formData.kreditinstitut);
+        printLine("IBAN:", formData.iban);
+        printLine("Inhaber:", formData.kontoinhaber);
+        yPos += 5;
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, "0");
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+        const year = today.getFullYear();
+        const formattedDate = `${day}.${month}.${year}`;
+        printLine(
+          "Datum:",
+          formattedDate +
+            ", Unterschrift: " +
+            formData.vorname +
+            " " +
+            formData.name,
+        );
+        printLine("Bestätigungsvermerk des Abteilungsleiters o.V.i.A.", "");
+        printLine("Datum:", "");
+        const fileName =
+          `Trainerstunden_${formData.vorname}_` + `${formData.name}.pdf`;
+        doc.output("blob", { filename: fileName });
+        doc.save(fileName);
+      }
+      document
+        .getElementById("trainerTimes-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          clearValidationErrors();
+          let hasErrors = false;
+          let firstErrorField = null;
+          const data = {};
+          const elements = this.elements;
+          data["trainerTimes-rows-repeated"] = [];
+          let repeatedRow = {};
+          data.GesamtStunden = document.getElementById(
+            "trainerTimes-grand-total",
+          ).textContent;
+          for (const field of elements) {
+            if (field.type === "submit" || field.tagName === "BUTTON") continue;
+            if (field.name.endsWith("[]")) {
+              if (
+                field.value === field.defaultValue &&
+                field.hasAttribute("required")
+              ) {
+                showFieldError(field, "Dieses Feld ist erforderlich.");
+                hasErrors = true;
+                if (!firstErrorField) firstErrorField = field;
+                break;
+              }
+              if (field.name.slice(0, -2) in repeatedRow) {
+                data["trainerTimes-rows-repeated"].push(
+                  structuredClone(repeatedRow),
+                );
+                repeatedRow = {};
+              }
+              repeatedRow[field.name.slice(0, -2)] = field.value.trim();
+              continue;
+            }
+            const value = field.value.trim();
+            const name = field.name;
+            data[name] = value;
+            if (field.type === "checkbox") {
+              data[name] = "nein";
+              if (field.checked) data[name] = "ja";
+            }
+
+            if (field.hasAttribute("required") && value === "") {
+              showFieldError(field, "Dieses Feld ist erforderlich.");
+              hasErrors = true;
+              if (!firstErrorField) firstErrorField = field;
+            }
+            if (value !== "") {
+              const ibanCheckVal = isValidIBAN(value);
+              if (name === "iban" && ibanCheckVal !== 0) {
+                showFieldError(
+                  field,
+                  "Ungültige IBAN: " + ibanCheckVal.toString(),
+                );
+                hasErrors = true;
+              }
+            }
+          }
+          if (Object.keys(repeatedRow).length > 0) {
+            data["trainerTimes-rows-repeated"].push(
+              structuredClone(repeatedRow),
+            );
+          }
+          const rows = document.querySelectorAll(".trainerTimes-row-repeated");
+          let rowIndex = 0;
+          rows.forEach((row) => {
+            const display = row.querySelector(".trainerTimes-row-total");
+            data["trainerTimes-rows-repeated"][rowIndex]["Zeit in Minuten"] =
+              display.textContent;
+            rowIndex++;
+          });
+          if (hasErrors) {
+            if (firstErrorField) {
+              firstErrorField.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
+              firstErrorField.focus();
+            }
+            return;
+          }
+
+          try {
+            const totalValue =
+              parseFloat(data.GesamtStunden) * parseFloat(data.stundensatz);
+            data.GesamtStunden =
+              data.GesamtStunden +
+              " X €" +
+              data.stundensatz +
+              " = €" +
+              totalValue.toFixed(2).toString();
+            if (e.submitter.value === "pdf") {
+              generatePDF(data);
+            }
+            if (e.submitter.value === "json") {
+              const jsonString = JSON.stringify(data, null, 2);
+              const blob = new Blob([jsonString], { type: "application/json" });
+              const link = document.createElement("a");
+              link.href = URL.createObjectURL(blob);
+              link.download = "data_export.json";
+              link.click();
+              URL.revokeObjectURL(link.href);
+            }
+          } catch (error) {
+            console.error(error);
+          }
+        });
+      function prefillForm(data) {
+        const container = document.getElementById("trainerTimes-container");
+        const singleRows = container.getElementsByClassName("trainerTimes-row");
+        for (var row of singleRows) {
+          const inputs = row.querySelectorAll("input");
+          inputs.forEach((input) => {
+            if (input.name in data) {
+              input.value = data[input.name];
+            }
+          });
+        }
+        const rows = container.getElementsByClassName(
+          "trainerTimes-row-repeated",
+        );
+        while (rows.length > 1) {
+          rows[1].remove();
+        }
+        let currentRow = rows[0];
+        if ("trainerTimes-rows-repeated" in data) {
+          let countPrefills = -1;
+          data["trainerTimes-rows-repeated"].forEach((repeatedRow) => {
+            countPrefills++;
+            if (countPrefills > 0) {
+              currentRow = rows[0].cloneNode(true);
+              container.appendChild(currentRow);
+            }
+            const inputs = currentRow.querySelectorAll("input");
+            inputs.forEach((input) => {
+              if (input.name.slice(0, -2) in repeatedRow) {
+                input.value = repeatedRow[input.name.slice(0, -2)];
+              }
+            });
+          });
+        }
+        calculateDurations();
+      }
+      document
+        .getElementById("import-json")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (!file) return;
+
+          const reader = new FileReader();
+
+          reader.onload = (event) => {
+            try {
+              const data = JSON.parse(event.target.result);
+              prefillForm(data);
+              e.target.value = "";
+            } catch (err) {
+              console.error("Fehler: Ungültige JSON-Datei.", err);
+              e.target.value = "";
+            }
+          };
+          reader.readAsText(file);
         });
     </script>
   </body>

@@ -521,6 +521,39 @@ function renderCompetitions(
   // Trigger animations for new elements
   observeFadeElements();
 }
+
+// --- VALIDIERUNGS-HELFER ---
+function showFieldError(inputElement, message) {
+  inputElement.classList.add("input-error");
+  let errorDiv = inputElement.parentElement.querySelector(".error-message");
+  if (!errorDiv) {
+    errorDiv = document.createElement("div");
+    errorDiv.className = "error-message";
+    inputElement.parentElement.appendChild(errorDiv);
+  }
+  errorDiv.textContent = message;
+}
+
+function isValidIBAN(iban) {
+  const cleanIban = String(iban)
+    .toUpperCase()
+    .replace(/[^A-Z0-9]/g, "");
+  if (cleanIban.length < 15) return 1;
+  const code = cleanIban.match(/^([A-Z]{2})(\d{2})([A-Z\d]+)$/);
+  if (!code) return 2;
+  const digits = (code[3] + code[1] + code[2]).replace(
+    /[A-Z]/g,
+    function (letter) {
+      return letter.charCodeAt(0) - 55;
+    },
+  );
+  let checksum = digits.slice(0, 2);
+  for (let offset = 2; offset < digits.length; offset += 7) {
+    const fragment = String(checksum) + digits.substring(offset, offset + 7);
+    checksum = Number.parseInt(fragment, 10) % 97;
+  }
+  return checksum === 1 ? 0 : checksum;
+}
 // (async () => {
 //   let sampleJsonString = "Any text here";
 //   let out = convertString(sampleJsonString);

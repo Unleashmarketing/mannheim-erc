@@ -1245,37 +1245,6 @@ footer {
   border-radius: var(--border-radius-sm);
 }
 
-.footer-links li {
-  margin-bottom: var(--spacing-sm);
-}
-
-.footer-links a {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: var(--font-size-sm);
-}
-
-.footer-links a:hover {
-  color: var(--white);
-  padding-left: var(--spacing-xs);
-}
-
-.footer-links .submenu {
-  display: block !important;
-  position: static !important;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding: var(--spacing-xs) 0 0 var(--spacing-sm);
-  margin: 0;
-}
-
-.footer-links .submenu a {
-  padding: var(--spacing-xs) 0;
-  border-left: 2px solid rgba(255, 255, 255, 0.15);
-  padding-left: var(--spacing-sm);
-  display: block;
-}
-
 .footer-contact li {
   margin-bottom: var(--spacing-md);
   display: flex;
@@ -4131,6 +4100,66 @@ input:focus-visible {
 .btn-download:hover {
   background-color: var(--primary-hover);
   transform: translateY(-2px);
+}
+
+.trainerTimes-row {
+  display: flex;
+  align-items: flex-end; /* Aligns inputs and buttons on the same baseline */
+  gap: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed #ccc;
+}
+.trainerTimes-row-repeated {
+  display: flex;
+  align-items: flex-end; /* Aligns inputs and buttons on the same baseline */
+  gap: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+.trainerTimes-input-group {
+  flex: 1; /* Makes Date and Time columns take up equal space */
+  display: flex;
+  flex-direction: column;
+}
+
+.trainerTimes-input-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.trainerTimes-input-wrapper {
+  position: relative;
+}
+.trainerTimes-input-wrapper input {
+  width: 100%;
+  min-height: 30px; /* Ensure there is a hit-area */
+  display: block;
+}
+.trainerTimes-input-wrapper i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
+}
+
+.trainerTimes-row-total {
+  min-width: 80px;
+  padding-bottom: 10px; /* Align with inputs */
+  font-family: monospace;
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+}
+
+.trainerTimes-total-summary {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-top: 2px solid #333;
+  text-align: right;
+  font-size: 1.2em;
 }
 
 /* RESPONSIVE */
