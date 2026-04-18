@@ -734,13 +734,13 @@
                 </div>
                 <div class="trainerTimes-row">
                   <div class="trainerTimes-input-group">
-                    <label>Name</label>
+                    <label for="name">Name</label>
                     <div class="trainerTimes-input-wrapper">
                       <input type="text" name="name" required />
                     </div>
                   </div>
                   <div class="trainerTimes-input-group">
-                    <label>Vorname</label>
+                    <label for="vorname">Vorname</label>
                     <div class="trainerTimes-input-wrapper">
                       <input type="text" name="vorname" required />
                     </div>
@@ -748,13 +748,13 @@
                 </div>
                 <div class="trainerTimes-row">
                   <div class="trainerTimes-input-group">
-                    <label>Adresse</label>
+                    <label for="adresse">Adresse</label>
                     <div class="trainerTimes-input-wrapper">
                       <input type="text" name="adresse" required />
                     </div>
                   </div>
                   <div class="trainerTimes-input-group">
-                    <label>Zeitraum</label>
+                    <label for="zeitraum">Zeitraum</label>
                     <div class="trainerTimes-input-wrapper">
                       <input type="text" name="zeitraum" required />
                     </div>
@@ -762,7 +762,7 @@
                 </div>
                 <div class="trainerTimes-row-repeated">
                   <div class="trainerTimes-input-group">
-                    <label>Datum</label>
+                    <label for="Datum[]">Datum</label>
                     <div class="trainerTimes-input-wrapper">
                       <input type="date" name="Datum[]" required />
                       <i class="fas fa-calendar-alt"></i>
@@ -770,7 +770,7 @@
                   </div>
 
                   <div class="trainerTimes-input-group">
-                    <label>Beginn</label>
+                    <label for="Beginn[]">Beginn</label>
                     <div class="trainerTimes-input-wrapper">
                       <input type="time" name="Beginn[]" required />
                       <i class="fas fa-clock"></i>
@@ -778,7 +778,7 @@
                   </div>
 
                   <div class="trainerTimes-input-group">
-                    <label>Ende</label>
+                    <label for="Ende[]">Ende</label>
                     <div class="trainerTimes-input-wrapper">
                       <input type="time" name="Ende[]" required />
                       <i class="fas fa-clock"></i>
@@ -786,7 +786,7 @@
                   </div>
 
                   <div class="trainerTimes-input-group">
-                    <label>Tätigkeit</label>
+                    <label for="Tätigkeit[]">Tätigkeit</label>
                     <div class="trainerTimes-input-wrapper">
                       <input type="text" name="Tätigkeit[]" required />
                     </div>
@@ -818,7 +818,7 @@
 
               <div class="trainerTimes-row">
                 <div class="trainerTimes-input-group">
-                  <label>Stundensatz in €</label>
+                  <label for="stundensatz">Stundensatz in €</label>
                   <div class="trainerTimes-input-wrapper">
                     <input
                       type="number"
@@ -844,31 +844,32 @@
                   </div>
                 </div>
               </div>
-              <div
-                class="trainerTimes-row"
-                id="trainerTimes-account-details"
-                style="display: flex; padding: 15px"
-              >
-                <p>
-                  Diese Felder leer<br />lassen falls es<br />sich um eine<br />Spende
-                  handelt
-                </p>
-                <div class="trainerTimes-input-group">
-                  <label>Kreditinstitut</label>
-                  <div class="trainerTimes-input-wrapper">
-                    <input type="text" name="kreditinstitut" />
+              <div>
+                <h4 style="text-align: center">
+                  Diese Felder leer lassen falls es sich um eine Spende handelt
+                </h4>
+                <div
+                  class="trainerTimes-row"
+                  id="trainerTimes-account-details"
+                  style="display: flex; padding: 15px"
+                >
+                  <div class="trainerTimes-input-group">
+                    <label for="kreditinstitut">Kreditinstitut</label>
+                    <div class="trainerTimes-input-wrapper">
+                      <input type="text" name="kreditinstitut" />
+                    </div>
                   </div>
-                </div>
-                <div class="trainerTimes-input-group">
-                  <label>IBAN</label>
-                  <div class="trainerTimes-input-wrapper">
-                    <input type="text" name="iban" />
+                  <div class="trainerTimes-input-group">
+                    <label for="iban">IBAN</label>
+                    <div class="trainerTimes-input-wrapper">
+                      <input type="text" name="iban" />
+                    </div>
                   </div>
-                </div>
-                <div class="trainerTimes-input-group">
-                  <label>Kontoinhaber</label>
-                  <div class="trainerTimes-input-wrapper">
-                    <input type="text" name="kontoinhaber" />
+                  <div class="trainerTimes-input-group">
+                    <label for="kontoinhaber">Kontoinhaber</label>
+                    <div class="trainerTimes-input-wrapper">
+                      <input type="text" name="kontoinhaber" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -880,7 +881,7 @@
                   id="submitBtntrainerTimesPdf"
                   value="pdf"
                 >
-                  <span id="btnTexttrainerTimes">PDF generieren</span>
+                  <span id="btnPdfTexttrainerTimes">PDF generieren</span>
                 </button>
               </div>
               <div class="form-footer">
@@ -890,7 +891,7 @@
                   id="submitBtntrainerTimesJson"
                   value="json"
                 >
-                  <span id="btnTexttrainerTimes"
+                  <span id="btnJsonTexttrainerTimes"
                     >JSON generieren zur späteren Bearbeitung</span
                   >
                 </button>
@@ -1124,7 +1125,6 @@
                 pwField.style.backgroundColor = "green";
                 loginSection.style.display = "none";
                 memberArea.classList.add("active");
-                // window.scrollTo({ top: 0, behavior: "smooth" });
                 if (userName === "admin") {
                   document.getElementById(
                     "trainerTimes-wrapper",
@@ -1202,40 +1202,6 @@
             this.value = "";
           }
         });
-      document
-        .getElementById("trainerTimes-add-time")
-        .addEventListener("click", function () {
-          const container = document.getElementById("trainerTimes-container");
-          const rows = container.getElementsByClassName(
-            "trainerTimes-row-repeated",
-          );
-          const newRow = rows[0].cloneNode(true);
-          const inputs = newRow.querySelectorAll("input");
-          inputs.forEach((input) =>
-            input.name === "Tätigkeit[]" ? input.value : (input.value = ""),
-          );
-          let rowTotal = newRow.querySelector(".trainerTimes-row-total");
-          if (rowTotal) rowTotal.textContent = "0 Min";
-          container.appendChild(newRow);
-        });
-      document
-        .getElementById("trainerTimes-container")
-        .addEventListener("click", function (e) {
-          if (
-            e.target.classList.contains("remove-btn") ||
-            e.target.parentElement.classList.contains("remove-btn")
-          ) {
-            const container = document.getElementById("trainerTimes-container");
-            const rows = container.getElementsByClassName(
-              "trainerTimes-row-repeated",
-            );
-            if (rows.length > 1) {
-              e.target.closest(".trainerTimes-row-repeated").remove();
-            } else {
-              alert("Mindestens eine Zeitangabe ist erforderlich.");
-            }
-          }
-        });
       function calculateDurations() {
         let totalMinutes = 0;
         const rows = document.querySelectorAll(".trainerTimes-row-repeated");
@@ -1271,6 +1237,41 @@
         document.getElementById("trainerTimes-grand-total").textContent =
           grandTotalHours;
       }
+      document
+        .getElementById("trainerTimes-add-time")
+        .addEventListener("click", function () {
+          const container = document.getElementById("trainerTimes-container");
+          const rows = container.getElementsByClassName(
+            "trainerTimes-row-repeated",
+          );
+          const newRow = rows[0].cloneNode(true);
+          const inputs = newRow.querySelectorAll("input");
+          inputs.forEach((input) => {
+            if (input.name !== "Tätigkeit[]") input.value = "";
+          });
+          let rowTotal = newRow.querySelector(".trainerTimes-row-total");
+          if (rowTotal) rowTotal.textContent = "0 Min";
+          container.appendChild(newRow);
+          calculateDurations();
+        });
+      document
+        .getElementById("trainerTimes-container")
+        .addEventListener("click", function (e) {
+          if (
+            e.target.classList.contains("remove-btn") ||
+            e.target.parentElement.classList.contains("remove-btn")
+          ) {
+            const container = document.getElementById("trainerTimes-container");
+            const rows = container.getElementsByClassName(
+              "trainerTimes-row-repeated",
+            );
+            if (rows.length > 1) {
+              e.target.closest(".trainerTimes-row-repeated").remove();
+            } else {
+              alert("Mindestens eine Zeitangabe ist erforderlich.");
+            }
+          }
+        });
       function clearValidationErrors() {
         document
           .querySelectorAll(".input-error")
@@ -1482,14 +1483,6 @@
               structuredClone(repeatedRow),
             );
           }
-          const rows = document.querySelectorAll(".trainerTimes-row-repeated");
-          let rowIndex = 0;
-          rows.forEach((row) => {
-            const display = row.querySelector(".trainerTimes-row-total");
-            data["trainerTimes-rows-repeated"][rowIndex]["Zeit in Minuten"] =
-              display.textContent;
-            rowIndex++;
-          });
           if (hasErrors) {
             if (firstErrorField) {
               firstErrorField.scrollIntoView({
@@ -1500,10 +1493,19 @@
             }
             return;
           }
+          const rows = document.querySelectorAll(".trainerTimes-row-repeated");
+          let rowIndex = 0;
+          rows.forEach((row) => {
+            const display = row.querySelector(".trainerTimes-row-total");
+            data["trainerTimes-rows-repeated"][rowIndex]["Zeit in Minuten"] =
+              display.textContent;
+            rowIndex++;
+          });
 
           try {
             const totalValue =
-              parseFloat(data.GesamtStunden) * parseFloat(data.stundensatz);
+              Number.parseFloat(data.GesamtStunden) *
+              Number.parseFloat(data.stundensatz);
             data.GesamtStunden =
               data.GesamtStunden +
               " X €" +

@@ -547,7 +547,7 @@ function isValidIBAN(iban) {
       return letter.charCodeAt(0) - 55;
     },
   );
-  let checksum = digits.slice(0, 2);
+  let checksum = Number.parseInt(digits.slice(0, 2));
   for (let offset = 2; offset < digits.length; offset += 7) {
     const fragment = String(checksum) + digits.substring(offset, offset + 7);
     checksum = Number.parseInt(fragment, 10) % 97;
