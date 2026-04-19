@@ -115,7 +115,7 @@ let NEWS_LIST_MIN_DATE = null;
 let NEWS_LIST_MAX_DATE = null;
 if (NEWS_LIST_DATES.length > 0) {
   NEWS_LIST_MIN_DATE = NEWS_LIST_DATES[0];
-  NEWS_LIST_MAX_DATE = NEWS_LIST_DATES[NEWS_LIST_DATES.length - 1];
+  NEWS_LIST_MAX_DATE = NEWS_LIST_DATES.at(-1);
 }
 
 const wettbewerbeData_DATES_SORTED = wettbewerbeData.toSorted((a, b) => {

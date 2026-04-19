@@ -147,7 +147,19 @@
   </head>
   <body>
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
-
+    <datalist id="Trainertaetigkeiten">
+      <option value="Anfängertraining"></option>
+      <option value="Fördergruppe"></option>
+      <option value="Synchron"></option>
+      <option value="Athletik"></option>
+      <option value="Ballet"></option>
+      <option value="Choreographie"></option>
+      <option value="Laufschule"></option>
+      <option value="Shorttrack"></option>
+      <option value="Eisschnelllauf"></option>
+      <option value="Inline"></option>
+      <option value="Krafttraining"></option>
+    </datalist>
     <header>
       <div class="container header-container">
         <a href="index.html" class="logo">
@@ -729,7 +741,12 @@
                     <label for="import-json"
                       >Vorhandene Daten laden (.json):</label
                     >
-                    <input type="file" id="import-json" accept=".json" />
+                    <input
+                      type="file"
+                      name="import-json"
+                      id="import-json"
+                      accept=".json"
+                    />
                   </div>
                 </div>
                 <div class="trainerTimes-row">
@@ -788,7 +805,11 @@
                   <div class="trainerTimes-input-group">
                     <label for="Tätigkeit[]">Tätigkeit</label>
                     <div class="trainerTimes-input-wrapper">
-                      <input type="text" name="Tätigkeit[]" required />
+                      <input
+                        list="Trainertaetigkeiten"
+                        name="Tätigkeit[]"
+                        required
+                      />
                     </div>
                   </div>
                   <div
@@ -875,25 +896,13 @@
               </div>
 
               <div class="form-footer">
-                <button
-                  type="submit"
-                  class="btn-submit"
-                  id="submitBtntrainerTimesPdf"
-                  value="pdf"
-                >
-                  <span id="btnPdfTexttrainerTimes">PDF generieren</span>
+                <button type="submit" class="btn-submit" value="pdf">
+                  <span>PDF generieren</span>
                 </button>
               </div>
               <div class="form-footer">
-                <button
-                  type="submit"
-                  class="btn-submit"
-                  id="submitBtntrainerTimesJson"
-                  value="json"
-                >
-                  <span id="btnJsonTexttrainerTimes"
-                    >JSON generieren zur späteren Bearbeitung</span
-                  >
+                <button type="submit" class="btn-submit" value="json">
+                  <span>JSON generieren zur späteren Bearbeitung</span>
                 </button>
               </div>
             </form>
@@ -1434,7 +1443,12 @@
             "trainerTimes-grand-total",
           ).textContent;
           for (const field of elements) {
-            if (field.type === "submit" || field.tagName === "BUTTON") continue;
+            if (
+              field.type === "submit" ||
+              field.tagName === "BUTTON" ||
+              field.name === "import-json"
+            )
+              continue;
             if (field.name.endsWith("[]")) {
               if (
                 field.value === field.defaultValue &&
@@ -1457,10 +1471,6 @@
             const value = field.value.trim();
             const name = field.name;
             data[name] = value;
-            if (field.type === "checkbox") {
-              data[name] = "nein";
-              if (field.checked) data[name] = "ja";
-            }
 
             if (field.hasAttribute("required") && value === "") {
               showFieldError(field, "Dieses Feld ist erforderlich.");
@@ -1478,11 +1488,6 @@
               }
             }
           }
-          if (Object.keys(repeatedRow).length > 0) {
-            data["trainerTimes-rows-repeated"].push(
-              structuredClone(repeatedRow),
-            );
-          }
           if (hasErrors) {
             if (firstErrorField) {
               firstErrorField.scrollIntoView({
@@ -1492,6 +1497,11 @@
               firstErrorField.focus();
             }
             return;
+          }
+          if (Object.keys(repeatedRow).length > 0) {
+            data["trainerTimes-rows-repeated"].push(
+              structuredClone(repeatedRow),
+            );
           }
           const rows = document.querySelectorAll(".trainerTimes-row-repeated");
           let rowIndex = 0;
@@ -1569,9 +1579,7 @@
         .addEventListener("change", function (e) {
           const file = e.target.files[0];
           if (!file) return;
-
           const reader = new FileReader();
-
           reader.onload = (event) => {
             try {
               const data = JSON.parse(event.target.result);

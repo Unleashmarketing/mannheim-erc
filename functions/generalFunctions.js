@@ -445,13 +445,13 @@ function cacheBustHallenBelegung() {
 
 function openGallery(
   id,
-  wettbewerbeData,
+  data,
   galleryModalId,
   modalTitleId,
   modalDateId,
   galleryGridId,
 ) {
-  const comp = wettbewerbeData.find((c) => c.id === id);
+  const comp = data.find((c) => c.id === id);
   if (!comp) return;
 
   const modal = document.getElementById(galleryModalId);
@@ -464,13 +464,12 @@ function openGallery(
   comp.gallery.forEach((imgSrc) => {
     const item = document.createElement("div");
     item.className = "gallery-item";
-    // Kein onclick Event mehr hier - Bild ist nicht klickbar
     item.innerHTML = `<img src="${imgSrc}" alt="Galeriebild" loading="lazy">`;
     grid.appendChild(item);
   });
 
   modal.style.display = "block";
-  document.body.style.overflow = "hidden"; // Scrollen der Seite verhindern
+  document.body.style.overflow = "hidden";
 }
 
 function renderCompetitions(
@@ -484,7 +483,7 @@ function renderCompetitions(
   const container = document.getElementById(wettbewerbeContainerId);
   if (!container || wettbewerbeData === undefined) return;
 
-  container.innerHTML = ""; // Loading Text entfernen
+  container.innerHTML = "";
 
   wettbewerbeData.forEach((comp) => {
     const card = document.createElement("div");
@@ -517,12 +516,9 @@ function renderCompetitions(
     `;
     container.appendChild(card);
   });
-
-  // Trigger animations for new elements
   observeFadeElements();
 }
 
-// --- VALIDIERUNGS-HELFER ---
 function showFieldError(inputElement, message) {
   inputElement.classList.add("input-error");
   let errorDiv = inputElement.parentElement.querySelector(".error-message");
