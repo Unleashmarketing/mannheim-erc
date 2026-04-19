@@ -7,6 +7,13 @@ function openPdf(pdfUrl) {
   document.body.style.overflow = "hidden"; // Scrollen der Hauptseite stoppen
 }
 
+function openPdfAsync(pdfUrl) {
+  return new Promise((resolve) => {
+    openPdf(pdfUrl);
+    resolve();
+  });
+}
+
 function renderArchiveNews(list, newsContainerId) {
   const container = document.getElementById(newsContainerId);
   container.innerHTML = "";
@@ -45,6 +52,11 @@ function handleArchiveNewsFilters(
   newsContainerId,
   archiveNewsMinDate,
   NEWS_LIST,
+  enum_renderType = 0,
+  galleryModalId = "galleryModal",
+  modalTitleId = "modalTitle",
+  modalDateId = "modalDate",
+  galleryGridId = "galleryGrid",
 ) {
   if (typeof sliderMin === "string") {
     sliderMin = document.getElementById(sliderMin);
@@ -68,7 +80,23 @@ function handleArchiveNewsFilters(
     dateDisplay.textContent = "Nur aktuellste Beiträge";
     document.getElementById(extraTextId).textContent =
       "Im Suchfeld clicken um Beitragsfilter zu aktivieren";
-    renderArchiveNews(limitedList, newsContainerId);
+    switch (enum_renderType) {
+      case 0:
+        renderArchiveNews(limitedList, newsContainerId);
+        break;
+      case 1:
+        renderCompetitions(
+          newsContainerId,
+          limitedList,
+          galleryModalId,
+          modalTitleId,
+          modalDateId,
+          galleryGridId,
+        );
+        break;
+      default:
+        renderArchiveNews(limitedList, newsContainerId);
+    }
     return;
   }
 
@@ -105,7 +133,23 @@ function handleArchiveNewsFilters(
 
     return matchesSearch && matchesDate;
   });
-  renderArchiveNews(filteredNews, newsContainerId);
+  switch (enum_renderType) {
+    case 0:
+      renderArchiveNews(filteredNews, newsContainerId);
+      break;
+    case 1:
+      renderCompetitions(
+        newsContainerId,
+        filteredNews,
+        galleryModalId,
+        modalTitleId,
+        modalDateId,
+        galleryGridId,
+      );
+      break;
+    default:
+      renderArchiveNews(filteredNews, newsContainerId);
+  }
 }
 
 function resetArchiveNewsFilters(
@@ -116,6 +160,11 @@ function resetArchiveNewsFilters(
   extraTextId,
   newsContainerId,
   NEWS_LIST,
+  enum_renderType = 0,
+  galleryModalId = "galleryModal",
+  modalTitleId = "modalTitle",
+  modalDateId = "modalDate",
+  galleryGridId = "galleryGrid",
 ) {
   const searchInput = document.getElementById(searchInputId);
   searchInput.value = "#begrenzt";
@@ -133,6 +182,11 @@ function resetArchiveNewsFilters(
     newsContainerId,
     minDate,
     NEWS_LIST,
+    enum_renderType,
+    galleryModalId,
+    modalTitleId,
+    modalDateId,
+    galleryGridId,
   );
 }
 
@@ -267,9 +321,7 @@ function toggleGeschichteVisibility(geschichteToggleBtn, geschichteContainer) {
 function convertString(input) {
   let output = 1;
   for (const element of input) {
-    output =
-      ((output % (2 ^ (13 - 1))) + element.codePointAt(0)) *
-      element.codePointAt(0);
+    output = ((output % 8191) + 1) * element.codePointAt(0);
   }
   return output;
 }
@@ -377,6 +429,139 @@ function observeFadeElements() {
   fadeElements.forEach((element) => {
     observer.observe(element);
   });
+}
+
+function cacheBustHallenBelegung() {
+  const hallenBelegungPdfLink = document.querySelectorAll(
+    'a[href$="Hallenbelegung.pdf"]',
+  );
+  hallenBelegungPdfLink.forEach((link) => {
+    const url = new URL(link.href);
+    url.searchParams.set("v", Date.now());
+    link.href = url.toString();
+  });
+}
+
+function openGallery(
+  id,
+  data,
+  galleryModalId,
+  modalTitleId,
+  modalDateId,
+  galleryGridId,
+) {
+  const comp = data.find((c) => c.id === id);
+  if (!comp) return;
+
+  const modal = document.getElementById(galleryModalId);
+  document.getElementById(modalTitleId).textContent = comp.title;
+  document.getElementById(modalDateId).textContent = comp.date;
+
+  const grid = document.getElementById(galleryGridId);
+  grid.innerHTML = "";
+
+  comp.gallery.forEach((imgSrc) => {
+    const item = document.createElement("div");
+    item.className = "gallery-item";
+    item.innerHTML = `<img src="${imgSrc}" alt="Galeriebild" loading="lazy">`;
+    grid.appendChild(item);
+  });
+
+  modal.style.display = "block";
+  document.body.style.overflow = "hidden";
+}
+
+function renderCompetitions(
+  wettbewerbeContainerId,
+  wettbewerbeData,
+  galleryModalId,
+  modalTitleId,
+  modalDateId,
+  galleryGridId,
+) {
+  const container = document.getElementById(wettbewerbeContainerId);
+  if (!container || wettbewerbeData === undefined) return;
+
+  container.innerHTML = "";
+
+  wettbewerbeData.forEach((comp) => {
+    const card = document.createElement("div");
+    card.className = "comp-card fade-in";
+    card.onclick = () => {
+      if (comp.gallery.length > 0) {
+        openGallery(
+          comp.id,
+          wettbewerbeData,
+          galleryModalId,
+          modalTitleId,
+          modalDateId,
+          galleryGridId,
+        );
+      }
+    };
+    let coverImageHtml = "";
+    if (comp.coverImage !== "")
+      coverImageHtml = `<img src="${comp.coverImage}" alt="${comp.title}">`;
+    let galleryHtml = "";
+    if (comp.gallery.length > 0)
+      galleryHtml = `<div class="comp-overlay">
+          <i class="fas fa-images"></i> Galerie ansehen
+        </div>`;
+    let imageHtml = "";
+    if (coverImageHtml !== "" || galleryHtml !== "") {
+      imageHtml =
+        `<div class="comp-image-wrapper">` +
+        coverImageHtml +
+        galleryHtml +
+        `</div>`;
+    }
+    card.innerHTML =
+      imageHtml +
+      `
+      <div class="comp-body">
+        <span class="comp-date">${comp.date}</span>
+        <h3 class="comp-title">${comp.title}</h3>
+        <p class="comp-desc">${comp.description}</p>
+        <div class="comp-footer">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+  observeFadeElements();
+}
+
+function showFieldError(inputElement, message) {
+  inputElement.classList.add("input-error");
+  let errorDiv = inputElement.parentElement.querySelector(".error-message");
+  if (!errorDiv) {
+    errorDiv = document.createElement("div");
+    errorDiv.className = "error-message";
+    inputElement.parentElement.appendChild(errorDiv);
+  }
+  errorDiv.textContent = message;
+}
+
+function isValidIBAN(iban) {
+  const cleanIban = String(iban)
+    .toUpperCase()
+    .replace(/[^A-Z0-9]/g, "");
+  if (cleanIban.length < 15) return 1;
+  const code = cleanIban.match(/^([A-Z]{2})(\d{2})([A-Z\d]+)$/);
+  if (!code) return 2;
+  const digits = (code[3] + code[1] + code[2]).replace(
+    /[A-Z]/g,
+    function (letter) {
+      return letter.charCodeAt(0) - 55;
+    },
+  );
+  let checksum = Number.parseInt(digits.slice(0, 2));
+  for (let offset = 2; offset < digits.length; offset += 7) {
+    const fragment = String(checksum) + digits.substring(offset, offset + 7);
+    checksum = Number.parseInt(fragment, 10) % 97;
+  }
+  return checksum === 1 ? 0 : checksum;
 }
 // (async () => {
 //   let sampleJsonString = "Any text here";

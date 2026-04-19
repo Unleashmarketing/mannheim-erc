@@ -39,7 +39,7 @@
             <a href="../eisschnelllauf.html#schnuppern">Schnuppertraining</a>
           </li>
           <li>
-            <a href="../eisschnelllauf.html#calendar-section">Kalendar</a>
+            <a href="../eisschnelllauf.html#calendar-section">Kalender</a>
           </li>
           <li><a href="../eisschnelllauf.html#geschichte">Geschichte</a></li>
           <li><a href="../eisschnelllauf.html#berichte">Berichte</a></li>
@@ -51,7 +51,7 @@
         ></a>
         <ul class="submenu">
           <li>
-            <a href="../synchron.html#linkTeamNewHorizons">Team New Horizons</a>
+            <a href="../synchron.html#linkTeamNewHorizons">Team New Horizons Mannheim</a>
           </li>
           <li>
             <a href="../synchron.html#linkSynchroMitgliedschaft"
@@ -66,17 +66,15 @@
         </ul>
       </li>
       <li class="has-submenu">
-        <a href="javascript:void(0)" class="submenu-toggle"
-          >Schnellzugriff <i class="fas fa-chevron-down submenu-icon"></i
-        ></a>
+        <a href="javascript:void(0)" class="submenu-toggle">
+          Hallenbelegung/ wichtige Links
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
         <ul class="submenu">
           <li>
-            <a href="../about.html?openBelegungsplan=true"
-              >Belegungspl&auml;ne</a
+            <a href="../dokumente/verein/Hallenbelegung.pdf" target="_blank"
+              >Belegungspläne</a
             >
-          </li>
-          <li>
-            <a href="../mitglieder.html#publicAnnouncements">Aktuelles</a>
           </li>
           <li>
             <a href="../mitglieder.html#publicAnnouncements">Aktuelles</a>
@@ -136,7 +134,11 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../main.css" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="../main.css?v=<?php echo filemtime('../main.css'); ?>"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
@@ -2298,7 +2300,7 @@
       data-cfasync="false"
       src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
     ></script>
-    <script src="../functions/generalFunctions.js"></script>
+    <script src="../functions/generalFunctions.js?v=<?php echo filemtime('../functions/generalFunctions.js'); ?>"></script>
     <script>
       const mobileToggle = document.querySelector(".mobile-toggle");
       const mobileMenu = document.querySelector(".mobile-menu");
@@ -2341,7 +2343,7 @@
         setupMobileSubmenus(mobileMenu);
       });
     </script>
-    <script src="formularBedingungen.js"></script>
+    <script src="formularBedingungen.js?v=<?php echo filemtime('formularBedingungen.js'); ?>"></script>
 
     <script>
       const { jsPDF } = globalThis.jspdf;
@@ -2371,19 +2373,6 @@
         }
       });
 
-      // --- VALIDIERUNGS-HELFER ---
-      function showFieldError(inputElement, message) {
-        inputElement.classList.add("input-error");
-        let errorDiv =
-          inputElement.parentElement.querySelector(".error-message");
-        if (!errorDiv) {
-          errorDiv = document.createElement("div");
-          errorDiv.className = "error-message";
-          inputElement.parentElement.appendChild(errorDiv);
-        }
-        errorDiv.textContent = message;
-      }
-
       function clearValidationErrors(generalAlertId) {
         document
           .querySelectorAll(".input-error")
@@ -2396,28 +2385,6 @@
           alertBox.style.display = "none";
           alertBox.className = "alert-box-antrag-formular";
         }
-      }
-
-      function isValidIBAN(iban) {
-        const cleanIban = String(iban)
-          .toUpperCase()
-          .replace(/[^A-Z0-9]/g, "");
-        if (cleanIban.length < 15) return 1;
-        const code = cleanIban.match(/^([A-Z]{2})(\d{2})([A-Z\d]+)$/);
-        if (!code) return 2;
-        const digits = (code[3] + code[1] + code[2]).replace(
-          /[A-Z]/g,
-          function (letter) {
-            return letter.charCodeAt(0) - 55;
-          },
-        );
-        let checksum = digits.slice(0, 2);
-        for (let offset = 2; offset < digits.length; offset += 7) {
-          const fragment =
-            String(checksum) + digits.substring(offset, offset + 7);
-          checksum = Number.parseInt(fragment, 10) % 97;
-        }
-        return checksum === 1 ? 0 : checksum;
       }
 
       function isValidEmail(email) {
@@ -3261,6 +3228,7 @@
           "einzugsermaechtigungsl-TAN",
           "checkbox-error-bestimmungen-einzugsermaechtigungsl",
         );
+        cacheBustHallenBelegung();
       });
     </script>
   </body>

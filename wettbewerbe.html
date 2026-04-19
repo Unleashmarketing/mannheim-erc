@@ -40,7 +40,7 @@
             <a href="eisschnelllauf.html#schnuppern">Schnuppertraining</a>
           </li>
           <li>
-            <a href="eisschnelllauf.html#calendar-section">Kalendar</a>
+            <a href="eisschnelllauf.html#calendar-section">Kalender</a>
           </li>
           <li>
             <a href="eisschnelllauf.html#geschichte">Geschichte</a>
@@ -57,7 +57,7 @@
         </a>
         <ul class="submenu">
           <li>
-            <a href="synchron.html#linkTeamNewHorizons">Team New Horizons</a>
+            <a href="synchron.html#linkTeamNewHorizons">Team New Horizons Mannheim</a>
           </li>
           <li>
             <a href="synchron.html#linkSynchroMitgliedschaft"
@@ -73,12 +73,14 @@
       </li>
       <li class="has-submenu">
         <a href="javascript:void(0)" class="submenu-toggle">
-          Schnellzugriff
+          Hallenbelegung/ wichtige Links
           <i class="fas fa-chevron-down submenu-icon"></i>
         </a>
         <ul class="submenu">
           <li>
-            <a href="about.html?openBelegungsplan=true">Belegungspläne</a>
+            <a href="dokumente/verein/Hallenbelegung.pdf" target="_blank"
+              >Belegungspläne</a
+            >
           </li>
           <li><a href="mitglieder.html#publicAnnouncements">Aktuelles</a></li>
           <li>
@@ -121,6 +123,7 @@
     </div>
   </template>
   <head>
+    <script src="wettbewerbe-data.js?v=<?php echo filemtime('wettbewerbe-data.js'); ?>"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wettbewerbe - Mannheimer ERC</title>
@@ -134,7 +137,11 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="main.css" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="main.css?v=<?php echo filemtime('main.css'); ?>"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
@@ -181,7 +188,121 @@
 
       <section class="section">
         <div class="container">
-          <div id="wettbewerbe-container" class="wettbewerb-grid">
+          <div class="news-filters">
+            <div class="news-filter-group">
+              <label for="wettbewerbe-news-src">Suchbegriff:</label>
+              <input
+                type="text"
+                class="archive-news-search"
+                id="wettbewerbe-news-src"
+                placeholder="Suche nach Stichwörtern..."
+                oninput="
+                  handleArchiveNewsFilters(
+                    'wettbewerbe-news-date-slider-min',
+                    'wettbewerbe-news-date-slider-max',
+                    this,
+                    'wettbewerbe-news-date-disp',
+                    'wettbewerbe-news-extra-txt',
+                    'wettbewerbe-container',
+                    NEWS_LIST_MIN_DATE,
+                    wettbewerbeData_DATES_SORTED,
+                    1,
+                    'galleryModal',
+                    'modalTitle',
+                    'modalDate',
+                    'galleryGrid',
+                  )
+                "
+                value="#begrenzt"
+                name="wettbewerbe-news-src"
+              />
+            </div>
+
+            <div class="news-filter-group">
+              <p>Zeitraum filtern (Wochen):</p>
+              <div class="range-slider-container">
+                <input
+                  type="range"
+                  id="wettbewerbe-news-date-slider-min"
+                  min="0"
+                  value="0"
+                  oninput="
+                    handleArchiveNewsFilters(
+                      this,
+                      'wettbewerbe-news-date-slider-max',
+                      'wettbewerbe-news-src',
+                      'wettbewerbe-news-date-disp',
+                      'wettbewerbe-news-extra-txt',
+                      'wettbewerbe-container',
+                      NEWS_LIST_MIN_DATE,
+                      wettbewerbeData_DATES_SORTED,
+                      1,
+                      'galleryModal',
+                      'modalTitle',
+                      'modalDate',
+                      'galleryGrid',
+                    )
+                  "
+                />
+                <input
+                  type="range"
+                  id="wettbewerbe-news-date-slider-max"
+                  min="0"
+                  value="100"
+                  oninput="
+                    handleArchiveNewsFilters(
+                      'wettbewerbe-news-date-slider-min',
+                      this,
+                      'wettbewerbe-news-src',
+                      'wettbewerbe-news-date-disp',
+                      'wettbewerbe-news-extra-txt',
+                      'wettbewerbe-container',
+                      NEWS_LIST_MIN_DATE,
+                      wettbewerbeData_DATES_SORTED,
+                      1,
+                      'galleryModal',
+                      'modalTitle',
+                      'modalDate',
+                      'galleryGrid',
+                    )
+                  "
+                />
+              </div>
+              <div
+                id="wettbewerbe-news-date-disp"
+                class="archive-news-date-display"
+              >
+                Ganze Zeitspanne
+              </div>
+              <div
+                id="wettbewerbe-news-extra-txt"
+                class="archive-news-extra-text"
+              ></div>
+            </div>
+
+            <button
+              class="archive-news-reset-filters"
+              onclick="
+                resetArchiveNewsFilters(
+                  'wettbewerbe-news-src',
+                  'wettbewerbe-news-date-slider-min',
+                  'wettbewerbe-news-date-slider-max',
+                  'wettbewerbe-news-date-disp',
+                  'wettbewerbe-news-extra-txt',
+                  'wettbewerbe-container',
+                  wettbewerbeData_DATES_SORTED,
+                  1,
+                  'galleryModal',
+                  'modalTitle',
+                  'modalDate',
+                  'galleryGrid',
+                )
+              "
+            >
+              Filter zurücksetzen
+            </button>
+          </div>
+          <div id="wettbewerbe-container" class="content-section">
             <p>Wettbewerbe werden geladen...</p>
           </div>
         </div>
@@ -261,77 +382,14 @@
       </div>
     </footer>
 
-    <script src="wettbewerbe-data.js"></script>
-    <script src="functions/generalFunctions.js"></script>
+    <script src="functions/generalFunctions.js?v=<?php echo filemtime('functions/generalFunctions.js'); ?>"></script>
     <script>
-      // ========================================
-      // WETTBEWERBE LOGIK
-      // ========================================
-
-      function renderCompetitions() {
-        const container = document.getElementById("wettbewerbe-container");
-        if (!container || typeof wettbewerbeData === "undefined") return;
-
-        container.innerHTML = ""; // Loading Text entfernen
-
-        wettbewerbeData.forEach((comp) => {
-          const card = document.createElement("div");
-          card.className = "comp-card fade-in";
-          card.onclick = () => openGallery(comp.id);
-
-          card.innerHTML = `
-            <div class="comp-image-wrapper">
-              <img src="${comp.coverImage}" alt="${comp.title}">
-              <div class="comp-overlay">
-                <i class="fas fa-images"></i> Galerie ansehen
-              </div>
-            </div>
-            <div class="comp-body">
-              <span class="comp-date">${comp.date}</span>
-              <h3 class="comp-title">${comp.title}</h3>
-              <p class="comp-desc">${comp.description}</p>
-              <div class="comp-footer">
-                <i class="fas fa-arrow-right"></i>
-              </div>
-            </div>
-          `;
-          container.appendChild(card);
-        });
-
-        // Trigger animations for new elements
-        observeFadeElements();
-      }
-
-      function openGallery(id) {
-        const comp = wettbewerbeData.find((c) => c.id === id);
-        if (!comp) return;
-
-        const modal = document.getElementById("galleryModal");
-        document.getElementById("modalTitle").textContent = comp.title;
-        document.getElementById("modalDate").textContent = comp.date;
-
-        const grid = document.getElementById("galleryGrid");
-        grid.innerHTML = "";
-
-        comp.gallery.forEach((imgSrc) => {
-          const item = document.createElement("div");
-          item.className = "gallery-item";
-          // Kein onclick Event mehr hier - Bild ist nicht klickbar
-          item.innerHTML = `<img src="${imgSrc}" alt="Galeriebild" loading="lazy">`;
-          grid.appendChild(item);
-        });
-
-        modal.style.display = "block";
-        document.body.style.overflow = "hidden"; // Scrollen der Seite verhindern
-      }
-
       function closeModal() {
         const modal = document.getElementById("galleryModal");
         modal.style.display = "none";
         document.body.style.overflow = "";
       }
 
-      // Schließen wenn man neben das Bild klickt
       globalThis.onclick = function (event) {
         const modal = document.getElementById("galleryModal");
         if (event.target == modal) {
@@ -376,13 +434,47 @@
         }
       });
 
-      // Init
+      function wettbewerbNewsVisibility(
+        sliderMinId,
+        sliderMaxId,
+        searchTermId,
+        dateDisplayId,
+        extraTextId,
+        newsContainerId,
+      ) {
+        const sliderMin = document.getElementById(sliderMinId);
+        const sliderMax = document.getElementById(sliderMaxId);
+        const minDate = initArchiveNewsFilters(
+          wettbewerbeData_DATES_SORTED,
+          sliderMinId,
+          sliderMaxId,
+        );
+        wettbewerbeData_DATES_SORTED.forEach((element) => {
+          console.log(element.date);
+        });
+        const searchInput = document.getElementById(searchTermId);
+        handleArchiveNewsFilters(
+          sliderMin,
+          sliderMax,
+          searchInput,
+          dateDisplayId,
+          extraTextId,
+          newsContainerId,
+          minDate,
+          wettbewerbeData_DATES_SORTED,
+          1,
+          "galleryModal",
+          "modalTitle",
+          "modalDate",
+          "galleryGrid",
+        );
+      }
+
       document.addEventListener("DOMContentLoaded", function () {
         const template = document.getElementById("navigation-template1");
         const contactBtn = document.getElementById("contactBtn");
         const memberBtn = document.getElementById("memberBtn");
         const mobileCTAButtons = document.getElementById("mobileCTAButtons");
-        // Desktop Navigation
         const desktopNav = document.getElementById("pageElementsDesktop");
         insertNavigationElements(
           template,
@@ -394,8 +486,23 @@
           null,
         );
         setupMobileSubmenus(mobileMenu);
-        renderCompetitions(); // Daten rendern
+        wettbewerbNewsVisibility(
+          "wettbewerbe-news-date-slider-min",
+          "wettbewerbe-news-date-slider-max",
+          "wettbewerbe-news-src",
+          "wettbewerbe-news-date-disp",
+          "wettbewerbe-news-extra-txt",
+          "wettbewerbe-container",
+        );
+        cacheBustHallenBelegung();
       });
+      document
+        .getElementById("wettbewerbe-news-src")
+        .addEventListener("focus", function () {
+          if (this.value === "#begrenzt") {
+            this.value = "";
+          }
+        });
     </script>
   </body>
 </html>

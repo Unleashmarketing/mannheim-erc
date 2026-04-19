@@ -1,5 +1,30 @@
 const OEFFENTLICHE_MELDUNGEN = [
   {
+    title: "Sommerpause!",
+    date: "01.04.2026",
+    url: "",
+    text: `<p><strong>Das EZH und demzufolge auch die Geschäftsstelle bleiben bis zum Beginn der Saison 2026-2027 geschlossen!</strong></p>`,
+  },
+  {
+    title: "Deutschlandpokal 2026",
+    date: "10.03.2026",
+    url: "",
+    text: `
+<p><span>Der Deutschlandpokal 2026 fand vom 06.03.2026 bis 08.03.2026 im Eissportzentrum Herzogenried in Mannheim statt.</span></p>
+<p><span>Die besten Nachwuchseiskunstläufer Deutschlands waren in Mannheim zu Gast! Der Nachwuchs des Mannheimer ERC begeisterte das heimische Publikum. Sie gewannen 3 x Gold und erreichten insgesamt 5 Podestplätze.</span></p>
+<p><a href="https://eislauf-union.de/de/events/deutschlandpokal">Alle detaillierte Informationen finden Sie hier</a></p>
+<p><a href="https://www.wochenblatt-reporter.de/mannheim/c-community/deutschland-pokal-2026-im-eiskunstlaufen-nachwuchselite-zu-gast-in-mannheim_a707659">Den Vorbericht vom Wochenblatt finden Sie hier</a></p>
+<p><a href="https://eislauf-union.de/de/media1/pressemitteilungen/1300-fast-150-eiskunstlauf-talente-beim-deutschlandpokal-2026-in-mannheim">Pressebericht der Deutschen Eislauf-Union</a></p>
+<p><a href="https://www.wochenblatt-reporter.de/mannheim/c-community/dreimal-gold-und-fuenf-podestplaetze-erfolgreicher-deutschlandpokal-fuer-den-mannheimer-erc_a727027">Bericht Wochenblatt</a></p>
+<p><a onclick="window.open(this.href); return false;" href="https://www.merc-online.de/files/deutschland-pokal-_titel_f__r_mannheimer_erc_und_d_260311_132838.pdf">Bericht der Rheinpfalz</a></p>`,
+  },
+  {
+    title: "Nachruf Karl Hager",
+    date: "01.09.2024",
+    url: "",
+    text: `<a href="https://www.merc-online.de/files/trauenrrede_f__r_den_merc_f__r_karl_hager.pdf">Bitte finden Sie hier den Nachruf von unserem verstorbenen&nbsp; Ehrenvorsitzenden Karl Hager!</a>`,
+  },
+  {
     title: "Mitgliederversammlung",
     date: "01.04.1977",
     url: "",
@@ -63,6 +88,16 @@ let OEFFENTLICHE_MELDUNGEN_MIN_DATE = null;
 let OEFFENTLICHE_MELDUNGEN_MAX_DATE = null;
 if (OEFFENTLICHE_MELDUNGEN_DATES.length > 0) {
   OEFFENTLICHE_MELDUNGEN_MIN_DATE = OEFFENTLICHE_MELDUNGEN_DATES[0];
-  OEFFENTLICHE_MELDUNGEN_MAX_DATE =
-    OEFFENTLICHE_MELDUNGEN_DATES[OEFFENTLICHE_MELDUNGEN_DATES.length - 1];
+  OEFFENTLICHE_MELDUNGEN_MAX_DATE = OEFFENTLICHE_MELDUNGEN_DATES.at(-1);
 }
+
+const OEFFENTLICHE_MELDUNGEN_DATES_SORTED = OEFFENTLICHE_MELDUNGEN.toSorted(
+  (a, b) => {
+    const dateA = parseDate(a.date);
+    const dateB = parseDate(b.date);
+    if (dateA === null && dateB === null) return 0;
+    if (dateA === null) return 1;
+    if (dateB === null) return -1;
+    return dateB - dateA;
+  },
+);

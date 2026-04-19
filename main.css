@@ -141,6 +141,16 @@ button {
 /* ========================================
  UTILITY CLASSES
  ======================================== */
+.dringende-meldungen {
+  background-color: #ff4757;
+  color: white;
+  text-align: center;
+  position: sticky; /* Keeps it at the top as you scroll */
+  top: 0;
+  z-index: 1000;
+  font-family: inherit;
+}
+
 .container {
   width: 97%;
   max-width: var(--max-width);
@@ -1235,37 +1245,6 @@ footer {
   border-radius: var(--border-radius-sm);
 }
 
-.footer-links li {
-  margin-bottom: var(--spacing-sm);
-}
-
-.footer-links a {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: var(--font-size-sm);
-}
-
-.footer-links a:hover {
-  color: var(--white);
-  padding-left: var(--spacing-xs);
-}
-
-.footer-links .submenu {
-  display: block !important;
-  position: static !important;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding: var(--spacing-xs) 0 0 var(--spacing-sm);
-  margin: 0;
-}
-
-.footer-links .submenu a {
-  padding: var(--spacing-xs) 0;
-  border-left: 2px solid rgba(255, 255, 255, 0.15);
-  padding-left: var(--spacing-sm);
-  display: block;
-}
-
 .footer-contact li {
   margin-bottom: var(--spacing-md);
   display: flex;
@@ -1705,6 +1684,7 @@ textarea:focus-visible {
   border: 1px solid var(--gray-light);
   overflow: hidden;
   transition: box-shadow var(--transition-base);
+  scroll-margin-top: var(--spacing-2xl);
 }
 .form-card.is-open {
   box-shadow: var(--shadow-lg);
@@ -2187,11 +2167,11 @@ input:focus-visible {
 /* ========================================
  WETTBEWERBE SPEZIFISCH
  ======================================== */
-.wettbewerb-grid {
+/* .wettbewerb-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: var(--spacing-lg);
-}
+} */
 
 .comp-card {
   background: var(--white);
@@ -2200,10 +2180,13 @@ input:focus-visible {
   box-shadow: var(--shadow-md);
   transition: var(--transition-base);
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  padding: var(--spacing-md);
+  /* display: flex;
+  flex-direction: column; */
   height: 100%;
   border: 2px solid transparent;
+  margin: var(--spacing-sm);
 }
 
 .comp-card:hover {
@@ -2214,7 +2197,7 @@ input:focus-visible {
 
 .comp-image-wrapper {
   position: relative;
-  height: 250px;
+  height: 600px;
   overflow: hidden;
 }
 
@@ -3184,6 +3167,7 @@ input:focus-visible {
 .geschichte-section {
   padding: var(--spacing-lg) 0;
   background-color: var(--white);
+  scroll-margin-top: var(--spacing-xl);
 }
 
 .geschichte-toggle-button {
@@ -3286,6 +3270,7 @@ input:focus-visible {
 .calendar-section-class {
   padding: var(--spacing-lg) 0;
   background-color: var(--light-bg);
+  scroll-margin-top: var(--spacing-xl);
 }
 
 .calendar-section-class .container {
@@ -3487,6 +3472,7 @@ input:focus-visible {
 .news-section {
   padding: var(--spacing-lg) 0;
   background-color: var(--light-bg);
+  scroll-margin-top: var(--spacing-xl);
 }
 
 .news-section-mitgliederbereich {
@@ -3803,8 +3789,8 @@ input:focus-visible {
 
   .day,
   .empty-day {
-    padding: var(--spacing-sm);
-    min-height: 50px;
+    padding: var(--spacing-xs);
+    min-height: 20px;
     font-size: var(--font-size-xs);
   }
 
@@ -4117,6 +4103,66 @@ input:focus-visible {
 .btn-download:hover {
   background-color: var(--primary-hover);
   transform: translateY(-2px);
+}
+
+.trainerTimes-row {
+  display: flex;
+  align-items: flex-end; /* Aligns inputs and buttons on the same baseline */
+  gap: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed #ccc;
+}
+.trainerTimes-row-repeated {
+  display: flex;
+  align-items: flex-end; /* Aligns inputs and buttons on the same baseline */
+  gap: 15px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+.trainerTimes-input-group {
+  flex: 1; /* Makes Date and Time columns take up equal space */
+  display: flex;
+  flex-direction: column;
+}
+
+.trainerTimes-input-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.trainerTimes-input-wrapper {
+  position: relative;
+}
+.trainerTimes-input-wrapper input {
+  width: 100%;
+  min-height: 30px; /* Ensure there is a hit-area */
+  display: block;
+}
+.trainerTimes-input-wrapper i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
+}
+
+.trainerTimes-row-total {
+  min-width: 80px;
+  padding-bottom: 10px; /* Align with inputs */
+  font-family: monospace;
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+}
+
+.trainerTimes-total-summary {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-top: 2px solid #333;
+  text-align: right;
+  font-size: 1.2em;
 }
 
 /* RESPONSIVE */

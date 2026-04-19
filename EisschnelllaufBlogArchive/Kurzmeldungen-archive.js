@@ -1631,6 +1631,14 @@ let ARCHIVE_NEWS_LIST_MIN_DATE = null;
 let ARCHIVE_NEWS_LIST_MAX_DATE = null;
 if (ARCHIVE_NEWS_LIST_DATES.length > 0) {
   ARCHIVE_NEWS_LIST_MIN_DATE = ARCHIVE_NEWS_LIST_DATES[0];
-  ARCHIVE_NEWS_LIST_MAX_DATE =
-    ARCHIVE_NEWS_LIST_DATES[ARCHIVE_NEWS_LIST_DATES.length - 1];
+  ARCHIVE_NEWS_LIST_MAX_DATE = ARCHIVE_NEWS_LIST_DATES.at(-1);
 }
+
+const ARCHIVE_NEWS_LIST_DATES_SORTED = ARCHIVE_NEWS_LIST.toSorted((a, b) => {
+  const dateA = parseDate(a.date);
+  const dateB = parseDate(b.date);
+  if (dateA === null && dateB === null) return 0;
+  if (dateA === null) return 1;
+  if (dateB === null) return -1;
+  return dateB - dateA;
+});
