@@ -7,7 +7,7 @@ const wettbewerbeData = [
   {
     id: "dm-2025",
     title: "Deutsche Meisterschaften 2025",
-    date: "01.01.2029",
+    date: "01.01.2025",
     description:
       "Spannende Wettkämpfe in Berlin. Unsere Athleten haben 3 Medaillen geholt.",
     coverImage: "images/82331e4d-ed93-4d10-8211-51c107e9e614.jpg",
@@ -42,21 +42,6 @@ const wettbewerbeData = [
       "https://via.placeholder.com/800x600?text=Sommer+Eis",
       "https://via.placeholder.com/800x600?text=Gruppenfoto",
     ],
-  },
-  {
-    id: "placeholder-2026-0",
-    title: "Internationales Platzhalterturnier",
-    date: "01.03.2026",
-    description: `Es sind viele Leute gekommen um einen Platz zu halten.
-    Es sind viele Leute gekommen um einen Platz zu halten.
-    Es sind viele Leute gekommen um einen Platz zu halten.
-    Es sind viele Leute gekommen um einen Platz zu halten.
-    Es sind viele Leute gekommen um einen Platz zu halten.
-    Es sind viele Leute gekommen um einen Platz zu halten.
-    Es sind viele Leute gekommen um einen Platz zu halten.
-    Es sind viele Leute gekommen um einen Platz zu halten.`,
-    coverImage: "",
-    gallery: [],
   },
 ];
 
