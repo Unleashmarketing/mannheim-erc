@@ -76,8 +76,7 @@ function handleArchiveNewsFilters(
     const validItems = NEWS_LIST.filter(
       (item) => item.date && item.date !== "N/A",
     );
-    const limitedList =
-      enum_renderType < 1 ? validItems.slice(0, 3) : validItems.slice(0, 2);
+    const limitedList = validItems.slice(0, 3);
     dateDisplay.textContent = "Nur aktuellste Beiträge";
     document.getElementById(extraTextId).textContent =
       "Im Suchfeld clicken um Beitragsfilter zu aktivieren";
@@ -488,23 +487,37 @@ function renderCompetitions(
   wettbewerbeData.forEach((comp) => {
     const card = document.createElement("div");
     card.className = "comp-card fade-in";
-    card.onclick = () =>
-      openGallery(
-        comp.id,
-        wettbewerbeData,
-        galleryModalId,
-        modalTitleId,
-        modalDateId,
-        galleryGridId,
-      );
-
-    card.innerHTML = `
-      <div class="comp-image-wrapper">
-        <img src="${comp.coverImage}" alt="${comp.title}">
-        <div class="comp-overlay">
+    card.onclick = () => {
+      if (comp.gallery.length > 0) {
+        openGallery(
+          comp.id,
+          wettbewerbeData,
+          galleryModalId,
+          modalTitleId,
+          modalDateId,
+          galleryGridId,
+        );
+      }
+    };
+    let coverImageHtml = "";
+    if (comp.coverImage !== "")
+      coverImageHtml = `<img src="${comp.coverImage}" alt="${comp.title}">`;
+    let galleryHtml = "";
+    if (comp.gallery.length > 0)
+      galleryHtml = `<div class="comp-overlay">
           <i class="fas fa-images"></i> Galerie ansehen
-        </div>
-      </div>
+        </div>`;
+    let imageHtml = "";
+    if (coverImageHtml !== "" || galleryHtml !== "") {
+      imageHtml =
+        `<div class="comp-image-wrapper">` +
+        coverImageHtml +
+        galleryHtml +
+        `</div>`;
+    }
+    card.innerHTML =
+      imageHtml +
+      `
       <div class="comp-body">
         <span class="comp-date">${comp.date}</span>
         <h3 class="comp-title">${comp.title}</h3>

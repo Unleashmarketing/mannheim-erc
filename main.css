@@ -2167,11 +2167,11 @@ input:focus-visible {
 /* ========================================
  WETTBEWERBE SPEZIFISCH
  ======================================== */
-.wettbewerb-grid {
+/* .wettbewerb-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: var(--spacing-lg);
-}
+} */
 
 .comp-card {
   background: var(--white);
@@ -2180,10 +2180,13 @@ input:focus-visible {
   box-shadow: var(--shadow-md);
   transition: var(--transition-base);
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  padding: var(--spacing-md);
+  /* display: flex;
+  flex-direction: column; */
   height: 100%;
   border: 2px solid transparent;
+  margin: var(--spacing-sm);
 }
 
 .comp-card:hover {
@@ -2194,7 +2197,7 @@ input:focus-visible {
 
 .comp-image-wrapper {
   position: relative;
-  height: 250px;
+  height: 600px;
   overflow: hidden;
 }
 
