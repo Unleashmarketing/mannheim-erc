@@ -2963,6 +2963,35 @@ input:focus-visible {
   color: var(--text-muted);
 }
 
+.kurstabelle {
+  border-collapse: collapse;
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+}
+
+.kurstabelle th,
+.kurstabelle td {
+  padding: var(--spacing-xs) 0;
+  text-align: left;
+}
+
+
+.kurstabelle .kursname {
+  font-weight: bold;
+  padding-right: var(--spacing-xl);
+  white-space: nowrap;
+}
+
+.kurstabelle .kursdatum {
+  padding-right: var(--spacing-xl);
+  white-space: nowrap;
+}
+
+
+.kurstabelle .kursstatus {
+  white-space: nowrap;
+}
+
 /* ========================================
  DOWNLOADS SECTION
  ======================================== */
