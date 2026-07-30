@@ -2963,7 +2963,52 @@ input:focus-visible {
   color: var(--text-muted);
 }
 
+@media (max-width:700px){
+  .kurstabelle thead{
+    display:none
+  }
+
+  .kurstabelle,
+  .kurstabelle tbody,
+  .kurstabelle tr,
+  .kurstabelle td {
+    display:block;
+    width:100%;
+    box-sizing: border-box;
+  }
+
+  .kurstabelle td {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    align-items: center;
+    padding: var(--spacing-sm);
+    text-align: left;
+  }
+
+  .kurstabelle td::before {
+    content:attr(data-label);
+    font-size:var(--font-size-sm);
+    font-weight:bold;
+    text-align:left;
+    flex-shrink: 0;
+    min-width: 80px;
+  }
+
+  .kurstabelle tr {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #222;
+  }
+
+  .kurstabelle tr:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+}
+
 .kurstabelle {
+  width: 100%;
   border-collapse: collapse;
   font-family: var(--font-family);
   font-size: var(--font-size-md);
@@ -2971,7 +3016,7 @@ input:focus-visible {
 
 .kurstabelle th,
 .kurstabelle td {
-  padding: var(--spacing-xs) 0;
+  padding: var(--spacing-xs) var(--spacing-sm);
   text-align: left;
 }
 
