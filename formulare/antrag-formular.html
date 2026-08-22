@@ -2913,7 +2913,8 @@
           "https://merc-online.de/cgi-bin/apiMain.py/api/submit",
           { method: "POST", body: fData },
         );
-        if (response.ok) {
+        // Leihschuhe brauchen kein TAN
+        if (response.ok && integerDocType != 4) {
           let fData2 = new FormData();
           fData2.append("tan", tan);
           fData2.append("email", formData.eMail);
@@ -2972,11 +2973,6 @@
           tanField.readOnly = true;
           tanField.classList.remove("invalid");
           tanField.classList.add("valid");
-          if (emailInput && existingEmailForTan) {
-            emailInput.value = existingEmailForTan.value;
-            existingEmailForTan.value = "";
-            emailInput.readOnly = true;
-          }
         } else {
           tanButton.addEventListener("click", async function () {
             const tanValue = tanField.value;
