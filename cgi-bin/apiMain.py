@@ -62,7 +62,7 @@ try:
         msg = EmailMessage()
         msg['Subject'] = subject
         msg['To'] = "office@merc-online.de"  # change this for deployment
-        msg['From'] = "stv.schnelllauf@merc-online.de"
+        msg['From'] = "noreply@merc-online.de"
         if isinstance(from_field, str) and "@" in from_field and from_field.count("@") == 1 and from_field != msg['From'] and from_field != msg['To']:
             msg['cc'] = from_field
             msg['Reply-To'] = from_field
@@ -148,7 +148,7 @@ try:
             subject = request.form.get("subject", "Unbekannt")
             content = request.form.get("message", "Leer")
             from_field = request.form.get(
-                "email", "stv.schnelllauf@merc-online.de")
+                "email", "noreply@merc-online.de")
             attachmentDict = None
             if file is not None and isinstance(file, str):
                 filename = os.path.basename(file)
