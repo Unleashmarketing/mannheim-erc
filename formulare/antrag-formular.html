@@ -2914,17 +2914,22 @@
           { method: "POST", body: fData },
         );
         // Leihschuhe brauchen kein TAN
-        if (response.ok && integerDocType != 4) {
-          let fData2 = new FormData();
-          fData2.append("tan", tan);
-          fData2.append("email", formData.eMail);
-          fData2.append("formEnum", integerDocType.toString());
-          const response2 = await fetch(
-            "https://merc-online.de/cgi-bin/apiMain.py/api/assignEmailToTan",
-            { method: "POST", body: fData2 },
-          );
-          const result = await response2.json();
-          if (result["success"]) {
+        if (response.ok) {
+          if (integerDocType != 4){
+            let fData2 = new FormData();
+            fData2.append("tan", tan);
+            fData2.append("email", formData.eMail);
+            fData2.append("formEnum", integerDocType.toString());
+            const response2 = await fetch(
+              "https://merc-online.de/cgi-bin/apiMain.py/api/assignEmailToTan",
+              { method: "POST", body: fData2 },
+            );
+            const result = await response2.json();
+            if (result["success"]) {
+              doc.save(fileName);
+            }
+          }
+          else{
             doc.save(fileName);
           }
         }
