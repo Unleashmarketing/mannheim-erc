@@ -2846,8 +2846,8 @@
         }
         printLine("Formularbestimmungen", "", true);
         printLine("Akzeptiert?:", "Ja");
-        yPos += 5;
         if (bankVerbindungNeeded) {
+          yPos += 5;
           printLine("Bankverbindung:", "", true);
           printLine("Bank:", formData.NameKreditinstitut);
           printLine("IBAN:", formData.IBAN);
@@ -2860,18 +2860,21 @@
             printLine("Unterschrift Antragsteller", "", true);
             printLine("Ort, Datum:", "");
             printLine("Unterschrift Mieter:","");
+            yPos += 5;
             break;
           case 4:
             yPos += 5;
             printLine("Unterschrift Antragsteller", "", true);
             printLine("Ort, Datum:", "");
             printLine("Unterschrift Mieter:","");
+            yPos += 5;
             break;
           default:
             yPos += 5;
             printLine("Unterschrift Antragsteller", "", true);
             printLine("Ort, Datum:", "");
             printLine("Unterschrift (bei Minderjährige des Erziehungsberechtigten):","");
+            yPos += 5;
             break;
         }
         switch (integerDocType) {
