@@ -952,9 +952,18 @@ header.scrolled {
 }
 
 .competition-gallery {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-lg); */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--spacing-lg);
+}
+
+.competition-gallery > * {
+  flex: 0 1 360px;
+  width: 100%;
 }
 
 .competition-item {
