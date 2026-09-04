@@ -26,7 +26,24 @@ try:
     TAN_LIST_SIZE = 128
     TAN_LIST_RENEWAL_RETAIN_SIZE = 16
     app = Flask(__name__)
-    CORS(app, resources={r"/*": {"origins": "https://merc-online.de"}})
+    # CORS(app, resources={r"/*": {"origins": "https://merc-online.de"}})
+
+    @app.before_request
+    def handle_preflight():
+        if request.method == "OPTIONS":
+            from flask import Response
+            response = Response()
+            response.headers['Access-Control-Allow-Origin'] = 'https://www.merc-online.de'
+            response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+            response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
+            return response
+
+    @app.after_request
+    def add_cors_headers(response):
+        response.headers['Access-Control-Allow-Origin'] = 'https://www.merc-online.de'
+        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
+        return response
 
     def getLockFile() -> bool:
         waitTime = 0.0
