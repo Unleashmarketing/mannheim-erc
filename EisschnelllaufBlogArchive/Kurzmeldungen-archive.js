@@ -1,4 +1,25 @@
 const ARCHIVE_NEWS_LIST = [
+
+  {
+    title: "Sommercamp Oberstdorf 2026",
+    date: "08.08.2026",
+    url:"",
+      
+    text: `
+      <p >Sommercamp Oberstdorf 2026</p>
+
+      <p >Eine Woche Sommercamp in Oberstdorf mit Events wie Sommer
+      Biathlon, Berglauf, zweimal täglich Eiseinheiten und ein abschließender Wettkampf
+      in allen Altersklassen.</p>
+
+      <p >Gundi Pawasserat wurde 3. <span class=GramE>Bei den Masters</span>,
+      Mirja Bluhm wurde 9.</p>
+
+      <p> <img width=604 height=455
+      src="images/eisschnelllauf/image002.jpg"> </p> 
+
+
+`},
   {
     title: "Oberstdorf Summercamp 2025",
     date: "09.08.2025",
