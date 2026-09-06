@@ -97,23 +97,23 @@
       </li>
     </ul>
   </template>
-  <template id="memberBtn">
+  <!-- <template id="memberBtn">
     <ul>
       <li>
         <a href="mitglieder.html" class="btn-header">Mitgliederbereich</a>
       </li>
     </ul>
-  </template>
+  </template> -->
   <template id="contactBtn">
     <ul>
       <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
     </ul>
   </template>
-  <template>
+  <!-- <template>
     <ul>
       <li><a href="mitglieder.html">Mitgliederbereich</a></li>
     </ul>
-  </template>
+  </template> -->
   <template id="contactStandard">
     <ul>
       <li><a href="index.html#contact">Kontakt</a></li>
@@ -121,7 +121,7 @@
   </template>
   <template id="mobileCTAButtons">
     <div class="mobile-cta-buttons">
-      <a href="mitglieder.html">Mitgliederbereich</a>
+      <!-- <a href="mitglieder.html">Mitgliederbereich</a> -->
       <a href="index.html#contact">Kontakt</a>
     </div>
   </template>
@@ -1442,7 +1442,8 @@
               Petra Ernert, Gudrun Häfner, Walter Häfner, Claudia
               Leistner-Pfrengle, Lotte Lenz, Sigrid Müllenbach-Wendel†, Gundi
               Pawasserat, Rudi Pawasserat, Gerhard Rausch, Anna Reinshagen†,
-              Brunhilde Skotnický (geb. Basler), Willi Wernz†, Ursula Wittich
+              Brunhilde Skotnický (geb. Basler), Willi Wernz†, Ursula Wittich,
+              Günter Zöller
             </p>
           </div>
         </div>
@@ -1909,6 +1910,237 @@
                 </a>
               </div>
             </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Ehrenordnung</h3>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Kunstlauf / Schnelllauf</span>
+              </div>
+              <div class="download-actions">
+                <button
+                  id="ehrenordnung-button-id"
+                  onclick="openPdf('dokumente/mitglied/ehrenordnung_20240525.pdf')"
+                  class="btn btn-primary download-btn"
+                >
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </button>
+              </div>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Geschäftsordnung</h3>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Kunstlauf / Schnelllauf</span>
+              </div>
+              <div class="download-actions">
+                <button
+                  id="geschaeftsordnung-button-id"
+                  onclick="openPdf('dokumente/mitglied/geschaeftsordnung_20240525.pdf')"
+                  class="btn btn-primary download-btn"
+                >
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </button>
+              </div>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Jugendordnung</h3>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Kunstlauf / Schnelllauf</span>
+              </div>
+              <div class="download-actions">
+                <button
+                  id="jugendordnung-button-id"
+                  onclick="openPdf('dokumente/mitglied/jugendordnung_20240525.pdf')"
+                  class="btn btn-primary download-btn"
+                >
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </button>
+              </div>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Reisekostenordnung</h3>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Kunstlauf / Schnelllauf</span>
+              </div>
+              <div class="download-actions">
+                <button
+                  id="reisekostenordnung-button-id"
+                  onclick="openPdf('dokumente/mitglied/reisekostenordnung_20240525.pdf')"
+                  class="btn btn-primary download-btn"
+                >
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </button>
+              </div>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Benutzungsordnung MERC</h3>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Kunstlauf / Schnelllauf</span>
+              </div>
+              <div class="download-actions">
+                <button
+                  id="benutzungsordnung-button-id"
+                  onclick="openPdf('dokumente/mitglied/benutzungsordnung_merc_20250526.pdf')"
+                  class="btn btn-primary download-btn"
+                >
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </button>
+              </div>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Abteilungsordnung Eiskunstlauf</h3>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Kunstlauf</span>
+              </div>
+              <div class="download-actions">
+                <button
+                  id="abteilungsordnung_eiskunstlauf-button-id"
+                  onclick="openPdf('dokumente/eiskunstlauf/abteilungsordnung_eiskunstlauf_20250107.pdf')"
+                  class="btn btn-primary download-btn"
+                >
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </button>
+              </div>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Abteilungsordnung Eisschnelllauf</h3>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Schnelllauf</span>
+              </div>
+              <div class="download-actions">
+                <button
+                  id="abteilungsordnung_eisschnelllauf-button-id"
+                  onclick="openPdf('dokumente/eisschnelllauf/abteilungsordnung_eisschnelllauf.pdf')"
+                  class="btn btn-primary download-btn"
+                >
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </button>
+              </div>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">DESG Lizenzantrag</h3>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Schnelllauf</span>
+              </div>
+              <div class="download-actions">
+                <button
+                  id="desg_lizenzantrag-button-id"
+                  onclick="openPdf('dokumente/eisschnelllauf/desg_lizenzantrag20220722_1.pdf')"
+                  class="btn btn-primary download-btn"
+                >
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </button>
+              </div>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Datenschutzordnung</h3>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Kunstlauf / Schnelllauf</span>
+              </div>
+              <div class="download-actions">
+                <button
+                  id="datenschutzordnung-button-id"
+                  onclick="openPdf('dokumente/mitglied/datenschutzordnung_mannheimer_erc_extern.pdf')"
+                  class="btn btn-primary download-btn"
+                >
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </button>
+              </div>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Merkblatt Informationspflichten DSGVO</h3>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Kunstlauf / Schnelllauf</span>
+              </div>
+              <div class="download-actions">
+                <button
+                  id="informationspflichten-button-id"
+                  onclick="openPdf('dokumente/mitglied/merkblatt_informationspflichten_art_13_14_dsgvo.pdf')"
+                  class="btn btn-primary download-btn"
+                >
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </button>
+              </div>
+            </div>
+
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Mietbestimmungen</h3>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Kunstlauf / Schnelllauf</span>
+              </div>
+              <div class="download-actions">
+                <button
+                  id="mietbestimmungen-button-id"
+                  onclick="openPdf('dokumente/mitglied/mietbestimmungen_2019_2020.pdf')"
+                  class="btn btn-primary download-btn"
+                >
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </button>
+              </div>
+            </div>            
           </div>
         </div>
       </section>

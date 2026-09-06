@@ -97,23 +97,23 @@
       </li>
     </ul>
   </template>
-  <template id="memberBtn">
+  <!-- <template id="memberBtn">
     <ul>
       <li>
         <a href="mitglieder.html" class="btn-header">Mitgliederbereich</a>
       </li>
     </ul>
-  </template>
+  </template> -->
   <template id="contactBtn">
     <ul>
       <li><a href="index.html#contact" class="btn-header">Kontakt</a></li>
     </ul>
   </template>
-  <template>
+  <!-- <template>
     <ul>
       <li><a href="mitglieder.html">Mitgliederbereich</a></li>
     </ul>
-  </template>
+  </template> -->
   <template id="contactStandard">
     <ul>
       <li><a href="index.html#contact">Kontakt</a></li>
@@ -121,7 +121,7 @@
   </template>
   <template id="mobileCTAButtons">
     <div class="mobile-cta-buttons">
-      <a href="mitglieder.html">Mitgliederbereich</a>
+      <!-- <a href="mitglieder.html">Mitgliederbereich</a> -->
       <a href="index.html#contact">Kontakt</a>
     </div>
   </template>
@@ -756,6 +756,32 @@
             <h2 class="section-title">Allgemeine Infos</h2>
           </div>
           <div class="download-grid">
+
+            <!-- 0: Regelung des Trainingsbetriebes SAP -->
+            <div class="download-card fade-in">
+              <div class="download-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h3 class="download-title">Regelung des Trainingsbetriebes SAP Arena</h3>
+              <div class="download-meta">
+                <span>PDF</span>
+                <span>Kunstlaufabteilung</span>
+              </div>
+              <div class="download-actions">
+                <button
+                  onclick="
+                    openPdf(
+                      'dokumente/eiskunstlauf/regelung_trainingsbetrieb_sap-arena.pdf',
+                    )
+                  "
+                  class="btn btn-primary download-btn"
+                >
+                  <i class="fas fa-eye"></i>
+                  Ansehen
+                </button>
+              </div>
+            </div>
+
             <!-- 1: Regelung des Trainingsbetriebes -->
             <div class="download-card fade-in">
               <div class="download-icon">

@@ -3,9 +3,10 @@
   <template id="navigation-template1">
     <ul>
       <li class="has-submenu">
-        <a href="../about.html" class="submenu-toggle"
-          >Unser Verein <i class="fas fa-chevron-down submenu-icon"></i
-        ></a>
+        <a href="../about.html" class="submenu-toggle">
+          Unser Verein
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
         <ul class="submenu">
           <li><a href="../about.html#vision">Vision & Werte</a></li>
           <li><a href="../about.html#vorstand">Vorstand</a></li>
@@ -15,9 +16,10 @@
         </ul>
       </li>
       <li class="has-submenu">
-        <a href="../eiskunstlauf.html" class="submenu-toggle"
-          >Eiskunstlauf <i class="fas fa-chevron-down submenu-icon"></i
-        ></a>
+        <a href="../eiskunstlauf.html" class="submenu-toggle">
+          Eiskunstlauf
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
         <ul class="submenu">
           <li><a href="../eiskunstlauf.html#schnuppern">Schnupperkurs</a></li>
           <li><a href="../eiskunstlauf.html#erwachsene">Erwachsene</a></li>
@@ -27,9 +29,10 @@
         </ul>
       </li>
       <li class="has-submenu">
-        <a href="../eisschnelllauf.html" class="submenu-toggle"
-          >Eisschnelllauf <i class="fas fa-chevron-down submenu-icon"></i
-        ></a>
+        <a href="../eisschnelllauf.html" class="submenu-toggle">
+          Eisschnelllauf
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
         <ul class="submenu">
           <li>
             <a href="../eisschnelllauf.html#linkEislaufschule">Eislaufschule</a>
@@ -40,17 +43,24 @@
           <li>
             <a href="../eisschnelllauf.html#calendar-section">Kalender</a>
           </li>
-          <li><a href="../eisschnelllauf.html#geschichte">Geschichte</a></li>
-          <li><a href="../eisschnelllauf.html#berichte">Berichte</a></li>
+          <li>
+            <a href="../eisschnelllauf.html#geschichte">Geschichte</a>
+          </li>
+          <li>
+            <a href="../eisschnelllauf.html#berichte">Berichte</a>
+          </li>
         </ul>
       </li>
       <li class="has-submenu">
-        <a href="../synchron.html" class="submenu-toggle"
-          >Synchron Eiskunstlauf <i class="fas fa-chevron-down submenu-icon"></i
-        ></a>
+        <a href="../synchron.html" class="submenu-toggle">
+          Synchron Eiskunstlauf
+          <i class="fas fa-chevron-down submenu-icon"></i>
+        </a>
         <ul class="submenu">
           <li>
-            <a href="../synchron.html#linkTeamNewHorizons">Team New Horizons Mannheim</a>
+            <a href="../synchron.html#linkTeamNewHorizons"
+              >Team New Horizons Mannheim</a
+            >
           </li>
           <li>
             <a href="../synchron.html#linkSynchroMitgliedschaft"
@@ -87,35 +97,34 @@
       </li>
     </ul>
   </template>
-  <template id="memberBtn"
-    ><ul>
+  <!-- <template id="memberBtn">
+    <ul>
       <li>
         <a href="../mitglieder.html" class="btn-header">Mitgliederbereich</a>
       </li>
-    </ul></template
-  >
-  <template id="contactBtn"
-    ><ul>
+    </ul>
+  </template> -->
+  <template id="contactBtn">
+    <ul>
       <li><a href="../index.html#contact" class="btn-header">Kontakt</a></li>
-    </ul></template
-  >
-  <template
-    ><ul>
+    </ul>
+  </template>
+  <!-- <template>
+    <ul>
       <li><a href="../mitglieder.html">Mitgliederbereich</a></li>
-    </ul></template
-  >
-  <template
-    ><ul>
+    </ul>
+  </template> -->
+  <template id="contactStandard">
+    <ul>
       <li><a href="../index.html#contact">Kontakt</a></li>
-    </ul></template
-  >
-  <template id="mobileCTAButtons"
-    ><div class="mobile-cta-buttons">
-      <a href="../mitglieder.html">Mitgliederbereich</a
-      ><a href="../index.html#contact">Kontakt</a>
-    </div></template
-  >
-
+    </ul>
+  </template>
+  <template id="mobileCTAButtons">
+    <div class="mobile-cta-buttons">
+      <!-- <a href="../mitglieder.html">Mitgliederbereich</a> -->
+      <a href="../index.html#contact">Kontakt</a>
+    </div>
+  </template>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -1060,7 +1069,11 @@
               <div class="card-header">
                 <div class="card-header-text">
                   <h2>Mietvertrag Aufbewahrungsschrank</h2>
-                  <p>Miete eines Aufbewahrungsschranks</p>
+                  <p>Miete eines Aufbewahrungsschranks,
+                    <strong
+                      >Kein TAN benötigt, wird automatisch generiert!</strong
+                    >
+                  </p>
                 </div>
                 <div class="tan-row">
                   <input
@@ -1293,6 +1306,25 @@
                     </div>
                     <div id="checkbox-error-bestimmungen-schrank"></div>
                   </div>
+                  <div class="form-section">
+                    <label
+                      for="capchaInput"
+                    >
+                      Sicherheitsfrage
+                      <p 
+                        id="capchaQuestionSchrank"
+                        data-name="capchaQuestionField"
+                      >
+                        4+5=?
+                      </p>
+                    </label>
+                    <input
+                      type="number"
+                      id="capchaInputFieldSchrank"
+                      name="capchaInput"
+                      required
+                    />
+                  </div>
                   <div class="form-footer">
                     <a href="../about.html" class="btn-back">Zurück</a>
                     <button
@@ -1498,6 +1530,25 @@
                     <div
                       id="checkbox-error-bestimmungen-leihschlittschuhe"
                     ></div>
+                  </div>
+                  <div class="form-section">
+                    <label
+                      for="capchaInput"
+                    >
+                      Sicherheitsfrage
+                      <p 
+                        id="capchaQuestionLeihschlittschuhe"
+                        data-name="capchaQuestionField"
+                      >
+                        4+5=?
+                      </p>
+                    </label>
+                    <input
+                      type="number"
+                      id="capchaInputFieldLeihschlittschuhe"
+                      name="capchaInput"
+                      required
+                    />
                   </div>
                   <div class="form-footer">
                     <a href="../about.html" class="btn-back">Zurück</a>
@@ -2418,6 +2469,72 @@
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       }
 
+      function generateDefaultTan() {
+        const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+        let defaultTan = "";
+        const charactersLength = characters.length;
+        for (let i = 0; i < 6; i++) {
+          defaultTan += characters.charAt(
+            Math.floor(Math.random() * charactersLength),
+          );
+        }
+        return defaultTan;
+      }
+
+      async function checkCapchaAnswer(capchaComponents, capchaInputField)
+      {
+        try {
+          let params = "?";
+          capchaComponents.forEach((number, index) => {
+            params +=
+              "num" + index.toString() + "=" + encodeURIComponent(number) + "&";
+          });
+          params += "answer=" + encodeURIComponent(capchaInputField.value);
+          console.error(
+            "Debug:",
+            "https://merc-online.de/cgi-bin/apiMain.py/api/checkRandomArithmeticAnswer" +
+              params,
+          );
+          const responseForCapcha = await fetch(
+            "https://merc-online.de/cgi-bin/apiMain.py/api/checkRandomArithmeticAnswer" +
+              params,
+          );
+          if (responseForCapcha.ok) {
+            const capchaAnswer = await responseForCapcha.json();
+            return capchaAnswer["success"];
+          }
+        } catch (err) {
+          console.error("Debug:", err);
+        }
+        return False;
+      }
+
+      let capchaComponentMap = {}
+
+      async function getCapchaQuestion(capchaQuestionId,
+                                       capchaInputFieldId,
+                                       intFormId) {
+        const capchaObject = document.getElementById(capchaQuestionId);
+        const capchaInputField = document.getElementById(capchaQuestionId);
+        let capchaComponents = [];
+        try {
+          const responseForRandomArithmeticQuestion = await fetch(
+            "https://merc-online.de/cgi-bin/apiMain.py/api/getRandomArithmeticQuestion",
+          );
+          if (responseForRandomArithmeticQuestion.ok) {
+            capchaQ = await responseForRandomArithmeticQuestion.text();
+            capchaObject.textContent = capchaQ;
+            capchaQ.split("+").forEach((number) => {
+              capchaComponents.push(Number.parseInt(number.trim()));
+            });
+          }
+          capchaComponentMap[intFormId] = capchaComponents;
+        } catch (err) {
+          console.error("Debug:", err);
+        }
+      }
+
+
       // --- FORM SUBMIT HANDLER ---
       function handleFormSubmit(
         formId,
@@ -2441,9 +2558,39 @@
             let firstErrorField = null;
             const data = {};
             const elements = this.elements;
+            const targetParagraphs = this.querySelectorAll('p[data-name="capchaQuestionField"]');
+            let idForCapchaQ = "";
+            targetParagraphs.forEach(paragraph => {
+                idForCapchaQ = paragraph.id;
+              }
+            )
+            let idForCapchaField = "";
+            for (const field of elements){
+              if (field.name === "capchaInput"){
+                idForCapchaField = field.id;
+                let bool_Answer = false;
+                if (!(integerDocType in capchaComponentMap) || field.value == ""){
+                  showFieldError(field, "Sicherheitsfrage beantworten.");
+                  hasErrors = true;
+                  if (!firstErrorField) firstErrorField = field;
+                }
+                else{
+                  bool_Answer = await checkCapchaAnswer(capchaComponentMap[integerDocType], field);
+                  if (!bool_Answer){
+                    showFieldError(field, "Sicherheitsfrage ist falsch.");
+                    hasErrors = true;
+                    if (!firstErrorField) firstErrorField = field;
+                  }
+                }
+                break;
+              }
+            }
+            if (idForCapchaQ !== "" && idForCapchaField !== ""){
+              getCapchaQuestion(idForCapchaQ, idForCapchaField, integerDocType);
+            }
 
             for (const field of elements) {
-              if (field.type === "submit" || field.tagName === "BUTTON")
+              if (field.type === "submit" || field.tagName === "BUTTON" || field.name === "capchaInput")
                 continue;
               const value = field.value.trim();
               let name = field.name;
@@ -2494,6 +2641,7 @@
                 if (name === "e-Mail" && !isValidEmail(value)) {
                   showFieldError(field, "Ungültige E-Mail-Adresse.");
                   hasErrors = true;
+                  if (!firstErrorField) firstErrorField = field;
                 }
                 const ibanCheckVal = isValidIBAN(value);
                 if (name === "IBAN" && ibanCheckVal !== 0) {
@@ -2502,6 +2650,7 @@
                     "Ungültige IBAN: " + ibanCheckVal.toString(),
                   );
                   hasErrors = true;
+                  if (!firstErrorField) firstErrorField = field;
                 }
               }
             }
@@ -2537,6 +2686,12 @@
               }, 3000);
               tanField.classList.remove("valid");
               tanField.value = "";
+              if (integerDocType == 4 || integerDocType == 3){
+                tanField.value = generateDefaultTan();
+                tanField.readOnly = true;
+                tanField.classList.remove("invalid");
+                tanField.classList.add("valid");
+              }
             } catch (error) {
               console.error(error);
               const alertBox = document.getElementById(generalAlertId);
@@ -2938,7 +3093,8 @@
         );
         // Leihschuhe brauchen kein TAN
         if (response.ok) {
-          if (integerDocType != 4){
+          if (integerDocType != 4 &&
+              integerDocType != 3){
             let fData2 = new FormData();
             fData2.append("tan", tan);
             fData2.append("email", formData.eMail);
@@ -2985,19 +3141,11 @@
           ? document.getElementById(newStartWarningId)
           : null;
         if (!toggleButton || !wrapper || !tanField || !tanButton) return;
-        let boolTanValid = antragTyp == "4";
+        let boolTanValid = antragTyp == "4" || antragTyp == "3";
 
         if (boolTanValid) {
           tanButton.style.display = "none";
-          const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
-          let defaultTan = "";
-          const charactersLength = characters.length;
-          for (let i = 0; i < 6; i++) {
-            defaultTan += characters.charAt(
-              Math.floor(Math.random() * charactersLength),
-            );
-          }
-          tanField.value = defaultTan;
+          tanField.value = generateDefaultTan();
           tanField.readOnly = true;
           tanField.classList.remove("invalid");
           tanField.classList.add("valid");
@@ -3407,6 +3555,14 @@
           "minderjaehrige-container-aufnahmeantrag",
           1,
         );
+        getCapchaQuestion(
+          "capchaQuestionSchrank",
+          "capchaInputFieldSchrank",
+          3);
+        getCapchaQuestion(
+          "capchaQuestionLeihschlittschuhe",
+          "capchaInputFieldLeihschlittschuhe",
+          4);
       });
     </script>
   </body>
